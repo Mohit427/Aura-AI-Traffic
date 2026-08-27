@@ -106,6 +106,7 @@ Shared JSON schemas between layers. Do not change field names without notifying 
 {
   "timestamp": "2026-08-26T10:15:30Z",
   "ev_id": "ev_1",
+  "approach_edge": "north_approach",
   "distance_to_stopline_m": 120,
   "velocity_kmh": 40,
   "tti_seconds": 10.8,
