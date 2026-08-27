@@ -1,130 +1,163 @@
-\# AURA — Data Contracts
-
-
+# AURA — Data Contracts
 
 Shared JSON schemas between layers. Do not change field names without notifying the whole team.
 
+**Roles (as of Day 1 revision):**
+- Mohit — Backend, Orchestration, Automation & Integration
+- Shruti — Vision & Live Data (YOLOv8 + TomTom)
+- Tharanesh — Digital Twin (Eclipse SUMO + TraCI)
+- Yashvant ATK — Optimization Engine (C++ Edmonds-Karp + EV Scheduler)
+- Mithunn — Frontend & AI Advisor (React + Swytchcode + Tavily)
 
+**Database:** PostgreSQL (via SQLAlchemy/asyncpg) — each JSON payload below maps to a table: `vision_logs`, `tomtom_logs`, `sumo_state_logs`, `engine_decisions`, `ev_events`.
 
-\## 1. Vision Output (Shruti → Backend)
+---
 
-```json
-
-{
-
-&#x20; "timestamp": "2026-08-26T10:15:30Z",
-
-&#x20; "intersection\_id": "vadapalani\_junction",
-
-&#x20; "zone": "north\_approach",
-
-&#x20; "counts": {
-
-&#x20;   "car": 12,
-
-&#x20;   "bus": 2,
-
-&#x20;   "truck": 1,
-
-&#x20;   "motorcycle": 8,
-
-&#x20;   "bicycle": 3,
-
-&#x20;   "person": 15
-
-&#x20; },
-
-&#x20; "platoon\_detected": false,
-
-&#x20; "ev\_detected": \[]
-
-}
-
-```
-
-
-
-\## 2. TomTom Output (Shruti → Backend)
+## 1. Vision Output (Shruti → Backend)
 
 ```json
-
 {
-
-&#x20; "timestamp": "2026-08-26T10:15:30Z",
-
-&#x20; "segment\_id": "arcot\_road\_north",
-
-&#x20; "current\_speed\_kmh": 18,
-
-&#x20; "free\_flow\_speed\_kmh": 45,
-
-&#x20; "congestion\_ratio": 0.6
-
+  "timestamp": "2026-08-26T10:15:30Z",
+  "intersection_id": "vadapalani_junction",
+  "zone": "north_approach",
+  "counts": {
+    "car": 12,
+    "bus": 2,
+    "truck": 1,
+    "motorcycle": 8,
+    "bicycle": 3,
+    "person": 15
+  },
+  "platoon_detected": false,
+  "tracked_objects": [
+    {
+      "object_id": "veh_042",
+      "class": "car",
+      "distance_to_stopline_m": 45.2,
+      "speed_kmh": 22.5
+    }
+  ],
+  "ev_detected": []
 }
-
 ```
+- `tracked_objects` holds per-object distance/speed for anything worth tracking individually (not just aggregate counts) — this is where Shruti's Day 3 pixel-distance speed estimation lands:
+  `speed = (Δy_pixels × scale_factor) / Δt`
+- Populate `tracked_objects` at minimum for any detected emergency vehicle (feeds directly into the EV Conflict Event below); populate it more broadly if useful once speed estimation is stable.
 
-
-
-\## 3. Engine Output (Tharanesh → Backend)
+## 2. TomTom Output (Shruti → Backend)
 
 ```json
-
 {
-
-&#x20; "timestamp": "2026-08-26T10:15:30Z",
-
-&#x20; "intersection\_id": "vadapalani\_junction",
-
-&#x20; "phase\_durations": {
-
-&#x20;   "north\_south\_green": 32,
-
-&#x20;   "east\_west\_green": 28,
-
-&#x20;   "pedestrian\_crossing\_green": 15
-
-&#x20; },
-
-&#x20; "priority\_mode": "normal",
-
-&#x20; "vui\_score": 42
-
+  "timestamp": "2026-08-26T10:15:30Z",
+  "segment_id": "arcot_road_north",
+  "current_speed_kmh": 18,
+  "free_flow_speed_kmh": 45,
+  "congestion_ratio": 0.6
 }
-
 ```
 
-`priority\_mode` is one of: `normal | vulnerable\_user | emergency\_vehicle`
-
-
-
-\## 4. EV Conflict Event (Shruti/Tharanesh → Backend)
+## 3. Digital Twin State (Tharanesh → Backend / Engine)
 
 ```json
-
 {
-
-&#x20; "timestamp": "2026-08-26T10:15:30Z",
-
-&#x20; "ev\_id": "ev\_1",
-
-&#x20; "distance\_to\_stopline\_m": 120,
-
-&#x20; "velocity\_kmh": 40,
-
-&#x20; "tti\_seconds": 10.8,
-
-&#x20; "priority\_rank": "EV-1"
-
+  "timestamp": "2026-08-26T10:15:30Z",
+  "intersection_id": "vadapalani_junction",
+  "sim_time_s": 145.2,
+  "edges": [
+    {
+      "edge_id": "north_approach",
+      "queue_length": 14,
+      "occupancy_ratio": 0.62,
+      "avg_wait_time_s": 22.5
+    },
+    {
+      "edge_id": "crosswalk_north",
+      "queue_length": 9,
+      "occupancy_ratio": 0.4,
+      "avg_wait_time_s": 30.0
+    }
+  ],
+  "demand_profile": "medium"
 }
+```
+- `demand_profile` is one of: `light | medium | heavy` — used for both live calibration and the synthetic historical seed data Tharanesh generates on Day 4.
+- This is the graph-state snapshot Yashvant's engine consumes as its live input, calibrated from Shruti's real detection + TomTom data via TraCI.
 
+## 4. Engine Output (Yashvant ATK → Backend)
+
+```json
+{
+  "timestamp": "2026-08-26T10:15:30Z",
+  "intersection_id": "vadapalani_junction",
+  "phase_durations": {
+    "north_south_green": 32,
+    "east_west_green": 28,
+    "pedestrian_crossing_green": 15
+  },
+  "priority_mode": "normal",
+  "vui_score": 42
+}
+```
+`priority_mode` is one of: `normal | vulnerable_user | emergency_vehicle`
+
+## 5. EV Conflict Event (Shruti / Yashvant ATK → Backend)
+
+```json
+{
+  "timestamp": "2026-08-26T10:15:30Z",
+  "ev_id": "ev_1",
+  "approach_edge": "north_approach",
+  "distance_to_stopline_m": 120,
+  "velocity_kmh": 40,
+  "tti_seconds": 10.8,
+  "priority_rank": "EV-1"
+}
+```
+- `distance_to_stopline_m` and `velocity_kmh` come straight from Shruti's `tracked_objects` entry for that vehicle; Yashvant's engine computes `tti_seconds` and `priority_rank` from there.
+
+## 6. Advisor Agent Endpoints (Mithunn ↔ Backend)
+
+**`POST /api/advisor/explain`**
+
+Request:
+```json
+{
+  "engine_output": { "...": "matches Engine Output contract above" },
+  "context": { "...": "optional, matches /api/search/context response below" }
+}
+```
+Response:
+```json
+{
+  "explanation": "Extending North-South green by 12 seconds — a cyclist platoon of 14 is waiting.",
+  "priority_mode": "vulnerable_user"
+}
 ```
 
+**`POST /api/search/context`**
 
+Request:
+```json
+{
+  "location": "Vadapalani Junction, Chennai",
+  "radius_km": 2
+}
+```
+Response:
+```json
+{
+  "events": [
+    {
+      "title": "Road closure near Vadapalani for maintenance",
+      "type": "road_closure",
+      "relevance": "high"
+    }
+  ]
+}
+```
 
-\## Demo Intersection
+---
 
-\- Name: Vadapalani Junction, Chennai
-
-\- Coordinates: 13.0505, 80.2121
-
+## Demo Intersection
+- Name: Vadapalani Junction, Chennai
+- Coordinates: 13.0505, 80.2121
