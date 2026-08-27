@@ -2,7 +2,7 @@ import subprocess
 import json
 
 # Replace with the actual path to your compiled C++ executable
-exe_path = r"engine/Debug/edmonds_karp.exe"
+exe_path = r"Full Working Prototype/engine/Debug/edmonds_karp.exe"
 
 try:
     # 1. Run the C++ engine and capture the terminal output
