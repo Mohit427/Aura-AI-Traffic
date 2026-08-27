@@ -202,7 +202,7 @@ int main()
         residual[outIdx(EAST_OUT)][superSink] = INF;
 
         phase1Flow = edmondsKarp(residual, superSource, superSink);
-        std::cout << "Phase 1 (East/West) max-flow: " << phase1Flow << " cars" << std::endl;
+        // std::cout << "Phase 1 (East/West) max-flow: " << phase1Flow << " cars" << std::endl;
     }
 
     // Phase 2: North/South combined.
@@ -230,7 +230,7 @@ int main()
         residual[outIdx(EAST_OUT)][superSink] = INF;
 
         phase2Flow = edmondsKarp(residual, superSource, superSink);
-        std::cout << "Phase 2 (North/South) max-flow: " << phase2Flow << " cars" << std::endl;
+        // std::cout << "Phase 2 (North/South) max-flow: " << phase2Flow << " cars" << std::endl;
     }
 
     const int CYCLE_LENGTH = 90;

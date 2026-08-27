@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="18.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\yashv\OneDrive\Desktop\Aura-AI-Traffic\Full Working Prototype\engine\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\yashv\OneDrive\Desktop\Aura-AI-Traffic\Full Working Prototype\engine\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{5F5D9106-003C-3039-980E-F1DB075A3446}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

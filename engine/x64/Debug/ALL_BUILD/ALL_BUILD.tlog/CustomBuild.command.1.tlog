@@ -1,0 +1,10 @@
+^C:\USERS\YASHV\ONEDRIVE\DESKTOP\AURA-AI-TRAFFIC\FULL WORKING PROTOTYPE\ENGINE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/yashv/OneDrive/Desktop/Aura-AI-Traffic/Full Working Prototype/engine" -BC:/Users/yashv/OneDrive/Desktop/Aura-AI-Traffic/engine --check-stamp-file C:/Users/yashv/OneDrive/Desktop/Aura-AI-Traffic/engine/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
