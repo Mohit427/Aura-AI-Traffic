@@ -13,7 +13,9 @@ try:
     
     # 3. Prove it worked by printing a specific key from the dictionary
     print("Integration Successful!")
+    print(f"Pedestrian Green Time: {engine_data['phase_durations']['pedestrian_crossing_green']} seconds (VUI Score: {engine_data['vui_score']})")
     print(f"North-South Green Time: {engine_data['phase_durations']['north_south_green']} seconds")
+    print(f"East-West Green Time: {engine_data['phase_durations']['east_west_green']} seconds")
     
 except FileNotFoundError:
     print(f"Error: Could not find the executable at {exe_path}")

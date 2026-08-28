@@ -92,8 +92,8 @@ int getNodeIndex(unordered_map<string, int> &index, const string &id, int &nextI
 int main()
 {
     // Node identifiers (exact OSM IDs as requested).
-    const string NORTH = "1313198082";
-    const string SOUTH = "1313198080";
+    const string NORTH = "1313198082.274";
+    const string SOUTH = "1313198080.250";
     const string EAST = "1110246916";
     const string WEST = "588357066";
 
@@ -233,9 +233,11 @@ int main()
         // std::cout << "Phase 2 (North/South) max-flow: " << phase2Flow << " cars" << std::endl;
     }
 
+    int vui_score = 8;
     const int CYCLE_LENGTH = 90;
     const int LOST_TIME = 6;
-    const int EFFECTIVE_GREEN = CYCLE_LENGTH - LOST_TIME;
+    int pedGreen = std::min(60, 15 + (vui_score * 2));
+    const int EFFECTIVE_GREEN = CYCLE_LENGTH - LOST_TIME - pedGreen;
 
     double totalFlow = static_cast<double>(phase1Flow) + static_cast<double>(phase2Flow);
     double phase1Green = EFFECTIVE_GREEN * (static_cast<double>(phase1Flow) / totalFlow);
@@ -247,10 +249,10 @@ int main()
               << "  \"phase_durations\": {\n"
               << "    \"north_south_green\": " << static_cast<int>(phase2Green) << ",\n"
               << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
-              << "    \"pedestrian_crossing_green\": 15\n"
+              << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
               << "  },\n"
-              << "  \"priority_mode\": \"normal\",\n"
-              << "  \"vui_score\": 0\n"
+              << "  \"priority_mode\": \"vui_active\",\n"
+              << "  \"vui_score\": " << vui_score << "\n"
               << "}\n";
 
     return 0;
