@@ -138,7 +138,7 @@ async def orchestrate(payload: dict, db: AsyncSession = Depends(get_db)):
     pedestrian = payload.get("pedestrian", 0)
 
     result = subprocess.run(
-        ["./engine/engine_stub", str(north), str(south), str(east), str(west), str(pedestrian)],
+        ["../engine/engine_linux", str(north), str(south), str(east), str(west), str(pedestrian)],
         capture_output=True, text=True
     )
 
