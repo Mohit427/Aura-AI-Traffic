@@ -1,0 +1,20 @@
+# CMake and Visual Studio build artifacts
+build/
+Debug/
+Release/
+x64/
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.dir/
+*.sln*
+*.vcxproj
+*.vcxproj.*
+
+# Editor settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
