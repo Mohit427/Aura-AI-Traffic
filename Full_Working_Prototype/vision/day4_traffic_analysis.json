@@ -1,0 +1,10 @@
+{
+  "frames_processed": 100,
+  "confidence_threshold": 0.25,
+  "total_vehicle_detections": 1288,
+  "total_people_detections": 0,
+  "vehicle_zone_detections": 547,
+  "people_zone_detections": 0,
+  "priority_mode": "vehicle_congestion",
+  "traffic_level": "high"
+}
