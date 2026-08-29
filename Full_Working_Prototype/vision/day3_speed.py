@@ -33,5 +33,5 @@ speed = estimate_speed(
     y_curr=150,
     dt=1.0
 )
-
-print("Estimated speed:", speed, "m/s")
+if __name__ == "__main__":
+    print("Estimated speed:", speed, "m/s")
