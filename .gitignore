@@ -29,4 +29,20 @@ runs/
 # OS
 .DS_Store
 Thumbs.db
+
+# Environment variables
 .env
+
+# CMake and Visual Studio build artifacts
+build/
+Debug/
+Release/
+x64/
+.cmake/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.dir/
+*.sln*
+*.vcxproj
+*.vcxproj.*

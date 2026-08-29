@@ -1,0 +1,32 @@
+.timeline-bar {
+  display: flex;
+  height: 32px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.timeline-segment {
+  transition: width 0.5s ease;
+}
+
+.timeline-legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.9rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}

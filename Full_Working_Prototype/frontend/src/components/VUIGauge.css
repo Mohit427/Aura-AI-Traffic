@@ -1,0 +1,66 @@
+.vui-gauge {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+}
+
+.vui-gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.vui-track {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 10;
+}
+
+.vui-fill {
+  fill: none;
+  stroke: var(--accent-cyan);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.6s ease, stroke 0.3s ease;
+}
+
+.vui-gauge--active .vui-fill {
+  stroke: var(--accent-amber);
+}
+
+.vui-pulse-ring {
+  fill: none;
+  stroke: var(--accent-amber);
+  stroke-width: 2;
+  opacity: 0;
+  transform-origin: 90px 90px;
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { opacity: 0.6; transform: scale(0.95); }
+  100% { opacity: 0; transform: scale(1.25); }
+}
+
+.vui-readout {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vui-score {
+  font-size: 2.4rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+.vui-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
