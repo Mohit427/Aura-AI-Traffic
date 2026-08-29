@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include <cstdlib>
 
 using std::min;
 using std::numeric_limits;
@@ -89,8 +90,26 @@ int getNodeIndex(unordered_map<string, int> &index, const string &id, int &nextI
     return idx;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    int north_cars = 27;
+    int south_cars = 28;
+    int east_cars = 50;
+    int west_cars = 41;
+    int vui_score = 0;
+    int ev_north_tti = 0;
+    int ev_east_tti = 0;
+
+    if (argc >= 8)
+    {
+        north_cars = std::atoi(argv[1]);
+        south_cars = std::atoi(argv[2]);
+        east_cars = std::atoi(argv[3]);
+        west_cars = std::atoi(argv[4]);
+        vui_score = std::atoi(argv[5]);
+        ev_north_tti = std::atoi(argv[6]);
+        ev_east_tti = std::atoi(argv[7]);
+    }
     // Node identifiers (exact OSM IDs as requested).
     const string NORTH = "1313198082.274";
     const string SOUTH = "1313198080.250";
@@ -153,22 +172,28 @@ int main()
     vector<std::tuple<int, int, int>> baseEdges;
 
     // North -> South_Out, West_Out
-    baseEdges.emplace_back(inIdx(NORTH), outIdx(SOUTH_OUT), 15);
-    baseEdges.emplace_back(inIdx(NORTH), outIdx(WEST_OUT), 12);
+    int north_straight = north_cars * 15 / 27;
+    baseEdges.emplace_back(inIdx(NORTH), outIdx(SOUTH_OUT), north_straight);
+    baseEdges.emplace_back(inIdx(NORTH), outIdx(WEST_OUT), north_cars - north_straight);
 
     // South -> North_Out, East_Out
-    baseEdges.emplace_back(inIdx(SOUTH), outIdx(NORTH_OUT), 18);
-    baseEdges.emplace_back(inIdx(SOUTH), outIdx(EAST_OUT), 10);
+    int south_straight = south_cars * 18 / 28;
+    baseEdges.emplace_back(inIdx(SOUTH), outIdx(NORTH_OUT), south_straight);
+    baseEdges.emplace_back(inIdx(SOUTH), outIdx(EAST_OUT), south_cars - south_straight);
 
     // East -> West_Out, South_Out, North_Out
-    baseEdges.emplace_back(inIdx(EAST), outIdx(WEST_OUT), 14);
-    baseEdges.emplace_back(inIdx(EAST), outIdx(SOUTH_OUT), 16);
-    baseEdges.emplace_back(inIdx(EAST), outIdx(NORTH_OUT), 20);
+    int east_first = east_cars * 14 / 50;
+    int east_second = east_cars * 16 / 50;
+    baseEdges.emplace_back(inIdx(EAST), outIdx(WEST_OUT), east_first);
+    baseEdges.emplace_back(inIdx(EAST), outIdx(SOUTH_OUT), east_second);
+    baseEdges.emplace_back(inIdx(EAST), outIdx(NORTH_OUT), east_cars - east_first - east_second);
 
     // West -> East_Out, North_Out, South_Out
-    baseEdges.emplace_back(inIdx(WEST), outIdx(EAST_OUT), 13);
-    baseEdges.emplace_back(inIdx(WEST), outIdx(NORTH_OUT), 17);
-    baseEdges.emplace_back(inIdx(WEST), outIdx(SOUTH_OUT), 11);
+    int west_first = west_cars * 13 / 41;
+    int west_second = west_cars * 17 / 41;
+    baseEdges.emplace_back(inIdx(WEST), outIdx(EAST_OUT), west_first);
+    baseEdges.emplace_back(inIdx(WEST), outIdx(NORTH_OUT), west_second);
+    baseEdges.emplace_back(inIdx(WEST), outIdx(SOUTH_OUT), west_cars - west_first - west_second);
 
     // Crosswalk passthrough edges (large capacity, present for completeness).
     baseEdges.emplace_back(cwIdx(CROSSWALK_E0), cwIdx(CROSSWALK_E1), 1000);
@@ -233,7 +258,26 @@ int main()
         // std::cout << "Phase 2 (North/South) max-flow: " << phase2Flow << " cars" << std::endl;
     }
 
-    int vui_score = 8;
+    bool ev_active = (ev_north_tti > 0 || ev_east_tti > 0);
+    string ev1_axis;
+    string ev2_axis;
+    int ev1_tti = 0;
+    if (ev_active)
+    {
+        if (ev_north_tti <= ev_east_tti)
+        {
+            ev1_axis = "north_south";
+            ev2_axis = "east_west";
+            ev1_tti = ev_north_tti;
+        }
+        else
+        {
+            ev1_axis = "east_west";
+            ev2_axis = "north_south";
+            ev1_tti = ev_east_tti;
+        }
+    }
+
     const int CYCLE_LENGTH = 90;
     const int LOST_TIME = 6;
     int pedGreen = std::min(60, 15 + (vui_score * 2));
@@ -245,14 +289,29 @@ int main()
 
     std::cout << "{\n"
               << "  \"timestamp\": \"2026-08-28T10:15:30Z\",\n"
-              << "  \"intersection_id\": \"vadapalani_junction\",\n"
-              << "  \"phase_durations\": {\n"
-              << "    \"north_south_green\": " << static_cast<int>(phase2Green) << ",\n"
-              << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
-              << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
-              << "  },\n"
-              << "  \"priority_mode\": \"vui_active\",\n"
-              << "  \"vui_score\": " << vui_score << "\n"
+              << "  \"intersection_id\": \"vadapalani_junction\",\n";
+
+    if (ev_active)
+    {
+        std::cout << "  \"ev_schedule\": {\n"
+                  << "    \"ev_1_axis\": \"" << ev1_axis << "\",\n"
+                  << "    \"ev_1_green_flush_duration\": " << ev1_tti << ",\n"
+                  << "    \"all_red_clearance\": 3,\n"
+                  << "    \"ev_2_axis\": \"" << ev2_axis << "\"\n"
+                  << "  },\n"
+                  << "  \"priority_mode\": \"ev_preemption\",\n";
+    }
+    else
+    {
+        std::cout << "  \"phase_durations\": {\n"
+                  << "    \"north_south_green\": " << static_cast<int>(phase2Green) << ",\n"
+                  << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
+                  << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
+                  << "  },\n"
+                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vui_active" : "normal") << "\",\n";
+    }
+
+    std::cout << "  \"vui_score\": " << vui_score << "\n"
               << "}\n";
 
     return 0;
