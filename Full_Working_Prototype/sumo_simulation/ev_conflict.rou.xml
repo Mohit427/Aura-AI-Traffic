@@ -1,0 +1,12 @@
+<routes>
+    <!-- Define the Emergency Vehicle Type (gives it the siren/flashing lights in GUI) -->
+    <vType id="ambulance_type" vClass="emergency" guiShape="emergency" color="red" maxSpeed="30.0" speedFactor="1.5"/>
+
+    <!-- Define the Conflicting Routes using your exact Edge IDs -->
+    <route id="route_north_south" edges="1313198082 1313198082.274"/>
+    <route id="route_east_west" edges="1123278059#1 1123278059#0 1110246916 838093322 27346902#0 27346902#1 27346902#2 1092250361#0"/>
+
+    <!-- Spawn both ambulances at exactly 10 seconds to force the conflict -->
+    <vehicle id="EV-1" type="ambulance_type" route="route_north_south" depart="10" departSpeed="max"/>
+    <vehicle id="EV-2" type="ambulance_type" route="route_east_west" depart="10" departSpeed="max"/>
+</routes>
