@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-08-30T14:58:01.963155+05:30 by Eclipse SUMO GUI 1.27.1
+<!-- generated on 2026-08-31T19:29:19.049805+05:30 by Eclipse SUMO sumo 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -30,14 +30,19 @@
         <no-step-log value="true"/>
     </report>
 
+    <traci_server>
+        <remote-port value="54218"/>
+    </traci_server>
+
 </sumoConfiguration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-    <tripinfo id="EV-1" depart="10.00" departLane="1313198082_1" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="28.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="29.87" duration="18.00" routeLength="515.81" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="0.39" rerouteNo="0" devices="tripinfo_EV-1" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
-    <tripinfo id="EV-2" depart="10.00" departLane="1123278059#1_0" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="53.00" arrivalLane="1092250361#0_0" arrivalPos="43.21" arrivalSpeed="27.38" duration="43.00" routeLength="457.63" waitingTime="16.00" waitingCount="1" stopTime="0.00" timeLoss="27.41" rerouteNo="0" devices="tripinfo_EV-2" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
-    <tripinfo id="veh2" depart="22.00" departLane="27346911#0_0" departPos="5.10" departSpeed="13.89" departDelay="0.83" arrival="89.00" arrivalLane="27346900_0" arrivalPos="58.28" arrivalSpeed="14.02" duration="67.00" routeLength="600.76" waitingTime="7.00" waitingCount="1" stopTime="0.00" timeLoss="30.44" rerouteNo="1" devices="tripinfo_veh2 routing_veh2" vType="veh_passenger" speedFactor="1.01" vaporized=""/>
-    <tripinfo id="veh3" depart="32.00" departLane="418882860_0" departPos="5.10" departSpeed="30.08" departDelay="0.24" arrival="104.00" arrivalLane="-1409649630_0" arrivalPos="32.03" arrivalSpeed="2.96" duration="72.00" routeLength="873.17" waitingTime="5.00" waitingCount="1" stopTime="0.00" timeLoss="26.79" rerouteNo="1" devices="tripinfo_veh3 routing_veh3" vType="veh_passenger" speedFactor="1.08" vaporized=""/>
-    <tripinfo id="veh1" depart="11.00" departLane="-27434052#1_0" departPos="5.10" departSpeed="13.03" departDelay="0.41" arrival="115.00" arrivalLane="-27346913_0" arrivalPos="84.66" arrivalSpeed="12.25" duration="104.00" routeLength="1124.30" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="25.59" rerouteNo="1" devices="tripinfo_veh1 routing_veh1" vType="veh_passenger" speedFactor="0.94" vaporized=""/>
-    <tripinfo id="veh4" depart="43.00" departLane="-27346911#1_0" departPos="5.10" departSpeed="13.89" departDelay="0.65" arrival="130.00" arrivalLane="1254514726#1_0" arrivalPos="57.83" arrivalSpeed="13.18" duration="87.00" routeLength="859.88" waitingTime="7.00" waitingCount="1" stopTime="0.00" timeLoss="34.27" rerouteNo="1" devices="tripinfo_veh4 routing_veh4" vType="veh_passenger" speedFactor="1.03" vaporized=""/>
+    <tripinfo id="live_car_0" depart="1.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="26.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="28.68" duration="25.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="6.80" rerouteNo="0" devices="tripinfo_live_car_0" vType="DEFAULT_VEHTYPE" speedFactor="1.06" vaporized=""/>
+    <tripinfo id="EV-1" depart="10.00" departLane="1313198082_2" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="28.00" arrivalLane="1313198082.274_2" arrivalPos="247.73" arrivalSpeed="29.31" duration="18.00" routeLength="515.81" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="0.35" rerouteNo="0" devices="tripinfo_EV-1" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
+    <tripinfo id="live_car_10" depart="11.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="38.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="25.84" duration="27.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="6.45" rerouteNo="0" devices="tripinfo_live_car_10" vType="DEFAULT_VEHTYPE" speedFactor="0.94" vaporized=""/>
+    <tripinfo id="live_car_20" depart="21.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="47.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="27.69" duration="26.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="6.62" rerouteNo="0" devices="tripinfo_live_car_20" vType="DEFAULT_VEHTYPE" speedFactor="1.01" vaporized=""/>
+    <tripinfo id="EV-2" depart="10.00" departLane="1123278059#1_0" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="53.00" arrivalLane="1092250361#0_0" arrivalPos="43.21" arrivalSpeed="27.32" duration="43.00" routeLength="457.63" waitingTime="16.00" waitingCount="1" stopTime="0.00" timeLoss="27.38" rerouteNo="0" devices="tripinfo_EV-2" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
+    <tripinfo id="live_car_30" depart="31.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="56.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="29.40" duration="25.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="7.16" rerouteNo="0" devices="tripinfo_live_car_30" vType="DEFAULT_VEHTYPE" speedFactor="1.08" vaporized=""/>
+    <tripinfo id="live_car_40" depart="41.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="67.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="27.41" duration="26.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="7.08" rerouteNo="0" devices="tripinfo_live_car_40" vType="DEFAULT_VEHTYPE" speedFactor="1.03" vaporized=""/>
 </tripinfos>
