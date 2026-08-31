@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 import subprocess
@@ -158,3 +159,61 @@ async def orchestrate(payload: dict, db: AsyncSession = Depends(get_db)):
     await db.commit()
 
     return engine_output
+    
+@app.post("/api/decision-cycle")
+async def decision_cycle(db: AsyncSession = Depends(get_db)):
+    sumo_result = await db.execute(
+        select(SumoStateLog).order_by(SumoStateLog.timestamp.desc()).limit(10)
+    )
+    recent_sumo = sumo_result.scalars().all()
+
+    vision_result = await db.execute(
+        select(VisionLog).order_by(VisionLog.timestamp.desc()).limit(1)
+    )
+    latest_vision = vision_result.scalar_one_or_none()
+
+    if not recent_sumo or not latest_vision:
+        return {"error": "Need at least one vision reading and one SUMO reading before running a decision cycle"}
+
+    edge_counts = {"north_approach": 0, "south_approach": 0, "east_approach": 0, "west_approach": 0}
+    for state in recent_sumo:
+        for e in state.edges:
+            edge_id = e["edge_id"]
+            if edge_id in edge_counts:
+                edge_counts[edge_id] = max(edge_counts[edge_id], e["queue_length"])
+
+    north = edge_counts["north_approach"]
+    south = edge_counts["south_approach"]
+    east = edge_counts["east_approach"]
+    west = edge_counts["west_approach"]
+    pedestrian = latest_vision.counts.get("person", 0)
+
+    latest_sumo = recent_sumo[0]
+
+    result = subprocess.run(
+        ["../engine/engine_linux", str(north), str(south), str(east), str(west), str(pedestrian)],
+        capture_output=True, text=True
+    )
+
+    if result.returncode != 0:
+        return {"error": "engine failed", "stderr": result.stderr}
+
+    engine_output = json.loads(result.stdout)
+
+    log = EngineDecision(
+        timestamp=datetime.now(timezone.utc),
+        intersection_id="vadapalani_junction",
+        phase_durations=engine_output["phase_durations"],
+        priority_mode=engine_output["priority_mode"],
+        vui_score=engine_output["vui_score"],
+    )
+    db.add(log)
+    await db.commit()
+
+    return {
+        "inputs_used": {"north": north, "south": south, "east": east, "west": west, "pedestrian": pedestrian},
+        "sumo_reading_timestamp": latest_sumo.timestamp.isoformat(),
+        "sumo_readings_considered": len(recent_sumo),
+        "vision_reading_timestamp": latest_vision.timestamp.isoformat(),
+        "engine_output": engine_output
+    }
