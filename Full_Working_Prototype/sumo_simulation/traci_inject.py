@@ -3,6 +3,8 @@ import sys
 import time
 import json
 import datetime
+import requests
+import psycopg2
 import traci
 
 # Locate the SUMO TraCI library
@@ -14,21 +16,36 @@ else:
 
 # 1. Configuration
 SUMO_CMD = ["sumo", "-c", "osm.sumocfg"]
+STATE_API_URL = "http://localhost:8000/api/sumo-state"
+
+# Database Configuration (You will need to ask Mohit for the exact credentials/table name)
+DB_CONFIG = {
+    "dbname": "aura_db",
+    "user": "postgres",
+    "password": "password",
+    "host": "localhost",
+    "port": "5432"
+}
 
 def fetch_live_counts():
-    """
-    Reads live vision counts from standard input (stdin).
-    Mohit's backend can pipe the JSON string directly into this script via subprocess.
-    """
-    # Check if data is being piped in. If running standalone, use fallback.
-    if not sys.stdin.isatty():
-        try:
-            line = sys.stdin.readline()
-            if line:
-                data = json.loads(line)
-                return data.get("counts", {})
-        except Exception:
-            pass
+    """Queries the latest vision counts directly from PostgreSQL."""
+    try:
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        
+        # Querying the latest row from Mohit's vision table
+        # (Mohit might need to adjust the exact table/column names here)
+        cur.execute("SELECT counts FROM vision_logs ORDER BY timestamp DESC LIMIT 1;")
+        row = cur.fetchone()
+        
+        cur.close()
+        conn.close()
+        
+        if row:
+            return row[0] # Assuming the 'counts' column is a JSONB dictionary
+    except Exception as e:
+        pass # Fallback if DB connection fails
+    
     return {"car": 2, "bus": 0, "person": 5}
 
 def inject_live_traffic(step, counts):
@@ -38,7 +55,6 @@ def inject_live_traffic(step, counts):
     if cars > 0 and step % 10 == 0:  
         veh_id = f"live_car_{step}"
         try:
-            # Point 4 Fix: Dynamically create the route using your pre-split and post-split IDs
             if "dynamic_north_south" not in traci.route.getIDList():
                 traci.route.add("dynamic_north_south", ["1313198082", "1313198082.274"])
             
@@ -47,8 +63,7 @@ def inject_live_traffic(step, counts):
             pass 
 
 def export_twin_state(step):
-    """Exports queue and wait times for all 4 intersection approaches."""
-    # Points 2 & 3 Fix: Monitoring all 4 approaches using your exact split IDs
+    """Exports queue and wait times to the backend API via POST."""
     edges_to_monitor = [
         "1313198082.274", # North approach stop line
         "1313198080.250", # South approach stop line
@@ -80,17 +95,19 @@ def export_twin_state(step):
         "demand_profile": "medium"
     }
     
-    # stdout output for Mohit's backend to capture. Flushed immediately to prevent buffer lag.
-    sys.stdout.write(f"TWIN_STATE_EXPORT: {json.dumps(payload)}\n")
-    sys.stdout.flush()
+    # Send the payload directly to Mohit's endpoint
+    try:
+        requests.post(STATE_API_URL, json=payload, timeout=2)
+        print(f"[{step}s] Successfully POSTed Twin State to backend.")
+    except requests.exceptions.RequestException:
+        print(f"[{step}s] Failed to POST to backend. Is the server running?")
 
 def run_digital_twin():
     """Runs the SUMO simulation and synchronizes with live data."""
     traci.start(SUMO_CMD)
     step = 0
     
-    sys.stdout.write("Starting AURA Digital Twin (Headless Mode)...\n")
-    sys.stdout.flush()
+    print("Starting AURA Digital Twin (Headless Mode)...")
     
     while step < 3600:
         traci.simulationStep()
