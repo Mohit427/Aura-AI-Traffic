@@ -1,0 +1,316 @@
+{
+  "frames_processed": 10,
+  "video_fps": 25.0,
+  "stop_line_y": 500,
+  "scale_factor": 0.05,
+  "confidence_threshold": 0.25,
+  "tracking_enabled": true,
+  "records": [
+    {
+      "frame": 0,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.756,
+      "distance_m": 2.045,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 0,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.708,
+      "distance_m": 1.761,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 1,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.755,
+      "distance_m": 2.046,
+      "velocity_mps": 0.045,
+      "tti_sec": 45.773
+    },
+    {
+      "frame": 1,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.709,
+      "distance_m": 1.764,
+      "velocity_mps": 0.063,
+      "tti_sec": 28.213
+    },
+    {
+      "frame": 2,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.754,
+      "distance_m": 2.047,
+      "velocity_mps": 0.009,
+      "tti_sec": 237.412
+    },
+    {
+      "frame": 2,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.708,
+      "distance_m": 1.764,
+      "velocity_mps": 0.002,
+      "tti_sec": 758.092
+    },
+    {
+      "frame": 3,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.849,
+      "distance_m": 1.704,
+      "velocity_mps": 8.562,
+      "tti_sec": 0.199
+    },
+    {
+      "frame": 3,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.706,
+      "distance_m": 1.898,
+      "velocity_mps": 3.339,
+      "tti_sec": 0.568
+    },
+    {
+      "frame": 4,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.828,
+      "distance_m": 1.289,
+      "velocity_mps": 10.394,
+      "tti_sec": 0.124
+    },
+    {
+      "frame": 4,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.776,
+      "distance_m": 2.066,
+      "velocity_mps": 4.22,
+      "tti_sec": 0.49
+    },
+    {
+      "frame": 5,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.807,
+      "distance_m": 0.922,
+      "velocity_mps": 9.172,
+      "tti_sec": 0.1
+    },
+    {
+      "frame": 5,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.825,
+      "distance_m": 2.247,
+      "velocity_mps": 4.511,
+      "tti_sec": 0.498
+    },
+    {
+      "frame": 5,
+      "track_id": 3,
+      "class_id": 2,
+      "confidence": 0.772,
+      "distance_m": 1.418,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 5,
+      "track_id": 4,
+      "class_id": 2,
+      "confidence": 0.631,
+      "distance_m": 10.963,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 6,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.722,
+      "distance_m": 0.537,
+      "velocity_mps": 9.622,
+      "tti_sec": 0.056
+    },
+    {
+      "frame": 6,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.77,
+      "distance_m": 2.378,
+      "velocity_mps": 3.288,
+      "tti_sec": 0.723
+    },
+    {
+      "frame": 6,
+      "track_id": 3,
+      "class_id": 2,
+      "confidence": 0.738,
+      "distance_m": 2.182,
+      "velocity_mps": 19.107,
+      "tti_sec": 0.114
+    },
+    {
+      "frame": 6,
+      "track_id": 4,
+      "class_id": 2,
+      "confidence": 0.714,
+      "distance_m": 10.916,
+      "velocity_mps": 1.158,
+      "tti_sec": 9.425
+    },
+    {
+      "frame": 7,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.769,
+      "distance_m": 0.025,
+      "velocity_mps": 12.794,
+      "tti_sec": 0.002
+    },
+    {
+      "frame": 7,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.742,
+      "distance_m": 2.481,
+      "velocity_mps": 2.554,
+      "tti_sec": 0.971
+    },
+    {
+      "frame": 7,
+      "track_id": 3,
+      "class_id": 2,
+      "confidence": 0.491,
+      "distance_m": 2.843,
+      "velocity_mps": 16.517,
+      "tti_sec": 0.172
+    },
+    {
+      "frame": 7,
+      "track_id": 4,
+      "class_id": 2,
+      "confidence": 0.731,
+      "distance_m": 10.976,
+      "velocity_mps": 1.499,
+      "tti_sec": 7.322
+    },
+    {
+      "frame": 8,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.745,
+      "distance_m": 0.606,
+      "velocity_mps": 15.783,
+      "tti_sec": 0.038
+    },
+    {
+      "frame": 8,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.729,
+      "distance_m": 2.559,
+      "velocity_mps": 1.964,
+      "tti_sec": 1.303
+    },
+    {
+      "frame": 8,
+      "track_id": 3,
+      "class_id": 2,
+      "confidence": 0.755,
+      "distance_m": 3.702,
+      "velocity_mps": 21.475,
+      "tti_sec": 0.172
+    },
+    {
+      "frame": 8,
+      "track_id": 4,
+      "class_id": 2,
+      "confidence": 0.792,
+      "distance_m": 10.881,
+      "velocity_mps": 2.39,
+      "tti_sec": 4.553
+    },
+    {
+      "frame": 8,
+      "track_id": 5,
+      "class_id": 7,
+      "confidence": 0.63,
+      "distance_m": 8.086,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 8,
+      "track_id": 6,
+      "class_id": 2,
+      "confidence": 0.688,
+      "distance_m": 5.403,
+      "velocity_mps": 0.0,
+      "tti_sec": null
+    },
+    {
+      "frame": 9,
+      "track_id": 1,
+      "class_id": 2,
+      "confidence": 0.696,
+      "distance_m": 1.151,
+      "velocity_mps": 13.624,
+      "tti_sec": 0.085
+    },
+    {
+      "frame": 9,
+      "track_id": 2,
+      "class_id": 2,
+      "confidence": 0.777,
+      "distance_m": 2.651,
+      "velocity_mps": 2.287,
+      "tti_sec": 1.159
+    },
+    {
+      "frame": 9,
+      "track_id": 3,
+      "class_id": 2,
+      "confidence": 0.691,
+      "distance_m": 4.571,
+      "velocity_mps": 21.729,
+      "tti_sec": 0.21
+    },
+    {
+      "frame": 9,
+      "track_id": 4,
+      "class_id": 2,
+      "confidence": 0.759,
+      "distance_m": 10.757,
+      "velocity_mps": 3.082,
+      "tti_sec": 3.49
+    },
+    {
+      "frame": 9,
+      "track_id": 5,
+      "class_id": 7,
+      "confidence": 0.646,
+      "distance_m": 8.01,
+      "velocity_mps": 1.88,
+      "tti_sec": 4.261
+    },
+    {
+      "frame": 9,
+      "track_id": 6,
+      "class_id": 2,
+      "confidence": 0.722,
+      "distance_m": 5.458,
+      "velocity_mps": 1.39,
+      "tti_sec": 3.927
+    }
+  ]
+}

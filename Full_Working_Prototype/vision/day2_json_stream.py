@@ -2,6 +2,7 @@ from ultralytics import YOLO
 import cv2
 import json
 import time
+from datetime import datetime, timezone
 
 
 print("Starting Day 2...")
@@ -56,8 +57,14 @@ def frame_to_record(results):
 
     return {
         "timestamp": time.time(),
+        "timestamp_iso": datetime.now(timezone.utc).isoformat(),
         "intersection_id": "vadapalani_junction",
         "zone": "north_approach",
+        "location": {
+            "lat": 13.0505,
+            "lon": 80.2121
+        },
+        "camera_id": "511ga-11899",
         "counts": counts,
         "platoon_detected": False,
         "tracked_objects": [],
