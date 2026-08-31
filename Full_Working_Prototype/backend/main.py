@@ -159,7 +159,20 @@ async def orchestrate(payload: dict, db: AsyncSession = Depends(get_db)):
     await db.commit()
 
     return engine_output
-    
+
+
+# Maps Tharanesh's raw SUMO edge IDs to the friendly names decision-cycle
+# aggregates on. If your own sumo_state_bridge.py (which already posts
+# friendly names) is used instead, these keys simply won't match anything
+# in EDGE_ID_MAP and the raw value passes through unchanged via .get() fallback.
+EDGE_ID_MAP = {
+    "1313198082.274": "north_approach",
+    "1313198080.250": "south_approach",
+    "1110246916": "east_approach",
+    "588357066": "west_approach",
+}
+
+
 @app.post("/api/decision-cycle")
 async def decision_cycle(db: AsyncSession = Depends(get_db)):
     sumo_result = await db.execute(
@@ -179,8 +192,9 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     for state in recent_sumo:
         for e in state.edges:
             edge_id = e["edge_id"]
-            if edge_id in edge_counts:
-                edge_counts[edge_id] = max(edge_counts[edge_id], e["queue_length"])
+            friendly_name = EDGE_ID_MAP.get(edge_id, edge_id)
+            if friendly_name in edge_counts:
+                edge_counts[friendly_name] = max(edge_counts[friendly_name], e["queue_length"])
 
     north = edge_counts["north_approach"]
     south = edge_counts["south_approach"]

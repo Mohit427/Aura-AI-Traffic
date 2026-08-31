@@ -5,7 +5,7 @@ import json
 import datetime
 import requests
 import psycopg2
-import traci
+
 
 if 'SUMO_HOME' in os.environ:
     tools = os.path.join(os.environ['SUMO_HOME'], 'tools')
@@ -13,6 +13,7 @@ if 'SUMO_HOME' in os.environ:
 else:
     sys.exit("Error: Please declare environment variable 'SUMO_HOME'")
 
+import traci
 SUMO_CMD = ["sumo", "-c", "osm.sumocfg"]
 STATE_API_URL = "http://localhost:8000/api/sumo-state"
 
