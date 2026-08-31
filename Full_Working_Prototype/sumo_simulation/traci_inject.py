@@ -1,6 +1,6 @@
 import os
 import sys
-import traci
+
 
 # Locate the SUMO TraCI library
 if 'SUMO_HOME' in os.environ:
@@ -9,6 +9,7 @@ if 'SUMO_HOME' in os.environ:
 else:
     sys.exit("Error: Please declare environment variable 'SUMO_HOME'")
 
+import traci
 # Set up the headless SUMO command
 sumoCmd = ["sumo", "-c", "osm.sumocfg"]
 
