@@ -1,7 +1,90 @@
 {
   "editor": "claude",
-  "integrations": {},
-  "mode": "sandbox",
-  "tools": {},
+  "integrations": {
+    "Gemini.gemini": {
+      "version": "v1beta-2026-08-17"
+    }
+  },
+  "mode": "production",
+  "tools": {
+    "gemini.model.modelgenerateContent.create": {
+      "desc": "",
+      "inputs": [
+        {
+          "model": {
+            "LOCATION": "path",
+            "REQUIRED": true,
+            "TYPE": "STRING"
+          }
+        },
+        {
+          "body": {
+            "CONTENT_TYPE": "application/json",
+            "LOCATION": "body",
+            "REQUIRED": true,
+            "TYPE": "OBJECT",
+            "schema": {
+              "properties": {
+                "cachedContent": {
+                  "required": false,
+                  "type": "string"
+                },
+                "contents": {
+                  "items": {
+                    "properties": {
+                      "parts": {
+                        "required": false,
+                        "type": "[]map[STRING]ANY"
+                      },
+                      "role": {
+                        "required": false,
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "required": true,
+                  "type": "array"
+                },
+                "generationConfig": {
+                  "required": false,
+                  "type": "map[STRING]ANY"
+                },
+                "safetySettings": {
+                  "required": false,
+                  "type": "[]map[STRING]ANY"
+                },
+                "systemInstruction": {
+                  "required": false,
+                  "type": "map[STRING]ANY"
+                },
+                "toolConfig": {
+                  "required": false,
+                  "type": "map[STRING]ANY"
+                },
+                "tools": {
+                  "required": false,
+                  "type": "[]map[STRING]ANY"
+                }
+              },
+              "required": [
+                "contents"
+              ]
+            }
+          }
+        }
+      ],
+      "integration": "Gemini.gemini@v1beta-2026-08-17",
+      "method_hash": "b6fbfbdf9cde7792c4a92ba9aae8d01777922c296dd498e22f86e1689b96047f",
+      "output": {
+        "schema": {
+          "type": "map[STRING]ANY"
+        },
+        "status": 200
+      },
+      "summary": "Generate content",
+      "type": "method"
+    }
+  },
   "version": "2.20.15"
 }

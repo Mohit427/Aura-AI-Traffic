@@ -1,0 +1,3366 @@
+VERSION: 2.0.2
+DEFAULTS:
+  query_key: <KEY>
+  w_base_url: https://generativelanguage.googleapis.com
+METHODS:
+  gemini.auth_token.create:
+    SUMMARY: Create an auth token
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/auth_tokens
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_auth_token_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.auth_token.create
+  gemini.batche.namecancel.create:
+    SUMMARY: Cancel a batch operation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/batches/{name}:cancel
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_namecancel_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.namecancel.create
+  gemini.batche.delete:
+    SUMMARY: Delete a batch operation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/batches/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.delete
+  gemini.batche.get:
+    SUMMARY: Get a batch operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/batches/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.get
+  gemini.batche.list:
+    SUMMARY: List batch operations
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/batches
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.list
+  gemini.batche.embedContentBatchNameupdateEmbedContentBatch.update:
+    SUMMARY: Update EmbedContent batch
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/batches/{embedContentBatch_name}:updateEmbedContentBatch
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - embedContentBatch_name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_embedContentBatchNameupdateEmbedContentBatch_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.embedContentBatchNameupdateEmbedContentBatch.update
+  gemini.batche.generateContentBatchNameupdateGenerateContentBatch.update:
+    SUMMARY: Update GenerateContent batch
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/batches/{generateContentBatch_name}:updateGenerateContentBatch
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(GenerateContentRequest)
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - generateContentBatch_name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(GenerateContentRequest)
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_batche_generateContentBatchNameupdateGenerateContentBatch_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.batche.generateContentBatchNameupdateGenerateContentBatch.update
+  gemini.cachedcontent.create:
+    SUMMARY: Create cached content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/cachedContents
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_cachedcontent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.cachedcontent.create
+  gemini.cachedcontent.list:
+    SUMMARY: List cached contents
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/cachedContents
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_cachedcontent_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.cachedcontent.list
+  gemini.cachedcontent.delete:
+    SUMMARY: Delete cached content
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/cachedContents/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_cachedcontent_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.cachedcontent.delete
+  gemini.cachedcontent.get:
+    SUMMARY: Get cached content
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/cachedContents/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_cachedcontent_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.cachedcontent.get
+  gemini.cachedcontent.update:
+    SUMMARY: Update cached content
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/cachedContents/{name}
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_cachedcontent_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.cachedcontent.update
+  gemini.filesearchstore.create:
+    SUMMARY: Create FileSearchStore
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/fileSearchStores
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.create
+  gemini.filesearchstore.list:
+    SUMMARY: List FileSearchStores
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.list
+  gemini.filesearchstore.delete:
+    SUMMARY: Delete FileSearchStore
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/fileSearchStores/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.delete
+  gemini.filesearchstore.get:
+    SUMMARY: Get FileSearchStore
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.get
+  gemini.filesearchstore.fileSearchStoreNameimportFile.create:
+    SUMMARY: Import file into FileSearchStore
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/fileSearchStores/{fileSearchStoreName}:importFile
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - fileSearchStoreName:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_fileSearchStoreNameimportFile_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.fileSearchStoreNameimportFile.create
+  gemini.filesearchstore.documents.delete:
+    SUMMARY: Delete FileSearchStore document
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/fileSearchStores/{name}/documents/{document_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - document_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_documents_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.documents.delete
+  gemini.filesearchstore.documents.get:
+    SUMMARY: Get FileSearchStore document
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores/{name}/documents/{document_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - document_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_documents_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.documents.get
+  gemini.filesearchstore.documents.get1:
+    SUMMARY: List FileSearchStore documents
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores/{parent}/documents
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - parent:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_documents_get1
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.documents.get1
+  gemini.filesearchstore.operations.get:
+    SUMMARY: Get FileSearchStore operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores/{name}/operations/{operation_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - operation_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.operations.get
+  gemini.filesearchstore.upload:
+    SUMMARY: Get FileSearchStore upload operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/fileSearchStores/{name}/upload/operations/{operation_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - operation_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_upload
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.upload
+  gemini.file.delete:
+    SUMMARY: Delete file
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/files/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_file_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.file.delete
+  gemini.file.get:
+    SUMMARY: Get file metadata
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/files/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_file_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.file.get
+  gemini.file.list:
+    SUMMARY: List files
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/files
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_file_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.file.list
+  gemini.file.create:
+    SUMMARY: Upload file
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/files
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_file_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.file.create
+  gemini.filesregister.create:
+    SUMMARY: Register Google Cloud Storage files
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/files:register
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesregister_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesregister.create
+  gemini.v1beta.files.create:
+    SUMMARY: Upload file (upload endpoint)
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /upload/v1beta/files
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_v1beta_files_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.v1beta.files.create
+  gemini.filesearchstore.fileSearchStoreNameuploadToFileSearchStore.create:
+    SUMMARY: Upload to FileSearchStore
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/fileSearchStores/{fileSearchStoreName}:uploadToFileSearchStore
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - fileSearchStoreName:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_filesearchstore_fileSearchStoreNameuploadToFileSearchStore_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.filesearchstore.fileSearchStoreNameuploadToFileSearchStore.create
+  gemini.v1beta.fileSearchStoreNameuploadToFileSearchStore.create:
+    SUMMARY: Upload to FileSearchStore (upload endpoint)
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /upload/v1beta/fileSearchStores/{fileSearchStoreName}:uploadToFileSearchStore
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - fileSearchStoreName:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_v1beta_fileSearchStoreNameuploadToFileSearchStore_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.v1beta.fileSearchStoreNameuploadToFileSearchStore.create
+  gemini.model.modelasyncBatchEmbedContent.create:
+    SUMMARY: Async batch embed content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:asyncBatchEmbedContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelasyncBatchEmbedContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelasyncBatchEmbedContent.create
+  gemini.model.modelbatchEmbedContents.create:
+    SUMMARY: Batch embed contents
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:batchEmbedContents
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelbatchEmbedContents_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelbatchEmbedContents.create
+  gemini.model.modelbatchGenerateContent.create:
+    SUMMARY: Batch generate content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:batchGenerateContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelbatchGenerateContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelbatchGenerateContent.create
+  gemini.model.modelcountTokens.create:
+    SUMMARY: Count tokens
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:countTokens
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelcountTokens_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelcountTokens.create
+  gemini.model.modelembedContent.create:
+    SUMMARY: Embed content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:embedContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelembedContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelembedContent.create
+  gemini.model.modelgenerateContent.create:
+    SUMMARY: Generate content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:generateContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(GenerateContentRequest)
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(GenerateContentRequest)
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelgenerateContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelgenerateContent.create
+  gemini.model.get:
+    SUMMARY: Get model
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/models/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.get
+  gemini.model.list:
+    SUMMARY: List models
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/models
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.list
+  gemini.model.modelpredict.create:
+    SUMMARY: Predict
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:predict
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelpredict_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelpredict.create
+  gemini.model.modelpredictLongRunning.create:
+    SUMMARY: Predict long-running
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:predictLongRunning
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_model_modelpredictLongRunning_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelpredictLongRunning.create
+  gemini.model.modelstreamGenerateContent.create:
+    SUMMARY: Stream generate content
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/models/{model}:streamGenerateContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: text/event-stream
+      BODY:
+        TYPE: STRUCT(GenerateContentRequest)
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - model:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(GenerateContentRequest)
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: ANY
+        RETURNVAR: gemini_model_modelstreamGenerateContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.model.modelstreamGenerateContent.create
+  gemini.generatedfile.get:
+    SUMMARY: Get generated file
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/generatedFiles/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_generatedfile_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.generatedfile.get
+  gemini.generatedfile.delete:
+    SUMMARY: Delete generated file
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/generatedFiles/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_generatedfile_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.generatedfile.delete
+  gemini.generatedfile.list:
+    SUMMARY: List generated files
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/generatedFiles
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_generatedfile_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.generatedfile.list
+  gemini.generatedfile.operations.get:
+    SUMMARY: Get generated file operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/generatedFiles/{name}/operations/{operation_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - operation_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_generatedfile_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.generatedfile.operations.get
+  gemini.tunedmodel.create:
+    SUMMARY: Create tuned model
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/tunedModels
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.create
+  gemini.tunedmodel.list:
+    SUMMARY: List tuned models
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/tunedModels
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.list
+  gemini.tunedmodel.get:
+    SUMMARY: Get tuned model permission
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/tunedModels/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.get
+  gemini.tunedmodel.delete:
+    SUMMARY: Delete tuned model permission
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/tunedModels/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.delete
+  gemini.tunedmodel.update:
+    SUMMARY: Update tuned model permission
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/tunedModels/{name}
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.update
+  gemini.tunedmodel.update1:
+    SUMMARY: Update tuned model
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/tunedModels/{tunedModel_name}
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - tunedModel_name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_update1
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.update1
+  gemini.tunedmodel.namegenerateContent.create:
+    SUMMARY: Generate content with tuned model
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/tunedModels/{name}:generateContent
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(GenerateContentRequest)
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(GenerateContentRequest)
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_namegenerateContent_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.namegenerateContent.create
+  gemini.tunedmodel.namecountTokens.create:
+    SUMMARY: Count tokens with tuned model
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/tunedModels/{name}:countTokens
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_namecountTokens_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.namecountTokens.create
+  gemini.tunedmodel.operations.get:
+    SUMMARY: Get tuned model operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/tunedModels/{name}/operations/{operation_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - operation_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.operations.get
+  gemini.tunedmodel.permissions.create:
+    SUMMARY: Create tuned model permission
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/tunedModels/{parent}/permissions
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - parent:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_permissions_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.permissions.create
+  gemini.tunedmodel.permissions.get:
+    SUMMARY: List tuned model permissions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/tunedModels/{parent}/permissions
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - parent:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_tunedmodel_permissions_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.tunedmodel.permissions.get
+  gemini.corpora.create:
+    SUMMARY: Create corpus
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/corpora
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.create
+  gemini.corpora.list:
+    SUMMARY: List corpora
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/corpora
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.list
+  gemini.corpora.get:
+    SUMMARY: Get corpus
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/corpora/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.get
+  gemini.corpora.update:
+    SUMMARY: Update corpus
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/corpora/{name}
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.update
+  gemini.corpora.delete:
+    SUMMARY: Delete corpus
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/corpora/{name}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.delete
+  gemini.corpora.operations.get:
+    SUMMARY: Get corpus operation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/corpora/{name}/operations/{operation_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - operation_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.operations.get
+  gemini.corpora.permissions.create:
+    SUMMARY: Create corpus permission
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/corpora/{parent}/permissions
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - parent:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_permissions_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.permissions.create
+  gemini.corpora.permissions.get1:
+    SUMMARY: List corpus permissions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/corpora/{parent}/permissions
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - parent:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_permissions_get1
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.permissions.get1
+  gemini.corpora.permissions.get:
+    SUMMARY: Get corpus permission
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/corpora/{name}/permissions/{permission_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - permission_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_permissions_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.permissions.get
+  gemini.corpora.permissions.update:
+    SUMMARY: Update corpus permission
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1beta/corpora/{name}/permissions/{permission_id}
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - permission_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_permissions_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.permissions.update
+  gemini.corpora.permissions.delete:
+    SUMMARY: Delete corpus permission
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1beta/corpora/{name}/permissions/{permission_id}
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - name:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+      - permission_id:
+          TYPE: STRING
+          REQUIRED: true
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_corpora_permissions_delete
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.corpora.permissions.delete
+  gemini.dynamic.create:
+    SUMMARY: Create dynamic resource
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1beta/dynamic
+      HEADERS:
+        Content-Type: application/json
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: map[STRING]ANY
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: map[STRING]ANY
+          REQUIRED: true
+          LOCATION: body
+          CONTENT_TYPE: application/json
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_dynamic_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.dynamic.create
+  gemini.environment.list:
+    SUMMARY: List environments
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1beta/environments
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    SECURITY:
+      - googleApiKey:
+          type: apiKey
+          in: query
+          name: key
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: gemini_environment_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: map[STRING]ANY
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: ANY
+        STATUS: 401
+        WHEN: Authentication error (HTTP 401)
+      - TYPE: ANY
+        STATUS: 403
+        WHEN: Permission denied (HTTP 403)
+      - TYPE: ANY
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: ANY
+        STATUS: 429
+        WHEN: Rate limit exceeded (HTTP 429)
+      - TYPE: ANY
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: gemini.environment.list
+STRUCTS:
+  GenerateContentRequest:
+    - name: contents
+      TYPE: "[]STRUCT(Content)"
+      REQUIRED: true
+    - name: tools
+      TYPE: "[]map[STRING]ANY"
+      REQUIRED: false
+    - name: toolConfig
+      TYPE: map[STRING]ANY
+      REQUIRED: false
+    - name: safetySettings
+      TYPE: "[]map[STRING]ANY"
+      REQUIRED: false
+    - name: systemInstruction
+      TYPE: map[STRING]ANY
+      REQUIRED: false
+    - name: generationConfig
+      TYPE: map[STRING]ANY
+      REQUIRED: false
+    - name: cachedContent
+      TYPE: STRING
+      REQUIRED: false
+  Content:
+    - name: parts
+      TYPE: "[]map[STRING]ANY"
+      REQUIRED: false
+    - name: role
+      TYPE: STRING
+      REQUIRED: false
+      ENUM:
+        - user
+        - model
