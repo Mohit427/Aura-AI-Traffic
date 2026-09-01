@@ -5,6 +5,7 @@
 #include <string>
 #include <unordered_map>
 #include <algorithm>
+#include <cstdlib>
 
 using std::min;
 using std::numeric_limits;
@@ -89,8 +90,31 @@ int getNodeIndex(unordered_map<string, int> &index, const string &id, int &nextI
     return idx;
 }
 
-int main()
+int main(int argc, char *argv[])
 {
+    int north_cars = 27;
+    int south_cars = 28;
+    int east_cars = 50;
+    int west_cars = 41;
+    int vui_score = 0;
+    int ev_north_tti = 0;
+    int ev_east_tti = 0;
+    double ev_north_velocity = 0.0;
+    double ev_east_velocity = 0.0;
+
+    if (argc >= 10)
+    {
+        north_cars = std::atoi(argv[1]);
+        south_cars = std::atoi(argv[2]);
+        east_cars = std::atoi(argv[3]);
+        west_cars = std::atoi(argv[4]);
+        vui_score = std::atoi(argv[5]);
+        ev_north_tti = std::atoi(argv[6]);
+        ev_east_tti = std::atoi(argv[7]);
+        ev_north_velocity = std::atof(argv[8]);
+        ev_east_velocity = std::atof(argv[9]);
+    }
+
     // Node identifiers (exact OSM IDs as requested).
     const string NORTH = "1313198082.274";
     const string SOUTH = "1313198080.250";
@@ -107,40 +131,28 @@ int main()
     const string CROSSWALK_315262038 = "315262038_c0";
     const string CROSSWALK_300216374 = "300216374_c0";
 
-    // Inflow and outflow nodes are modeled as separate logical nodes even when
-    // their OSM ID strings overlap (e.g., North inflow and South_Out share the
-    // same OSM ID but represent opposite sides of the junction).
     unordered_map<string, int> inflowIndex;
     unordered_map<string, int> outflowIndex;
     unordered_map<string, int> crosswalkIndex;
     int nextIndex = 0;
 
     auto inIdx = [&](const string &id) -> int
-    {
-        return getNodeIndex(inflowIndex, id, nextIndex);
-    };
+    { return getNodeIndex(inflowIndex, id, nextIndex); };
     auto outIdx = [&](const string &id) -> int
-    {
-        return getNodeIndex(outflowIndex, id, nextIndex);
-    };
+    { return getNodeIndex(outflowIndex, id, nextIndex); };
     auto cwIdx = [&](const string &id) -> int
-    {
-        return getNodeIndex(crosswalkIndex, id, nextIndex);
-    };
+    { return getNodeIndex(crosswalkIndex, id, nextIndex); };
 
-    // Register all inflow nodes.
     inIdx(NORTH);
     inIdx(SOUTH);
     inIdx(EAST);
     inIdx(WEST);
 
-    // Register all outflow nodes.
     outIdx(NORTH_OUT);
     outIdx(SOUTH_OUT);
     outIdx(EAST_OUT);
     outIdx(WEST_OUT);
 
-    // Register crosswalk nodes.
     cwIdx(CROSSWALK_E0);
     cwIdx(CROSSWALK_E1);
     cwIdx(CROSSWALK_315262038);
@@ -148,38 +160,33 @@ int main()
 
     const int nodeCount = nextIndex;
 
-    // Base directed edges with mock manual capacities (cars per phase).
-    // Format: (u, v, capacity)
     vector<std::tuple<int, int, int>> baseEdges;
 
-    // North -> South_Out, West_Out
-    baseEdges.emplace_back(inIdx(NORTH), outIdx(SOUTH_OUT), 15);
-    baseEdges.emplace_back(inIdx(NORTH), outIdx(WEST_OUT), 12);
+    int north_straight = north_cars * 15 / 27;
+    baseEdges.emplace_back(inIdx(NORTH), outIdx(SOUTH_OUT), north_straight);
+    baseEdges.emplace_back(inIdx(NORTH), outIdx(WEST_OUT), north_cars - north_straight);
 
-    // South -> North_Out, East_Out
-    baseEdges.emplace_back(inIdx(SOUTH), outIdx(NORTH_OUT), 18);
-    baseEdges.emplace_back(inIdx(SOUTH), outIdx(EAST_OUT), 10);
+    int south_straight = south_cars * 18 / 28;
+    baseEdges.emplace_back(inIdx(SOUTH), outIdx(NORTH_OUT), south_straight);
+    baseEdges.emplace_back(inIdx(SOUTH), outIdx(EAST_OUT), south_cars - south_straight);
 
-    // East -> West_Out, South_Out, North_Out
-    baseEdges.emplace_back(inIdx(EAST), outIdx(WEST_OUT), 14);
-    baseEdges.emplace_back(inIdx(EAST), outIdx(SOUTH_OUT), 16);
-    baseEdges.emplace_back(inIdx(EAST), outIdx(NORTH_OUT), 20);
+    int east_first = east_cars * 14 / 50;
+    int east_second = east_cars * 16 / 50;
+    baseEdges.emplace_back(inIdx(EAST), outIdx(WEST_OUT), east_first);
+    baseEdges.emplace_back(inIdx(EAST), outIdx(SOUTH_OUT), east_second);
+    baseEdges.emplace_back(inIdx(EAST), outIdx(NORTH_OUT), east_cars - east_first - east_second);
 
-    // West -> East_Out, North_Out, South_Out
-    baseEdges.emplace_back(inIdx(WEST), outIdx(EAST_OUT), 13);
-    baseEdges.emplace_back(inIdx(WEST), outIdx(NORTH_OUT), 17);
-    baseEdges.emplace_back(inIdx(WEST), outIdx(SOUTH_OUT), 11);
+    int west_first = west_cars * 13 / 41;
+    int west_second = west_cars * 17 / 41;
+    baseEdges.emplace_back(inIdx(WEST), outIdx(EAST_OUT), west_first);
+    baseEdges.emplace_back(inIdx(WEST), outIdx(NORTH_OUT), west_second);
+    baseEdges.emplace_back(inIdx(WEST), outIdx(SOUTH_OUT), west_cars - west_first - west_second);
 
-    // Crosswalk passthrough edges (large capacity, present for completeness).
     baseEdges.emplace_back(cwIdx(CROSSWALK_E0), cwIdx(CROSSWALK_E1), 1000);
     baseEdges.emplace_back(cwIdx(CROSSWALK_315262038), cwIdx(CROSSWALK_300216374), 1000);
 
-    // A large capacity used for super-source / super-sink connections.
     const int INF = 10000;
 
-    // Phase 1: East/West combined.
-    // Sources: East, West inflows.
-    // Sinks: all reachable outflow nodes (West_Out, South_Out, North_Out, East_Out).
     int phase1Flow = 0;
     {
         vector<vector<int>> residual(nodeCount + 2, vector<int>(nodeCount + 2, 0));
@@ -192,22 +199,15 @@ int main()
             std::tie(u, v, c) = e;
             residual[u][v] += c;
         }
-
         residual[superSource][inIdx(EAST)] = INF;
         residual[superSource][inIdx(WEST)] = INF;
-
         residual[outIdx(WEST_OUT)][superSink] = INF;
         residual[outIdx(SOUTH_OUT)][superSink] = INF;
         residual[outIdx(NORTH_OUT)][superSink] = INF;
         residual[outIdx(EAST_OUT)][superSink] = INF;
-
         phase1Flow = edmondsKarp(residual, superSource, superSink);
-        // std::cout << "Phase 1 (East/West) max-flow: " << phase1Flow << " cars" << std::endl;
     }
 
-    // Phase 2: North/South combined.
-    // Sources: North, South inflows.
-    // Sinks: all reachable outflow nodes (South_Out, West_Out, North_Out, East_Out).
     int phase2Flow = 0;
     {
         vector<vector<int>> residual(nodeCount + 2, vector<int>(nodeCount + 2, 0));
@@ -220,20 +220,72 @@ int main()
             std::tie(u, v, c) = e;
             residual[u][v] += c;
         }
-
         residual[superSource][inIdx(NORTH)] = INF;
         residual[superSource][inIdx(SOUTH)] = INF;
-
         residual[outIdx(SOUTH_OUT)][superSink] = INF;
         residual[outIdx(WEST_OUT)][superSink] = INF;
         residual[outIdx(NORTH_OUT)][superSink] = INF;
         residual[outIdx(EAST_OUT)][superSink] = INF;
-
         phase2Flow = edmondsKarp(residual, superSource, superSink);
-        // std::cout << "Phase 2 (North/South) max-flow: " << phase2Flow << " cars" << std::endl;
     }
 
-    int vui_score = 8;
+    bool ev_active = (ev_north_tti > 0 || ev_east_tti > 0);
+    string ev1_axis;
+    string ev2_axis;
+    int ev1_tti = 0;
+    double ev1_velocity = 0.0;
+
+    if (ev_active)
+    {
+        bool north_is_ev1 = false;
+
+        // Day 6 Tie-Breaker Logic
+        if (ev_east_tti == 0)
+        {
+            north_is_ev1 = true;
+        }
+        else if (ev_north_tti == 0)
+        {
+            north_is_ev1 = false;
+        }
+        else if (ev_north_tti == ev_east_tti)
+        {
+            // Equal TTI: Prioritize higher velocity
+            if (ev_north_velocity >= ev_east_velocity)
+            {
+                north_is_ev1 = true;
+            }
+            else
+            {
+                north_is_ev1 = false;
+            }
+        }
+        else
+        {
+            // Standard check: lower TTI goes first
+            north_is_ev1 = (ev_north_tti < ev_east_tti);
+        }
+
+        if (north_is_ev1)
+        {
+            ev1_axis = "north_south";
+            ev2_axis = "east_west";
+            ev1_tti = ev_north_tti;
+            ev1_velocity = ev_north_velocity;
+        }
+        else
+        {
+            ev1_axis = "east_west";
+            ev2_axis = "north_south";
+            ev1_tti = ev_east_tti;
+            ev1_velocity = ev_east_velocity;
+        }
+    }
+
+    // Standstill Traffic Edge Case (velocity < 1.38 m/s which is ~5 km/h)
+    bool standstill_pre_flush = (ev_active && ev1_velocity < 1.38);
+    int final_flush_duration = standstill_pre_flush ? 45 : ev1_tti;
+
     const int CYCLE_LENGTH = 90;
     const int LOST_TIME = 6;
     int pedGreen = std::min(60, 15 + (vui_score * 2));
@@ -245,14 +297,30 @@ int main()
 
     std::cout << "{\n"
               << "  \"timestamp\": \"2026-08-28T10:15:30Z\",\n"
-              << "  \"intersection_id\": \"vadapalani_junction\",\n"
-              << "  \"phase_durations\": {\n"
-              << "    \"north_south_green\": " << static_cast<int>(phase2Green) << ",\n"
-              << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
-              << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
-              << "  },\n"
-              << "  \"priority_mode\": \"vui_active\",\n"
-              << "  \"vui_score\": " << vui_score << "\n"
+              << "  \"intersection_id\": \"vadapalani_junction\",\n";
+
+    if (ev_active)
+    {
+        std::cout << "  \"ev_schedule\": {\n"
+                  << "    \"ev_1_axis\": \"" << ev1_axis << "\",\n"
+                  << "    \"ev_1_green_flush_duration\": " << final_flush_duration << ",\n"
+                  << "    \"all_red_clearance\": 3,\n"
+                  << "    \"ev_2_axis\": \"" << ev2_axis << "\",\n"
+                  << "    \"standstill_pre_flush_triggered\": " << (standstill_pre_flush ? "true" : "false") << "\n"
+                  << "  },\n"
+                  << "  \"priority_mode\": \"ev_preemption\",\n";
+    }
+    else
+    {
+        std::cout << "  \"phase_durations\": {\n"
+                  << "    \"north_south_green\": " << static_cast<int>(phase2Green) << ",\n"
+                  << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
+                  << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
+                  << "  },\n"
+                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vui_active" : "normal") << "\",\n";
+    }
+
+    std::cout << "  \"vui_score\": " << vui_score << "\n"
               << "}\n";
 
     return 0;
