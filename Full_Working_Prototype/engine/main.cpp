@@ -102,13 +102,18 @@ int main(int argc, char *argv[])
     double ev_north_velocity = 0.0;
     double ev_east_velocity = 0.0;
 
-    if (argc >= 10)
+    // Tiered argument parsing for backend compatibility
+    if (argc >= 6)
     {
         north_cars = std::atoi(argv[1]);
         south_cars = std::atoi(argv[2]);
         east_cars = std::atoi(argv[3]);
         west_cars = std::atoi(argv[4]);
         vui_score = std::atoi(argv[5]);
+    }
+
+    if (argc >= 10)
+    {
         ev_north_tti = std::atoi(argv[6]);
         ev_east_tti = std::atoi(argv[7]);
         ev_north_velocity = std::atof(argv[8]);
@@ -308,7 +313,7 @@ int main(int argc, char *argv[])
                   << "    \"ev_2_axis\": \"" << ev2_axis << "\",\n"
                   << "    \"standstill_pre_flush_triggered\": " << (standstill_pre_flush ? "true" : "false") << "\n"
                   << "  },\n"
-                  << "  \"priority_mode\": \"ev_preemption\",\n";
+                  << "  \"priority_mode\": \"emergency_vehicle\",\n";
     }
     else
     {
@@ -317,7 +322,7 @@ int main(int argc, char *argv[])
                   << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
                   << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
                   << "  },\n"
-                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vui_active" : "normal") << "\",\n";
+                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vulnerable_user" : "normal") << "\",\n";
     }
 
     std::cout << "  \"vui_score\": " << vui_score << "\n"
