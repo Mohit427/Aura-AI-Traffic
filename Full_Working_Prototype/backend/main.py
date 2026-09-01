@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from datetime import datetime, timezone
@@ -18,6 +19,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="AURA Backend", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/health")
@@ -230,4 +239,23 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
         "sumo_readings_considered": len(recent_sumo),
         "vision_reading_timestamp": latest_vision.timestamp.isoformat(),
         "engine_output": engine_output
+    }
+
+
+@app.get("/api/latest-decision")
+async def latest_decision(db: AsyncSession = Depends(get_db)):
+    result = await db.execute(
+        select(EngineDecision).order_by(EngineDecision.timestamp.desc()).limit(1)
+    )
+    latest = result.scalar_one_or_none()
+
+    if not latest:
+        return {"error": "No engine decisions recorded yet"}
+
+    return {
+        "timestamp": latest.timestamp.isoformat(),
+        "intersection_id": latest.intersection_id,
+        "phase_durations": latest.phase_durations,
+        "priority_mode": latest.priority_mode,
+        "vui_score": latest.vui_score
     }
