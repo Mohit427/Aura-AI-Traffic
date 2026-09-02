@@ -45,4 +45,17 @@ cmake_install.cmake
 *.dir/
 *.sln*
 *.vcxproj
+<<<<<<< HEAD
 *.vcxproj.*
+=======
+*.vcxproj.*
+
+# Editor settings
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+
+.env
+>>>>>>> origin/yashvant

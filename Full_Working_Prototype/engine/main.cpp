@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <cstdlib>
+#include <chrono>
 
 using std::min;
 using std::numeric_limits;
@@ -102,18 +103,26 @@ int main(int argc, char *argv[])
     double ev_north_velocity = 0.0;
     double ev_east_velocity = 0.0;
 
-    if (argc >= 10)
+    // Tiered argument parsing for backend compatibility
+    if (argc >= 6)
     {
         north_cars = std::atoi(argv[1]);
         south_cars = std::atoi(argv[2]);
         east_cars = std::atoi(argv[3]);
         west_cars = std::atoi(argv[4]);
         vui_score = std::atoi(argv[5]);
+    }
+
+    if (argc >= 10)
+    {
         ev_north_tti = std::atoi(argv[6]);
         ev_east_tti = std::atoi(argv[7]);
         ev_north_velocity = std::atof(argv[8]);
         ev_east_velocity = std::atof(argv[9]);
     }
+
+    // START PERFORMANCE TIMER
+    auto start_time = std::chrono::high_resolution_clock::now();
 
     // Node identifiers (exact OSM IDs as requested).
     const string NORTH = "1313198082.274";
@@ -239,7 +248,6 @@ int main(int argc, char *argv[])
     {
         bool north_is_ev1 = false;
 
-        // Day 6 Tie-Breaker Logic
         if (ev_east_tti == 0)
         {
             north_is_ev1 = true;
@@ -250,7 +258,6 @@ int main(int argc, char *argv[])
         }
         else if (ev_north_tti == ev_east_tti)
         {
-            // Equal TTI: Prioritize higher velocity
             if (ev_north_velocity >= ev_east_velocity)
             {
                 north_is_ev1 = true;
@@ -262,7 +269,6 @@ int main(int argc, char *argv[])
         }
         else
         {
-            // Standard check: lower TTI goes first
             north_is_ev1 = (ev_north_tti < ev_east_tti);
         }
 
@@ -282,7 +288,6 @@ int main(int argc, char *argv[])
         }
     }
 
-    // Standstill Traffic Edge Case (velocity < 1.38 m/s which is ~5 km/h)
     bool standstill_pre_flush = (ev_active && ev1_velocity < 1.38);
     int final_flush_duration = standstill_pre_flush ? 45 : ev1_tti;
 
@@ -294,6 +299,10 @@ int main(int argc, char *argv[])
     double totalFlow = static_cast<double>(phase1Flow) + static_cast<double>(phase2Flow);
     double phase1Green = EFFECTIVE_GREEN * (static_cast<double>(phase1Flow) / totalFlow);
     double phase2Green = EFFECTIVE_GREEN * (static_cast<double>(phase2Flow) / totalFlow);
+
+    // END PERFORMANCE TIMER
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> execution_time = end_time - start_time;
 
     std::cout << "{\n"
               << "  \"timestamp\": \"2026-08-28T10:15:30Z\",\n"
@@ -308,7 +317,7 @@ int main(int argc, char *argv[])
                   << "    \"ev_2_axis\": \"" << ev2_axis << "\",\n"
                   << "    \"standstill_pre_flush_triggered\": " << (standstill_pre_flush ? "true" : "false") << "\n"
                   << "  },\n"
-                  << "  \"priority_mode\": \"ev_preemption\",\n";
+                  << "  \"priority_mode\": \"emergency_vehicle\",\n";
     }
     else
     {
@@ -317,10 +326,11 @@ int main(int argc, char *argv[])
                   << "    \"east_west_green\": " << static_cast<int>(phase1Green) << ",\n"
                   << "    \"pedestrian_crossing_green\": " << pedGreen << "\n"
                   << "  },\n"
-                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vui_active" : "normal") << "\",\n";
+                  << "  \"priority_mode\": \"" << (vui_score > 0 ? "vulnerable_user" : "normal") << "\",\n";
     }
 
-    std::cout << "  \"vui_score\": " << vui_score << "\n"
+    std::cout << "  \"vui_score\": " << vui_score << ",\n"
+              << "  \"execution_time_ms\": " << execution_time.count() << "\n"
               << "}\n";
 
     return 0;
