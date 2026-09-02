@@ -1,0 +1,188 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 7
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "819f4b4a-8482-4250-ab52-e0659705bb76",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "const flow = $input.first().json.flowSegmentData;\nconst currentSpeed = flow.currentSpeed;\nconst freeFlowSpeed = flow.freeFlowSpeed;\nconst congestionRatio = freeFlowSpeed > 0 ? Math.round((1 - currentSpeed / freeFlowSpeed) * 100) / 100 : 0;\n\nreturn [{\n  json: {\n    timestamp: new Date().toISOString(),\n    segment_id: \"arcot_road_north\",\n    current_speed_kmh: currentSpeed,\n    free_flow_speed_kmh: freeFlowSpeed,\n    congestion_ratio: congestionRatio\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "7977ffba-0a29-41af-9c87-a22de6b16dfd",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/api/tomtom",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        624,
+        0
+      ],
+      "id": "37ae0263-230f-41d3-aac7-1980f2d2c8b9",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "url": "https://api.tomtom.com/traffic/services/4/flowSegmentData/absolute/10/json?point=13.0505,80.2121&key=zQd8PmPbWFq9SnAFwz9cQJmqiClneIN2",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "71771446-2478-4948-a3bb-8b91ae2c12a6",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b22495af-fb8f-4673-b215-be9e71384953",
+              "leftValue": "={{ $('Code in JavaScript').item.json.congestion_ratio }}",
+              "rightValue": 0.5,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        832,
+        0
+      ],
+      "id": "63ab7356-f7c0-4080-858e-79f852113fa4",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:8000/api/decision-cycle",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1040,
+        -96
+      ],
+      "id": "46cd5d2e-b0e6-4151-a842-25bf3ab25d50",
+      "name": "HTTP Request2"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "265db4eb-6760-463a-b05d-ba016cd6ae43",
+  "meta": {
+    "instanceId": "0aa5b28580c204ce333873478239bfd1efa98e4081bf63f48589580c9caf6094"
+  },
+  "id": "BvalH5ptUiL5zpHy",
+  "tags": []
+}
