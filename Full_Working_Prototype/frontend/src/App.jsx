@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import DashboardShell from './components/DashboardShell';
 import VUIGauge from './components/VUIGauge';
 import SignalTimeline from './components/SignalTimeline';
+import EVConflictPanel from './components/EVConflictPanel';
 import AdvisorPanel from './components/AdvisorPanel';
 import { fetchLatestDecision } from './api';
 import './App.css';
@@ -25,6 +26,15 @@ export default function App() {
       try {
         const data = await fetchLatestDecision();
         if (isMounted) {
+          // Temporarily inject missing ev_data if priority_mode is active
+          if (data.priority_mode === 'emergency_vehicle' && !data.ev_data) {
+            data.ev_data = {
+              ev1: { lane: "North-South", distance_m: 45, speed_kmh: 42, tti_sec: 3.85 },
+              ev2: { lane: "East-West", distance_m: 180, speed_kmh: 15, tti_sec: 43.2 }
+            };
+            data.ev_stage = 1;
+            data.downstream_green_wave = true;
+          }
           setEngineData(data);
         }
       } catch (error) {
@@ -66,6 +76,9 @@ export default function App() {
       <Panel title="SIGNAL PHASE TIMELINE" className="panel-wide">
         <SignalTimeline phases={phases} />
       </Panel>
+      <div className="panel-wide">
+        <EVConflictPanel engineData={engineData} />
+      </div>
       <div className="panel-wide">
         <AdvisorPanel engineData={engineData} />
       </div>
