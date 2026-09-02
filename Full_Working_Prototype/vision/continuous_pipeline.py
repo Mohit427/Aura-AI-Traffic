@@ -4,7 +4,7 @@ import json
 from datetime import datetime, timezone
 
 model = YOLO("yolov8n.pt")
-BACKEND_URL = "http://127.0.0.1:8000/api/vision"
+BACKEND_URL = "https://aura-backend-v27b.onrender.com/api/vision"
 
 CLASS_MAP = {2: "car", 5: "bus", 7: "truck", 3: "motorcycle", 1: "bicycle", 0: "person"}
 
