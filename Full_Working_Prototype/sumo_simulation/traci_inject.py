@@ -15,13 +15,13 @@ else:
 
 import traci
 SUMO_CMD = ["sumo", "-c", "osm.sumocfg"]
-STATE_API_URL = "http://localhost:8000/api/sumo-state"
+STATE_API_URL = "https://aura-backend-v27b.onrender.com/api/sumo-state"
 
 DB_CONFIG = {
-    "dbname": "aura_db",
-    "user": "aura_user",
-    "password": "aura_pass_hackathon",
-    "host": "localhost",
+    "dbname": "aura_db_9og5",
+    "user": "aura_db_9og5_user",
+    "password": "JYLQGCMqPKOpitUtTKKp6QtCPQSPDkgR",
+    "host": "dpg-dabu35navr4c73aqjca0-a.singapore-postgres.render.com",
     "port": "5432"
 }
 
