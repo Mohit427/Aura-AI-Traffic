@@ -7,10 +7,12 @@ from contextlib import asynccontextmanager
 import subprocess
 import json
 import requests
-
+import os
 from database import engine, Base, get_db
 from models import VisionLog, TomTomLog, SumoStateLog, EngineDecision, EvEvent
 
+
+ENGINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "engine", "engine_linux")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -149,7 +151,7 @@ async def orchestrate(payload: dict, db: AsyncSession = Depends(get_db)):
     pedestrian = payload.get("pedestrian", 0)
 
     result = subprocess.run(
-        ["../engine/engine_linux", str(north), str(south), str(east), str(west), str(pedestrian)],
+        [ENGINE_PATH, str(north), str(south), str(east), str(west), str(pedestrian)],
         capture_output=True, text=True
     )
 
@@ -215,7 +217,7 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     latest_sumo = recent_sumo[0]
 
     result = subprocess.run(
-        ["../engine/engine_linux", str(north), str(south), str(east), str(west), str(pedestrian)],
+        [ENGINE_PATH, str(north), str(south), str(east), str(west), str(pedestrian)],
         capture_output=True, text=True
     )
 
@@ -262,7 +264,7 @@ async def latest_decision(db: AsyncSession = Depends(get_db)):
     }
     
 
-N8N_WEBHOOK_URL = "http://localhost:5678/webhook/downstream-green-wave"
+N8N_WEBHOOK_URL = os.environ.get("N8N_WEBHOOK_URL", "http://localhost:5678/webhook/downstream-green-wave")
 
 @app.post("/api/simulate-ev")
 async def simulate_ev(payload: dict, db: AsyncSession = Depends(get_db)):
@@ -277,7 +279,7 @@ async def simulate_ev(payload: dict, db: AsyncSession = Depends(get_db)):
     ev_east_velocity = payload.get("ev_east_velocity", 0.0)
 
     result = subprocess.run(
-        ["../engine/engine_linux", str(north), str(south), str(east), str(west),
+        [ENGINE_PATH, str(north), str(south), str(east), str(west),
          str(vui_score), str(ev_north_tti), str(ev_east_tti),
          str(ev_north_velocity), str(ev_east_velocity)],
         capture_output=True, text=True
