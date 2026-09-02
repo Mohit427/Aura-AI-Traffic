@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 import subprocess
 import json
+import requests
 
 from database import engine, Base, get_db
 from models import VisionLog, TomTomLog, SumoStateLog, EngineDecision, EvEvent
@@ -258,4 +259,45 @@ async def latest_decision(db: AsyncSession = Depends(get_db)):
         "phase_durations": latest.phase_durations,
         "priority_mode": latest.priority_mode,
         "vui_score": latest.vui_score
+    }
+    
+
+N8N_WEBHOOK_URL = "http://localhost:5678/webhook/downstream-green-wave"
+
+@app.post("/api/simulate-ev")
+async def simulate_ev(payload: dict, db: AsyncSession = Depends(get_db)):
+    north = payload.get("north", 12)
+    south = payload.get("south", 10)
+    east = payload.get("east", 8)
+    west = payload.get("west", 14)
+    vui_score = payload.get("vui_score", 0)
+    ev_north_tti = payload.get("ev_north_tti", 0)
+    ev_east_tti = payload.get("ev_east_tti", 0)
+    ev_north_velocity = payload.get("ev_north_velocity", 0.0)
+    ev_east_velocity = payload.get("ev_east_velocity", 0.0)
+
+    result = subprocess.run(
+        ["../engine/engine_linux", str(north), str(south), str(east), str(west),
+         str(vui_score), str(ev_north_tti), str(ev_east_tti),
+         str(ev_north_velocity), str(ev_east_velocity)],
+        capture_output=True, text=True
+    )
+
+    if result.returncode != 0:
+        return {"error": "engine failed", "stderr": result.stderr}
+
+    engine_output = json.loads(result.stdout)
+
+    webhook_result = None
+    if engine_output.get("priority_mode") == "emergency_vehicle":
+        try:
+            resp = requests.post(N8N_WEBHOOK_URL, json=engine_output.get("ev_schedule", {}), timeout=3)
+            webhook_result = {"status_code": resp.status_code, "response": resp.json()}
+        except requests.exceptions.RequestException as e:
+            webhook_result = {"error": str(e)}
+
+    return {
+        "engine_output": engine_output,
+        "webhook_triggered": engine_output.get("priority_mode") == "emergency_vehicle",
+        "webhook_result": webhook_result
     }
