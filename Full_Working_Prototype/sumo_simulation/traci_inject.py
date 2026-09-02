@@ -15,7 +15,7 @@ else:
     sys.exit("Error: Please declare environment variable 'SUMO_HOME'")
 
 # 1. Configuration
-SUMO_CMD = ["sumo", "-c", "osm.sumocfg"]
+SUMO_CMD = ["sumo-gui", "-c", "osm.sumocfg"]
 STATE_API_URL = "http://localhost:8000/api/sumo-state"
 
 # Database Configuration (You will need to ask Mohit for the exact credentials/table name)
@@ -46,7 +46,7 @@ def fetch_live_counts():
     except Exception as e:
         pass # Fallback if DB connection fails
     
-    return {"car": 2, "bus": 0, "person": 5}
+    return {"car": 7, "bus": 0, "person": 1}
 
 def inject_live_traffic(step, counts):
     """Dynamically creates the route and spawns vehicles based on vision counts."""
@@ -95,12 +95,14 @@ def export_twin_state(step):
         "demand_profile": "medium"
     }
     
+    # Print the data so you can see it on your own screen
+    print(f"[{step}s] Metrics: {json.dumps(payload['edges'])}")
+    
     # Send the payload directly to Mohit's endpoint
     try:
         requests.post(STATE_API_URL, json=payload, timeout=2)
-        print(f"[{step}s] Successfully POSTed Twin State to backend.")
     except requests.exceptions.RequestException:
-        print(f"[{step}s] Failed to POST to backend. Is the server running?")
+        pass # Ignore the server error since he is on a different laptop
 
 def run_digital_twin():
     """Runs the SUMO simulation and synchronizes with live data."""

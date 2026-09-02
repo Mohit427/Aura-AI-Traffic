@@ -40,6 +40,7 @@
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="DEFAULT_VEHTYPE" sigma="0.7" tau="1.5" minGap="2.5" speedFactor="normc(0.9,0.1,0.2,2.0)"/>
     <vehicle id="0" depart="0.00">
         <route edges="27346895#8 1123278059#0 1123278059#1 28632290#0 28632290#1 28632290#2 -1268566098"/>
     </vehicle>
