@@ -1,0 +1,474 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new identifier to a profile",
+      "canonical_id": "twilio_memory.store.identifiers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a new identifier to a store profile",
+      "canonical_id": "twilio_memory.store.identifiers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add communication events to a profile",
+      "canonical_id": "twilio_memory.store.events.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add multiple events to a customer profile",
+      "canonical_id": "twilio_memory.store.events.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add observations to a profile",
+      "canonical_id": "twilio_memory.store.observations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add observations to a profile",
+      "canonical_id": "twilio_memory.store.observations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Bulk create or update store profiles",
+      "canonical_id": "twilio_memory.store.bulk.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Bulk create or update store profiles",
+      "canonical_id": "twilio_memory.store.bulk.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a data mapping to connect an external data source to a Memory Store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a data mapping to connect external data to a Memory Store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Memory Store for your Twilio account",
+      "canonical_id": "twilio_memory.controlplane.stores.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new memory store for your Twilio account",
+      "canonical_id": "twilio_memory.controlplane.stores.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new profile with initial traits and resolve identity",
+      "canonical_id": "twilio_memory.store.profiles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new profile with initial traits and resolve identity",
+      "canonical_id": "twilio_memory.store.profiles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a trait group with declarative trait schemas",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a trait group with declarative trait schemas",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create conversation summaries for a profile",
+      "canonical_id": "twilio_memory.store.conversationSummaries.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create conversation summaries for a profile",
+      "canonical_id": "twilio_memory.store.conversationSummaries.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Memory Store and all its associated resources",
+      "canonical_id": "twilio_memory.controlplane.stores.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Memory Store and all its associated resources",
+      "canonical_id": "twilio_memory.controlplane.stores.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a profile identifier and its associated stored values",
+      "canonical_id": "twilio_memory.store.identifiers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a profile identifier for a store",
+      "canonical_id": "twilio_memory.store.identifiers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific conversation summary by its ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific conversation summary by its ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific observation by its ID",
+      "canonical_id": "twilio_memory.store.observations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a trait group and its associated traits",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a trait group and its associated traits",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch profile traits by store and profile ID",
+      "canonical_id": "twilio_memory.store.profiles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find profiles by identifier like phone or email",
+      "canonical_id": "twilio_memory.store.lookup.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find profiles by identifier, returning canonical IDs and normalized values",
+      "canonical_id": "twilio_memory.store.lookup.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of profile IDs by store",
+      "canonical_id": "twilio_memory.store.profiles.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of profile IDs for a store",
+      "canonical_id": "twilio_memory.store.profiles.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of traits for a profile",
+      "canonical_id": "twilio_memory.store.traits.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific conversation summary by ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific conversation summary by ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific data mapping by its ID",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific data mapping by store and mapping ID",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific observation by its ID for a profile",
+      "canonical_id": "twilio_memory.store.observations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific observation for a profile",
+      "canonical_id": "twilio_memory.store.observations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific trait group by name for a store",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific trait group by name for a store",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all identifiers for a specific store profile",
+      "canonical_id": "twilio_memory.store.identifiers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all identifiers linked to a profile",
+      "canonical_id": "twilio_memory.store.identifiers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all past revisions for a specific observation",
+      "canonical_id": "twilio_memory.store.revisions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all revisions for a specific observation",
+      "canonical_id": "twilio_memory.store.revisions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversation summaries for a profile",
+      "canonical_id": "twilio_memory.store.conversationSummaries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversation summaries for a profile",
+      "canonical_id": "twilio_memory.store.conversationSummaries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific memory store by its ID",
+      "canonical_id": "twilio_memory.controlplane.stores.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific memory store by its ID",
+      "canonical_id": "twilio_memory.controlplane.stores.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get identity resolution settings for a store",
+      "canonical_id": "twilio_memory.controlplane.identityResolutionSettings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get identity resolution settings for a store",
+      "canonical_id": "twilio_memory.controlplane.identityResolutionSettings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get profile identifiers for a specific type",
+      "canonical_id": "twilio_memory.store.identifiers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get profile identifiers for a specific type and store",
+      "canonical_id": "twilio_memory.store.identifiers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get profile import task IDs for a store",
+      "canonical_id": "twilio_memory.store.imports.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status and result of an asynchronous operation",
+      "canonical_id": "twilio_memory.controlplane.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status and result of an asynchronous operation",
+      "canonical_id": "twilio_memory.controlplane.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a bulk import task",
+      "canonical_id": "twilio_memory.store.imports.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get transient observations for a profile",
+      "canonical_id": "twilio_memory.store.observations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get transient observations for a profile",
+      "canonical_id": "twilio_memory.store.observations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Initiate a profile import for a store",
+      "canonical_id": "twilio_memory.store.imports.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List data mappings for a Memory Store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List data mappings for a Memory Store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List memory stores for your Twilio account",
+      "canonical_id": "twilio_memory.controlplane.stores.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List memory stores for your Twilio account",
+      "canonical_id": "twilio_memory.controlplane.stores.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List profile import task IDs for a store",
+      "canonical_id": "twilio_memory.store.imports.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List trait groups for a store",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List trait groups for a store, optionally including traits",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List traits for a profile by store and profile ID",
+      "canonical_id": "twilio_memory.store.traits.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Partially update a data mapping for a store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Permanently delete a profile and associated data",
+      "canonical_id": "twilio_memory.store.profiles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Permanently delete a profile and its associated data",
+      "canonical_id": "twilio_memory.store.profiles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Recall memories for a store profile",
+      "canonical_id": "twilio_memory.store.recall.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a data mapping from a store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a data mapping from a store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific observation by its ID",
+      "canonical_id": "twilio_memory.store.observations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve memories with hybrid search and date filtering",
+      "canonical_id": "twilio_memory.store.recall.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve profile traits by profile ID",
+      "canonical_id": "twilio_memory.store.profiles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the processing status of a bulk import task",
+      "canonical_id": "twilio_memory.store.imports.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a profile import and get an upload URL",
+      "canonical_id": "twilio_memory.store.imports.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a data mapping for a store",
+      "canonical_id": "twilio_memory.controlplane.dataMappings.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Memory Store with provided fields",
+      "canonical_id": "twilio_memory.controlplane.stores.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Memory Store with provided fields",
+      "canonical_id": "twilio_memory.controlplane.stores.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a profile identifier for a store",
+      "canonical_id": "twilio_memory.store.identifiers.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a profile identifier for a store",
+      "canonical_id": "twilio_memory.store.identifiers.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific conversation summary by ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific conversation summary by ID",
+      "canonical_id": "twilio_memory.store.conversationSummaries.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific observation by its ID",
+      "canonical_id": "twilio_memory.store.observations.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific observation by its ID",
+      "canonical_id": "twilio_memory.store.observations.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a store's trait group with provided fields",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a trait group for a specific store",
+      "canonical_id": "twilio_memory.controlplane.traitGroups.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update identity resolution settings for a store",
+      "canonical_id": "twilio_memory.controlplane.identityResolutionSettings.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update identity resolution settings for a store",
+      "canonical_id": "twilio_memory.controlplane.identityResolutionSettings.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update profile traits by merging trait groups",
+      "canonical_id": "twilio_memory.store.profiles.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update profile traits by merging trait groups",
+      "canonical_id": "twilio_memory.store.profiles.update"
+    }
+  ]
+}

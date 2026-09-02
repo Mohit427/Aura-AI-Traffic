@@ -1,0 +1,89 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a custom language operator for conversational analysis",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.operators.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create an intelligence configuration to control language operator analysis",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.configurations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an intelligence configuration by its ID",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.configurations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all available operators",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.operators.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of intelligence configurations",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.configurations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of operator results with optional filters",
+      "canonical_id": "twilio_conversational_intelligence.operatorresult.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific conversation by its ID",
+      "canonical_id": "twilio_conversational_intelligence.conversation.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific operator result by its ID",
+      "canonical_id": "twilio_conversational_intelligence.operatorresult.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific operator version by ID and version number",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.versions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an intelligence configuration by its ID",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.configurations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an operator by its ID",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.operators.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversations with filtering options",
+      "canonical_id": "twilio_conversational_intelligence.conversation.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all versions for a specific operator",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.versions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an operator by its ID",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.operators.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an operator result by its ID",
+      "canonical_id": "twilio_conversational_intelligence.operatorresult.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an intelligence configuration and its rules",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.configurations.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an operator by its ID",
+      "canonical_id": "twilio_conversational_intelligence.controlplane.operators.update"
+    }
+  ]
+}

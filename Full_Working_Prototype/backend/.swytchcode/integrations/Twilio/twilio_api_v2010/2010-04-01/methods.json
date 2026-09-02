@@ -1,0 +1,1954 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new credential to a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a new outgoing caller ID to your account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a conference call",
+      "canonical_id": "twilio.2010-04-01.participants.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add an IP address to an access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an Add-on installation to a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new API key for your account",
+      "canonical_id": "twilio.2010-04-01.keys.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new application in your account",
+      "canonical_id": "twilio.2010-04-01.applications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new queue for your account",
+      "canonical_id": "twilio.2010-04-01.queues.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new signing key for your account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new SIP domain for your account",
+      "canonical_id": "twilio.2010-04-01.domains.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new SIP IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new token for ICE servers",
+      "canonical_id": "twilio.2010-04-01.tokens.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Twilio Subaccount",
+      "canonical_id": "twilio.2010-04-01.accounts.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new usage trigger",
+      "canonical_id": "twilio.2010-04-01.triggers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a transcription for a call",
+      "canonical_id": "twilio.2010-04-01.transcriptions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a user-defined message for a call",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create message feedback for a recipient's action",
+      "canonical_id": "twilio.2010-04-01.feedback.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a call record from your account",
+      "canonical_id": "twilio.2010-04-01.calls.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a call recording",
+      "canonical_id": "twilio.2010-04-01.recordings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from your account",
+      "canonical_id": "twilio.2010-04-01.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a payload and its associated data from an add-on result",
+      "canonical_id": "twilio.2010-04-01.payloads.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a recording from your account",
+      "canonical_id": "twilio.2010-04-01.recordings.delete.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a recording transcription by ID",
+      "canonical_id": "twilio.2010-04-01.transcriptions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SIP domain by its ID",
+      "canonical_id": "twilio.2010-04-01.domains.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific API key for an account",
+      "canonical_id": "twilio.2010-04-01.keys.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific conference recording",
+      "canonical_id": "twilio.2010-04-01.recordings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a transcription from an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a usage trigger for an account",
+      "canonical_id": "twilio.2010-04-01.triggers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a user-defined message subscription",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessageSubscriptions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an Add On result and its associated payloads",
+      "canonical_id": "twilio.2010-04-01.addOnResults.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an application by its unique identifier",
+      "canonical_id": "twilio.2010-04-01.applications.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an empty queue",
+      "canonical_id": "twilio.2010-04-01.queues.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an IP access control list from an account",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete media associated with a message",
+      "canonical_id": "twilio.2010-04-01.media.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Dequeue a call from a queue and execute TwiML at a URL",
+      "canonical_id": "twilio.2010-04-01.members.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific call notification for an account",
+      "canonical_id": "twilio.2010-04-01.notifications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch account notifications",
+      "canonical_id": "twilio.2010-04-01.notifications.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch recordings for a conference",
+      "canonical_id": "twilio.2010-04-01.recordings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available mobile phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.mobile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available national phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.national.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for a country",
+      "canonical_id": "twilio.2010-04-01.availablePhoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for machine-to-machine communication",
+      "canonical_id": "twilio.2010-04-01.machineToMachine.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for your account",
+      "canonical_id": "twilio.2010-04-01.availablePhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available shared cost phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.sharedCost.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available toll-free phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.tollFree.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available VoIP phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.voip.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find local phone numbers by country code and filters",
+      "canonical_id": "twilio.2010-04-01.local.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of calls associated with your account",
+      "canonical_id": "twilio.2010-04-01.calls.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of messages for an account",
+      "canonical_id": "twilio.2010-04-01.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of recordings for the account",
+      "canonical_id": "twilio.2010-04-01.recordings.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of transcriptions for your account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a new mobile phone number for an account",
+      "canonical_id": "twilio.2010-04-01.mobile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific AddOnResult for a recording",
+      "canonical_id": "twilio.2010-04-01.addOnResults.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific call recording",
+      "canonical_id": "twilio.2010-04-01.recordings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific call recording for a conference",
+      "canonical_id": "twilio.2010-04-01.recordings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific media resource for a message",
+      "canonical_id": "twilio.2010-04-01.media.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific member from a queue",
+      "canonical_id": "twilio.2010-04-01.members.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific notification for an account",
+      "canonical_id": "twilio.2010-04-01.notifications.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific outgoing caller ID for an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant in a conference",
+      "canonical_id": "twilio.2010-04-01.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific queue by its ID",
+      "canonical_id": "twilio.2010-04-01.queues.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific recording for an account",
+      "canonical_id": "twilio.2010-04-01.recordings.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific result payload for an add-on",
+      "canonical_id": "twilio.2010-04-01.payloads.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific result payload's data",
+      "canonical_id": "twilio.2010-04-01.data.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific short code for an account",
+      "canonical_id": "twilio.2010-04-01.shortCodes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP credential from a credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain for an account",
+      "canonical_id": "twilio.2010-04-01.domains.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain IP access control list mapping",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP IP Access Control List",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific transcription for an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific usage trigger instance",
+      "canonical_id": "twilio.2010-04-01.triggers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a toll-free phone number for your account",
+      "canonical_id": "twilio.2010-04-01.tollFree.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account balance by Account Sid",
+      "canonical_id": "twilio.2010-04-01.balance.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account details by Account Sid",
+      "canonical_id": "twilio.2010-04-01.accounts.list.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account usage records",
+      "canonical_id": "twilio.2010-04-01.records.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get add-on results for a specific recording",
+      "canonical_id": "twilio.2010-04-01.addOnResults.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all events for a specific call",
+      "canonical_id": "twilio.2010-04-01.events.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all-time usage records for an account",
+      "canonical_id": "twilio.2010-04-01.allTime.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an authorized connect app by its SID",
+      "canonical_id": "twilio.2010-04-01.authorizedConnectApps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an extension for an assigned add-on",
+      "canonical_id": "twilio.2010-04-01.extensions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an incoming phone number by its ID",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get application details by account and application ID",
+      "canonical_id": "twilio.2010-04-01.applications.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get call details using the call SID",
+      "canonical_id": "twilio.2010-04-01.calls.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get daily usage records for an account",
+      "canonical_id": "twilio.2010-04-01.daily.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific conference",
+      "canonical_id": "twilio.2010-04-01.conferences.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get extensions for an assigned add-on",
+      "canonical_id": "twilio.2010-04-01.extensions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get media associated with a message",
+      "canonical_id": "twilio.2010-04-01.media.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get monthly usage records for an account",
+      "canonical_id": "twilio.2010-04-01.monthly.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get payloads for an AddOnResult",
+      "canonical_id": "twilio.2010-04-01.payloads.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get recordings for a specific call",
+      "canonical_id": "twilio.2010-04-01.recordings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get SIP credentials for a specific credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get SIP domain credential list mappings",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get SIP domain IP access control list mapping",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get this month's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.thisMonth.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get today's usage records for your account",
+      "canonical_id": "twilio.2010-04-01.today.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get yearly usage records for an account",
+      "canonical_id": "twilio.2010-04-01.yearly.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get yesterday's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.yesterday.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Initiate an outgoing call to a specified number or endpoint",
+      "canonical_id": "twilio.2010-04-01.calls.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List add-on installations assigned to a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List addresses for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all accounts for the authenticated user",
+      "canonical_id": "twilio.2010-04-01.accounts.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all API keys for an account",
+      "canonical_id": "twilio.2010-04-01.keys.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all queues for an account",
+      "canonical_id": "twilio.2010-04-01.queues.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all short codes for an account",
+      "canonical_id": "twilio.2010-04-01.shortCodes.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all signing keys for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List applications for an account",
+      "canonical_id": "twilio.2010-04-01.applications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List authorized connect apps for an account",
+      "canonical_id": "twilio.2010-04-01.authorizedConnectApps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available mobile phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.mobile.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available outgoing caller IDs for your account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available toll-free incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.tollFree.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List call notifications for a specific call",
+      "canonical_id": "twilio.2010-04-01.notifications.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List conferences for an account",
+      "canonical_id": "twilio.2010-04-01.conferences.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List connect apps for the account",
+      "canonical_id": "twilio.2010-04-01.connectApps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List dependent phone numbers for an address",
+      "canonical_id": "twilio.2010-04-01.dependentPhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List IP Access Control List mappings for a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List IP addresses in an SIP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List local incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.local.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List members of a specific queue",
+      "canonical_id": "twilio.2010-04-01.members.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants in a conference",
+      "canonical_id": "twilio.2010-04-01.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP credential list mappings for a domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domain credential list mappings",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domain IP access control list mappings",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domains for the account",
+      "canonical_id": "twilio.2010-04-01.domains.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP IP access control lists for an account",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List transcriptions for a specific recording",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List usage records for the last month",
+      "canonical_id": "twilio.2010-04-01.lastMonth.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List usage triggers for the account",
+      "canonical_id": "twilio.2010-04-01.triggers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map a credential list to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map a credential list to a SIP domain for call authentication",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map an IP Access Control List to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map an IP access control list to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Provision a new local phone number for your account",
+      "canonical_id": "twilio.2010-04-01.local.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Purchase a phone number for your account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Redact message body or cancel unsent messages",
+      "canonical_id": "twilio.2010-04-01.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Redirect or terminate an existing call",
+      "canonical_id": "twilio.2010-04-01.calls.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a caller ID from an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a connect app instance",
+      "canonical_id": "twilio.2010-04-01.connectApps.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a credential list mapping for a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a credential list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a participant from a conference",
+      "canonical_id": "twilio.2010-04-01.participants.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from your account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a SIP credential from a list",
+      "canonical_id": "twilio.2010-04-01.credentials.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP access control list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP access control list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP address from an IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Rename an IP Access Control List",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a SIP credential list by its ID",
+      "canonical_id": "twilio.2010-04-01.credentialLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific connect app for an account",
+      "canonical_id": "twilio.2010-04-01.connectApps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific IP address within an IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific message by account and message ID",
+      "canonical_id": "twilio.2010-04-01.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific recording transcription for an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve account access key details",
+      "canonical_id": "twilio.2010-04-01.keys.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all SIP credential lists for an account",
+      "canonical_id": "twilio.2010-04-01.credentialLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve an assigned add-on for a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a recipient",
+      "canonical_id": "twilio.2010-04-01.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new payment session for a call",
+      "canonical_id": "twilio.2010-04-01.payments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start recording a call",
+      "canonical_id": "twilio.2010-04-01.recordings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a call media stream by its SID or name",
+      "canonical_id": "twilio.2010-04-01.streams.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a Siprec recording",
+      "canonical_id": "twilio.2010-04-01.siprec.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a transcription for a call",
+      "canonical_id": "twilio.2010-04-01.transcriptions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Subscribe to user-defined messages for a call",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessageSubscriptions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Unassign an Add-on from a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conference recording's status",
+      "canonical_id": "twilio.2010-04-01.recordings.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conference with specific details",
+      "canonical_id": "twilio.2010-04-01.conferences.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a connect-app with provided details",
+      "canonical_id": "twilio.2010-04-01.connectApps.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a queue's friendly name or max size",
+      "canonical_id": "twilio.2010-04-01.queues.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a short code's configuration details",
+      "canonical_id": "twilio.2010-04-01.shortCodes.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SIP credential resource",
+      "canonical_id": "twilio.2010-04-01.credentials.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a usage trigger instance",
+      "canonical_id": "twilio.2010-04-01.triggers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update account properties like name and status",
+      "canonical_id": "twilio.2010-04-01.accounts.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update address details for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing API key",
+      "canonical_id": "twilio.2010-04-01.keys.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an incoming phone number's configuration",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an IP address in an IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update application details",
+      "canonical_id": "twilio.2010-04-01.applications.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update call recording status to paused, stopped, or in-progress",
+      "canonical_id": "twilio.2010-04-01.recordings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update caller ID for an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update conference participant properties like mute or hold",
+      "canonical_id": "twilio.2010-04-01.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update payment status and details for a call",
+      "canonical_id": "twilio.2010-04-01.payments.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update SIP domain attributes",
+      "canonical_id": "twilio.2010-04-01.domains.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a new credential to a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a conference call",
+      "canonical_id": "twilio.2010-04-01.participants.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add an IP address to an access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an Add-on to a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a call recording",
+      "canonical_id": "twilio.2010-04-01.recordings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a call transcription with optional settings",
+      "canonical_id": "twilio.2010-04-01.transcriptions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new API key for your account",
+      "canonical_id": "twilio.2010-04-01.keys.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new application in your account",
+      "canonical_id": "twilio.2010-04-01.applications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new caller ID validation request",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new local incoming phone number",
+      "canonical_id": "twilio.2010-04-01.local.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new queue with a friendly name and optional max size",
+      "canonical_id": "twilio.2010-04-01.queues.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new SIP domain",
+      "canonical_id": "twilio.2010-04-01.domains.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new SIP IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new token for ICE servers",
+      "canonical_id": "twilio.2010-04-01.tokens.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Twilio subaccount",
+      "canonical_id": "twilio.2010-04-01.accounts.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new usage trigger",
+      "canonical_id": "twilio.2010-04-01.triggers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a user-defined message for a call",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create message feedback for a recipient's action",
+      "canonical_id": "twilio.2010-04-01.feedback.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a call recording from your account",
+      "canonical_id": "twilio.2010-04-01.recordings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from your account",
+      "canonical_id": "twilio.2010-04-01.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a payload and its associated data from an Add On result",
+      "canonical_id": "twilio.2010-04-01.payloads.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a recording transcription by ID",
+      "canonical_id": "twilio.2010-04-01.transcriptions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a signing key for a specific account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SIP credential from a credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SIP domain",
+      "canonical_id": "twilio.2010-04-01.domains.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific conference recording",
+      "canonical_id": "twilio.2010-04-01.recordings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific recording from your account",
+      "canonical_id": "twilio.2010-04-01.recordings.delete.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a transcription from an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a usage trigger for an account",
+      "canonical_id": "twilio.2010-04-01.triggers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an Add On result and purge associated payloads",
+      "canonical_id": "twilio.2010-04-01.addOnResults.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an address for a specific account",
+      "canonical_id": "twilio.2010-04-01.addresses.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an API key for an account",
+      "canonical_id": "twilio.2010-04-01.keys.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an application by its unique identifier",
+      "canonical_id": "twilio.2010-04-01.applications.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an empty queue by its SID",
+      "canonical_id": "twilio.2010-04-01.queues.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an IP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete media associated with a message",
+      "canonical_id": "twilio.2010-04-01.media.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Dequeue a member from a queue and execute TwiML",
+      "canonical_id": "twilio.2010-04-01.members.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch account notifications with optional filters",
+      "canonical_id": "twilio.2010-04-01.notifications.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch recordings for a conference",
+      "canonical_id": "twilio.2010-04-01.recordings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available mobile phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.mobile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available national phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.national.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for a country",
+      "canonical_id": "twilio.2010-04-01.availablePhoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for machine-to-machine communication",
+      "canonical_id": "twilio.2010-04-01.machineToMachine.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available phone numbers for your account",
+      "canonical_id": "twilio.2010-04-01.availablePhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available shared cost phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.sharedCost.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available toll-free phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.tollFree.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find available VoIP phone numbers by country code",
+      "canonical_id": "twilio.2010-04-01.voip.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Find local phone numbers by country code and other criteria",
+      "canonical_id": "twilio.2010-04-01.local.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of short codes for the account",
+      "canonical_id": "twilio.2010-04-01.shortCodes.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of transcriptions for an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a new mobile phone number for your account",
+      "canonical_id": "twilio.2010-04-01.mobile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a new toll-free phone number for your account",
+      "canonical_id": "twilio.2010-04-01.tollFree.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Add On result for a recording",
+      "canonical_id": "twilio.2010-04-01.addOnResults.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific call recording",
+      "canonical_id": "twilio.2010-04-01.recordings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific call recording for a conference",
+      "canonical_id": "twilio.2010-04-01.recordings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific connect app for an account",
+      "canonical_id": "twilio.2010-04-01.connectApps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific IP address within an SIP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific member from a queue",
+      "canonical_id": "twilio.2010-04-01.members.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific message by account and message ID",
+      "canonical_id": "twilio.2010-04-01.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific notification for an account",
+      "canonical_id": "twilio.2010-04-01.notifications.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant in a conference",
+      "canonical_id": "twilio.2010-04-01.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific queue by its ID",
+      "canonical_id": "twilio.2010-04-01.queues.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific recording for an account",
+      "canonical_id": "twilio.2010-04-01.recordings.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific result payload for a recording",
+      "canonical_id": "twilio.2010-04-01.data.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific result payload for an Add On",
+      "canonical_id": "twilio.2010-04-01.payloads.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific short code for an account",
+      "canonical_id": "twilio.2010-04-01.shortCodes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP credential from a credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain for an account",
+      "canonical_id": "twilio.2010-04-01.domains.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific SIP domain IP access control list mapping",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific transcription for an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific usage trigger instance",
+      "canonical_id": "twilio.2010-04-01.triggers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account balance by Account Sid",
+      "canonical_id": "twilio.2010-04-01.balance.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account details using the account SID",
+      "canonical_id": "twilio.2010-04-01.accounts.list.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get add-on results for a specific recording",
+      "canonical_id": "twilio.2010-04-01.addOnResults.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all events for a specific call",
+      "canonical_id": "twilio.2010-04-01.events.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all-time usage records for an account",
+      "canonical_id": "twilio.2010-04-01.allTime.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an Add-on installation assigned to a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an extension for an assigned add-on",
+      "canonical_id": "twilio.2010-04-01.extensions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an incoming phone number by its ID",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get application details by account and application ID",
+      "canonical_id": "twilio.2010-04-01.applications.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get assigned add-ons for a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get daily usage records for an account",
+      "canonical_id": "twilio.2010-04-01.daily.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific authorized connect app",
+      "canonical_id": "twilio.2010-04-01.authorizedConnectApps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific conference",
+      "canonical_id": "twilio.2010-04-01.conferences.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get media associated with a message",
+      "canonical_id": "twilio.2010-04-01.media.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get media for a specific message",
+      "canonical_id": "twilio.2010-04-01.media.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get members of a specific queue",
+      "canonical_id": "twilio.2010-04-01.members.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get recordings for a specific call",
+      "canonical_id": "twilio.2010-04-01.recordings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get SIP credentials for a credential list",
+      "canonical_id": "twilio.2010-04-01.credentials.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get this month's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.thisMonth.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get today's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.today.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get transcriptions for a specific recording",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get usage records for your account",
+      "canonical_id": "twilio.2010-04-01.records.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get yesterday's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.yesterday.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Initiate an outgoing call to specified destinations",
+      "canonical_id": "twilio.2010-04-01.calls.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List account usage triggers",
+      "canonical_id": "twilio.2010-04-01.triggers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List addresses for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all accounts for the authenticated user",
+      "canonical_id": "twilio.2010-04-01.accounts.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all API access keys for an account",
+      "canonical_id": "twilio.2010-04-01.keys.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all calls for an account",
+      "canonical_id": "twilio.2010-04-01.calls.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all queues for an account",
+      "canonical_id": "twilio.2010-04-01.queues.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List applications for an account",
+      "canonical_id": "twilio.2010-04-01.applications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List authorized connect apps for an account",
+      "canonical_id": "twilio.2010-04-01.authorizedConnectApps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available mobile phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.mobile.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List call notifications for a specific call",
+      "canonical_id": "twilio.2010-04-01.notifications.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List conferences for an account",
+      "canonical_id": "twilio.2010-04-01.conferences.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List connect apps for an account",
+      "canonical_id": "twilio.2010-04-01.connectApps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List credential list mappings for a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List dependent phone numbers for an address",
+      "canonical_id": "twilio.2010-04-01.dependentPhoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List extensions for an assigned add-on",
+      "canonical_id": "twilio.2010-04-01.extensions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List IP Access Control List mappings for a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List IP addresses in an SIP access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List last month's usage records for an account",
+      "canonical_id": "twilio.2010-04-01.lastMonth.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List local incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.local.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List messages for a Twilio account",
+      "canonical_id": "twilio.2010-04-01.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List monthly usage records for an account",
+      "canonical_id": "twilio.2010-04-01.monthly.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List outgoing caller IDs for an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants in a conference",
+      "canonical_id": "twilio.2010-04-01.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List payloads for an Add On result",
+      "canonical_id": "twilio.2010-04-01.payloads.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List recordings for an account",
+      "canonical_id": "twilio.2010-04-01.recordings.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List signing keys for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP credential list mappings for a domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domain credential list mappings",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domain IP access control list mappings",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP domains for an account",
+      "canonical_id": "twilio.2010-04-01.domains.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SIP IP access control lists for an account",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List toll-free incoming phone numbers for an account",
+      "canonical_id": "twilio.2010-04-01.tollFree.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List yearly usage records for an account",
+      "canonical_id": "twilio.2010-04-01.yearly.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map a credential list to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map a Credential List to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map a credential list to a SIP domain for call authentication",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map an IP access control list to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Map an IP Access Control List to a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Purchase a new phone number for your account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Redact message body or cancel unsent messages",
+      "canonical_id": "twilio.2010-04-01.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a call record from your account",
+      "canonical_id": "twilio.2010-04-01.calls.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a caller ID from an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a connect-app instance",
+      "canonical_id": "twilio.2010-04-01.connectApps.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a credential list mapping for a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a credential list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from your account",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a SIP domain credential list mapping",
+      "canonical_id": "twilio.2010-04-01.credentialListMappings.delete.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user-defined message subscription",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessageSubscriptions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an add-on installation from a phone number",
+      "canonical_id": "twilio.2010-04-01.assignedAddOns.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP access control list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP access control list mapping from a SIP domain",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP address from an access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove participant from a conference",
+      "canonical_id": "twilio.2010-04-01.participants.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Rename an SIP IP Access Control List",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a SIP credential list by its ID",
+      "canonical_id": "twilio.2010-04-01.credentialLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a SIP domain's IP access control list mapping",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlListMappings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific API key for an account",
+      "canonical_id": "twilio.2010-04-01.keys.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific call notification for an account",
+      "canonical_id": "twilio.2010-04-01.notifications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific outgoing caller ID for an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific recording transcription for an account",
+      "canonical_id": "twilio.2010-04-01.transcriptions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all SIP credential lists for an account",
+      "canonical_id": "twilio.2010-04-01.credentialLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve an IP access control list by its ID",
+      "canonical_id": "twilio.2010-04-01.ipAccessControlLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details for a specific call using its SID",
+      "canonical_id": "twilio.2010-04-01.calls.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a recipient",
+      "canonical_id": "twilio.2010-04-01.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new payment session for a call",
+      "canonical_id": "twilio.2010-04-01.payments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a media stream for a call",
+      "canonical_id": "twilio.2010-04-01.streams.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a Siprec recording for a call",
+      "canonical_id": "twilio.2010-04-01.siprec.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stop a transcription for a call",
+      "canonical_id": "twilio.2010-04-01.transcriptions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Subscribe to user-defined messages for a specific call",
+      "canonical_id": "twilio.2010-04-01.userDefinedMessageSubscriptions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conference participant's properties",
+      "canonical_id": "twilio.2010-04-01.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conference recording's status",
+      "canonical_id": "twilio.2010-04-01.recordings.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conference with status and announcement details",
+      "canonical_id": "twilio.2010-04-01.conferences.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a connect-app with specified details",
+      "canonical_id": "twilio.2010-04-01.connectApps.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a payment for a call with status and capture details",
+      "canonical_id": "twilio.2010-04-01.payments.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a short code's details",
+      "canonical_id": "twilio.2010-04-01.shortCodes.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a signing key for an account",
+      "canonical_id": "twilio.2010-04-01.signingKeys.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SIP credential list",
+      "canonical_id": "twilio.2010-04-01.credentialLists.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SIP credential resource",
+      "canonical_id": "twilio.2010-04-01.credentials.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a subaccount's API key",
+      "canonical_id": "twilio.2010-04-01.keys.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a usage trigger instance",
+      "canonical_id": "twilio.2010-04-01.triggers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update account properties like friendly name and status",
+      "canonical_id": "twilio.2010-04-01.accounts.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an address for an account",
+      "canonical_id": "twilio.2010-04-01.addresses.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an application's properties",
+      "canonical_id": "twilio.2010-04-01.applications.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an incoming phone number's configuration",
+      "canonical_id": "twilio.2010-04-01.incomingPhoneNumbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an IP address in an access control list",
+      "canonical_id": "twilio.2010-04-01.ipAddresses.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update call recording status to paused, stopped, or in-progress",
+      "canonical_id": "twilio.2010-04-01.recordings.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update call status or redirect a call",
+      "canonical_id": "twilio.2010-04-01.calls.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update caller ID information for an account",
+      "canonical_id": "twilio.2010-04-01.outgoingCallerIds.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update queue details like friendly name and max size",
+      "canonical_id": "twilio.2010-04-01.queues.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update SIP domain attributes",
+      "canonical_id": "twilio.2010-04-01.domains.create.1"
+    }
+  ]
+}

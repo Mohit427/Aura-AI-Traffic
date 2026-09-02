@@ -1,0 +1,119 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://numbers.twilio.com
+METHODS:
+  twilio_numbers.hostednumber.hostedNumberOrders.create:
+    SUMMARY: Host a phone number's capability on Twilio's platform.
+    DESC: Host a phone number's capability on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v3/HostedNumbers/HostedNumberOrders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v3.hostedNumbers.hostedNumberOrder)
+        RETURNVAR: twilio_numbers_hostednumber_hostedNumberOrders_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.hostednumber.hostedNumberOrders.create
+STRUCTS:
+  numbers.v3.hostedNumbers.hostedNumberOrder:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this HostedNumberOrder.
+    - name: accountSid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the account.
+    - name: incomingPhoneNumberSid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted.
+    - name: addressSid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+    - name: signingDocumentSid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign.
+    - name: phoneNumber
+      type: STRING
+      REQUIRED: false
+      comment: Phone number to be hosted. This must be in [E.164](https://en.wikipedia.org/wiki/E.164) format, e.g., +16175551212
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: Set of booleans describing the capabilities hosted on Twilio's platform. SMS is currently only supported.
+    - name: friendlyName
+      type: STRING
+      REQUIRED: false
+      comment: A 64 character string that is a human-readable text that describes this resource.
+    - name: uniqueName
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: "Status of this resource. It can hold one of the values: 1. Twilio Processing 2. Received, 3. Pending LOA, 4. Carrier Processing, 5. Completed, 6. Action Required, 7. Failed. See the [HostedNumberOrders Status Values](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values) section for more information on each of these statuses."
+    - name: failureReason
+      type: STRING
+      REQUIRED: false
+      comment: A message that explains why a hosted_number_order went to status "action-required"
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: verificationAttempts
+      type: INT
+      REQUIRED: false
+      comment: The number of attempts made to verify ownership of the phone number that is being hosted.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the owner of this phone number that is being hosted.
+    - name: ccEmails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this HostedNumberOrder.
+    - name: verificationType
+      type: STRING
+      REQUIRED: false
+      comment: The type of ownership verification required to move the number to a `verified` state. The verification methods are `phone-call` or `phone-bill`.
+    - name: verificationDocumentSid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Identity Document resource that represents the document for verifying ownership of the number to be hosted.
+    - name: extension
+      type: STRING
+      REQUIRED: false
+      comment: A numerical extension to be used when making the ownership verification call.
+    - name: callDelay
+      type: INT
+      REQUIRED: false
+      comment: A value between 0-30 specifying the number of seconds to delay initiating the ownership verification call.
+    - name: verificationCode
+      type: STRING
+      REQUIRED: false
+      comment: A verification code provided in the response for a user to enter when they pick up the phone call.
+    - name: verificationCallSids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of 34 character strings that are unique identifiers for the calls placed as part of ownership verification.

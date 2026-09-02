@@ -1,0 +1,69 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Assign a role to an organization",
+      "canonical_id": "organization_public.organization.roleAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a SCIM user for an organization",
+      "canonical_id": "organization_public.organization.users.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a SCIM user from an organization",
+      "canonical_id": "organization_public.organization.users.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get role assignments for an organization",
+      "canonical_id": "organization_public.organization.roleAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the authorization URI for OAuth 2.0",
+      "canonical_id": "organization_public.authorize.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Issue access, identity, and refresh tokens using an OAuth grant",
+      "canonical_id": "organization_public.token.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List accounts for a specific organization",
+      "canonical_id": "organization_public.organization.accounts.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List SCIM users for an organization",
+      "canonical_id": "organization_public.organization.users.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a role assignment from an organization",
+      "canonical_id": "organization_public.organization.roleAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a SCIM user for a specific organization",
+      "canonical_id": "organization_public.organization.users.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve organization account details",
+      "canonical_id": "organization_public.organization.accounts.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SCIM user in an organization",
+      "canonical_id": "organization_public.organization.users.update.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SCIM user within an organization",
+      "canonical_id": "organization_public.organization.users.update"
+    }
+  ]
+}

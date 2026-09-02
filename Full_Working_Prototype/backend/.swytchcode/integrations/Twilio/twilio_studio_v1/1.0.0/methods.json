@@ -1,0 +1,164 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Delete a flow execution and its related steps",
+      "canonical_id": "twilio_studio.flow.executions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific flow by its SID",
+      "canonical_id": "twilio_studio.flow.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an engagement and its related steps",
+      "canonical_id": "twilio_studio.flow.engagements.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "End a flow execution",
+      "canonical_id": "twilio_studio.flow.executions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all available flows",
+      "canonical_id": "twilio_studio.flow.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific engagement for a flow",
+      "canonical_id": "twilio_studio.flow.engagements.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific flow by its ID",
+      "canonical_id": "twilio_studio.flow.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific flow execution by its IDs",
+      "canonical_id": "twilio_studio.flow.executions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific step within a flow engagement",
+      "canonical_id": "twilio_studio.flow.steps.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific step within a flow execution",
+      "canonical_id": "twilio_studio.flow.steps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all engagement steps for a flow",
+      "canonical_id": "twilio_studio.flow.steps.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all engagements for a specific flow",
+      "canonical_id": "twilio_studio.flow.engagements.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the context for a specific engagement step",
+      "canonical_id": "twilio_studio.flow.context.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the context for a specific execution step",
+      "canonical_id": "twilio_studio.flow.context.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the latest context for a flow execution",
+      "canonical_id": "twilio_studio.flow.context.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the latest context for an engagement",
+      "canonical_id": "twilio_studio.flow.context.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all executions for a given flow",
+      "canonical_id": "twilio_studio.flow.executions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all steps for a specific execution within a flow",
+      "canonical_id": "twilio_studio.flow.steps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new engagement for a flow",
+      "canonical_id": "twilio_studio.flow.engagements.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new execution for a given flow",
+      "canonical_id": "twilio_studio.flow.executions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a flow execution and its steps",
+      "canonical_id": "twilio_studio.flow.executions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific Flow by its SID",
+      "canonical_id": "twilio_studio.flow.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "End a specific flow execution",
+      "canonical_id": "twilio_studio.flow.executions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all Flows",
+      "canonical_id": "twilio_studio.flow.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Flow by its SID",
+      "canonical_id": "twilio_studio.flow.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific flow execution by its IDs",
+      "canonical_id": "twilio_studio.flow.executions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific step within a flow execution",
+      "canonical_id": "twilio_studio.flow.steps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all steps for a specific flow execution",
+      "canonical_id": "twilio_studio.flow.steps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the context for a specific execution step",
+      "canonical_id": "twilio_studio.flow.context.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the latest context for a flow execution",
+      "canonical_id": "twilio_studio.flow.context.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all executions for a specific flow",
+      "canonical_id": "twilio_studio.flow.executions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new execution for a specific flow",
+      "canonical_id": "twilio_studio.flow.executions.create"
+    }
+  ]
+}

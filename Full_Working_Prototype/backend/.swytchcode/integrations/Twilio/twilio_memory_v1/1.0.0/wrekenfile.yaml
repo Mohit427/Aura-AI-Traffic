@@ -1,0 +1,3412 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://memory.twilio.com
+METHODS:
+  twilio_memory.store.profiles.delete:
+    SUMMARY: Delete Profile
+    DESC: Asynchronously delete the profile permanently and all associated identifiers and traits. This operation is irreversible. Downstream caches or analytical stores may take time to reflect the deletion. Use cautiously and consider a soft‑delete strategy if regulatory or recovery requirements apply.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.profiles.deleteResponse202)
+        RETURNVAR: twilio_memory_store_profiles_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.profiles.delete
+  twilio_memory.store.profiles.get:
+    SUMMARY: Get Profile
+    DESC: Retrieve profile traits by profile ID. Use the `traitGroups` query parameter to restrict results to a comma-separated allow list of trait group names. For large sets of traits, prefer using the dedicated `/Traits` endpoint for pagination.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - traitGroups:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(Profile)
+        RETURNVAR: twilio_memory_store_profiles_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.profiles.get
+  twilio_memory.store.profiles.update:
+    SUMMARY: Patch Profile Traits
+    DESC: Merge one or more trait groups into an existing profile. Only the traits provided are added or updated; unspecified traits remain unchanged. Only pre-defined trait groups and traits configured for the memory store can be patched. To remove a trait entirely, set its value to null.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ProfilePatch)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ProfilePatch)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.profiles.updateResponse202)
+        RETURNVAR: twilio_memory_store_profiles_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.profiles.update
+  twilio_memory.store.lookup.create:
+    SUMMARY: Lookup Profiles
+    DESC: Find profiles that contain a specific identifier value (for example a phone number or email address). Submit an identifier object specifying the `idType` and `value`. The value is normalized using the configured identity resolution settings (such as phone number formatting) prior to matching. Multiple matches are returned if more than one profile is associated with the identifier. Returns canonical profile IDs (the earliest ID if profiles have been merged) along with the normalized value actually searched.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/Lookup
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(Identifier)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(Identifier)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.lookup.createResponse200)
+        RETURNVAR: twilio_memory_store_lookup_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.lookup.create
+  twilio_memory.store.identifiers.get:
+    SUMMARY: List Profile Identifiers
+    DESC: Retrieve all identifier types linked to a profile along with their stored values. Use this to audit which external keys (phone, email, externalId, etc.) are currently associated. Values are returned in the order enforced by each identifier settings `limitPolicy` and reflect any normalization applied by the service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Identifiers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.identifiers.getResponse200)
+        RETURNVAR: twilio_memory_store_identifiers_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.identifiers.get
+  twilio_memory.store.identifiers.create:
+    SUMMARY: Add Profile Identifier
+    DESC: Asynchronously attach a new identifier value to a profile. When multiple values exist for an `idType`, ordering, limits, and uniqueness checks are enforced by the corresponding identifier settings `limitPolicy` and  reflect any normalization. If the identifier already exists and points to another profile, resolution rules or merge processes may apply. Use the identifier specific endpoint to inspect, update, or remove existing values.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Identifiers
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(Identifier)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(Identifier)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.identifiers.createResponse202)
+        RETURNVAR: twilio_memory_store_identifiers_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.identifiers.create
+  twilio_memory.store.identifiers.get.1:
+    SUMMARY: Retrieve Profile Identifier
+    DESC: Retrieve all stored values for a specific identifier type on a profile. Values are normalized according to the configured identifier settings and returned in the order determined by its `limitPolicy`.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Identifiers/{idType}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - idType:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(IdentifierSet)
+        RETURNVAR: twilio_memory_store_identifiers_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.identifiers.get.1
+  twilio_memory.store.identifiers.update:
+    SUMMARY: Modify Profile Identifier
+    DESC: |-
+      Asynchronously replace one of the stored values associated with the
+      identifier type on a profile. `newValue` is normalized according to
+      the configured identifier settings.
+
+      If the new identifier already exists and points to another profile,
+      merge processes may apply.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Identifiers/{idType}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(IdentifierUpdate)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - idType:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(IdentifierUpdate)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.identifiers.updateResponse202)
+        RETURNVAR: twilio_memory_store_identifiers_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.identifiers.update
+  twilio_memory.store.identifiers.delete:
+    SUMMARY: Remove Profile Identifier
+    DESC: Asynchronously remove stored values for the identifier type. The optional `removeAll` query parameter allows bulk removal; otherwise the service selects a single value to delete using the identifier settings `limitPolicy`.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Identifiers/{idType}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - idType:
+          TYPE: STRING
+          LOCATION: path
+      - removeAll:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: false
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.identifiers.deleteResponse202)
+        RETURNVAR: twilio_memory_store_identifiers_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.identifiers.delete
+  twilio_memory.store.recall.create:
+    SUMMARY: Retrieve Memories
+    DESC: Tailored memory retrieval for agentic workloads. Supports hybrid semantic search, date ranges, and configurable result limits for different memory types. This endpoint is optimized for conversational AI and memory retrieval use cases. If a query is not specified then one is inferred from the conversation context. If neither a query nor a conversationId is provided, results are returned in most-recent order without relevance scores.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Recall
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(MemoryRetrievalRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Content-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(MemoryRetrievalRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(MemoryRetrievalResponse)
+        RETURNVAR: twilio_memory_store_recall_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.recall.create
+  twilio_memory.store.observations.get:
+    SUMMARY: List Observations
+    DESC: Retrieve a paginated list of transient observations for a specific profile. Observations are sorted by creation time in descending order by default. Results can be filtered by source parameter. Supports response compression for large datasets.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+      - source:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - createdAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - createdBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.observations.getResponse200)
+        RETURNVAR: twilio_memory_store_observations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.observations.get
+  twilio_memory.store.observations.create:
+    SUMMARY: Create Observations
+    DESC: Create one or more transient observations associated with the specified profile. Supports both single observation creation and batch creation of up to 10 observations. Supports request compression for large batch operations and response compression for the response. All observations will be automatically indexed for semantic search capabilities. The content can be up to 4KB in length and should contain relevant information about the profile. The createdAt and updatedAt timestamps will be automatically set to the current time. Each observation will be created with a unique ID in Twilio Type ID (TTID) format.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(CreateObservationsRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Content-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(CreateObservationsRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ObservationCreatedResponse)
+        RETURNVAR: twilio_memory_store_observations_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.observations.create
+  twilio_memory.store.observations.get.1:
+    SUMMARY: Retrieve Observation
+    DESC: Retrieve a specific transient observation by its ID for the given profile.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations/{observationId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - observationId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ObservationInfo)
+        RETURNVAR: twilio_memory_store_observations_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.observations.get.1
+  twilio_memory.store.observations.update:
+    SUMMARY: Update Observation
+    DESC: Update a specific transient observation by its ID. Only provided fields will be updated. The updated timestamp will be automatically set. This allows for selective updates without needing to provide all fields.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations/{observationId}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ObservationCore)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - observationId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ObservationCore)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.observations.updateResponse202)
+        RETURNVAR: twilio_memory_store_observations_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.observations.update
+  twilio_memory.store.observations.delete:
+    SUMMARY: Delete Observation
+    DESC: Delete a specific transient observation by its ID. This action is irreversible.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations/{observationId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - observationId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.observations.deleteResponse202)
+        RETURNVAR: twilio_memory_store_observations_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.observations.delete
+  twilio_memory.store.revisions.get:
+    SUMMARY: List Observation Revisions
+    DESC: Retrieve a chronologically ordered list of all past revisions of a specific observation by its ID. Revisions represent the complete history of updates and modifications made to an observation, with each revision capturing the full state at the time of change. Revisions are sorted by update time in descending order (newest first), allowing you to track how an observation has evolved through updates over time.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Observations/{observationId}/Revisions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - observationId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.revisions.getResponse200)
+        RETURNVAR: twilio_memory_store_revisions_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.revisions.get
+  twilio_memory.store.conversationSummaries.get:
+    SUMMARY: List Conversation Summaries
+    DESC: Retrieve a paginated list of conversation summaries for a specific profile.  Supports response compression for large datasets.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.conversationSummaries.getResponse200)
+        RETURNVAR: twilio_memory_store_conversationSummaries_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.conversationSummaries.get
+  twilio_memory.store.conversationSummaries.create:
+    SUMMARY: Create Conversation Summaries
+    DESC: Create one or more conversation summaries associated with the specified profile. Supports both single summary creation and batch creation of up to 10 summaries. Supports request compression for large batch operations and response compression for the response. All summaries will be automatically indexed for semantic search capabilities. The content summary can be up to 4KB in length. Each summary will be created with a unique ID in Twilio Type ID (TTID) format.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(CreateSummariesRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - Accept-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Content-Encoding:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(CreateSummariesRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(SummariesCreatedResponse)
+        RETURNVAR: twilio_memory_store_conversationSummaries_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.conversationSummaries.create
+  twilio_memory.store.profiles.get.1:
+    SUMMARY: List Profiles
+    DESC: Return a paginated list of profile IDs ordered by most recently created first. Use the optional paging parameters (`pageSize`, `pageToken`, `orderBy`) to control pagination and sorting. This endpoint is optimized for browsing newly created profiles and lightweight lookups where only the identifiers are needed before requesting full profile details.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.profiles.getResponse200)
+        RETURNVAR: twilio_memory_store_profiles_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.profiles.get.1
+  twilio_memory.store.profiles.create:
+    SUMMARY: Create Profile
+    DESC: Create a new profile and set initial traits. The request synchronously resolves identity and either creates a new profile ID or retrieves the associated canonical profile ID based on any provided identifier traits present in the request. The request must contain at least one trait that is promoted to an identifier in its trait group settings. Any additional traits are queued for asynchronous processing.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ProfileData)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ProfileData)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.profiles.createResponse202)
+        RETURNVAR: twilio_memory_store_profiles_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.profiles.create
+  twilio_memory.store.bulk.update:
+    SUMMARY: Bulk Upsert Profiles
+    DESC: Create or update up to 1000 profiles in a single asynchronous batch. Each profile body follows the same structure as single profile creation. If a profile already exists its traits are merged (new keys added, existing keys overwritten). Large batches may take time to process; the 202 response indicates the batch has been accepted. Monitor downstream telemetry or audit logs to confirm completion.
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/Bulk
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.store.bulk.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.store.bulk.updateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.bulk.updateResponse202)
+        RETURNVAR: twilio_memory_store_bulk_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.bulk.update
+  twilio_memory.store.traits.get:
+    SUMMARY: List Profile Traits
+    DESC: Return a paginated, optionally filtered list of individual traits for a profile (flattened view). This is useful for UIs or tools that need to browse trait metadata (names, groups, timestamps). Use the optional `traitGroups` filter to scope results and the paging parameters to iterate through larger sets.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Traits
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+      - traitGroups:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.traits.getResponse200)
+        RETURNVAR: twilio_memory_store_traits_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.traits.get
+  twilio_memory.store.events.create:
+    SUMMARY: Add events to a specific profile.
+    DESC: |-
+      Multiple events can be added to a profile in a single request.
+      The maximum number of events per request is 1000 and they will be processed asynchronously.
+
+      Any traits that are configured for identifier promotion will be set as an identifier value on the profile.
+
+      Types of events:
+
+      - `twilio-communication-event` - Twilio communication event, used for tracking multi-channel communications.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/Events
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ProfileEventRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ProfileEventRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.events.createResponse202)
+        RETURNVAR: twilio_memory_store_events_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.events.create
+  twilio_memory.controlplane.stores.list:
+    SUMMARY: List Memory Stores
+    DESC: Get a list of memory stores for the Twilio account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+    RETURNS:
+      - RETURNTYPE: STRUCT(ServiceList)
+        RETURNVAR: twilio_memory_controlplane_stores_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.stores.list
+  twilio_memory.controlplane.stores.create:
+    SUMMARY: Create a Memory Store
+    DESC: |-
+      Create a new Memory Store for the Twilio account. Accounts can have multiple memory stores, up to a maximum limit of 15.
+      Each memory store will automatically provision other dependent resources as needed, including Conversational Intelligence
+      capabilities.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ControlPlane/Stores
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ServiceRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(ServiceRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.stores.createResponse202)
+        RETURNVAR: twilio_memory_controlplane_stores_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.stores.create
+  twilio_memory.controlplane.stores.get:
+    SUMMARY: Retrieve a Memory Store.
+    DESC: Retrieve the details of a specific Memory Store by its unique ID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(Store)
+        RETURNVAR: twilio_memory_controlplane_stores_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.stores.get
+  twilio_memory.controlplane.stores.update:
+    SUMMARY: Update a Memory Store
+    DESC: Partially update a Memory Store. Only the fields provided in the request body will be updated.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.stores.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(api.controlplane.stores.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.stores.updateResponse202)
+        RETURNVAR: twilio_memory_controlplane_stores_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.stores.update
+  twilio_memory.controlplane.stores.delete:
+    SUMMARY: Delete a Memory Store
+    DESC: Deletes the Memory Store and all associated resources including identity resolution settings, trait groups, profiles, traits, observations, and summaries.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.stores.deleteResponse202)
+        RETURNVAR: twilio_memory_controlplane_stores_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.stores.delete
+  twilio_memory.controlplane.identityResolutionSettings.get:
+    SUMMARY: Retrieve Identity Resolution Settings.
+    DESC: |-
+      These settings determine how Customer Memory will use identifiers for searching,
+      merging, and resolving profiles.
+      > Some settings can only take on their default values and are not yet available to change, but coming soon.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/IdentityResolutionSettings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(IdentityResolutionSettings)
+        RETURNVAR: twilio_memory_controlplane_identityResolutionSettings_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.identityResolutionSettings.get
+  twilio_memory.controlplane.identityResolutionSettings.update:
+    SUMMARY: Update Identity Resolution Settings.
+    DESC: |
+      Update the identity resolution settings for this memory store, which
+      determine how Customer Memory will use identifiers for searching,
+      merging, and resolving profiles.
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/IdentityResolutionSettings
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(IdentityResolutionSettingsCore)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(IdentityResolutionSettingsCore)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.identityResolutionSettings.updateResponse202)
+        RETURNVAR: twilio_memory_controlplane_identityResolutionSettings_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.identityResolutionSettings.update
+  twilio_memory.controlplane.traitGroups.get:
+    SUMMARY: List Trait Groups
+    DESC: Returns a list of Trait Groups for this Memory Store, with optional traits information.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/TraitGroups
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - includeTraits:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: false
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.traitGroups.getResponse200)
+        RETURNVAR: twilio_memory_controlplane_traitGroups_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.traitGroups.get
+  twilio_memory.controlplane.traitGroups.create:
+    SUMMARY: Create a Trait Group
+    DESC: |
+      Creates a Trait Group with declarative trait schemas for this Memory Store.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/TraitGroups
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(TraitGroupRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(TraitGroupRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.traitGroups.createResponse202)
+        RETURNVAR: twilio_memory_controlplane_traitGroups_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.traitGroups.create
+  twilio_memory.controlplane.traitGroups.get.1:
+    SUMMARY: Retrieve a Trait Group
+    DESC: Retrieve a specific Trait Group by its unique name for this Memory Store, with optional traits information.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/TraitGroups/{traitGroupName}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - traitGroupName:
+          TYPE: STRING
+          LOCATION: path
+      - includeTraits:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: true
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.traitGroups.getResponse200)
+        RETURNVAR: twilio_memory_controlplane_traitGroups_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.traitGroups.get.1
+  twilio_memory.controlplane.traitGroups.update:
+    SUMMARY: Update Trait Group
+    DESC: |
+      Partially updates a Trait Group. Only the fields provided in the request body will be updated. For traits:
+      existing traits with matching keys will be updated, new keys will be added. To remove a trait, set its dataType to
+      an empty string ("") - this serves as an explicit deletion marker.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/TraitGroups/{traitGroupName}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.traitGroups.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - traitGroupName:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(api.controlplane.traitGroups.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.traitGroups.updateResponse202)
+        RETURNVAR: twilio_memory_controlplane_traitGroups_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.traitGroups.update
+  twilio_memory.controlplane.traitGroups.delete:
+    SUMMARY: Delete a Trait Group
+    DESC: |
+      Deletes the Trait Group and all associated Traits from the Memory Store.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/TraitGroups/{traitGroupName}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - traitGroupName:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.traitGroups.deleteResponse202)
+        RETURNVAR: twilio_memory_controlplane_traitGroups_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.traitGroups.delete
+  twilio_memory.controlplane.dataMappings.get:
+    SUMMARY: List Data Mappings
+    DESC: Get a list of data mappings configured for this Memory Store.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/DataMappings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - orderBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: DESC
+      - type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(DataMappingList)
+        RETURNVAR: twilio_memory_controlplane_dataMappings_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.dataMappings.get
+  twilio_memory.controlplane.dataMappings.create:
+    SUMMARY: Create a Data Mapping
+    DESC: |-
+      Create a new data mapping to connect an external data source to this Memory Store.
+      For DATASET types, validates that all mapped Trait Groups and traits exist
+      and that dataset field data types match their respective mapped trait data types.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/DataMappings
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(CreateDataMappingInput)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(CreateDataMappingInput)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.dataMappings.createResponse202)
+        RETURNVAR: twilio_memory_controlplane_dataMappings_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.dataMappings.create
+  twilio_memory.controlplane.dataMappings.get.1:
+    SUMMARY: Retrieve a Data Mapping
+    DESC: Retrieve the details of a specific data mapping by its unique ID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/DataMappings/{dataMappingId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - dataMappingId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(DataMapping)
+        RETURNVAR: twilio_memory_controlplane_dataMappings_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.dataMappings.get.1
+  twilio_memory.controlplane.dataMappings.update:
+    SUMMARY: Update a Data Mapping
+    DESC: |-
+      Partially update a data mapping. Only the fields provided in the request body will be updated,
+      including replacing the entire contents of the `mappings` array.
+
+      For DATASET types, validates that all mapped Trait Groups and traits exist
+      and that dataset field data types match their respective mapped trait data types.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/DataMappings/{dataMappingId}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(DataMappingCore)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - dataMappingId:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(DataMappingCore)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.dataMappings.updateResponse202)
+        RETURNVAR: twilio_memory_controlplane_dataMappings_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.dataMappings.update
+  twilio_memory.controlplane.dataMappings.delete:
+    SUMMARY: Delete a Data Mapping
+    DESC: Delete a data mapping from the Memory Store. This action cannot be undone.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ControlPlane/Stores/{storeId}/DataMappings/{dataMappingId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - dataMappingId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.dataMappings.deleteResponse202)
+        RETURNVAR: twilio_memory_controlplane_dataMappings_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.dataMappings.delete
+  twilio_memory.store.conversationSummaries.get.1:
+    SUMMARY: Retrieve Conversation Summary
+    DESC: Retrieve a specific conversation summary by its ID for the given profile.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries/{summaryId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - summaryId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(SummaryInfo)
+        RETURNVAR: twilio_memory_store_conversationSummaries_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.conversationSummaries.get.1
+  twilio_memory.store.conversationSummaries.update:
+    SUMMARY: Update Conversation Summary
+    DESC: Partially update a specific conversation summary by its ID. Only provided fields will be updated. The updated timestamp will be automatically set. This allows for selective updates without needing to provide all fields.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries/{summaryId}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(SummaryCorePatch)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - summaryId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(SummaryCorePatch)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.conversationSummaries.updateResponse202)
+        RETURNVAR: twilio_memory_store_conversationSummaries_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.conversationSummaries.update
+  twilio_memory.store.conversationSummaries.delete:
+    SUMMARY: Delete Conversation Summary
+    DESC: Delete a specific conversation summary by its ID. This action is irreversible.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/{profileId}/ConversationSummaries/{summaryId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - profileId:
+          TYPE: STRING
+          LOCATION: path
+      - summaryId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.conversationSummaries.deleteResponse202)
+        RETURNVAR: twilio_memory_store_conversationSummaries_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.conversationSummaries.delete
+  twilio_memory.store.imports.get:
+    SUMMARY: Get a list of imports
+    DESC: Retrieve a list of profile import task IDs that have been submitted for this service. Use these IDs to query individual import status details.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/Imports
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.imports.getResponse200)
+        RETURNVAR: twilio_memory_store_imports_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.imports.get
+  twilio_memory.store.imports.create:
+    SUMMARY: Import Profiles
+    DESC: Initiate a profile import by requesting a pre-signed upload URL and an associated `importId`. Upload your CSV to the returned URL (single PUT). Query the import status endpoint to track processing progress. This endpoint creates the import task and allocates resources for subsequent ingestion.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/Imports
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.store.imports.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.store.imports.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.imports.createResponse201)
+        RETURNVAR: twilio_memory_store_imports_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.imports.create
+  twilio_memory.store.imports.get.1:
+    SUMMARY: Get Import Status
+    DESC: Retrieve the current processing status of a previously submitted bulk import task. Query this endpoint using the `importId` returned from the upload URL request until a terminal state (COMPLETED or FAILED) is reached.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Stores/{storeId}/Profiles/Imports/{importId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - storeId:
+          TYPE: STRING
+          LOCATION: path
+      - importId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.store.imports.getResponse200)
+        RETURNVAR: twilio_memory_store_imports_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.store.imports.get.1
+  twilio_memory.controlplane.operations.get:
+    SUMMARY: Get Operation Status
+    DESC: Retrieve the status and result of an asynchronous operation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ControlPlane/Operations/{operationId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - operationId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(OperationStatus)
+        RETURNVAR: twilio_memory_controlplane_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 429
+        WHEN: This error indicates that you have sent too many requests to the API. You should retry according to the `Retry-After` response header. (HTTP 429)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(TwilioError)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: twilio_memory.controlplane.operations.get
+STRUCTS:
+  TwilioError:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: The Twilio error code.
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: A human readable message describing the error.
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: A URL to a [Twilio error directory](https://www.twilio.com/docs/api/errors) page with more information about the error code.
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: The HTTP status code for the error.
+  Identifier:
+    - name: idType
+      type: STRING
+      REQUIRED: true
+      comment: Identifier type as configured in the service's Identity Resolution Settings.
+    - name: value
+      type: STRING
+      REQUIRED: true
+      comment: Raw value captured for the identifier. The service may normalize this value according to the `normalization` rule defined in the identifier settings before storage or matching (for example E.164 formatting for phone numbers).
+  IdentifierSet:
+    - name: idType
+      type: STRING
+      REQUIRED: true
+      comment: Identifier type defined in Identity Resolution Settings.
+    - name: values
+      type: "[]STRING"
+      REQUIRED: true
+      comment: Server managed collection of stored values for the identifier type.  Identifier values are normalized according to the corresponding identifier settings and ordered chronologically.
+  IdentifierUpdate:
+    - name: idType
+      type: STRING
+      REQUIRED: true
+      comment: The identifier type to update (e.g., email, phone).
+    - name: oldValue
+      type: STRING
+      REQUIRED: true
+      comment: Existing stored value to replace.
+    - name: newValue
+      type: STRING
+      REQUIRED: true
+      comment: New value to store for the identifier. Normalization rules from the corresponding identifier settings apply.
+  ObservationCore:
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the observation.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation originally occurred.
+    - name: source
+      type: STRING
+      REQUIRED: true
+      comment: The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: conversationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Array of conversation IDs associated with this observation.
+  ObservationInfo:
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the observation.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation originally occurred.
+    - name: source
+      type: STRING
+      REQUIRED: true
+      comment: The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: conversationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Array of conversation IDs associated with this observation.
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation was last updated.
+  SummaryCore:
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the summary.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was originally created.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+  SummaryInfo:
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the summary.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was originally created.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was last updated.
+  Participant:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Participant identifier.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Participant display name
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of Participant in the Conversation
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+      comment: The canonical profile ID.
+    - name: address
+      type: STRING
+      REQUIRED: true
+      comment: Address of the Participant (e.g., phone number, email address)
+    - name: channel
+      type: STRING
+      REQUIRED: true
+      comment: The channel on which the message originated
+  CommunicationContent:
+    - name: text
+      type: STRING
+      REQUIRED: false
+      comment: Primary text content (optional).
+  Communication:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Unique communication identifier.
+    - name: channelId
+      type: STRING
+      REQUIRED: false
+      comment: Channel-specific ID (optional).
+    - name: content
+      type: STRUCT(CommunicationContent)
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: When communication was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: When communication was last updated.
+    - name: author
+      type: STRUCT(Participant)
+      REQUIRED: true
+    - name: recipients
+      type: "[]ANY"
+      REQUIRED: true
+      comment: Communication recipients
+  MemoryRetrievalRequest:
+    - name: conversationId
+      type: STRING
+      REQUIRED: false
+      comment: Required for session memory and query expansion.
+    - name: query
+      type: STRING
+      REQUIRED: false
+      comment: Hybrid search query for finding relevant memories. Omit to use query expansion to generate query from previous 10 communications in conversation.
+    - name: beginDate
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Start date for filtering memories (inclusive).
+    - name: endDate
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: End date for filtering memories (exclusive).
+    - name: communicationsLimit
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of conversational session memories to return. If omitted or set to 0, no session memories will be fetched.
+    - name: observationsLimit
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of observation memories to return. If omitted, defaults to 20. If set to 0, no observation memories will be fetched.
+    - name: summariesLimit
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of summary memories to return. If omitted, defaults to 5. If set to 0, no summary memories will be fetched.
+    - name: relevanceThreshold
+      type: FLOAT
+      REQUIRED: false
+      comment: Minimum relevance score threshold for observations and summaries to be returned. Only memories with a relevance score greater than or equal to this threshold will be included in the response. This threshold only applies when results are ranked by relevance. When results are returned in most-recent order, this field has no effect.
+  MemoryRetrievalResponse:
+    - name: observations
+      type: "[]STRUCT(RecallObservationInfo)"
+      REQUIRED: true
+      comment: Array of observation memories.
+    - name: summaries
+      type: "[]STRUCT(RecallSummaryInfo)"
+      REQUIRED: true
+      comment: Array of summary memories derived from observations at the end of conversations.
+    - name: communications
+      type: "[]STRUCT(Communication)"
+      REQUIRED: true
+      comment: Array of recent communication context.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+      comment: Metadata about the retrieval operation.
+  RecallObservationInfo:
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the observation.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation originally occurred.
+    - name: source
+      type: STRING
+      REQUIRED: true
+      comment: The source system that generated this observation. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: conversationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Array of conversation IDs associated with this observation.
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the observation was last updated.
+    - name: score
+      type: FLOAT
+      REQUIRED: false
+      comment: The relevance score of the observation in relation to the query. Higher values indicate greater relevance. This field is omitted when results are returned in most-recent order. This may occur when no query is provided and one cannot be inferred from the conversation context, or when the system defaults to chronological retrieval to ensure high availability.
+  RecallSummaryInfo:
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: content
+      type: STRING
+      REQUIRED: true
+      comment: The main content of the summary.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was originally created.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp when the summary was last updated.
+    - name: score
+      type: FLOAT
+      REQUIRED: false
+      comment: The relevance score of the summary in relation to the query. Higher values indicate greater relevance. This field is omitted when results are returned in most-recent order. This may occur when no query is provided and one cannot be inferred from the conversation context, or when the system defaults to chronological retrieval to ensure high availability.
+  ObservationsMeta:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: |
+        The key of the list property contains the actual data items.
+        This enables programmatic iteration over paginated results.
+    - name: pageSize
+      type: INT
+      REQUIRED: false
+    - name: nextToken
+      type: STRING
+      REQUIRED: false
+    - name: previousToken
+      type: STRING
+      REQUIRED: false
+  CreateObservationsRequest:
+    - name: observations
+      type: "[]STRUCT(ObservationCore)"
+      REQUIRED: true
+      comment: Array of observations to create in a single batch operation.
+  ObservationCreatedResponse:
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: Confirmation message for the operation.
+  CreateSummariesRequest:
+    - name: summaries
+      type: "[]STRUCT(SummaryCore)"
+      REQUIRED: true
+      comment: Array of summaries to create in a single batch operation.
+  SummariesCreatedResponse:
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: Confirmation message for the operation.
+  ProfilesMeta:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: |
+        The key of the list property contains the actual data items.
+        This enables programmatic iteration over paginated results.
+    - name: pageSize
+      type: INT
+      REQUIRED: false
+    - name: nextToken
+      type: STRING
+      REQUIRED: false
+    - name: previousToken
+      type: STRING
+      REQUIRED: false
+  FullTrait:
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the trait.
+    - name: value
+      type: STRUCT(TraitValue)
+      REQUIRED: false
+    - name: traitGroup
+      type: STRING
+      REQUIRED: true
+      comment: The trait group name to which this trait belongs.
+    - name: timestamp
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time the trait was created or last updated.
+  ProfileData:
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+  Profile:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time the profile was created.
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+  ProfilePatch:
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+  ColumnMappingItem:
+    - name: columnName
+      type: STRING
+      REQUIRED: true
+      comment: The name of the column in the CSV header
+    - name: traitGroup
+      type: STRING
+      REQUIRED: true
+      comment: The trait group to which this trait belongs
+    - name: traitName
+      type: STRING
+      REQUIRED: true
+      comment: The name of the trait in the trait group
+  ProfileEventRequest:
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of event being sent.
+    - name: events
+      type: "[]ANY"
+      REQUIRED: true
+  ServiceRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: Provides a unique and addressable name to be assigned to this Store. This name is assigned by the developer and can be used in addition to the ID. It is intended to be human-readable and unique within the account.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 128 characters.
+  Store:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: Provides a unique and addressable name to be assigned to this Store. This name is assigned by the developer and can be used in addition to the ID. It is intended to be human-readable and unique within the account.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 128 characters.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Memory Store
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: The current status of the Memory Store.  A store begins in the QUEUED state as it is scheduled for processing.  It then moves to PROVISIONING at the beginning of processing. It transitions to ACTIVE once all dependent resources are provisioned, including Conversational Intelligence capabilities.  If there is an issue provisioning resources, the store will move to the FAILED state.
+    - name: intelligenceServiceId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the associated intelligence service that was provisioned for memory extraction.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The current version number of the Memory Store. Incremented on each successful update.
+  ServiceList:
+    - name: stores
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of Memory Store IDs associated with the Twilio account.
+    - name: meta
+      type: STRUCT(Meta)
+      REQUIRED: false
+  Meta:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: |
+        The key of the list property contains the actual data items.
+        This enables programmatic iteration over paginated results.
+    - name: pageSize
+      type: INT
+      REQUIRED: false
+    - name: nextToken
+      type: STRING
+      REQUIRED: false
+    - name: previousToken
+      type: STRING
+      REQUIRED: false
+  IdentityResolutionSettingsCore:
+    - name: identifierConfigs
+      type: "[]STRUCT(IdentifierConfig)"
+      REQUIRED: false
+      comment: List of identifier types and their resolution settings.
+    - name: matchingRules
+      type: "[]STRING"
+      REQUIRED: false
+      comment: |-
+        Priority list of identifiers to locate profiles to apply new data to, or for
+        determining if two existing profiles should merge. Rules are evaluated in order.
+        - If no rule matches against existing profiles, a new profile will be created.
+        - If a rule matches to a single existing profile, the profile will be updated.
+        - If a rule matches to multiple existing profiles, those existing profiles will be merged.
+  IdentifierConfig:
+    - name: idType
+      type: STRING
+      REQUIRED: true
+      comment: Name of the identifier type. Usual values are email, phone, external_id etc.
+    - name: matchingAlgo
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The algorithm to use for matching identifier values.
+          - `exact`, exact string match.
+          - `fuzzy`, low precision match allowing for some variations.
+    - name: matchingThreshold
+      type: INT
+      REQUIRED: false
+      comment: The `fuzzy` matching threshold percentage.
+    - name: limit
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of historical values to retain.
+    - name: limitPolicy
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        Removal policy to apply when the number of values exceeds the limit and
+        is based on the timestamp of the request when the identifier was added.
+        - `fifo`: First In First Out, removes the oldest values first.
+        - `lifo`: Last In First Out, removes the most recent values first.
+    - name: enforceUnique
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        When enabled, more than one profile may not share the same identifier value.
+        Adding a shared identifier to a second profile may trigger a merge.
+        Disabling creates a compound identifier where merges are only triggered if
+        two or more identifiers satisfy a matching rule.
+    - name: normalization
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        Normalization to apply to the identifier value before storing and matching.
+        - `phone`: Normalize phone numbers to E.164 format.
+        - `email`: Normalize email addresses by coverting to lowercase and removing spaces.
+        - `trim`: Removes spaces from both ends of the string.
+        - `none`: No normalization.
+
+        **Important Note for Phone Number Normalization:**
+        When using the `phone` normalization option, please adhere to the following guidelines to ensure proper formatting:
+        - All US numbers must be at least valid 10 digit phone numbers with area code. They may also include or omit the "+1" prefix.
+        - Non-US numbers must include a 1-3 digit country code (a "+" prefix is optional). Non-US national formats are not supported and will be interpreted as US numbers.
+  IdentityResolutionSettings:
+    - name: identifierConfigs
+      type: "[]STRUCT(IdentifierConfig)"
+      REQUIRED: false
+      comment: List of identifier types and their resolution settings.
+    - name: matchingRules
+      type: "[]STRING"
+      REQUIRED: false
+      comment: |-
+        Priority list of identifiers to locate profiles to apply new data to, or for
+        determining if two existing profiles should merge. Rules are evaluated in order.
+        - If no rule matches against existing profiles, a new profile will be created.
+        - If a rule matches to a single existing profile, the profile will be updated.
+        - If a rule matches to multiple existing profiles, those existing profiles will be merged.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The current version number of the Identity Resolution Settings. Incremented on each successful update.
+  TraitGroup:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: Provides a unique and addressable name to be assigned to this Trait Group
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: description of the Trait Group
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+      comment: Map of traits that are part of this Trait Group, where the key is the trait name and the value is the trait's definition.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The current version number of the Trait Group. Incremented on each successful update.
+  TraitGroupRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: Unique name of the Trait Group
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: description of the Trait Group
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+      comment: Map of traits belonging to this Trait Group, keyed by trait name.
+  DataMappingCore:
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 512 characters.
+    - name: isEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        Flag indicating whether the data mapping is active. When true, data will be
+        ingested and mapped according to the configuration. When false, the data mapping
+        will be inactive and no data will be ingested into the Memory Store.
+    - name: mappingTo
+      type: OBJECT
+      REQUIRED: false
+  CreateDataMappingInput:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 512 characters.
+    - name: isEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        Flag indicating whether the data mapping is active. When true, data will be
+        ingested and mapped according to the configuration. When false, the data mapping
+        will be inactive and no data will be ingested into the Memory Store.
+    - name: mappingTo
+      type: OBJECT
+      REQUIRED: true
+    - name: mappingFrom
+      type: OBJECT
+      REQUIRED: true
+  DataMapping:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 512 characters.
+    - name: isEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        Flag indicating whether the data mapping is active. When true, data will be
+        ingested and mapped according to the configuration. When false, the data mapping
+        will be inactive and no data will be ingested into the Memory Store.
+    - name: mappingTo
+      type: OBJECT
+      REQUIRED: true
+    - name: mappingFrom
+      type: OBJECT
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the data mapping.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The ISO 8601 timestamp when the  data mapping was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The ISO 8601 timestamp when the data mapping was last updated.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The current version number of the DataMapping. Incremented on each successful update.
+  DataMappingList:
+    - name: dataMappings
+      type: "[]STRUCT(DataMapping)"
+      REQUIRED: false
+      comment: List of DataMappings associated with the Memory Store.
+    - name: meta
+      type: STRUCT(Meta)
+      REQUIRED: false
+  SummaryCorePatch:
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: The source system that generated the summary. Allows letters, numbers, spaces, and URL-safe symbols. Excludes URL-unsafe characters like quotes, angle brackets, and control characters.
+    - name: content
+      type: STRING
+      REQUIRED: false
+      comment: The main content of the summary.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The timestamp when the summary was originally created. If not provided, defaults to the time the summary was received.
+    - name: conversationId
+      type: STRING
+      REQUIRED: false
+  OperationStatus:
+    - name: operationId
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for this operation.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: The current status of the operation.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: When the operation was created.
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+    - name: completedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: When the operation completed or failed.
+    - name: result
+      type: STRUCT(OperationResult)
+      REQUIRED: false
+    - name: error
+      type: OBJECT
+      REQUIRED: false
+    - name: resultUrl
+      type: STRING
+      REQUIRED: false
+      comment: URL to fetch the resulting resource.
+  OperationResult:
+    - name: type
+      type: STRING
+      REQUIRED: true
+    - name: variant_OperationResultResourceId
+      type: STRUCT(OperationResultResourceId)
+      REQUIRED: false
+  OperationResultResourceId:
+    - name: type
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The identifier of the created or affected resource.
+  api.store.profiles.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.profiles.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.lookup.createResponse200:
+    - name: normalizedValue
+      type: STRING
+      REQUIRED: false
+      comment: Identifier value after normalization that was used for the lookup.
+    - name: profiles
+      type: "[]STRING"
+      REQUIRED: false
+  api.store.identifiers.getResponse200:
+    - name: identifiers
+      type: "[]STRUCT(IdentifierSet)"
+      REQUIRED: false
+  api.store.identifiers.createResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.identifiers.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.identifiers.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.observations.getResponse200:
+    - name: observations
+      type: "[]STRUCT(ObservationInfo)"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(ObservationsMeta)
+      REQUIRED: false
+  api.store.observations.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.observations.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.revisions.getResponse200:
+    - name: revisions
+      type: "[]STRUCT(ObservationInfo)"
+      REQUIRED: false
+      comment: Array of observation revisions ordered chronologically descending by update time (newest first).
+    - name: meta
+      type: STRUCT(ObservationsMeta)
+      REQUIRED: false
+  api.store.conversationSummaries.getResponse200:
+    - name: summaries
+      type: "[]STRUCT(SummaryInfo)"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(ObservationsMeta)
+      REQUIRED: false
+  api.store.profiles.getResponse200:
+    - name: profiles
+      type: "[]STRING"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(ProfilesMeta)
+      REQUIRED: false
+  api.store.profiles.createResponse202:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.bulk.updateRequest:
+    - name: profiles
+      type: "[]STRUCT(ProfileData)"
+      REQUIRED: false
+  api.store.bulk.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.traits.getResponse200:
+    - name: traits
+      type: "[]STRUCT(FullTrait)"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(ProfilesMeta)
+      REQUIRED: false
+  api.store.events.createResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+  api.controlplane.stores.createResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.stores.updateRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this Store. This name is assigned by the developer and can be used in addition to the ID. It is intended to be human-readable and unique within the account.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 128 characters.
+  api.controlplane.stores.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.stores.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.identityResolutionSettings.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.traitGroups.getResponse200:
+    - name: traitGroups
+      type: "[]STRUCT(TraitGroup)"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(Meta)
+      REQUIRED: false
+  api.controlplane.traitGroups.createResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.traitGroups.updateRequest:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Updated description of the Trait Group
+    - name: traits
+      type: map[STRING]ANY
+      REQUIRED: false
+      comment: "Map of traits to add, update, or remove in this Trait Group, where the key is the trait name. - To update/add a trait: provide the complete TraitDefinition object - To remove a trait: set dataType to an empty string (\"\")"
+  api.controlplane.traitGroups.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.traitGroups.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.dataMappings.createResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.dataMappings.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.controlplane.dataMappings.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: statusUrl
+      type: STRING
+      REQUIRED: false
+      comment: URI to check operation status.
+  api.store.conversationSummaries.updateResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.conversationSummaries.deleteResponse202:
+    - name: message
+      type: STRING
+      REQUIRED: true
+  api.store.imports.getResponse200:
+    - name: imports
+      type: "[]STRING"
+      REQUIRED: false
+  api.store.imports.createRequest:
+    - name: filename
+      type: STRING
+      REQUIRED: true
+      comment: The name of the file to generate a presigned URL
+    - name: fileSize
+      type: INT
+      REQUIRED: true
+      comment: The size of the file in bytes (1 byte to 100 MiB)
+    - name: columnMappings
+      type: "[]STRUCT(ColumnMappingItem)"
+      REQUIRED: true
+      comment: Mappings of CSV header columns to traits' fields
+  api.store.imports.createResponse201:
+    - name: importId
+      type: STRING
+      REQUIRED: true
+      comment: ID of the import task.
+    - name: url
+      type: STRING
+      REQUIRED: true
+      comment: Pre-signed URL to upload the CSV via a single PUT request.

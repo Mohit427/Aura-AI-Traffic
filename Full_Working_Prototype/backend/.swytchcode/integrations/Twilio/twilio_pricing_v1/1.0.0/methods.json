@@ -1,0 +1,54 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get messaging capabilities for a specific country",
+      "canonical_id": "twilio_pricing.messaging.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get phone number country details by ISO code",
+      "canonical_id": "twilio_pricing.phonenumber.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice country information by ISO code",
+      "canonical_id": "twilio_pricing.voice.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice number details by number",
+      "canonical_id": "twilio_pricing.voice.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available countries for messaging services",
+      "canonical_id": "twilio_pricing.messaging.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available phone number countries",
+      "canonical_id": "twilio_pricing.phonenumber.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available voice countries",
+      "canonical_id": "twilio_pricing.voice.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get country details by ISO code",
+      "canonical_id": "twilio_pricing.voice.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice call pricing for a destination number",
+      "canonical_id": "twilio_pricing.voice.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available countries for voice services",
+      "canonical_id": "twilio_pricing.voice.countries.list"
+    }
+  ]
+}

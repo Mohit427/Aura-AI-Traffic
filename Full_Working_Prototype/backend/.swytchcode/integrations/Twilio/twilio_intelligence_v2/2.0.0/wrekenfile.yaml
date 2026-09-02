@@ -1,0 +1,1469 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://intelligence.twilio.com
+METHODS:
+  twilio_intelligence.operator.custom.create:
+    SUMMARY: Create a new Custom Operator for the given Account
+    DESC: Create a new Custom Operator for the given Account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Operators/Custom
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - OperatorType:
+          TYPE: STRING
+          LOCATION: body
+      - Config:
+          TYPE: ANY
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.custom_operator)
+        RETURNVAR: twilio_intelligence_operator_custom_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_intelligence.operator.custom.create
+  twilio_intelligence.operator.custom.list:
+    SUMMARY: Retrieves a list of all Custom Operators for an Account.
+    DESC: Retrieves a list of all Custom Operators for an Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators/Custom
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Availability:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.operator.custom.listResponse200)
+        RETURNVAR: twilio_intelligence_operator_custom_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.custom.list
+  twilio_intelligence.operator.custom.create.1:
+    SUMMARY: Update a specific Custom Operator.
+    DESC: Update a specific Custom Operator.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Operators/Custom/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Config:
+          TYPE: ANY
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.custom_operator)
+        RETURNVAR: twilio_intelligence_operator_custom_create_1_202
+        STATUS: 202
+    CANONICAL_ID: twilio_intelligence.operator.custom.create.1
+  twilio_intelligence.operator.custom.delete:
+    SUMMARY: Delete a specific Custom Operator.
+    DESC: Delete a specific Custom Operator.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Operators/Custom/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_intelligence.operator.custom.delete
+  twilio_intelligence.operator.custom.get:
+    SUMMARY: Fetch a specific Custom Operator.
+    DESC: Fetch a specific Custom Operator.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators/Custom/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.custom_operator)
+        RETURNVAR: twilio_intelligence_operator_custom_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.custom.get
+  twilio_intelligence.transcript.encrypted.get:
+    SUMMARY: Fetch Public Key Encrypted Operator Results by TranscriptSid
+    DESC: Fetch Public Key Encrypted Operator Results by TranscriptSid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{TranscriptSid}/OperatorResults/Encrypted
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TranscriptSid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript.encrypted_operator_results)
+        RETURNVAR: twilio_intelligence_transcript_encrypted_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.encrypted.get
+  twilio_intelligence.transcript.encrypted.get.1:
+    SUMMARY: Fetch Public Key Encrypted Sentences by TranscriptSid
+    DESC: Fetch Public Key Encrypted Sentences by TranscriptSid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{TranscriptSid}/Sentences/Encrypted
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TranscriptSid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript.encrypted_sentences)
+        RETURNVAR: twilio_intelligence_transcript_encrypted_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.encrypted.get.1
+  twilio_intelligence.transcript.media.get:
+    SUMMARY: Get download URLs for media if possible
+    DESC: Get download URLs for media if possible
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{Sid}/Media
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript.media)
+        RETURNVAR: twilio_intelligence_transcript_media_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.media.get
+  twilio_intelligence.operator.get:
+    SUMMARY: Fetch a specific Operator. Works for both Custom and Pre-built Operators.
+    DESC: Fetch a specific Operator. Works for both Custom and Pre-built Operators.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.operator)
+        RETURNVAR: twilio_intelligence_operator_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.get
+  twilio_intelligence.operator.list:
+    SUMMARY: Retrieves a list of all Operators for an Account, both Custom and Pre-built.
+    DESC: Retrieves a list of all Operators for an Account, both Custom and Pre-built.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Availability:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.operator.listResponse200)
+        RETURNVAR: twilio_intelligence_operator_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.list
+  twilio_intelligence.service.operators.create:
+    SUMMARY: Attach an Operator to a Service.
+    DESC: Attach an Operator to a Service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Operators/{OperatorSid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - OperatorSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.operator_attachment)
+        RETURNVAR: twilio_intelligence_service_operators_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_intelligence.service.operators.create
+  twilio_intelligence.service.operators.delete:
+    SUMMARY: Detach an Operator from a Service.
+    DESC: Detach an Operator from a Service.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Operators/{OperatorSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - OperatorSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_intelligence.service.operators.delete
+  twilio_intelligence.service.operators.get:
+    SUMMARY: Retrieve Operators attached to a Service.
+    DESC: Retrieve Operators attached to a Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Operators
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.operator_attachments)
+        RETURNVAR: twilio_intelligence_service_operators_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.service.operators.get
+  twilio_intelligence.transcript.operatorResults.get:
+    SUMMARY: Retrieve a list of Operator Results for the given Transcript.
+    DESC: Retrieve a list of Operator Results for the given Transcript.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{TranscriptSid}/OperatorResults
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TranscriptSid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.transcript.operatorResults.getResponse200)
+        RETURNVAR: twilio_intelligence_transcript_operatorResults_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.operatorResults.get
+  twilio_intelligence.transcript.operatorResults.get.1:
+    SUMMARY: Fetch a specific Operator Result for the given Transcript.
+    DESC: Fetch a specific Operator Result for the given Transcript.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{TranscriptSid}/OperatorResults/{OperatorSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TranscriptSid:
+          TYPE: STRING
+          LOCATION: path
+      - OperatorSid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript.operator_result)
+        RETURNVAR: twilio_intelligence_transcript_operatorResults_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.operatorResults.get.1
+  twilio_intelligence.operatortype.list:
+    SUMMARY: Retrieves a list of all Operator Types for an Account.
+    DESC: Retrieves a list of all Operator Types for an Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/OperatorTypes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.operatortype.listResponse200)
+        RETURNVAR: twilio_intelligence_operatortype_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operatortype.list
+  twilio_intelligence.operatortype.get:
+    SUMMARY: Fetch a specific Operator Type.
+    DESC: Fetch a specific Operator Type.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/OperatorTypes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.operator_type)
+        RETURNVAR: twilio_intelligence_operatortype_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operatortype.get
+  twilio_intelligence.operator.preBuilt.get:
+    SUMMARY: Fetch a specific Pre-built Operator.
+    DESC: Fetch a specific Pre-built Operator.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators/PreBuilt/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.prebuilt_operator)
+        RETURNVAR: twilio_intelligence_operator_preBuilt_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.preBuilt.get
+  twilio_intelligence.operator.preBuilt.list:
+    SUMMARY: Retrieves a list of all Pre-built Operators for an account.
+    DESC: Retrieves a list of all Pre-built Operators for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Operators/PreBuilt
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Availability:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.operator.preBuilt.listResponse200)
+        RETURNVAR: twilio_intelligence_operator_preBuilt_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.operator.preBuilt.list
+  twilio_intelligence.transcript.sentences.get:
+    SUMMARY: Get all Transcript Sentences by TranscriptSid
+    DESC: Get all Transcript Sentences by TranscriptSid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{TranscriptSid}/Sentences
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TranscriptSid:
+          TYPE: STRING
+          LOCATION: path
+      - Redacted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - WordTimestamps:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.transcript.sentences.getResponse200)
+        RETURNVAR: twilio_intelligence_transcript_sentences_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.sentences.get
+  twilio_intelligence.service.create:
+    SUMMARY: Create a new Service for the given Account
+    DESC: Create a new Service for the given Account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - AutoTranscribe:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DataLogging:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoRedaction:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MediaRedaction:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookHttpMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.service)
+        RETURNVAR: twilio_intelligence_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_intelligence.service.create
+  twilio_intelligence.service.list:
+    SUMMARY: Retrieves a list of all Services for an account.
+    DESC: Retrieves a list of all Services for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_intelligence_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.service.list
+  twilio_intelligence.service.delete:
+    SUMMARY: Delete a specific Service.
+    DESC: Delete a specific Service.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_intelligence.service.delete
+  twilio_intelligence.service.get:
+    SUMMARY: Fetch a specific Service.
+    DESC: Fetch a specific Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.service)
+        RETURNVAR: twilio_intelligence_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.service.get
+  twilio_intelligence.service.create.1:
+    SUMMARY: Update a specific Service.
+    DESC: Update a specific Service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - AutoTranscribe:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DataLogging:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoRedaction:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MediaRedaction:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookHttpMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.service)
+        RETURNVAR: twilio_intelligence_service_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.service.create.1
+  twilio_intelligence.transcript.create:
+    SUMMARY: Create a new Transcript for the service
+    DESC: Create a new Transcript for the service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Transcripts
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: body
+      - Channel:
+          TYPE: ANY
+          LOCATION: body
+      - CustomerKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MediaStartTime:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript)
+        RETURNVAR: twilio_intelligence_transcript_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_intelligence.transcript.create
+  twilio_intelligence.transcript.list:
+    SUMMARY: Retrieve a list of Transcripts for a given service.
+    DESC: Retrieve a list of Transcripts for a given service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BeforeStartTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AfterStartTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BeforeDateCreated:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AfterDateCreated:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LanguageCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SourceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.transcript.listResponse200)
+        RETURNVAR: twilio_intelligence_transcript_list
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.list
+  twilio_intelligence.transcript.get:
+    SUMMARY: Fetch a specific Transcript.
+    DESC: Fetch a specific Transcript.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Transcripts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(intelligence.v2.transcript)
+        RETURNVAR: twilio_intelligence_transcript_get
+        STATUS: 200
+    CANONICAL_ID: twilio_intelligence.transcript.get
+  twilio_intelligence.transcript.delete:
+    SUMMARY: Delete a specific Transcript.
+    DESC: Delete a specific Transcript.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Transcripts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_intelligence.transcript.delete
+STRUCTS:
+  intelligence.v2.custom_operator:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account the Custom Operator belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Custom Operator.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable name of this resource, up to 64 characters.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of this resource, longer than the friendly name.
+    - name: author
+      type: STRING
+      REQUIRED: false
+      comment: The creator of the Custom Operator. Custom Operators can only be created by a Twilio Account.
+    - name: operator_type
+      type: STRING
+      REQUIRED: false
+      comment: Operator Type for this Operator. References an existing Operator Type resource.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Custom Operator version. Incremented with each update on the resource, used to ensure integrity when updating the Custom Operator.
+    - name: availability
+      type: STRING
+      REQUIRED: false
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: Operator configuration, following the schema defined by the Operator Type. Only available on Operators created by the Account.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Custom Operator was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Custom Operator was updated, given in ISO 8601 format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.transcript.encrypted_operator_results:
+    - name: locations
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The locations of the encrypted operator results.
+    - name: transcript_sid
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  intelligence.v2.transcript.encrypted_sentences:
+    - name: location
+      type: STRING
+      REQUIRED: false
+      comment: The location of the encrypted sentences.
+    - name: transcript_sid
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  intelligence.v2.transcript.media:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: media_url
+      type: STRING
+      REQUIRED: false
+      comment: Downloadable URL for media, if stored in Twilio AI.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Transcript.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.operator:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account the Operator belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Operator.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable name of this resource, up to 64 characters.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of this resource, longer than the friendly name.
+    - name: author
+      type: STRING
+      REQUIRED: false
+      comment: The creator of the Operator. Either Twilio or the creating Account.
+    - name: operator_type
+      type: STRING
+      REQUIRED: false
+      comment: Operator Type for this Operator. References an existing Operator Type resource.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: availability
+      type: STRING
+      REQUIRED: false
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: Operator configuration, following the schema defined by the Operator Type. Only available on Custom Operators created by the Account.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Operator was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Operator was updated, given in ISO 8601 format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.operator_attachment:
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: operator_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Operator.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.operator_attachments:
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: operator_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of Operator SIDs attached to the service. Includes both Custom and Pre-built Operators.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.transcript.operator_result:
+    - name: operator_type
+      type: STRING
+      REQUIRED: false
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the applied Language Understanding.
+    - name: operator_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that identifies this Language Understanding operator sid.
+    - name: extract_match
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean to tell if extract Language Understanding Processing model matches results.
+    - name: match_probability
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of 'matching' class needed to consider a sentence matches
+    - name: normalized_result
+      type: STRING
+      REQUIRED: false
+      comment: Normalized output of extraction stage which matches Label.
+    - name: utterance_results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of mapped utterance object which matches sentences.
+    - name: utterance_match
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean to tell if Utterance matches results.
+    - name: predicted_label
+      type: STRING
+      REQUIRED: false
+      comment: The 'matching' class. This might be available on conversation classify model outputs.
+    - name: predicted_probability
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of 'matching' class needed to consider a sentence matches.
+    - name: label_probabilities
+      type: ANY
+      REQUIRED: false
+      comment: The labels probabilities. This might be available on conversation classify model outputs.
+    - name: extract_results
+      type: ANY
+      REQUIRED: false
+      comment: List of text extraction results. This might be available on classify-extract model outputs.
+    - name: text_generation_results
+      type: ANY
+      REQUIRED: false
+      comment: Output of a text generation operator for example Conversation Sumamary.
+    - name: json_results
+      type: ANY
+      REQUIRED: false
+    - name: transcript_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Transcript.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.operator_type:
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: A unique name that references an Operator's Operator Type.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Operator Type.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable name of this resource, up to 64 characters.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of this resource, longer than the friendly name.
+    - name: docs_link
+      type: STRING
+      REQUIRED: false
+      comment: Additional documentation for the Operator Type.
+    - name: output_type
+      type: STRING
+      REQUIRED: false
+    - name: supported_languages
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of languages this Operator Type supports.
+    - name: provider
+      type: STRING
+      REQUIRED: false
+    - name: availability
+      type: STRING
+      REQUIRED: false
+    - name: configurable
+      type: BOOL
+      REQUIRED: false
+      comment: Operators can be created from configurable Operator Types.
+    - name: config_schema
+      type: ANY
+      REQUIRED: false
+      comment: JSON Schema for configuring an Operator with this Operator Type. Following https://json-schema.org/
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Operator Type was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Operator Type was updated, given in ISO 8601 format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.prebuilt_operator:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account the Pre-built Operator belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Pre-built Operator.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable name of this resource, up to 64 characters.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of this resource, longer than the friendly name.
+    - name: author
+      type: STRING
+      REQUIRED: false
+      comment: The creator of the Operator. Pre-built Operators can only be created by Twilio.
+    - name: operator_type
+      type: STRING
+      REQUIRED: false
+      comment: Operator Type for this Operator. References an existing Operator Type resource.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: availability
+      type: STRING
+      REQUIRED: false
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: Operator configuration, following the schema defined by the Operator Type. Only available on Custom Operators created by the Account, will be empty for Pre-Built Operators.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Pre-built Operator was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Pre-built Operator was updated, given in ISO 8601 format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  intelligence.v2.transcript.sentence:
+    - name: media_channel
+      type: INT
+      REQUIRED: false
+      comment: The channel number.
+    - name: sentence_index
+      type: INT
+      REQUIRED: false
+      comment: The index of the sentence in the transcript.
+    - name: start_time
+      type: STRING
+      REQUIRED: false
+      comment: Offset from the beginning of the transcript when this sentence starts.
+    - name: end_time
+      type: STRING
+      REQUIRED: false
+      comment: Offset from the beginning of the transcript when this sentence ends.
+    - name: transcript
+      type: STRING
+      REQUIRED: false
+      comment: Transcript text.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Sentence.
+    - name: confidence
+      type: STRING
+      REQUIRED: false
+    - name: words
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Detailed information for each of the words of the given Sentence.
+  intelligence.v2.service:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account the Service belongs to.
+    - name: auto_redaction
+      type: BOOL
+      REQUIRED: false
+      comment: Instructs the Speech Recognition service to automatically redact PII from all transcripts made on this service.
+    - name: media_redaction
+      type: BOOL
+      REQUIRED: false
+      comment: Instructs the Speech Recognition service to automatically redact PII from all transcripts media made on this service. The auto_redaction flag must be enabled, results in error otherwise.
+    - name: auto_transcribe
+      type: BOOL
+      REQUIRED: false
+      comment: Instructs the Speech Recognition service to automatically transcribe all recordings made on the account.
+    - name: data_logging
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models.
+        Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Service was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Service was updated, given in ISO 8601 format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 64 characters.
+    - name: language_code
+      type: STRING
+      REQUIRED: false
+      comment: The language code set during Service creation determines the Transcription language for all call recordings processed by that Service. The default is en-US if no language code is set. A Service can only support one language code, and it cannot be updated once it's set.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Service.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this Service, assigned by the developer, to be optionally used in addition to SID.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL Twilio will request when executing the Webhook.
+    - name: webhook_http_method
+      type: STRING
+      REQUIRED: false
+    - name: read_only_attached_operator_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Operator sids attached to this service, read only
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: The version number of this Service.
+    - name: encryption_credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results.
+  intelligence.v2.transcript:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Transcript.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Transcript was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Transcript was updated, given in ISO 8601 format.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: channel
+      type: ANY
+      REQUIRED: false
+      comment: Media Channel describing Transcript Source and Participant Mapping
+    - name: data_logging
+      type: BOOL
+      REQUIRED: false
+      comment: |-
+        Data logging allows Twilio to improve the quality of the speech recognition & language understanding services through using customer data to refine, fine tune and evaluate machine learning models.
+        Note: Data logging cannot be activated via API, only via www.twilio.com, as it requires additional consent.
+    - name: language_code
+      type: STRING
+      REQUIRED: false
+      comment: The default language code of the audio.
+    - name: customer_key
+      type: STRING
+      REQUIRED: false
+    - name: media_start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Transcript's media was started, given in ISO 8601 format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration of this Transcript's source
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: redaction
+      type: BOOL
+      REQUIRED: false
+      comment: If the transcript has been redacted, a redacted alternative of the transcript will be available.
+    - name: encryption_credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Public Key resource used to encrypt the sentences and operator results.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  api.operator.custom.listResponse200:
+    - name: operators
+      type: "[]STRUCT(intelligence.v2.custom_operator)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.operator.listResponse200:
+    - name: operators
+      type: "[]STRUCT(intelligence.v2.operator)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.transcript.operatorResults.getResponse200:
+    - name: operator_results
+      type: "[]STRUCT(intelligence.v2.transcript.operator_result)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.operatortype.listResponse200:
+    - name: operator_types
+      type: "[]STRUCT(intelligence.v2.operator_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.operator.preBuilt.listResponse200:
+    - name: operators
+      type: "[]STRUCT(intelligence.v2.prebuilt_operator)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.transcript.sentences.getResponse200:
+    - name: sentences
+      type: "[]STRUCT(intelligence.v2.transcript.sentence)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(intelligence.v2.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.transcript.listResponse200:
+    - name: transcripts
+      type: "[]STRUCT(intelligence.v2.transcript)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

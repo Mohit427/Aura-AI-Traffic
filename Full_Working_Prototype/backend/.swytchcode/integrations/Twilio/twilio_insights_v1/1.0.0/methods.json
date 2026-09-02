@@ -1,0 +1,89 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific conference participant's summary",
+      "canonical_id": "twilio_insights.conference.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch call details by SID",
+      "canonical_id": "twilio_insights.voice.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch call summaries with various filters",
+      "canonical_id": "twilio_insights.voice.summaries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get Video Log Analyzer data for a room",
+      "canonical_id": "twilio_insights.video.rooms.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get video log analyzer data for a room participant",
+      "canonical_id": "twilio_insights.video.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available conference summaries with filtering options",
+      "canonical_id": "twilio_insights.conference.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants for a conference",
+      "canonical_id": "twilio_insights.conference.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants in a video room",
+      "canonical_id": "twilio_insights.video.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List Programmable Video Rooms with filtering options",
+      "canonical_id": "twilio_insights.video.rooms.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a call summary by CallSid",
+      "canonical_id": "twilio_insights.voice.summary.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve call insight events for a specific call",
+      "canonical_id": "twilio_insights.voice.events.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve call metrics for a specific call",
+      "canonical_id": "twilio_insights.voice.metrics.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details for a specific conference",
+      "canonical_id": "twilio_insights.conference.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the annotation for a specific call",
+      "canonical_id": "twilio_insights.voice.annotation.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve voice insights settings",
+      "canonical_id": "twilio_insights.voice.settings.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a call's annotation with details like answered by, issues, and comments",
+      "canonical_id": "twilio_insights.voice.annotation.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Voice Insights setting",
+      "canonical_id": "twilio_insights.voice.settings.create"
+    }
+  ]
+}

@@ -1,0 +1,2043 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://sync.twilio.com
+METHODS:
+  twilio_sync.service.documents.get:
+    SUMMARY: Perform operation FetchDocument
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.document)
+        RETURNVAR: twilio_sync_service_documents_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.documents.get
+  twilio_sync.service.documents.delete:
+    SUMMARY: Perform operation DeleteDocument
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.documents.delete
+  twilio_sync.service.documents.create:
+    SUMMARY: Perform operation UpdateDocument
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Data:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.document)
+        RETURNVAR: twilio_sync_service_documents_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.documents.create
+  twilio_sync.service.documents.create.1:
+    SUMMARY: Perform operation CreateDocument
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Data:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.document)
+        RETURNVAR: twilio_sync_service_documents_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.documents.create.1
+  twilio_sync.service.documents.get.1:
+    SUMMARY: Perform operation ListDocument
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.documents.getResponse200)
+        RETURNVAR: twilio_sync_service_documents_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.documents.get.1
+  twilio_sync.service.permissions.get:
+    SUMMARY: Fetch a specific Sync Document Permission.
+    DESC: Fetch a specific Sync Document Permission.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - DocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.document.document_permission)
+        RETURNVAR: twilio_sync_service_permissions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get
+  twilio_sync.service.permissions.delete:
+    SUMMARY: Delete a specific Sync Document Permission.
+    DESC: Delete a specific Sync Document Permission.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - DocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.permissions.delete
+  twilio_sync.service.permissions.create:
+    SUMMARY: Update an identity's access to a specific Sync Document.
+    DESC: Update an identity's access to a specific Sync Document.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions/{Identity}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - DocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Read:
+          TYPE: BOOL
+          LOCATION: body
+      - Write:
+          TYPE: BOOL
+          LOCATION: body
+      - Manage:
+          TYPE: BOOL
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.document.document_permission)
+        RETURNVAR: twilio_sync_service_permissions_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.create
+  twilio_sync.service.permissions.get.1:
+    SUMMARY: Retrieve a list of all Permissions applying to a Sync Document.
+    DESC: Retrieve a list of all Permissions applying to a Sync Document.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Documents/{DocumentSid}/Permissions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - DocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.permissions.getResponse200)
+        RETURNVAR: twilio_sync_service_permissions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get.1
+  twilio_sync.service.get:
+    SUMMARY: Perform operation FetchService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service)
+        RETURNVAR: twilio_sync_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.get
+  twilio_sync.service.delete:
+    SUMMARY: Perform operation DeleteService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.delete
+  twilio_sync.service.create:
+    SUMMARY: Perform operation UpdateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityWebhooksEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AclEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityDebouncingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityDebouncingWindow:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - WebhooksFromRestEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service)
+        RETURNVAR: twilio_sync_service_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.create
+  twilio_sync.service.create.1:
+    SUMMARY: Perform operation CreateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityWebhooksEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AclEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityDebouncingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityDebouncingWindow:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - WebhooksFromRestEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service)
+        RETURNVAR: twilio_sync_service_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.create.1
+  twilio_sync.service.list:
+    SUMMARY: Perform operation ListService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_sync_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.list
+  twilio_sync.service.messages.create:
+    SUMMARY: Create a new Stream Message.
+    DESC: Create a new Stream Message.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams/{StreamSid}/Messages
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - StreamSid:
+          TYPE: STRING
+          LOCATION: path
+      - Data:
+          TYPE: ANY
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_stream.stream_message)
+        RETURNVAR: twilio_sync_service_messages_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.messages.create
+  twilio_sync.service.lists.get:
+    SUMMARY: Perform operation FetchSyncList
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list)
+        RETURNVAR: twilio_sync_service_lists_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.lists.get
+  twilio_sync.service.lists.delete:
+    SUMMARY: Perform operation DeleteSyncList
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.lists.delete
+  twilio_sync.service.lists.create:
+    SUMMARY: Perform operation UpdateSyncList
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list)
+        RETURNVAR: twilio_sync_service_lists_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.lists.create
+  twilio_sync.service.lists.create.1:
+    SUMMARY: Perform operation CreateSyncList
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list)
+        RETURNVAR: twilio_sync_service_lists_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.lists.create.1
+  twilio_sync.service.lists.get.1:
+    SUMMARY: Perform operation ListSyncList
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.lists.getResponse200)
+        RETURNVAR: twilio_sync_service_lists_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.lists.get.1
+  twilio_sync.service.items.get:
+    SUMMARY: Perform operation FetchSyncListItem
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Index:
+          TYPE: INT
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list.sync_list_item)
+        RETURNVAR: twilio_sync_service_items_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.get
+  twilio_sync.service.items.delete:
+    SUMMARY: Perform operation DeleteSyncListItem
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Index:
+          TYPE: INT
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_sync.service.items.delete
+  twilio_sync.service.items.create:
+    SUMMARY: Perform operation UpdateSyncListItem
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Items/{Index}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Index:
+          TYPE: INT
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Data:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ItemTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list.sync_list_item)
+        RETURNVAR: twilio_sync_service_items_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.create
+  twilio_sync.service.items.create.1:
+    SUMMARY: Perform operation CreateSyncListItem
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Items
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Data:
+          TYPE: ANY
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ItemTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list.sync_list_item)
+        RETURNVAR: twilio_sync_service_items_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.items.create.1
+  twilio_sync.service.items.get.1:
+    SUMMARY: Perform operation ListSyncListItem
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Items
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Bounds:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.items.getResponse200)
+        RETURNVAR: twilio_sync_service_items_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.get.1
+  twilio_sync.service.permissions.get.2:
+    SUMMARY: Fetch a specific Sync List Permission.
+    DESC: Fetch a specific Sync List Permission.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list.sync_list_permission)
+        RETURNVAR: twilio_sync_service_permissions_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get.2
+  twilio_sync.service.permissions.delete.1:
+    SUMMARY: Delete a specific Sync List Permission.
+    DESC: Delete a specific Sync List Permission.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.permissions.delete.1
+  twilio_sync.service.permissions.create.1:
+    SUMMARY: Update an identity's access to a specific Sync List.
+    DESC: Update an identity's access to a specific Sync List.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions/{Identity}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Read:
+          TYPE: BOOL
+          LOCATION: body
+      - Write:
+          TYPE: BOOL
+          LOCATION: body
+      - Manage:
+          TYPE: BOOL
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_list.sync_list_permission)
+        RETURNVAR: twilio_sync_service_permissions_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.create.1
+  twilio_sync.service.permissions.get.3:
+    SUMMARY: Retrieve a list of all Permissions applying to a Sync List.
+    DESC: Retrieve a list of all Permissions applying to a Sync List.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Lists/{ListSid}/Permissions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ListSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.permissions.getResponse200)
+        RETURNVAR: twilio_sync_service_permissions_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get.3
+  twilio_sync.service.maps.get:
+    SUMMARY: Perform operation FetchSyncMap
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map)
+        RETURNVAR: twilio_sync_service_maps_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.maps.get
+  twilio_sync.service.maps.delete:
+    SUMMARY: Perform operation DeleteSyncMap
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.maps.delete
+  twilio_sync.service.maps.create:
+    SUMMARY: Perform operation UpdateSyncMap
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map)
+        RETURNVAR: twilio_sync_service_maps_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.maps.create
+  twilio_sync.service.maps.create.1:
+    SUMMARY: Perform operation CreateSyncMap
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map)
+        RETURNVAR: twilio_sync_service_maps_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.maps.create.1
+  twilio_sync.service.maps.get.1:
+    SUMMARY: Perform operation ListSyncMap
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.maps.getResponse200)
+        RETURNVAR: twilio_sync_service_maps_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.maps.get.1
+  twilio_sync.service.items.get.2:
+    SUMMARY: Perform operation FetchSyncMapItem
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map.sync_map_item)
+        RETURNVAR: twilio_sync_service_items_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.get.2
+  twilio_sync.service.items.delete.1:
+    SUMMARY: Perform operation DeleteSyncMapItem
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_sync.service.items.delete.1
+  twilio_sync.service.items.create.2:
+    SUMMARY: Perform operation UpdateSyncMapItem
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Items/{Key}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Data:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ItemTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map.sync_map_item)
+        RETURNVAR: twilio_sync_service_items_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.create.2
+  twilio_sync.service.items.create.3:
+    SUMMARY: Perform operation CreateSyncMapItem
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Items
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          LOCATION: body
+      - Data:
+          TYPE: ANY
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ItemTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CollectionTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map.sync_map_item)
+        RETURNVAR: twilio_sync_service_items_create_3_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.items.create.3
+  twilio_sync.service.items.get.3:
+    SUMMARY: Perform operation ListSyncMapItem
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Items
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Bounds:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.items.getResponse200)
+        RETURNVAR: twilio_sync_service_items_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.items.get.3
+  twilio_sync.service.permissions.get.4:
+    SUMMARY: Fetch a specific Sync Map Permission.
+    DESC: Fetch a specific Sync Map Permission.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map.sync_map_permission)
+        RETURNVAR: twilio_sync_service_permissions_get_4
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get.4
+  twilio_sync.service.permissions.delete.2:
+    SUMMARY: Delete a specific Sync Map Permission.
+    DESC: Delete a specific Sync Map Permission.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.permissions.delete.2
+  twilio_sync.service.permissions.create.2:
+    SUMMARY: Update an identity's access to a specific Sync Map.
+    DESC: Update an identity's access to a specific Sync Map.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions/{Identity}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Read:
+          TYPE: BOOL
+          LOCATION: body
+      - Write:
+          TYPE: BOOL
+          LOCATION: body
+      - Manage:
+          TYPE: BOOL
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_map.sync_map_permission)
+        RETURNVAR: twilio_sync_service_permissions_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.create.2
+  twilio_sync.service.permissions.get.5:
+    SUMMARY: Retrieve a list of all Permissions applying to a Sync Map.
+    DESC: Retrieve a list of all Permissions applying to a Sync Map.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Maps/{MapSid}/Permissions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - MapSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.permissions.getResponse200)
+        RETURNVAR: twilio_sync_service_permissions_get_5
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.permissions.get.5
+  twilio_sync.service.streams.get:
+    SUMMARY: Fetch a specific Stream.
+    DESC: Fetch a specific Stream.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_stream)
+        RETURNVAR: twilio_sync_service_streams_get
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.streams.get
+  twilio_sync.service.streams.delete:
+    SUMMARY: Delete a specific Stream.
+    DESC: Delete a specific Stream.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_sync.service.streams.delete
+  twilio_sync.service.streams.create:
+    SUMMARY: Update a specific Stream.
+    DESC: Update a specific Stream.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_stream)
+        RETURNVAR: twilio_sync_service_streams_create
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.streams.create
+  twilio_sync.service.streams.create.1:
+    SUMMARY: Create a new Stream.
+    DESC: Create a new Stream.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(sync.v1.service.sync_stream)
+        RETURNVAR: twilio_sync_service_streams_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_sync.service.streams.create.1
+  twilio_sync.service.streams.get.1:
+    SUMMARY: Retrieve a list of all Streams in a Service Instance.
+    DESC: Retrieve a list of all Streams in a Service Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Streams
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.streams.getResponse200)
+        RETURNVAR: twilio_sync_service_streams_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_sync.service.streams.get.1
+STRUCTS:
+  sync.v1.service.document:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Document resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource and can be up to 320 characters long.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Document resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Document resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of resources related to the Sync Document.
+    - name: revision
+      type: STRING
+      REQUIRED: false
+      comment: The current revision of the Sync Document, represented as a string. The `revision` property is used with conditional updates to ensure data consistency.
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An arbitrary, schema-less object that the Sync Document stores. Can be up to 16 KiB in length.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Sync Document expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the Sync Document does not expire, this value is `null`. The Document resource might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the Sync Document's creator. If the Sync Document is created from the client SDK, the value matches the Access Token's `identity` field. If the Sync Document was created from the REST API, the value is `system`.
+  sync.v1.service.document.document_permission:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Document Permission resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: document_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Sync Document to which the Document Permission applies.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the Service to an FPA token.
+    - name: read
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can read the Sync Document.
+    - name: write
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can update the Sync Document.
+    - name: manage
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can delete the Sync Document.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sync Document Permission resource.
+  sync.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource. It is a read-only property, it cannot be assigned using REST API.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call when Sync objects are manipulated.
+    - name: webhooks_from_rest_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Service instance should call `webhook_url` when the REST API is used to update Sync objects. The default is `false`.
+    - name: reachability_webhooks_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the service instance calls `webhook_url` when client endpoints connect to Sync. The default is `false`.
+    - name: acl_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether token identities in the Service must be granted access to Sync objects by using the [Permissions](https://www.twilio.com/docs/sync/api/sync-permissions) resource. It is disabled (false) by default.
+    - name: reachability_debouncing_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether every `endpoint_disconnected` event should occur after a configurable delay. The default is `false`, where the `endpoint_disconnected` event occurs immediately after disconnection. When `true`, intervening reconnections can prevent the `endpoint_disconnected` event.
+    - name: reachability_debouncing_window
+      type: INT
+      REQUIRED: false
+      comment: The reachability event delay in milliseconds if `reachability_debouncing_enabled` = `true`.  Must be between 1,000 and 30,000 and defaults to 5,000. This is the number of milliseconds after the last running client disconnects, and a Sync identity is declared offline, before `webhook_url` is called, if all endpoints remain offline. A reconnection from the same identity by any endpoint during this interval prevents the reachability event from occurring.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  sync.v1.service.sync_stream.stream_message:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Stream Message resource.
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An arbitrary, schema-less object that contains the Stream Message body. Can be up to 4 KiB in length.
+  sync.v1.service.sync_list:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Sync List resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Sync List resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sync List resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Sync List's nested resources.
+    - name: revision
+      type: STRING
+      REQUIRED: false
+      comment: The current revision of the Sync List, represented as a string.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Sync List expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the Sync List does not expire, this value is `null`. The Sync List might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the Sync List's creator. If the Sync List is created from the client SDK, the value matches the Access Token's `identity` field. If the Sync List was created from the REST API, the value is `system`.
+  sync.v1.service.sync_list.sync_list_item:
+    - name: index
+      type: INT
+      REQUIRED: false
+      comment: The automatically generated index of the List Item. The `index` values of the List Items in a Sync List can have gaps in their sequence.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the List Item resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: list_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Sync List that contains the List Item.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the List Item resource.
+    - name: revision
+      type: STRING
+      REQUIRED: false
+      comment: The current revision of the item, represented as a string.
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An arbitrary, schema-less object that the List Item stores. Can be up to 16 KiB in length.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the List Item expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the List Item does not expire, this value is `null`. The List Item resource might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the List Item's creator. If the item is created from the client SDK, the value matches the Access Token's `identity` field. If the item was created from the REST API, the value is `system`.
+  sync.v1.service.sync_list.sync_list_permission:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Sync List Permission resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: list_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Sync List to which the Permission applies.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the Service to an FPA token.
+    - name: read
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can read the Sync List and its Items.
+    - name: write
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can create, update, and delete Items in the Sync List.
+    - name: manage
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can delete the Sync List.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sync List Permission resource.
+  sync.v1.service.sync_map:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Sync Map resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Sync Map resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sync Map resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Sync Map's nested resources.
+    - name: revision
+      type: STRING
+      REQUIRED: false
+      comment: The current revision of the Sync Map, represented as a string.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Sync Map expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the Sync Map does not expire, this value is `null`. The Sync Map might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the Sync Map's creator. If the Sync Map is created from the client SDK, the value matches the Access Token's `identity` field. If the Sync Map was created from the REST API, the value is `system`.
+  sync.v1.service.sync_map.sync_map_item:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: The unique, user-defined key for the Map Item.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Map Item resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: map_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Sync Map that contains the Map Item.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Map Item resource.
+    - name: revision
+      type: STRING
+      REQUIRED: false
+      comment: The current revision of the Map Item, represented as a string.
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An arbitrary, schema-less object that the Map Item stores. Can be up to 16 KiB in length.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Map Item expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the Map Item does not expire, this value is `null`.  The Map Item might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the Map Item's creator. If the Map Item is created from the client SDK, the value matches the Access Token's `identity` field. If the Map Item was created from the REST API, the value is `system`.
+  sync.v1.service.sync_map.sync_map_permission:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Sync Map Permission resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: map_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Sync Map to which the Permission applies.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the Service to an FPA token.
+    - name: read
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can read the Sync Map and its Items.
+    - name: write
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can create, update, and delete Items in the Sync Map.
+    - name: manage
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the identity can delete the Sync Map.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sync Map Permission resource.
+  sync.v1.service.sync_stream:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Sync Stream resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Sync Stream resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sync Service](https://www.twilio.com/docs/sync/api/service) the resource is associated with.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Message Stream resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Stream's nested resources.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Message Stream expires and will be deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. If the Message Stream does not expire, this value is `null`. The Stream might not be deleted immediately after it expires.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the Stream's creator. If the Stream is created from the client SDK, the value matches the Access Token's `identity` field. If the Stream was created from the REST API, the value is 'system'.
+  api.service.documents.getResponse200:
+    - name: documents
+      type: "[]STRUCT(sync.v1.service.document)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.permissions.getResponse200:
+    - name: permissions
+      type: "[]STRUCT(sync.v1.service.document.document_permission)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(sync.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.lists.getResponse200:
+    - name: lists
+      type: "[]STRUCT(sync.v1.service.sync_list)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.items.getResponse200:
+    - name: items
+      type: "[]STRUCT(sync.v1.service.sync_list.sync_list_item)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.maps.getResponse200:
+    - name: maps
+      type: "[]STRUCT(sync.v1.service.sync_map)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.streams.getResponse200:
+    - name: streams
+      type: "[]STRUCT(sync.v1.service.sync_stream)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

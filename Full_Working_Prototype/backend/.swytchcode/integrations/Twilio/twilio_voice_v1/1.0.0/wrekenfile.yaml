@@ -1,0 +1,1265 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://voice.twilio.com
+METHODS:
+  twilio_voice.archive.calls.delete:
+    SUMMARY: "Delete an archived call record from Bulk Export. Note: this does not also delete the record from the Voice API."
+    DESC: "Delete an archived call record from Bulk Export. Note: this does not also delete the record from the Voice API."
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Archives/{Date}/Calls/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Date:
+          TYPE: DATE
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.archive.calls.delete
+  twilio_voice.byoctrunk.create:
+    SUMMARY: Perform operation CreateByocTrunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ByocTrunks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CnamLookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ConnectionPolicySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FromDomainSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.byoc_trunk)
+        RETURNVAR: twilio_voice_byoctrunk_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.byoctrunk.create
+  twilio_voice.byoctrunk.list:
+    SUMMARY: Perform operation ListByocTrunk
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ByocTrunks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.byoctrunk.listResponse200)
+        RETURNVAR: twilio_voice_byoctrunk_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.byoctrunk.list
+  twilio_voice.byoctrunk.get:
+    SUMMARY: Perform operation FetchByocTrunk
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ByocTrunks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.byoc_trunk)
+        RETURNVAR: twilio_voice_byoctrunk_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.byoctrunk.get
+  twilio_voice.byoctrunk.create.1:
+    SUMMARY: Perform operation UpdateByocTrunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ByocTrunks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CnamLookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ConnectionPolicySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FromDomainSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.byoc_trunk)
+        RETURNVAR: twilio_voice_byoctrunk_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.byoctrunk.create.1
+  twilio_voice.byoctrunk.delete:
+    SUMMARY: Perform operation DeleteByocTrunk
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ByocTrunks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.byoctrunk.delete
+  twilio_voice.connectionpolicy.create:
+    SUMMARY: Perform operation CreateConnectionPolicy
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ConnectionPolicies
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy)
+        RETURNVAR: twilio_voice_connectionpolicy_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.connectionpolicy.create
+  twilio_voice.connectionpolicy.list:
+    SUMMARY: Perform operation ListConnectionPolicy
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ConnectionPolicies
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.connectionpolicy.listResponse200)
+        RETURNVAR: twilio_voice_connectionpolicy_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.list
+  twilio_voice.connectionpolicy.get:
+    SUMMARY: Perform operation FetchConnectionPolicy
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ConnectionPolicies/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy)
+        RETURNVAR: twilio_voice_connectionpolicy_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.get
+  twilio_voice.connectionpolicy.create.1:
+    SUMMARY: Perform operation UpdateConnectionPolicy
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ConnectionPolicies/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy)
+        RETURNVAR: twilio_voice_connectionpolicy_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.create.1
+  twilio_voice.connectionpolicy.delete:
+    SUMMARY: Perform operation DeleteConnectionPolicy
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ConnectionPolicies/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.connectionpolicy.delete
+  twilio_voice.connectionpolicy.targets.create:
+    SUMMARY: Perform operation CreateConnectionPolicyTarget
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ConnectionPolicies/{ConnectionPolicySid}/Targets
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConnectionPolicySid:
+          TYPE: STRING
+          LOCATION: path
+      - Target:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Weight:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy.connection_policy_target)
+        RETURNVAR: twilio_voice_connectionpolicy_targets_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.connectionpolicy.targets.create
+  twilio_voice.connectionpolicy.targets.get:
+    SUMMARY: Perform operation ListConnectionPolicyTarget
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ConnectionPolicies/{ConnectionPolicySid}/Targets
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConnectionPolicySid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.connectionpolicy.targets.getResponse200)
+        RETURNVAR: twilio_voice_connectionpolicy_targets_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.targets.get
+  twilio_voice.connectionpolicy.targets.get.1:
+    SUMMARY: Perform operation FetchConnectionPolicyTarget
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ConnectionPolicies/{ConnectionPolicySid}/Targets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConnectionPolicySid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy.connection_policy_target)
+        RETURNVAR: twilio_voice_connectionpolicy_targets_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.targets.get.1
+  twilio_voice.connectionpolicy.targets.create.1:
+    SUMMARY: Perform operation UpdateConnectionPolicyTarget
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ConnectionPolicies/{ConnectionPolicySid}/Targets/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConnectionPolicySid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Target:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Weight:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.connection_policy.connection_policy_target)
+        RETURNVAR: twilio_voice_connectionpolicy_targets_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.connectionpolicy.targets.create.1
+  twilio_voice.connectionpolicy.targets.delete:
+    SUMMARY: Perform operation DeleteConnectionPolicyTarget
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/ConnectionPolicies/{ConnectionPolicySid}/Targets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConnectionPolicySid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.connectionpolicy.targets.delete
+  twilio_voice.dialingpermission.countries.get:
+    SUMMARY: Retrieve voice dialing country permissions identified by the given ISO country code
+    DESC: Retrieve voice dialing country permissions identified by the given ISO country code
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/DialingPermissions/Countries/{IsoCode}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCode:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.dialing_permissions.dialing_permissions_country-instance)
+        RETURNVAR: twilio_voice_dialingpermission_countries_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.dialingpermission.countries.get
+  twilio_voice.dialingpermission.countries.list:
+    SUMMARY: Retrieve all voice dialing country permissions for this account
+    DESC: Retrieve all voice dialing country permissions for this account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/DialingPermissions/Countries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Continent:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LowRiskNumbersEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - HighRiskSpecialNumbersEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - HighRiskTollfraudNumbersEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.dialingpermission.countries.listResponse200)
+        RETURNVAR: twilio_voice_dialingpermission_countries_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.dialingpermission.countries.list
+  twilio_voice.dialingpermission.bulkCountryUpdates.create:
+    SUMMARY: Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    DESC: Create a bulk update request to change voice dialing country permissions of one or more countries identified by the corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/DialingPermissions/BulkCountryUpdates
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UpdateRequest:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.dialing_permissions.dialing_permissions_country_bulk_update)
+        RETURNVAR: twilio_voice_dialingpermission_bulkCountryUpdates_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.dialingpermission.bulkCountryUpdates.create
+  twilio_voice.dialingpermission.highRiskSpecialPrefixes.get:
+    SUMMARY: Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    DESC: Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/DialingPermissions/Countries/{IsoCode}/HighRiskSpecialPrefixes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCode:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.dialingpermission.highRiskSpecialPrefixes.getResponse200)
+        RETURNVAR: twilio_voice_dialingpermission_highRiskSpecialPrefixes_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.dialingpermission.highRiskSpecialPrefixes.get
+  twilio_voice.setting.list:
+    SUMMARY: Retrieve voice dialing permissions inheritance for the sub-account
+    DESC: Retrieve voice dialing permissions inheritance for the sub-account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Settings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.dialing_permissions.dialing_permissions_settings)
+        RETURNVAR: twilio_voice_setting_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.setting.list
+  twilio_voice.setting.create:
+    SUMMARY: Update voice dialing permissions inheritance for the sub-account
+    DESC: Update voice dialing permissions inheritance for the sub-account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Settings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DialingPermissionsInheritance:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.dialing_permissions.dialing_permissions_settings)
+        RETURNVAR: twilio_voice_setting_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_voice.setting.create
+  twilio_voice.iprecord.create:
+    SUMMARY: Perform operation CreateIpRecord
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/IpRecords
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IpAddress:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CidrPrefixLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.ip_record)
+        RETURNVAR: twilio_voice_iprecord_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.iprecord.create
+  twilio_voice.iprecord.list:
+    SUMMARY: Perform operation ListIpRecord
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/IpRecords
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.iprecord.listResponse200)
+        RETURNVAR: twilio_voice_iprecord_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.iprecord.list
+  twilio_voice.iprecord.get:
+    SUMMARY: Perform operation FetchIpRecord
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/IpRecords/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.ip_record)
+        RETURNVAR: twilio_voice_iprecord_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.iprecord.get
+  twilio_voice.iprecord.create.1:
+    SUMMARY: Perform operation UpdateIpRecord
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/IpRecords/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.ip_record)
+        RETURNVAR: twilio_voice_iprecord_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.iprecord.create.1
+  twilio_voice.iprecord.delete:
+    SUMMARY: Perform operation DeleteIpRecord
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/IpRecords/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.iprecord.delete
+  twilio_voice.sourceipmapping.create:
+    SUMMARY: Perform operation CreateSourceIpMapping
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SourceIpMappings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IpRecordSid:
+          TYPE: STRING
+          LOCATION: body
+      - SipDomainSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.source_ip_mapping)
+        RETURNVAR: twilio_voice_sourceipmapping_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_voice.sourceipmapping.create
+  twilio_voice.sourceipmapping.list:
+    SUMMARY: Perform operation ListSourceIpMapping
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SourceIpMappings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sourceipmapping.listResponse200)
+        RETURNVAR: twilio_voice_sourceipmapping_list
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.sourceipmapping.list
+  twilio_voice.sourceipmapping.get:
+    SUMMARY: Perform operation FetchSourceIpMapping
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SourceIpMappings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.source_ip_mapping)
+        RETURNVAR: twilio_voice_sourceipmapping_get
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.sourceipmapping.get
+  twilio_voice.sourceipmapping.create.1:
+    SUMMARY: Perform operation UpdateSourceIpMapping
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SourceIpMappings/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - SipDomainSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(voice.v1.source_ip_mapping)
+        RETURNVAR: twilio_voice_sourceipmapping_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_voice.sourceipmapping.create.1
+  twilio_voice.sourceipmapping.delete:
+    SUMMARY: Perform operation DeleteSourceIpMapping
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/SourceIpMappings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_voice.sourceipmapping.delete
+STRUCTS:
+  voice.v1.byoc_trunk:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the BYOC Trunk resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the BYOC Trunk resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: voice_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `voice_method` when the BYOC Trunk receives a call.
+    - name: voice_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`."
+    - name: voice_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call when an error occurs while retrieving or executing the TwiML requested from `voice_url`.
+    - name: voice_fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`."
+    - name: status_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call to pass status parameters (such as call ended) to your application.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: The HTTP method we use to call `status_callback_url`. Either `GET` or `POST`.
+    - name: cnam_lookup_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the BYOC Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
+    - name: connection_policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Connection Policy that Twilio will use when routing traffic to your communications infrastructure.
+    - name: from_domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the SIP Domain that should be used in the `From` header of originating calls sent to your SIP infrastructure. If your SIP infrastructure allows users to "call back" an incoming call, configure this with a [SIP Domain](https://www.twilio.com/docs/voice/api/sending-sip) to ensure proper routing. If not configured, the from domain will default to "sip.twilio.com".
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  voice.v1.connection_policy:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Connection Policy resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Connection Policy resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  voice.v1.connection_policy.connection_policy_target:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Target resource.
+    - name: connection_policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Connection Policy that owns the Target.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Target resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: target
+      type: STRING
+      REQUIRED: false
+      comment: The SIP address you want Twilio to route your calls to. This must be a `sip:` schema. `sips` is NOT supported.
+    - name: priority
+      type: INT
+      REQUIRED: false
+      comment: The relative importance of the target. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important target.
+    - name: weight
+      type: INT
+      REQUIRED: false
+      comment: The value that determines the relative share of the load the Target should receive compared to other Targets with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. Targets with higher values receive more load than those with lower ones with the same priority.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the target is enabled. The default is `true`.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  voice.v1.dialing_permissions.dialing_permissions_country:
+    - name: iso_code
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: continent
+      type: STRING
+      REQUIRED: false
+      comment: The name of the continent in which the country is located.
+    - name: country_codes
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The E.164 assigned [country codes(s)](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
+    - name: low_risk_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to low-risk numbers is enabled.
+    - name: high_risk_special_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to high-risk special services numbers is enabled. These prefixes include number ranges allocated by the country and include premium numbers, special services, shared cost, and others
+    - name: high_risk_tollfraud_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers is enabled. These prefixes include narrow number ranges that have a high-risk of international revenue sharing fraud (IRSF) attacks, also known as [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html). These prefixes are collected from anti-fraud databases and verified by analyzing calls on our network. These prefixes are not available for download and are updated frequently
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: A list of URLs related to this resource.
+  voice.v1.dialing_permissions.dialing_permissions_country-instance:
+    - name: iso_code
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: continent
+      type: STRING
+      REQUIRED: false
+      comment: The name of the continent in which the country is located.
+    - name: country_codes
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The E.164 assigned [country codes(s)](https://www.itu.int/itudoc/itu-t/ob-lists/icc/e164_763.html)
+    - name: low_risk_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to low-risk numbers is enabled.
+    - name: high_risk_special_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to high-risk special services numbers is enabled. These prefixes include number ranges allocated by the country and include premium numbers, special services, shared cost, and others
+    - name: high_risk_tollfraud_numbers_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether dialing to high-risk [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html) numbers is enabled. These prefixes include narrow number ranges that have a high-risk of international revenue sharing fraud (IRSF) attacks, also known as [toll fraud](https://www.twilio.com/blog/how-to-protect-your-account-from-toll-fraud-with-voice-dialing-geo-permissions-html). These prefixes are collected from anti-fraud databases and verified by analyzing calls on our network. These prefixes are not available for download and are updated frequently
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: A list of URLs related to this resource.
+  voice.v1.dialing_permissions.dialing_permissions_country_bulk_update:
+    - name: update_count
+      type: INT
+      REQUIRED: false
+      comment: The number of countries updated
+    - name: update_request
+      type: STRING
+      REQUIRED: false
+      comment: "A bulk update request to change voice dialing country permissions stored as a URL-encoded, JSON array of update objects. For example : `[ { \"iso_code\": \"GB\", \"low_risk_numbers_enabled\": \"true\", \"high_risk_special_numbers_enabled\":\"true\", \"high_risk_tollfraud_numbers_enabled\": \"false\" } ]`"
+  voice.v1.dialing_permissions.dialing_permissions_country.dialing_permissions_hrs_prefixes:
+    - name: prefix
+      type: STRING
+      REQUIRED: false
+      comment: A prefix is a contiguous number range for a block of E.164 numbers that includes the E.164 assigned country code. For example, a North American Numbering Plan prefix like `+1510720` written like `+1(510) 720` matches all numbers inclusive from `+1(510) 720-0000` to `+1(510) 720-9999`.
+  voice.v1.dialing_permissions.dialing_permissions_settings:
+    - name: dialing_permissions_inheritance
+      type: BOOL
+      REQUIRED: false
+      comment: "`true` if the sub-account will inherit voice dialing permissions from the Master Project; otherwise `false`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of this resource.
+  voice.v1.ip_record:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IP Record resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the IP Record resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: ip_address
+      type: STRING
+      REQUIRED: false
+      comment: An IP address in dotted decimal notation, IPv4 only.
+    - name: cidr_prefix_length
+      type: INT
+      REQUIRED: false
+      comment: An integer representing the length of the [CIDR](https://tools.ietf.org/html/rfc4632) prefix to use with this IP address. By default the entire IP address is used, which for IPv4 is value 32.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  voice.v1.source_ip_mapping:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the IP Record resource.
+    - name: ip_record_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Twilio-provided string that uniquely identifies the IP Record resource to map from.
+    - name: sip_domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the SIP Domain that the IP Record is mapped to.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  api.byoctrunk.listResponse200:
+    - name: byoc_trunks
+      type: "[]STRUCT(voice.v1.byoc_trunk)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.connectionpolicy.listResponse200:
+    - name: connection_policies
+      type: "[]STRUCT(voice.v1.connection_policy)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.connectionpolicy.targets.getResponse200:
+    - name: targets
+      type: "[]STRUCT(voice.v1.connection_policy.connection_policy_target)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.dialingpermission.countries.listResponse200:
+    - name: content
+      type: "[]STRUCT(voice.v1.dialing_permissions.dialing_permissions_country)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.dialingpermission.highRiskSpecialPrefixes.getResponse200:
+    - name: content
+      type: "[]STRUCT(voice.v1.dialing_permissions.dialing_permissions_country.dialing_permissions_hrs_prefixes)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.iprecord.listResponse200:
+    - name: ip_records
+      type: "[]STRUCT(voice.v1.ip_record)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sourceipmapping.listResponse200:
+    - name: source_ip_mappings
+      type: "[]STRUCT(voice.v1.source_ip_mapping)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

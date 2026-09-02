@@ -1,0 +1,676 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://content.twilio.com
+METHODS:
+  twilio_content.content.whatsapp.create:
+    SUMMARY: Create Content Approval Request
+    DESC: Create a ContentApprovalRequest for a content item
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Content/{ContentSid}/ApprovalRequests/whatsapp
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ContentApprovalRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ContentSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ContentApprovalRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(content.v1.content.approval_create)
+        RETURNVAR: twilio_content_content_whatsapp_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_content.content.whatsapp.create
+  twilio_content.content.approvalRequests.get:
+    SUMMARY: Fetch Approval Status
+    DESC: Fetch a Content resource's approval status by its unique Content Sid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Content/{Sid}/ApprovalRequests
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(content.v1.content.approval_fetch)
+        RETURNVAR: twilio_content_content_approvalRequests_get
+        STATUS: 200
+    CANONICAL_ID: twilio_content.content.approvalRequests.get
+  twilio_content.content.get:
+    SUMMARY: Fetch Content
+    DESC: Fetch a Content resource by its unique Content Sid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Content/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(content.v1.content)
+        RETURNVAR: twilio_content_content_get
+        STATUS: 200
+    CANONICAL_ID: twilio_content.content.get
+  twilio_content.content.delete:
+    SUMMARY: Delete Content
+    DESC: Deletes a Content resource
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Content/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_content.content.delete
+  twilio_content.content.update:
+    SUMMARY: Update Content
+    DESC: Update a Content resource
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Content/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ContentUpdateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(ContentUpdateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(content.v1.content)
+        RETURNVAR: twilio_content_content_update
+        STATUS: 200
+    CANONICAL_ID: twilio_content.content.update
+  twilio_content.content.create:
+    SUMMARY: Create Content
+    DESC: Create a Content resource
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Content
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(ContentCreateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(ContentCreateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(content.v1.content)
+        RETURNVAR: twilio_content_content_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_content.content.create
+  twilio_content.content.list:
+    SUMMARY: List Contents
+    DESC: Retrieve a list of Contents belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Content
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.content.listResponse200)
+        RETURNVAR: twilio_content_content_list
+        STATUS: 200
+    CANONICAL_ID: twilio_content.content.list
+  twilio_content.contentandapproval.list:
+    SUMMARY: List Content Approvals
+    DESC: Retrieve a list of Contents with approval statuses belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ContentAndApprovals
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.contentandapproval.listResponse200)
+        RETURNVAR: twilio_content_contentandapproval_list
+        STATUS: 200
+    CANONICAL_ID: twilio_content.contentandapproval.list
+  twilio_content.legacycontent.list:
+    SUMMARY: List Legacy Contents
+    DESC: Retrieve a list of Legacy Contents belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LegacyContent
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.legacycontent.listResponse200)
+        RETURNVAR: twilio_content_legacycontent_list
+        STATUS: 200
+    CANONICAL_ID: twilio_content.legacycontent.list
+STRUCTS:
+  twilioText:
+    - name: body
+      type: STRING
+      REQUIRED: true
+  twilioMedia:
+    - name: body
+      type: STRING
+      REQUIRED: false
+    - name: media
+      type: "[]STRING"
+      REQUIRED: true
+  twilioLocation:
+    - name: latitude
+      type: FLOAT
+      REQUIRED: true
+    - name: longitude
+      type: FLOAT
+      REQUIRED: true
+    - name: label
+      type: STRING
+      REQUIRED: false
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: address
+      type: STRING
+      REQUIRED: false
+  twilioListPicker:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: button
+      type: STRING
+      REQUIRED: true
+    - name: items
+      type: ANY
+      REQUIRED: true
+  twilioCallToAction:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: actions
+      type: ANY
+      REQUIRED: true
+  twilioQuickReply:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: actions
+      type: ANY
+      REQUIRED: true
+  twilioCard:
+    - name: title
+      type: STRING
+      REQUIRED: false
+    - name: subtitle
+      type: STRING
+      REQUIRED: false
+    - name: media
+      type: "[]STRING"
+      REQUIRED: false
+    - name: actions
+      type: ANY
+      REQUIRED: false
+  whatsappCard:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: footer
+      type: STRING
+      REQUIRED: false
+    - name: media
+      type: "[]STRING"
+      REQUIRED: false
+    - name: header_text
+      type: STRING
+      REQUIRED: false
+    - name: actions
+      type: ANY
+      REQUIRED: false
+  whatsappAuthentication:
+    - name: add_security_recommendation
+      type: BOOL
+      REQUIRED: false
+    - name: code_expiration_minutes
+      type: FLOAT
+      REQUIRED: false
+    - name: actions
+      type: ANY
+      REQUIRED: true
+  twilioCatalog:
+    - name: title
+      type: STRING
+      REQUIRED: false
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: subtitle
+      type: STRING
+      REQUIRED: false
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: items
+      type: ANY
+      REQUIRED: false
+    - name: dynamic_items
+      type: STRING
+      REQUIRED: false
+  twilioCarousel:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: cards
+      type: ANY
+      REQUIRED: true
+  twilioSchedule:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: title
+      type: STRING
+      REQUIRED: true
+    - name: timeSlots
+      type: STRING
+      REQUIRED: true
+  whatsappFlows:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: button_text
+      type: STRING
+      REQUIRED: true
+    - name: subtitle
+      type: STRING
+      REQUIRED: false
+    - name: media_url
+      type: STRING
+      REQUIRED: false
+    - name: flow_id
+      type: STRING
+      REQUIRED: true
+    - name: flow_token
+      type: STRING
+      REQUIRED: false
+    - name: flow_first_page_id
+      type: STRING
+      REQUIRED: false
+    - name: is_flow_first_page_endpoint
+      type: BOOL
+      REQUIRED: false
+  twilioFlows:
+    - name: body
+      type: STRING
+      REQUIRED: true
+    - name: button_text
+      type: STRING
+      REQUIRED: true
+    - name: subtitle
+      type: STRING
+      REQUIRED: false
+    - name: media_url
+      type: STRING
+      REQUIRED: false
+    - name: pages
+      type: ANY
+      REQUIRED: true
+    - name: type
+      type: STRING
+      REQUIRED: true
+  ContentApprovalRequest:
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Name of the template.
+    - name: category
+      type: STRING
+      REQUIRED: true
+      comment: A WhatsApp recognized template category.
+  ContentCreateRequest:
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: User defined name of the content
+    - name: variables
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: Key value pairs of variable name to value
+    - name: language
+      type: STRING
+      REQUIRED: true
+      comment: Language code for the content
+    - name: types
+      type: STRUCT(types)
+      REQUIRED: true
+  types:
+    - name: twilio/text
+      type: STRUCT(twilioText)
+      REQUIRED: false
+    - name: twilio/media
+      type: STRUCT(twilioMedia)
+      REQUIRED: false
+    - name: twilio/location
+      type: STRUCT(twilioLocation)
+      REQUIRED: false
+    - name: twilio/list-picker
+      type: STRUCT(twilioListPicker)
+      REQUIRED: false
+    - name: twilio/call-to-action
+      type: STRUCT(twilioCallToAction)
+      REQUIRED: false
+    - name: twilio/quick-reply
+      type: STRUCT(twilioQuickReply)
+      REQUIRED: false
+    - name: twilio/card
+      type: STRUCT(twilioCard)
+      REQUIRED: false
+    - name: twilio/catalog
+      type: STRUCT(twilioCatalog)
+      REQUIRED: false
+    - name: twilio/carousel
+      type: STRUCT(twilioCarousel)
+      REQUIRED: false
+    - name: twilio/flows
+      type: STRUCT(twilioFlows)
+      REQUIRED: false
+    - name: twilio/schedule
+      type: STRUCT(twilioSchedule)
+      REQUIRED: false
+    - name: whatsapp/card
+      type: STRUCT(whatsappCard)
+      REQUIRED: false
+    - name: whatsapp/authentication
+      type: STRUCT(whatsappAuthentication)
+      REQUIRED: false
+    - name: whatsapp/flows
+      type: STRUCT(whatsappFlows)
+      REQUIRED: false
+  ContentUpdateRequest:
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: User defined name of the content
+    - name: variables
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: Key value pairs of variable name to value
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Language code for the content
+    - name: types
+      type: STRUCT(types)
+      REQUIRED: true
+  content.v1.content.approval_create:
+    - name: name
+      type: STRING
+      REQUIRED: false
+    - name: category
+      type: STRING
+      REQUIRED: false
+    - name: content_type
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: rejection_reason
+      type: STRING
+      REQUIRED: false
+    - name: allow_category_change
+      type: BOOL
+      REQUIRED: false
+  content.v1.content.approval_fetch:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: whatsapp
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains the whatsapp approval information for the Content resource, with fields such as approval status, rejection reason, and category, amongst others.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the resource, relative to `https://content.twilio.com`.
+  content.v1.content:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A string name used to describe the Content resource. Not visible to the end recipient.
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in.
+    - name: variables
+      type: OBJECT
+      REQUIRED: false
+      comment: "Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}."
+    - name: types
+      type: OBJECT
+      REQUIRED: false
+      comment: The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the resource, relative to `https://content.twilio.com`.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: A list of links related to the Content resource, such as approval_fetch and approval_create
+  content.v1.content_and_approvals:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A string name used to describe the Content resource. Not visible to the end recipient.
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in.
+    - name: variables
+      type: OBJECT
+      REQUIRED: false
+      comment: "Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}."
+    - name: types
+      type: OBJECT
+      REQUIRED: false
+      comment: The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource.
+    - name: approval_requests
+      type: OBJECT
+      REQUIRED: false
+      comment: The submitted information and approval request status of the Content resource.
+  content.v1.legacy_content:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A string name used to describe the Content resource. Not visible to the end recipient.
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in.
+    - name: variables
+      type: OBJECT
+      REQUIRED: false
+      comment: "Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}."
+    - name: types
+      type: OBJECT
+      REQUIRED: false
+      comment: The [Content types](https://www.twilio.com/docs/content-api/content-types-overview) (e.g. twilio/text) for this Content resource.
+    - name: legacy_template_name
+      type: STRING
+      REQUIRED: false
+      comment: The string name of the legacy content template associated with this Content resource, unique across all template names for its account.  Only lowercase letters, numbers and underscores are allowed
+    - name: legacy_body
+      type: STRING
+      REQUIRED: false
+      comment: The string body field of the legacy content template associated with this Content resource
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the resource, relative to `https://content.twilio.com`.
+  api.content.listResponse200:
+    - name: contents
+      type: "[]STRUCT(content.v1.content)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.contentandapproval.listResponse200:
+    - name: contents
+      type: "[]STRUCT(content.v1.content_and_approvals)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.legacycontent.listResponse200:
+    - name: contents
+      type: "[]STRUCT(content.v1.legacy_content)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

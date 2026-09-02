@@ -1,0 +1,14 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Send a typing indicator for WhatsApp messages",
+      "canonical_id": "twilio_messaging.indicator.typing.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a typing indicator to a recipient",
+      "canonical_id": "twilio_messaging.indicator.typing.create"
+    }
+  ]
+}

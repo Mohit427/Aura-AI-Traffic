@@ -1,0 +1,84 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new rate plan with specified features and limits",
+      "canonical_id": "twilio_wireless.rateplan.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Command instance",
+      "canonical_id": "twilio_wireless.command.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a rate plan by its SID",
+      "canonical_id": "twilio_wireless.rateplan.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Sim resource by its SID",
+      "canonical_id": "twilio_wireless.sim.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of commands with filtering options",
+      "canonical_id": "twilio_wireless.command.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of Sims on your account",
+      "canonical_id": "twilio_wireless.sim.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a Sim resource by its SID",
+      "canonical_id": "twilio_wireless.sim.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific command instance",
+      "canonical_id": "twilio_wireless.command.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific rate plan by its ID",
+      "canonical_id": "twilio_wireless.rateplan.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get usage records for a specific SIM",
+      "canonical_id": "twilio_wireless.sim.usageRecords.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List account usage records with optional date range and pagination",
+      "canonical_id": "twilio_wireless.usagerecord.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available rate plans",
+      "canonical_id": "twilio_wireless.rateplan.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List data sessions for a specific SIM",
+      "canonical_id": "twilio_wireless.sim.dataSessions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a command to a SIM card",
+      "canonical_id": "twilio_wireless.command.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a rate plan's details",
+      "canonical_id": "twilio_wireless.rateplan.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update Sim resource properties by Sid",
+      "canonical_id": "twilio_wireless.sim.create"
+    }
+  ]
+}

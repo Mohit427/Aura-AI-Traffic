@@ -1,0 +1,164 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new IP record with its details",
+      "canonical_id": "twilio_voice.iprecord.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a target to a connection policy",
+      "canonical_id": "twilio_voice.connectionpolicy.targets.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Bulk update voice dialing country permissions",
+      "canonical_id": "twilio_voice.dialingpermission.bulkCountryUpdates.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a mapping between an IP address record and a SIP domain",
+      "canonical_id": "twilio_voice.sourceipmapping.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new BYOC Trunk with specified details",
+      "canonical_id": "twilio_voice.byoctrunk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new connection policy",
+      "canonical_id": "twilio_voice.connectionpolicy.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a BYOC trunk by its SID",
+      "canonical_id": "twilio_voice.byoctrunk.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a connection policy target by its IDs",
+      "canonical_id": "twilio_voice.connectionpolicy.targets.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an archived call record from Bulk Export",
+      "canonical_id": "twilio_voice.archive.calls.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a BYOC Trunk by its SID",
+      "canonical_id": "twilio_voice.byoctrunk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a source IP mapping by its ID",
+      "canonical_id": "twilio_voice.sourceipmapping.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific connection policy by its SID",
+      "canonical_id": "twilio_voice.connectionpolicy.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch IP record by SID",
+      "canonical_id": "twilio_voice.iprecord.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get high-risk special prefixes for a country by its ISO code",
+      "canonical_id": "twilio_voice.dialingpermission.highRiskSpecialPrefixes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice dialing country permissions",
+      "canonical_id": "twilio_voice.dialingpermission.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice dialing country permissions by ISO code",
+      "canonical_id": "twilio_voice.dialingpermission.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice dialing permissions inheritance for a sub-account",
+      "canonical_id": "twilio_voice.setting.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List BYOC trunks with pagination",
+      "canonical_id": "twilio_voice.byoctrunk.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List connection policies with pagination",
+      "canonical_id": "twilio_voice.connectionpolicy.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List connection policy targets for a given policy",
+      "canonical_id": "twilio_voice.connectionpolicy.targets.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List source IP mappings",
+      "canonical_id": "twilio_voice.sourceipmapping.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a connection policy by its SID",
+      "canonical_id": "twilio_voice.connectionpolicy.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a source IP mapping by its SID",
+      "canonical_id": "twilio_voice.sourceipmapping.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP record by its SID",
+      "canonical_id": "twilio_voice.iprecord.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of IP records with pagination",
+      "canonical_id": "twilio_voice.iprecord.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific connection policy target",
+      "canonical_id": "twilio_voice.connectionpolicy.targets.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a BYOC Trunk with new settings",
+      "canonical_id": "twilio_voice.byoctrunk.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a connection policy by its SID",
+      "canonical_id": "twilio_voice.connectionpolicy.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a connection policy target's details",
+      "canonical_id": "twilio_voice.connectionpolicy.targets.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an IP record with a friendly name",
+      "canonical_id": "twilio_voice.iprecord.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update source IP mapping for a given SID",
+      "canonical_id": "twilio_voice.sourceipmapping.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update voice dialing permissions inheritance for sub-accounts",
+      "canonical_id": "twilio_voice.setting.create"
+    }
+  ]
+}

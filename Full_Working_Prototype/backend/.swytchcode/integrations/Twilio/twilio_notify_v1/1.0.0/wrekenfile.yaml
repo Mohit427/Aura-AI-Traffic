@@ -1,0 +1,902 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://notify.twilio.com
+METHODS:
+  twilio_notify.service.bindings.get:
+    SUMMARY: Perform operation FetchBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service.binding)
+        RETURNVAR: twilio_notify_service_bindings_get
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.service.bindings.get
+  twilio_notify.service.bindings.delete:
+    SUMMARY: Perform operation DeleteBinding
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_notify.service.bindings.delete
+  twilio_notify.service.bindings.create:
+    SUMMARY: Perform operation CreateBinding
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Bindings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - BindingType:
+          TYPE: STRING
+          LOCATION: body
+      - Address:
+          TYPE: STRING
+          LOCATION: body
+      - Tag:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - NotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Endpoint:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service.binding)
+        RETURNVAR: twilio_notify_service_bindings_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_notify.service.bindings.create
+  twilio_notify.service.bindings.get.1:
+    SUMMARY: Perform operation ListBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Bindings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - StartDate:
+          TYPE: DATE
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: DATE
+          REQUIRED: false
+          LOCATION: query
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - Tag:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.bindings.getResponse200)
+        RETURNVAR: twilio_notify_service_bindings_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.service.bindings.get.1
+  twilio_notify.credential.list:
+    SUMMARY: Perform operation ListCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.listResponse200)
+        RETURNVAR: twilio_notify_credential_list
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.credential.list
+  twilio_notify.credential.create:
+    SUMMARY: Perform operation CreateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.credential)
+        RETURNVAR: twilio_notify_credential_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_notify.credential.create
+  twilio_notify.credential.get:
+    SUMMARY: Perform operation FetchCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.credential)
+        RETURNVAR: twilio_notify_credential_get
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.credential.get
+  twilio_notify.credential.create.1:
+    SUMMARY: Perform operation UpdateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.credential)
+        RETURNVAR: twilio_notify_credential_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.credential.create.1
+  twilio_notify.credential.delete:
+    SUMMARY: Perform operation DeleteCredential
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_notify.credential.delete
+  twilio_notify.service.notifications.create:
+    SUMMARY: Perform operation CreateNotification
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Notifications
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Title:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Action:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Data:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Apn:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Gcm:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Sms:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - FacebookMessenger:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Fcm:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - Segment:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Alexa:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - ToBinding:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Tag:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service.notification)
+        RETURNVAR: twilio_notify_service_notifications_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_notify.service.notifications.create
+  twilio_notify.service.create:
+    SUMMARY: Perform operation CreateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ApnCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - GcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FacebookMessengerPageId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultApnNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultGcmNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultFcmNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LogEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AlexaSkillId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultAlexaNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryCallbackEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service)
+        RETURNVAR: twilio_notify_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_notify.service.create
+  twilio_notify.service.list:
+    SUMMARY: Perform operation ListService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_notify_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.service.list
+  twilio_notify.service.delete:
+    SUMMARY: Perform operation DeleteService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_notify.service.delete
+  twilio_notify.service.get:
+    SUMMARY: Perform operation FetchService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service)
+        RETURNVAR: twilio_notify_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.service.get
+  twilio_notify.service.create.1:
+    SUMMARY: Perform operation UpdateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ApnCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - GcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FacebookMessengerPageId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultApnNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultGcmNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultFcmNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LogEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AlexaSkillId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultAlexaNotificationProtocolVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryCallbackEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(notify.v1.service)
+        RETURNVAR: twilio_notify_service_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_notify.service.create.1
+STRUCTS:
+  notify.v1.service.binding:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Binding resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Binding resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) the resource is associated with.
+    - name: credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) resource to be used to send notifications to this Binding. If present, this overrides the Credential specified in the Service resource. Applicable only to `apn`, `fcm`, and `gcm` type Bindings.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: notification_protocol_version
+      type: STRING
+      REQUIRED: false
+      comment: The protocol version to use to send the notification. This defaults to the value of `default_xxxx_notification_protocol_version` in the [Service](https://www.twilio.com/docs/notify/api/service-resource) for the protocol. The current version is `"3"` for `apn`, `fcm`, and `gcm` type Bindings. The parameter is not applicable to `sms` and `facebook-messenger` type Bindings as the data format is fixed.
+    - name: endpoint
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The `identity` value that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/notify/api/service-resource). Up to 20 Bindings can be created for the same Identity in a given Service.
+    - name: binding_type
+      type: STRING
+      REQUIRED: false
+      comment: "The transport technology to use for the Binding. Can be: `apn`, `fcm`, `gcm`, `sms`, or `facebook-messenger`."
+    - name: address
+      type: STRING
+      REQUIRED: false
+      comment: The channel-specific address. For APNS, the device token. For FCM and GCM, the registration token. For SMS, a phone number in E.164 format. For Facebook Messenger, the Messenger ID of the user or a phone number in E.164 format.
+    - name: tags
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of tags associated with this Binding. Tags can be used to select the Bindings to use when sending a notification. Maximum 20 tags are allowed.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Binding resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  notify.v1.credential:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Credential resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Credential resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: sandbox
+      type: STRING
+      REQUIRED: false
+      comment: "[APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production."
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Credential resource.
+  notify.v1.service.notification:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Notification resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Notification resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/notify/api/service-resource) the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: identities
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of `identity` values of the Users to notify. We will attempt to deliver notifications only to Bindings with an identity in this list.
+    - name: tags
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The tags that select the Bindings to notify. Notifications will be attempted only to Bindings that have all of the tags listed in this property.
+    - name: segments
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of Segments to notify. The [Segment](https://www.twilio.com/docs/notify/api/segment-resource) resource is deprecated. Use the `tags` property, instead.
+    - name: priority
+      type: STRING
+      REQUIRED: false
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: How long, in seconds, the notification is valid. Can be an integer between 0 and 2,419,200, which is 4 weeks, the default and the maximum supported time to live (TTL). Delivery should be attempted if the device is offline until the TTL elapses. Zero means that the notification delivery is attempted immediately, only once, and is not stored for future delivery. SMS does not support this property.
+    - name: title
+      type: STRING
+      REQUIRED: false
+      comment: The notification title. For FCM and GCM, this translates to the `data.twi_title` value. For APNS, this translates to the `aps.alert.title` value. SMS does not support this property. This field is not visible on iOS phones and tablets but appears on Apple Watch and Android devices.
+    - name: body
+      type: STRING
+      REQUIRED: false
+      comment: The notification text. For FCM and GCM, translates to `data.twi_body`. For APNS, translates to `aps.alert.body`. For SMS, translates to `body`. SMS requires either this `body` value, or `media_urls` attribute defined in the `sms` parameter of the notification.
+    - name: sound
+      type: STRING
+      REQUIRED: false
+      comment: The name of the sound to be played for the notification. For FCM and GCM, this Translates to `data.twi_sound`.  For APNS, this translates to `aps.sound`.  SMS does not support this property.
+    - name: action
+      type: STRING
+      REQUIRED: false
+      comment: The actions to display for the notification. For APNS, translates to the `aps.category` value. For GCM, translates to the `data.twi_action` value. For SMS, this parameter is not supported and is omitted from deliveries to those channels.
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: The custom key-value pairs of the notification's payload. For FCM and GCM, this value translates to `data` in the FCM and GCM payloads. FCM and GCM [reserve certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref) that cannot be used in those channels. For APNS, attributes of `data` are inserted into the APNS payload as custom properties outside of the `aps` dictionary. In all channels, we reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed and are rejected as 400 Bad request with no delivery attempted. For SMS, this parameter is not supported and is omitted from deliveries to those channels.
+    - name: apn
+      type: ANY
+      REQUIRED: false
+      comment: The APNS-specific payload that overrides corresponding attributes in the generic payload for APNS Bindings. This property maps to the APNS `Payload` item, therefore the `aps` key must be used to change standard attributes. Adds custom key-value pairs to the root of the dictionary. See the [APNS documentation](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/CommunicatingwithAPNs.html) for more details. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed.
+    - name: gcm
+      type: ANY
+      REQUIRED: false
+      comment: The GCM-specific payload that overrides corresponding attributes in the generic payload for GCM Bindings.  This property maps to the root JSON dictionary. Target parameters `to`, `registration_ids`, and `notification_key` are not allowed. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed.
+    - name: fcm
+      type: ANY
+      REQUIRED: false
+      comment: The FCM-specific payload that overrides corresponding attributes in the generic payload for FCM Bindings. This property maps to the root JSON dictionary. See the [FCM documentation](https://firebase.google.com/docs/cloud-messaging/http-server-ref#downstream) for more details. Target parameters `to`, `registration_ids`, `condition`, and `notification_key` are not allowed in this parameter. We reserve keys that start with `twi_` for future use. Custom keys that start with `twi_` are not allowed. FCM also [reserves certain keys](https://firebase.google.com/docs/cloud-messaging/http-server-ref), which cannot be used in that channel.
+    - name: sms
+      type: ANY
+      REQUIRED: false
+      comment: "The SMS-specific payload that overrides corresponding attributes in the generic payload for SMS Bindings.  Each attribute in this value maps to the corresponding `form` parameter of the Twilio [Message](https://www.twilio.com/docs/sms/api/message-resource) resource.  These parameters of the Message resource are supported in snake case format: `body`, `media_urls`, `status_callback`, and `max_price`.  The `status_callback` parameter overrides the corresponding parameter in the messaging service, if configured. The `media_urls` property expects a JSON array."
+    - name: facebook_messenger
+      type: ANY
+      REQUIRED: false
+      comment: Deprecated.
+    - name: alexa
+      type: ANY
+      REQUIRED: false
+      comment: Deprecated.
+  notify.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: apn_credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for APN Bindings.
+    - name: gcm_credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for GCM Bindings.
+    - name: fcm_credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/notify/api/credential-resource) to use for FCM Bindings.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Messaging Service](https://www.twilio.com/docs/sms/quickstart#messaging-services) to use for SMS Bindings. In order to send SMS notifications this parameter has to be set.
+    - name: facebook_messenger_page_id
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: default_apn_notification_protocol_version
+      type: STRING
+      REQUIRED: false
+      comment: The protocol version to use for sending APNS notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
+    - name: default_gcm_notification_protocol_version
+      type: STRING
+      REQUIRED: false
+      comment: The protocol version to use for sending GCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
+    - name: default_fcm_notification_protocol_version
+      type: STRING
+      REQUIRED: false
+      comment: The protocol version to use for sending FCM notifications. Can be overridden on a Binding by Binding basis when creating a [Binding](https://www.twilio.com/docs/notify/api/binding-resource) resource.
+    - name: log_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: "Whether to log notifications. Can be: `true` or `false` and the default is `true`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Binding, Notification, Segment, and User resources related to the service.
+    - name: alexa_skill_id
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: default_alexa_notification_protocol_version
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: delivery_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: URL to send delivery status callback.
+    - name: delivery_callback_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Callback configuration that enables delivery callbacks, default false
+  api.service.bindings.getResponse200:
+    - name: bindings
+      type: "[]STRUCT(notify.v1.service.binding)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.credential.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(notify.v1.credential)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(notify.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

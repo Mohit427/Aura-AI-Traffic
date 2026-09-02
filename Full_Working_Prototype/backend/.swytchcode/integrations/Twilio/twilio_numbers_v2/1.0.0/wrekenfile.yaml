@@ -1,0 +1,2415 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://numbers.twilio.com
+METHODS:
+  twilio_numbers.hostednumber.authorizationDocuments.get:
+    SUMMARY: Fetch a specific AuthorizationDocument.
+    DESC: Fetch a specific AuthorizationDocument.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/AuthorizationDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.authorization_document)
+        RETURNVAR: twilio_numbers_hostednumber_authorizationDocuments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.authorizationDocuments.get
+  twilio_numbers.hostednumber.authorizationDocuments.delete:
+    SUMMARY: Cancel the AuthorizationDocument request.
+    DESC: Cancel the AuthorizationDocument request.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/HostedNumber/AuthorizationDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.hostednumber.authorizationDocuments.delete
+  twilio_numbers.hostednumber.authorizationDocuments.list:
+    SUMMARY: Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+    DESC: Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/AuthorizationDocuments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.authorizationDocuments.listResponse200)
+        RETURNVAR: twilio_numbers_hostednumber_authorizationDocuments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.authorizationDocuments.list
+  twilio_numbers.hostednumber.authorizationDocuments.create:
+    SUMMARY: Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+    DESC: Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/HostedNumber/AuthorizationDocuments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AddressSid:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - ContactPhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - HostedNumberOrderSids:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - ContactTitle:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.authorization_document)
+        RETURNVAR: twilio_numbers_hostednumber_authorizationDocuments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.hostednumber.authorizationDocuments.create
+  twilio_numbers.hostednumber.bulk.get:
+    SUMMARY: Fetch a specific BulkHostedNumberOrder.
+    DESC: Fetch a specific BulkHostedNumberOrder.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/Orders/Bulk/{BulkHostingSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BulkHostingSid:
+          TYPE: STRING
+          LOCATION: path
+      - OrderStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.bulk_hosted_number_order)
+        RETURNVAR: twilio_numbers_hostednumber_bulk_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.bulk.get
+  twilio_numbers.hostednumber.bulk.create:
+    SUMMARY: Host multiple phone numbers on Twilio's platform.
+    DESC: Host multiple phone numbers on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/HostedNumber/Orders/Bulk
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.hostednumber.bulk.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.hostednumber.bulk.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.bulk_hosted_number_order)
+        RETURNVAR: twilio_numbers_hostednumber_bulk_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_numbers.hostednumber.bulk.create
+  twilio_numbers.regulatorycompliance.bundles.create:
+    SUMMARY: Create a new Bundle.
+    DESC: Create a new Bundle.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RegulationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EndUserType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NumberType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IsTest:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle)
+        RETURNVAR: twilio_numbers_regulatorycompliance_bundles_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.bundles.create
+  twilio_numbers.regulatorycompliance.bundles.list:
+    SUMMARY: Retrieve a list of all Bundles for an account.
+    DESC: Retrieve a list of all Bundles for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BundleSids:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - RegulationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - NumberType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EndUserType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - HasValidUntilDate:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - SortBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortDirection:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ValidUntilDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - ValidUntilDate<:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - ValidUntilDate>:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.bundles.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_bundles_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.bundles.list
+  twilio_numbers.regulatorycompliance.bundles.get:
+    SUMMARY: Fetch a specific Bundle instance.
+    DESC: Fetch a specific Bundle instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle)
+        RETURNVAR: twilio_numbers_regulatorycompliance_bundles_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.bundles.get
+  twilio_numbers.regulatorycompliance.bundles.create.1:
+    SUMMARY: Updates a Bundle in an account.
+    DESC: Updates a Bundle in an account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle)
+        RETURNVAR: twilio_numbers_regulatorycompliance_bundles_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.bundles.create.1
+  twilio_numbers.regulatorycompliance.bundles.delete:
+    SUMMARY: Delete a specific Bundle.
+    DESC: Delete a specific Bundle.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.bundles.delete
+  twilio_numbers.regulatorycompliance.clones.create:
+    SUMMARY: Creates a new clone of the Bundle in target Account. It will internally create clones of all the bundle items (identities and documents) of the original bundle
+    DESC: Creates a new clone of the Bundle in target Account. It will internally create clones of all the bundle items (identities and documents) of the original bundle
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Clones
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - TargetAccountSid:
+          TYPE: STRING
+          LOCATION: body
+      - MoveToDraft:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.bundle_clone)
+        RETURNVAR: twilio_numbers_regulatorycompliance_clones_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.clones.create
+  twilio_numbers.regulatorycompliance.copies.create:
+    SUMMARY: Creates a new copy of a Bundle. It will internally create copies of all the bundle items (identities and documents) of the original bundle
+    DESC: Creates a new copy of a Bundle. It will internally create copies of all the bundle items (identities and documents) of the original bundle
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Copies
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.bundle_copy)
+        RETURNVAR: twilio_numbers_regulatorycompliance_copies_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.copies.create
+  twilio_numbers.regulatorycompliance.copies.get:
+    SUMMARY: Retrieve a list of all Bundles Copies for a Bundle.
+    DESC: Retrieve a list of all Bundles Copies for a Bundle.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Copies
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.copies.getResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_copies_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.copies.get
+  twilio_numbers.hostednumber.dependentHostedNumberOrders.get:
+    SUMMARY: Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+    DESC: Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/AuthorizationDocuments/{SigningDocumentSid}/DependentHostedNumberOrders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SigningDocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncomingPhoneNumberSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.dependentHostedNumberOrders.getResponse200)
+        RETURNVAR: twilio_numbers_hostednumber_dependentHostedNumberOrders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.dependentHostedNumberOrders.get
+  twilio_numbers.regulatorycompliance.endUsers.create:
+    SUMMARY: Create a new End User.
+    DESC: Create a new End User.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/EndUsers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.end_user)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUsers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUsers.create
+  twilio_numbers.regulatorycompliance.endUsers.list:
+    SUMMARY: Retrieve a list of all End User for an account.
+    DESC: Retrieve a list of all End User for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/EndUsers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.endUsers.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUsers_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUsers.list
+  twilio_numbers.regulatorycompliance.endUsers.get:
+    SUMMARY: Fetch specific End User Instance.
+    DESC: Fetch specific End User Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/EndUsers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.end_user)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUsers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUsers.get
+  twilio_numbers.regulatorycompliance.endUsers.create.1:
+    SUMMARY: Update an existing End User.
+    DESC: Update an existing End User.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/EndUsers/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.end_user)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUsers_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUsers.create.1
+  twilio_numbers.regulatorycompliance.endUsers.delete:
+    SUMMARY: Delete a specific End User.
+    DESC: Delete a specific End User.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/RegulatoryCompliance/EndUsers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUsers.delete
+  twilio_numbers.regulatorycompliance.endUserTypes.list:
+    SUMMARY: Retrieve a list of all End-User Types.
+    DESC: Retrieve a list of all End-User Types.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/EndUserTypes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.endUserTypes.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUserTypes_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUserTypes.list
+  twilio_numbers.regulatorycompliance.endUserTypes.get:
+    SUMMARY: Fetch a specific End-User Type Instance.
+    DESC: Fetch a specific End-User Type Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/EndUserTypes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.end_user_type)
+        RETURNVAR: twilio_numbers_regulatorycompliance_endUserTypes_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.endUserTypes.get
+  twilio_numbers.regulatorycompliance.evaluations.create:
+    SUMMARY: Creates an evaluation for a bundle
+    DESC: Creates an evaluation for a bundle
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Evaluations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.evaluation)
+        RETURNVAR: twilio_numbers_regulatorycompliance_evaluations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.evaluations.create
+  twilio_numbers.regulatorycompliance.evaluations.get:
+    SUMMARY: Retrieve a list of Evaluations associated to the Bundle resource.
+    DESC: Retrieve a list of Evaluations associated to the Bundle resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Evaluations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.evaluations.getResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_evaluations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.evaluations.get
+  twilio_numbers.regulatorycompliance.evaluations.get.1:
+    SUMMARY: Fetch specific Evaluation Instance.
+    DESC: Fetch specific Evaluation Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/Evaluations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.evaluation)
+        RETURNVAR: twilio_numbers_regulatorycompliance_evaluations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.evaluations.get.1
+  twilio_numbers.hostednumber.orders.get:
+    SUMMARY: Fetch a specific HostedNumberOrder.
+    DESC: Fetch a specific HostedNumberOrder.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/Orders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.hosted_number_order)
+        RETURNVAR: twilio_numbers_hostednumber_orders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.orders.get
+  twilio_numbers.hostednumber.orders.delete:
+    SUMMARY: Cancel the HostedNumberOrder (only available when the status is in `received`).
+    DESC: Cancel the HostedNumberOrder (only available when the status is in `received`).
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/HostedNumber/Orders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.hostednumber.orders.delete
+  twilio_numbers.hostednumber.orders.create:
+    SUMMARY: Updates a specific HostedNumberOrder.
+    DESC: Updates a specific HostedNumberOrder.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/HostedNumber/Orders/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+      - VerificationCallDelay:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - VerificationCallExtension:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.hosted_number_order)
+        RETURNVAR: twilio_numbers_hostednumber_orders_create
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.orders.create
+  twilio_numbers.hostednumber.orders.list:
+    SUMMARY: Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    DESC: Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/HostedNumber/Orders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SmsCapability:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncomingPhoneNumberSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.orders.listResponse200)
+        RETURNVAR: twilio_numbers_hostednumber_orders_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.orders.list
+  twilio_numbers.hostednumber.orders.create.1:
+    SUMMARY: Host a phone number's capability on Twilio's platform.
+    DESC: Host a phone number's capability on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/HostedNumber/Orders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - ContactPhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - AddressSid:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - SmsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsCapability:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsApplicationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContactTitle:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.hosted_number_order)
+        RETURNVAR: twilio_numbers_hostednumber_orders_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.hostednumber.orders.create.1
+  twilio_numbers.regulatorycompliance.itemAssignments.create:
+    SUMMARY: Create a new Assigned Item.
+    DESC: Create a new Assigned Item.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - ObjectSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.item_assignment)
+        RETURNVAR: twilio_numbers_regulatorycompliance_itemAssignments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.itemAssignments.create
+  twilio_numbers.regulatorycompliance.itemAssignments.get:
+    SUMMARY: Retrieve a list of all Assigned Items for an account.
+    DESC: Retrieve a list of all Assigned Items for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.itemAssignments.getResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_itemAssignments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.itemAssignments.get
+  twilio_numbers.regulatorycompliance.itemAssignments.get.1:
+    SUMMARY: Fetch specific Assigned Item Instance.
+    DESC: Fetch specific Assigned Item Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.item_assignment)
+        RETURNVAR: twilio_numbers_regulatorycompliance_itemAssignments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.itemAssignments.get.1
+  twilio_numbers.regulatorycompliance.itemAssignments.delete:
+    SUMMARY: Remove an Assignment Item Instance.
+    DESC: Remove an Assignment Item Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/ItemAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.itemAssignments.delete
+  twilio_numbers.regulatorycompliance.regulations.list:
+    SUMMARY: Retrieve a list of all Regulations.
+    DESC: Retrieve a list of all Regulations.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Regulations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - EndUserType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - NumberType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncludeConstraints:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.regulations.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_regulations_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.regulations.list
+  twilio_numbers.regulatorycompliance.regulations.get:
+    SUMMARY: Fetch specific Regulation Instance.
+    DESC: Fetch specific Regulation Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/Regulations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - IncludeConstraints:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.regulation)
+        RETURNVAR: twilio_numbers_regulatorycompliance_regulations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.regulations.get
+  twilio_numbers.regulatorycompliance.replaceItems.create:
+    SUMMARY: Replaces all bundle items in the target bundle (specified in the path) with all the bundle items of the source bundle (specified by the from_bundle_sid body param)
+    DESC: Replaces all bundle items in the target bundle (specified in the path) with all the bundle items of the source bundle (specified by the from_bundle_sid body param)
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/Bundles/{BundleSid}/ReplaceItems
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - FromBundleSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.bundle.replace_items)
+        RETURNVAR: twilio_numbers_regulatorycompliance_replaceItems_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.replaceItems.create
+  twilio_numbers.regulatorycompliance.supportingDocuments.create:
+    SUMMARY: Create a new Supporting Document.
+    DESC: Create a new Supporting Document.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocuments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.supporting_document)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocuments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocuments.create
+  twilio_numbers.regulatorycompliance.supportingDocuments.list:
+    SUMMARY: Retrieve a list of all Supporting Document for an account.
+    DESC: Retrieve a list of all Supporting Document for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocuments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.supportingDocuments.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocuments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocuments.list
+  twilio_numbers.regulatorycompliance.supportingDocuments.get:
+    SUMMARY: Fetch specific Supporting Document Instance.
+    DESC: Fetch specific Supporting Document Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.supporting_document)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocuments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocuments.get
+  twilio_numbers.regulatorycompliance.supportingDocuments.create.1:
+    SUMMARY: Update an existing Supporting Document.
+    DESC: Update an existing Supporting Document.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocuments/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.supporting_document)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocuments_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocuments.create.1
+  twilio_numbers.regulatorycompliance.supportingDocuments.delete:
+    SUMMARY: Delete a specific Supporting Document.
+    DESC: Delete a specific Supporting Document.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocuments.delete
+  twilio_numbers.regulatorycompliance.supportingDocumentTypes.list:
+    SUMMARY: Retrieve a list of all Supporting Document Types.
+    DESC: Retrieve a list of all Supporting Document Types.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocumentTypes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.regulatorycompliance.supportingDocumentTypes.listResponse200)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocumentTypes_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocumentTypes.list
+  twilio_numbers.regulatorycompliance.supportingDocumentTypes.get:
+    SUMMARY: Fetch a specific Supporting Document Type Instance.
+    DESC: Fetch a specific Supporting Document Type Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RegulatoryCompliance/SupportingDocumentTypes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v2.regulatory_compliance.supporting_document_type)
+        RETURNVAR: twilio_numbers_regulatorycompliance_supportingDocumentTypes_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.regulatorycompliance.supportingDocumentTypes.get
+  twilio_numbers.shortcode.applications.list:
+    SUMMARY: List Short Code Applications
+    DESC: list of all short code applications for an account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ShortCodes/Applications
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Sid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 0
+    RETURNS:
+      - RETURNTYPE: STRUCT(ShortCodeApplicationResponsePage)
+        RETURNVAR: twilio_numbers_shortcode_applications_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.shortcode.applications.list
+  twilio_numbers.shortcode.applications.create:
+    SUMMARY: Create a new short code application
+    DESC: Create a new short code application for an account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/ShortCodes/Applications
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(CreateShortCodeApplicationRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(CreateShortCodeApplicationRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(CreateShortCodeApplicationResponse)
+        RETURNVAR: twilio_numbers_shortcode_applications_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.shortcode.applications.create
+  twilio_numbers.shortcode.applications.get:
+    SUMMARY: Fetch a specific Short Code Application instance.
+    DESC: Fetch a specific Short Code Application instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ShortCodes/Applications/{sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ShortCodeApplication)
+        RETURNVAR: twilio_numbers_shortcode_applications_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.shortcode.applications.get
+STRUCTS:
+  numbers.v2.authorization_document:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this AuthorizationDocument.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email that this AuthorizationDocument will be sent to for signing.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email recipients who will be informed when an Authorization Document has been sent and signed.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  numbers.v2.bulk_hosted_number_order:
+    - name: bulk_hosting_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this BulkHostedNumberOrder.
+    - name: request_status
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A 128 character string that is a human-readable text that describes this resource.
+    - name: notification_email
+      type: STRING
+      REQUIRED: false
+      comment: Email address used for send notifications about this Bulk hosted number request.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_completed
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was completed, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this BulkHostedNumberOrder resource.
+    - name: total_count
+      type: INT
+      REQUIRED: false
+      comment: The total count of phone numbers in this Bulk hosting request.
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Contains a list of all the individual hosting orders and their information, for this Bulk request. Each result object is grouped by its order status. To see a complete list of order status, please check 'https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/hosted-number-order-resource#status-values'.
+  numbers.v2.regulatory_compliance.bundle:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource.
+    - name: regulation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a regulation that is associated to the Bundle resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Bundle resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Bundle resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Assigned Items of the Bundle resource.
+  numbers.v2.bundle_clone:
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource.
+    - name: regulation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a regulation that is associated to the Bundle resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Bundle resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  numbers.v2.regulatory_compliance.bundle.bundle_copy:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource.
+    - name: regulation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a regulation that is associated to the Bundle resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Bundle resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  numbers.v2.authorization_document.dependent_hosted_number_order:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Authorization Document
+    - name: bulk_hosting_request_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the bulk hosting request associated with this HostedNumberOrder.
+    - name: next_step
+      type: STRING
+      REQUIRED: false
+      comment: The next step you need to take to complete the hosted number order and request it successfully.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: incoming_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+    - name: signing_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the LOA document associated with this HostedNumberOrder.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: An E164 formatted phone number hosted by this HostedNumberOrder.
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: A mapping of capabilities this hosted phone number will have enabled on Twilio's platform.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 128 characters.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: A message that explains why a hosted_number_order went to status "action-required"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the owner of this phone number that is being hosted.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email recipients who will be informed when an Authorization Document has been sent and signed
+    - name: contact_title
+      type: STRING
+      REQUIRED: false
+      comment: The title of the person authorized to sign the Authorization Document for this phone number.
+    - name: contact_phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The contact phone number of the person authorized to sign the Authorization Document.
+  numbers.v2.regulatory_compliance.end_user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify the End User resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the End User resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: The set of parameters that are the attributes of the End Users resource which are listed in the End User Types.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the End User resource.
+  numbers.v2.regulatory_compliance.end_user_type:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the End-User Type resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description that is assigned to describe the End-User Type resource. Examples can include first name, last name, email, business name, etc
+    - name: machine_name
+      type: STRING
+      REQUIRED: false
+      comment: A machine-readable description of the End-User Type resource. Examples can include first_name, last_name, email, business_name, etc.
+    - name: fields
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The required information for creating an End-User. The required fields will change as regulatory needs change and will differ for businesses and individuals.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the End-User Type resource.
+  numbers.v2.regulatory_compliance.bundle.evaluation:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Evaluation resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource.
+    - name: regulation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a regulation that is associated to the Bundle resource.
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The results of the Evaluation which includes the valid and invalid attributes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  numbers.v2.hosted_number_order:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this HostedNumberOrder.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the account.
+    - name: incoming_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+    - name: signing_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: Phone number to be hosted. This must be in [E.164](https://en.wikipedia.org/wiki/E.164) format, e.g., +16175551212
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: Set of booleans describing the capabilities hosted on Twilio's platform. SMS is currently only supported.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A 128 character string that is a human-readable text that describes this resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: A message that explains why a hosted_number_order went to status "action-required"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the owner of this phone number that is being hosted.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this HostedNumberOrder.
+    - name: contact_title
+      type: STRING
+      REQUIRED: false
+      comment: The title of the person authorized to sign the Authorization Document for this phone number.
+    - name: contact_phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The contact phone number of the person authorized to sign the Authorization Document.
+    - name: bulk_hosting_request_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the bulk hosting request associated with this HostedNumberOrder.
+    - name: next_step
+      type: STRING
+      REQUIRED: false
+      comment: The next step you need to take to complete the hosted number order and request it successfully.
+    - name: verification_attempts
+      type: INT
+      REQUIRED: false
+      comment: The number of attempts made to verify ownership via a call for the hosted phone number.
+    - name: verification_call_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The Call SIDs that identify the calls placed to verify ownership.
+    - name: verification_call_delay
+      type: INT
+      REQUIRED: false
+      comment: The number of seconds to wait before initiating the ownership verification call. Can be a value between 0 and 60, inclusive.
+    - name: verification_call_extension
+      type: STRING
+      REQUIRED: false
+      comment: The numerical extension to dial when making the ownership verification call.
+    - name: verification_code
+      type: STRING
+      REQUIRED: false
+      comment: The digits the user must pass in the ownership verification call.
+    - name: verification_type
+      type: STRING
+      REQUIRED: false
+  numbers.v2.regulatory_compliance.bundle.item_assignment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Item Assignment resource.
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource.
+    - name: object_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of an object bag that holds information of the different items.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Identity resource.
+  numbers.v2.regulatory_compliance.regulation:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Regulation resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: "A human-readable description that is assigned to describe the Regulation resource. Examples can include Germany: Mobile - Business."
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The ISO country code of the phone number's country.
+    - name: number_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of phone number restricted by the regulatory requirement. For example, Germany mobile phone numbers provisioned by businesses require a business name with commercial register proof from the Handelsregisterauszug and a proof of address from Handelsregisterauszug or a trade license by Gewerbeanmeldung.
+    - name: end_user_type
+      type: STRING
+      REQUIRED: false
+    - name: requirements
+      type: ANY
+      REQUIRED: false
+      comment: The SID of an object that holds the regulatory information of the phone number country, phone number type, and end user type.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Regulation resource.
+  numbers.v2.regulatory_compliance.bundle.replace_items:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Bundle resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Bundle resource.
+    - name: regulation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a regulation that is associated to the Bundle resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Bundle resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  numbers.v2.regulatory_compliance.supporting_document:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify the Supporting Document resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Document resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: mime_type
+      type: STRING
+      REQUIRED: false
+      comment: The image type uploaded in the Supporting Document container.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: The failure reason of the Supporting Document Resource.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of errors that occurred during the registering RC Bundle
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The type of the Supporting Document.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: The set of parameters that are the attributes of the Supporting Documents resource which are listed in the Supporting Document Types.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Supporting Document resource.
+  numbers.v2.regulatory_compliance.supporting_document_type:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Supporting Document Type resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of the Supporting Document Type resource.
+    - name: machine_name
+      type: STRING
+      REQUIRED: false
+      comment: The machine-readable description of the Supporting Document Type resource.
+    - name: fields
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The required information for creating a Supporting Document. The required fields will change as regulatory needs change and will differ for businesses and individuals.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Supporting Document Type resource.
+  CreateShortCodeApplicationRequest:
+    - name: friendly_name
+      type: STRING
+      REQUIRED: true
+      comment: The friendly name for the short code application.
+    - name: iso_country
+      type: STRING
+      REQUIRED: true
+      comment: The ISO country code.
+    - name: business_information
+      type: OBJECT
+      REQUIRED: true
+      comment: Business information associated with the application.
+    - name: setup
+      type: OBJECT
+      REQUIRED: true
+  CreateShortCodeApplicationResponse:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of the Short Code Application.
+    - name: application_requirements_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Application Requirements SID.
+    - name: application_requirements_version
+      type: INT
+      REQUIRED: false
+      comment: The version of the application requirements.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Account SID associated with the application.
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Bundle SID for regulatory compliance.
+    - name: reviewer
+      type: STRING
+      REQUIRED: false
+      comment: The reviewer of the application.
+    - name: zendesk_ticket_id
+      type: STRING
+      REQUIRED: false
+      comment: The Zendesk ticket ID associated with the application.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of the application.
+    - name: notification_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The notification emails for the application.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The ISO country code.
+    - name: state
+      type: STRING
+      REQUIRED: false
+      comment: The state of the application.
+    - name: setup
+      type: OBJECT
+      REQUIRED: false
+      comment: Setup configuration for the application.
+    - name: business_information
+      type: OBJECT
+      REQUIRED: false
+      comment: Business information associated with the application.
+    - name: user_sign_up
+      type: OBJECT
+      REQUIRED: false
+      comment: User sign-up configuration for the application.
+    - name: compliance_keywords
+      type: OBJECT
+      REQUIRED: false
+      comment: Compliance keywords for the application.
+    - name: content_examples
+      type: OBJECT
+      REQUIRED: false
+      comment: Content examples for the application.
+    - name: sms_campaign_details
+      type: OBJECT
+      REQUIRED: false
+      comment: SMS campaign details for the application.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time the application was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time the application was last updated.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the user who created the application.
+    - name: updated_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the user who last updated the application.
+  ShortCodeApplication:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of the Short Code Application.
+    - name: application_requirements_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Application Requirements SID.
+    - name: application_requirements_version
+      type: INT
+      REQUIRED: false
+      comment: The version of the application requirements.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Account SID associated with the application.
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Bundle SID for regulatory compliance.
+    - name: reviewer
+      type: STRING
+      REQUIRED: false
+      comment: The reviewer of the application.
+    - name: zendesk_ticket_id
+      type: STRING
+      REQUIRED: false
+      comment: The Zendesk ticket ID associated with the application.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of the application.
+    - name: notification_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The notification emails for the application.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The ISO country code.
+    - name: state
+      type: STRING
+      REQUIRED: false
+      comment: The state of the application.
+    - name: setup
+      type: OBJECT
+      REQUIRED: false
+      comment: Setup configuration for the application.
+    - name: business_information
+      type: OBJECT
+      REQUIRED: false
+      comment: Business information associated with the application.
+    - name: user_sign_up
+      type: OBJECT
+      REQUIRED: false
+      comment: User sign-up configuration for the application.
+    - name: compliance_keywords
+      type: OBJECT
+      REQUIRED: false
+      comment: Compliance keywords for the application.
+    - name: content_examples
+      type: OBJECT
+      REQUIRED: false
+      comment: Content examples for the application.
+    - name: sms_campaign_details
+      type: OBJECT
+      REQUIRED: false
+      comment: SMS campaign details for the application.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time the application was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time the application was last updated.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the user who created the application.
+    - name: updated_by
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the user who last updated the application.
+  ShortCodeApplicationResponsePage:
+    - name: total_elements
+      type: INT
+      REQUIRED: false
+    - name: total_pages
+      type: INT
+      REQUIRED: false
+    - name: current_page
+      type: INT
+      REQUIRED: false
+    - name: per_page
+      type: INT
+      REQUIRED: false
+    - name: has_next
+      type: BOOL
+      REQUIRED: false
+    - name: has_prev
+      type: BOOL
+      REQUIRED: false
+    - name: results
+      type: "[]STRUCT(ShortCodeApplication)"
+      REQUIRED: false
+      comment: List of Short Code Applications.
+  api.hostednumber.authorizationDocuments.listResponse200:
+    - name: items
+      type: "[]STRUCT(numbers.v2.authorization_document)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.bundles.listResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.bundle)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.copies.getResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.bundle.bundle_copy)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.hostednumber.dependentHostedNumberOrders.getResponse200:
+    - name: items
+      type: "[]STRUCT(numbers.v2.authorization_document.dependent_hosted_number_order)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.endUsers.listResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.end_user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.endUserTypes.listResponse200:
+    - name: end_user_types
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.end_user_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.evaluations.getResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.bundle.evaluation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.hostednumber.orders.listResponse200:
+    - name: items
+      type: "[]STRUCT(numbers.v2.hosted_number_order)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.itemAssignments.getResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.bundle.item_assignment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.regulations.listResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.regulation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.supportingDocuments.listResponse200:
+    - name: results
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.supporting_document)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.regulatorycompliance.supportingDocumentTypes.listResponse200:
+    - name: supporting_document_types
+      type: "[]STRUCT(numbers.v2.regulatory_compliance.supporting_document_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

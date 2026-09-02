@@ -1,0 +1,199 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Asset for a Service",
+      "canonical_id": "twilio_serverless.service.assets.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new build for a service with function or asset versions",
+      "canonical_id": "twilio_serverless.service.builds.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new deployment for a service environment",
+      "canonical_id": "twilio_serverless.service.deployments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new environment for a service",
+      "canonical_id": "twilio_serverless.service.environments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new environment variable for a service",
+      "canonical_id": "twilio_serverless.service.variables.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Function for a given Service",
+      "canonical_id": "twilio_serverless.service.functions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service",
+      "canonical_id": "twilio_serverless.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Function resource",
+      "canonical_id": "twilio_serverless.service.functions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific build resource",
+      "canonical_id": "twilio_serverless.service.builds.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific environment for a service",
+      "canonical_id": "twilio_serverless.service.environments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific environment variable",
+      "canonical_id": "twilio_serverless.service.variables.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific service resource",
+      "canonical_id": "twilio_serverless.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an asset resource for a service",
+      "canonical_id": "twilio_serverless.service.assets.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch service environment logs",
+      "canonical_id": "twilio_serverless.service.logs.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all builds for a service",
+      "canonical_id": "twilio_serverless.service.builds.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific asset for a service",
+      "canonical_id": "twilio_serverless.service.assets.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific asset version by service, asset, and version IDs",
+      "canonical_id": "twilio_serverless.service.versions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific build for a service",
+      "canonical_id": "twilio_serverless.service.builds.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific deployment for a service and environment",
+      "canonical_id": "twilio_serverless.service.deployments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific environment for a service",
+      "canonical_id": "twilio_serverless.service.environments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific environment variable for a service",
+      "canonical_id": "twilio_serverless.service.variables.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Function resource by Service and Function SID",
+      "canonical_id": "twilio_serverless.service.functions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Function Version by its IDs",
+      "canonical_id": "twilio_serverless.service.versions.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific log entry by its IDs",
+      "canonical_id": "twilio_serverless.service.logs.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific service by its ID",
+      "canonical_id": "twilio_serverless.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all assets for a specific service",
+      "canonical_id": "twilio_serverless.service.assets.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all Function Versions for a specific Service and Function",
+      "canonical_id": "twilio_serverless.service.versions.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all variables for a service environment",
+      "canonical_id": "twilio_serverless.service.variables.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the content of a specific Function Version",
+      "canonical_id": "twilio_serverless.service.content.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a specific build",
+      "canonical_id": "twilio_serverless.service.status.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all available services",
+      "canonical_id": "twilio_serverless.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all deployments for a specific service and environment",
+      "canonical_id": "twilio_serverless.service.deployments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all environments for a given service",
+      "canonical_id": "twilio_serverless.service.environments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all functions for a given service",
+      "canonical_id": "twilio_serverless.service.functions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all versions of a specific asset within a service",
+      "canonical_id": "twilio_serverless.service.versions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific asset resource",
+      "canonical_id": "twilio_serverless.service.assets.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific environment variable for a service",
+      "canonical_id": "twilio_serverless.service.variables.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Function resource",
+      "canonical_id": "twilio_serverless.service.functions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Service resource",
+      "canonical_id": "twilio_serverless.service.create.1"
+    }
+  ]
+}

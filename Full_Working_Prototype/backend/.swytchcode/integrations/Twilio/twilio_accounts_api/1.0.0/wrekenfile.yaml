@@ -1,0 +1,607 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://accounts.twilio.com
+METHODS:
+  twilio_accounts.authtoken.promote.create:
+    SUMMARY: Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old primary Auth Token will result in an error.
+    DESC: Promote the secondary Auth Token to primary. After promoting the new token, all requests to Twilio using your old primary Auth Token will result in an error.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/AuthTokens/Promote
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.auth_token_promotion)
+        RETURNVAR: twilio_accounts_authtoken_promote_create
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.authtoken.promote.create
+  twilio_accounts.consent.bulk.create:
+    SUMMARY: Perform operation CreateBulkConsents
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Consents/Bulk
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Items:
+          TYPE: "[]ANY"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.bulk_consents)
+        RETURNVAR: twilio_accounts_consent_bulk_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.consent.bulk.create
+  twilio_accounts.contact.bulk.create:
+    SUMMARY: Perform operation CreateBulkContacts
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Contacts/Bulk
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Items:
+          TYPE: "[]ANY"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.bulk_contacts)
+        RETURNVAR: twilio_accounts_contact_bulk_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.contact.bulk.create
+  twilio_accounts.credential.aWS.list:
+    SUMMARY: Retrieves a collection of AWS Credentials belonging to the account used to make the request
+    DESC: Retrieves a collection of AWS Credentials belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/AWS
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.aWS.listResponse200)
+        RETURNVAR: twilio_accounts_credential_aWS_list
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.aWS.list
+  twilio_accounts.credential.aWS.create:
+    SUMMARY: Create a new AWS Credential
+    DESC: Create a new AWS Credential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/AWS
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Credentials:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_aws)
+        RETURNVAR: twilio_accounts_credential_aWS_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.credential.aWS.create
+  twilio_accounts.credential.aWS.get:
+    SUMMARY: Fetch the AWS credentials specified by the provided Credential Sid
+    DESC: Fetch the AWS credentials specified by the provided Credential Sid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/AWS/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_aws)
+        RETURNVAR: twilio_accounts_credential_aWS_get
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.aWS.get
+  twilio_accounts.credential.aWS.create.1:
+    SUMMARY: Modify the properties of a given Account
+    DESC: Modify the properties of a given Account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/AWS/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_aws)
+        RETURNVAR: twilio_accounts_credential_aWS_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.aWS.create.1
+  twilio_accounts.credential.aWS.delete:
+    SUMMARY: Delete a Credential from your account
+    DESC: Delete a Credential from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Credentials/AWS/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_accounts.credential.aWS.delete
+  twilio_accounts.credential.publicKeys.list:
+    SUMMARY: Retrieves a collection of Public Key Credentials belonging to the account used to make the request
+    DESC: Retrieves a collection of Public Key Credentials belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/PublicKeys
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.publicKeys.listResponse200)
+        RETURNVAR: twilio_accounts_credential_publicKeys_list
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.publicKeys.list
+  twilio_accounts.credential.publicKeys.create:
+    SUMMARY: Create a new Public Key Credential
+    DESC: Create a new Public Key Credential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/PublicKeys
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PublicKey:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_public_key)
+        RETURNVAR: twilio_accounts_credential_publicKeys_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.credential.publicKeys.create
+  twilio_accounts.credential.publicKeys.get:
+    SUMMARY: Fetch the public key specified by the provided Credential Sid
+    DESC: Fetch the public key specified by the provided Credential Sid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/PublicKeys/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_public_key)
+        RETURNVAR: twilio_accounts_credential_publicKeys_get
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.publicKeys.get
+  twilio_accounts.credential.publicKeys.create.1:
+    SUMMARY: Modify the properties of a given Account
+    DESC: Modify the properties of a given Account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/PublicKeys/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.credential.credential_public_key)
+        RETURNVAR: twilio_accounts_credential_publicKeys_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.credential.publicKeys.create.1
+  twilio_accounts.credential.publicKeys.delete:
+    SUMMARY: Delete a Credential from your account
+    DESC: Delete a Credential from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Credentials/PublicKeys/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_accounts.credential.publicKeys.delete
+  twilio_accounts.messaging.geoPermissions.update:
+    SUMMARY: Perform operation UpdateMessagingGeopermissions
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v1/Messaging/GeoPermissions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Permissions:
+          TYPE: "[]ANY"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.messaging_geopermissions)
+        RETURNVAR: twilio_accounts_messaging_geoPermissions_update
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.messaging.geoPermissions.update
+  twilio_accounts.messaging.geoPermissions.list:
+    SUMMARY: Perform operation FetchMessagingGeopermissions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Messaging/GeoPermissions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.messaging_geopermissions)
+        RETURNVAR: twilio_accounts_messaging_geoPermissions_list
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.messaging.geoPermissions.list
+  twilio_accounts.safelist.numbers.create:
+    SUMMARY: Add a new phone number or phone number 1k prefix to SafeList.
+    DESC: Add a new phone number or phone number 1k prefix to SafeList.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SafeList/Numbers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.safelist)
+        RETURNVAR: twilio_accounts_safelist_numbers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.safelist.numbers.create
+  twilio_accounts.safelist.numbers.list:
+    SUMMARY: Check if a phone number or phone number 1k prefix exists in SafeList.
+    DESC: Check if a phone number or phone number 1k prefix exists in SafeList.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SafeList/Numbers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.safelist)
+        RETURNVAR: twilio_accounts_safelist_numbers_list
+        STATUS: 200
+    CANONICAL_ID: twilio_accounts.safelist.numbers.list
+  twilio_accounts.safelist.numbers.delete:
+    SUMMARY: Remove a phone number or phone number 1k prefix from SafeList.
+    DESC: Remove a phone number or phone number 1k prefix from SafeList.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/SafeList/Numbers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    CANONICAL_ID: twilio_accounts.safelist.numbers.delete
+  twilio_accounts.authtoken.secondary.create:
+    SUMMARY: Create a new secondary Auth Token
+    DESC: Create a new secondary Auth Token
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/AuthTokens/Secondary
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(accounts.v1.secondary_auth_token)
+        RETURNVAR: twilio_accounts_authtoken_secondary_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_accounts.authtoken.secondary.create
+  twilio_accounts.authtoken.secondary.delete:
+    SUMMARY: Delete the secondary Auth Token from your account
+    DESC: Delete the secondary Auth Token from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/AuthTokens/Secondary
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    CANONICAL_ID: twilio_accounts.authtoken.secondary.delete
+STRUCTS:
+  accounts.v1.auth_token_promotion:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the secondary Auth Token was created for.
+    - name: auth_token
+      type: STRING
+      REQUIRED: false
+      comment: The promoted Auth Token that must be used to authenticate future API requests.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in UTC when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URI for this resource, relative to `https://accounts.twilio.com`
+  accounts.v1.bulk_consents:
+    - name: items
+      type: ANY
+      REQUIRED: false
+      comment: "A list of objects where each object represents the result of processing a `correlation_id`. Each object contains the following fields: `correlation_id`, a unique 32-character UUID that maps the response to the original request; `error_code`, an integer where 0 indicates success and any non-zero value represents an error; and `error_messages`, an array of strings describing specific validation errors encountered. If the request is successful, the error_messages array will be empty."
+  accounts.v1.bulk_contacts:
+    - name: items
+      type: ANY
+      REQUIRED: false
+      comment: "A list of objects where each object represents the result of processing a `correlation_id`. Each object contains the following fields: `correlation_id`, a unique 32-character UUID that maps the response to the original request; `error_code`, an integer where 0 indicates success and any non-zero value represents an error; and `error_messages`, an array of strings describing specific validation errors encountered. If the request is successful, the error_messages array will be empty."
+  accounts.v1.credential.credential_aws:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AWS resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AWS resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URI for this resource, relative to `https://accounts.twilio.com`
+  accounts.v1.credential.credential_public_key:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the PublicKey resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Credential that the PublicKey resource belongs to.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URI for this resource, relative to `https://accounts.twilio.com`
+  accounts.v1.messaging_geopermissions:
+    - name: permissions
+      type: ANY
+      REQUIRED: false
+      comment: "A list of objects where each object represents the result of processing a messaging Geo Permission. Each object contains the following fields: `country_code`, the country code of the country for which the permission was updated; `type`, the type of the permission i.e. country; `enabled`, true if the permission is enabled else false; `error_code`, an integer where 0 indicates success and any non-zero value represents an error; and `error_messages`, an array of strings describing specific validation errors encountered. If the request is successful, the error_messages array will be empty."
+  accounts.v1.safelist:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the SafeList resource.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number or phone number 1k prefix in SafeList.
+  accounts.v1.secondary_auth_token:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the secondary Auth Token was created for.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in UTC when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in UTC when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: secondary_auth_token
+      type: STRING
+      REQUIRED: false
+      comment: The generated secondary Auth Token that can be used to authenticate future API requests.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URI for this resource, relative to `https://accounts.twilio.com`
+  api.credential.aWS.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(accounts.v1.credential.credential_aws)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.credential.publicKeys.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(accounts.v1.credential.credential_public_key)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

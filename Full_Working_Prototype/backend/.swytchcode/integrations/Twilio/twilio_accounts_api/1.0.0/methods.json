@@ -1,0 +1,104 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a phone number or 1k prefix to the SafeList",
+      "canonical_id": "twilio_accounts.safelist.numbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Check if a phone number or prefix is on the SafeList",
+      "canonical_id": "twilio_accounts.safelist.numbers.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new AWS credential",
+      "canonical_id": "twilio_accounts.credential.aWS.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new public key credential",
+      "canonical_id": "twilio_accounts.credential.publicKeys.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new secondary authentication token",
+      "canonical_id": "twilio_accounts.authtoken.secondary.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create multiple consents in bulk",
+      "canonical_id": "twilio_accounts.consent.bulk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create multiple contacts at once",
+      "canonical_id": "twilio_accounts.contact.bulk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a credential by its unique identifier",
+      "canonical_id": "twilio_accounts.credential.publicKeys.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get AWS credentials by Credential Sid",
+      "canonical_id": "twilio_accounts.credential.aWS.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get messaging geo-permissions by country code",
+      "canonical_id": "twilio_accounts.messaging.geoPermissions.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get public key by credential SID",
+      "canonical_id": "twilio_accounts.credential.publicKeys.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get public key credentials for the account",
+      "canonical_id": "twilio_accounts.credential.publicKeys.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List AWS credentials for the authenticated account",
+      "canonical_id": "twilio_accounts.credential.aWS.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Promote secondary Auth Token to primary",
+      "canonical_id": "twilio_accounts.authtoken.promote.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number or prefix from SafeList",
+      "canonical_id": "twilio_accounts.safelist.numbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an AWS credential by its ID",
+      "canonical_id": "twilio_accounts.credential.aWS.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove secondary authentication token",
+      "canonical_id": "twilio_accounts.authtoken.secondary.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update account properties by SID",
+      "canonical_id": "twilio_accounts.credential.publicKeys.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update AWS credentials for an account",
+      "canonical_id": "twilio_accounts.credential.aWS.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update messaging geopermissions",
+      "canonical_id": "twilio_accounts.messaging.geoPermissions.update"
+    }
+  ]
+}

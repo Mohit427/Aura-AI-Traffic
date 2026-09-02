@@ -1,0 +1,14 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a frontline user by their SID",
+      "canonical_id": "twilio_frontline.user.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update frontline user details",
+      "canonical_id": "twilio_frontline.user.create"
+    }
+  ]
+}

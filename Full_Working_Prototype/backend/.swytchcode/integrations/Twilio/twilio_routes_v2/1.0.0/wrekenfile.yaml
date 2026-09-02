@@ -1,0 +1,257 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://routes.twilio.com
+METHODS:
+  twilio_routes.phonenumber.create:
+    SUMMARY: Assign an Inbound Processing Region to a phone number.
+    DESC: Assign an Inbound Processing Region to a phone number.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+      - VoiceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.phone_number)
+        RETURNVAR: twilio_routes_phonenumber_create
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.phonenumber.create
+  twilio_routes.phonenumber.get:
+    SUMMARY: Fetch the Inbound Processing Region assigned to a phone number.
+    DESC: Fetch the Inbound Processing Region assigned to a phone number.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.phone_number)
+        RETURNVAR: twilio_routes_phonenumber_get
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.phonenumber.get
+  twilio_routes.sipdomain.create:
+    SUMMARY: Perform operation UpdateSipDomain
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/SipDomains/{SipDomain}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SipDomain:
+          TYPE: STRING
+          LOCATION: path
+      - VoiceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.sip_domain)
+        RETURNVAR: twilio_routes_sipdomain_create
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.sipdomain.create
+  twilio_routes.sipdomain.get:
+    SUMMARY: Perform operation FetchSipDomain
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/SipDomains/{SipDomain}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SipDomain:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.sip_domain)
+        RETURNVAR: twilio_routes_sipdomain_get
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.sipdomain.get
+  twilio_routes.trunk.create:
+    SUMMARY: Assign an Inbound Processing Region to a SIP Trunk
+    DESC: Assign an Inbound Processing Region to a SIP Trunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Trunks/{SipTrunkDomain}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SipTrunkDomain:
+          TYPE: STRING
+          LOCATION: path
+      - VoiceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.trunks)
+        RETURNVAR: twilio_routes_trunk_create
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.trunk.create
+  twilio_routes.trunk.get:
+    SUMMARY: Fetch the Inbound Processing Region assigned to a SIP Trunk.
+    DESC: Fetch the Inbound Processing Region assigned to a SIP Trunk.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Trunks/{SipTrunkDomain}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SipTrunkDomain:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(routes.v2.trunks)
+        RETURNVAR: twilio_routes_trunk_get
+        STATUS: 200
+    CANONICAL_ID: twilio_routes.trunk.get
+STRUCTS:
+  routes.v2.phone_number:
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in E.164 format
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Inbound Processing Region assignments for this phone number.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of the Inbound Processing Region assignments for this phone number, up to 64 characters.
+    - name: voice_region
+      type: STRING
+      REQUIRED: false
+      comment: The Inbound Processing Region used for this phone number for voice.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this phone number was assigned an Inbound Processing Region, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the Inbound Processing Region was updated for this phone number, given in ISO 8601 format.
+  routes.v2.sip_domain:
+    - name: sip_domain
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: voice_region
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+  routes.v2.trunks:
+    - name: sip_trunk_domain
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the SIP Trunk
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Inbound Processing Region assignments for this SIP Trunk.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of the Inbound Processing Region assignments for this SIP Trunk, up to 64 characters.
+    - name: voice_region
+      type: STRING
+      REQUIRED: false
+      comment: The Inbound Processing Region used for this SIP Trunk for voice.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this SIP Trunk was assigned an Inbound Processing Region, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the Inbound Processing Region was updated for this SIP Trunk, given in ISO 8601 format.

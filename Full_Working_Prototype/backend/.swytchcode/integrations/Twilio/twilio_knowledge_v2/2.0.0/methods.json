@@ -1,0 +1,69 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add new knowledge from files, web, or text",
+      "canonical_id": "twilio_knowledge.knowledgebas.knowledge.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new knowledge base for your Twilio account",
+      "canonical_id": "twilio_knowledge.controlplane.knowledgeBases.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a knowledge base and all its resources",
+      "canonical_id": "twilio_knowledge.controlplane.knowledgeBases.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a knowledge source and its data",
+      "canonical_id": "twilio_knowledge.knowledgebas.knowledge.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get detailed information about a specific knowledge source",
+      "canonical_id": "twilio_knowledge.knowledgebas.knowledge.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get knowledge base details by ID",
+      "canonical_id": "twilio_knowledge.controlplane.knowledgeBases.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get processed content chunks for a knowledge source",
+      "canonical_id": "twilio_knowledge.knowledgebas.chunks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status and result of an asynchronous operation",
+      "canonical_id": "twilio_knowledge.controlplane.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List knowledge bases for your Twilio account",
+      "canonical_id": "twilio_knowledge.controlplane.knowledgeBases.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List knowledge sources for a knowledge base",
+      "canonical_id": "twilio_knowledge.knowledgebas.knowledge.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Search knowledge chunks semantically by query",
+      "canonical_id": "twilio_knowledge.knowledgebas.search.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Knowledge Base with provided fields",
+      "canonical_id": "twilio_knowledge.controlplane.knowledgeBases.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a knowledge source's details or trigger a refresh",
+      "canonical_id": "twilio_knowledge.knowledgebas.knowledge.update"
+    }
+  ]
+}

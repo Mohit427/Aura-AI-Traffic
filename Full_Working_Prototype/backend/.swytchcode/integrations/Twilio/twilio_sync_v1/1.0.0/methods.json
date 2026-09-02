@@ -1,0 +1,244 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add an item to a Sync list",
+      "canonical_id": "twilio_sync.service.items.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new document for a service",
+      "canonical_id": "twilio_sync.service.documents.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new item in a Sync Map resource",
+      "canonical_id": "twilio_sync.service.items.create.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service with specified configuration details",
+      "canonical_id": "twilio_sync.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new stream for a service",
+      "canonical_id": "twilio_sync.service.streams.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Sync List for a given Service",
+      "canonical_id": "twilio_sync.service.lists.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Sync Map for a service",
+      "canonical_id": "twilio_sync.service.maps.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a service by its unique identifier",
+      "canonical_id": "twilio_sync.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific document for a service",
+      "canonical_id": "twilio_sync.service.documents.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific item from a Sync Map",
+      "canonical_id": "twilio_sync.service.items.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific list within a service",
+      "canonical_id": "twilio_sync.service.lists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific map resource for a given service",
+      "canonical_id": "twilio_sync.service.maps.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific stream",
+      "canonical_id": "twilio_sync.service.streams.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific item from a map in a service",
+      "canonical_id": "twilio_sync.service.items.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific map resource for a given service",
+      "canonical_id": "twilio_sync.service.maps.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific item from a list within a service",
+      "canonical_id": "twilio_sync.service.items.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific stream by its service and stream IDs",
+      "canonical_id": "twilio_sync.service.streams.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Sync Document Permission by identity",
+      "canonical_id": "twilio_sync.service.permissions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Sync List Permission by identity",
+      "canonical_id": "twilio_sync.service.permissions.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Sync Map permission by identity",
+      "canonical_id": "twilio_sync.service.permissions.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all permissions for a specific Sync Document",
+      "canonical_id": "twilio_sync.service.permissions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all permissions for a specific Sync Map",
+      "canonical_id": "twilio_sync.service.permissions.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all permissions for a Sync List",
+      "canonical_id": "twilio_sync.service.permissions.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all streams for a service",
+      "canonical_id": "twilio_sync.service.streams.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Grant or revoke an identity's permissions for a Sync Map",
+      "canonical_id": "twilio_sync.service.permissions.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all items in a specific map within a service",
+      "canonical_id": "twilio_sync.service.items.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all maps for a given service",
+      "canonical_id": "twilio_sync.service.maps.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available services with pagination",
+      "canonical_id": "twilio_sync.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List documents for a specific service",
+      "canonical_id": "twilio_sync.service.documents.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a list item by its index",
+      "canonical_id": "twilio_sync.service.items.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a Sync Document Permission for a specific identity",
+      "canonical_id": "twilio_sync.service.permissions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a Sync List Permission for a specific identity",
+      "canonical_id": "twilio_sync.service.permissions.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a Sync Map permission for a specific identity",
+      "canonical_id": "twilio_sync.service.permissions.delete.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific document for a given service",
+      "canonical_id": "twilio_sync.service.documents.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific list within a service",
+      "canonical_id": "twilio_sync.service.lists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all lists associated with a specific service",
+      "canonical_id": "twilio_sync.service.lists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve items from a specific list within a service",
+      "canonical_id": "twilio_sync.service.items.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve service details by service ID",
+      "canonical_id": "twilio_sync.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a stream",
+      "canonical_id": "twilio_sync.service.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a document for a specific service",
+      "canonical_id": "twilio_sync.service.documents.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a list item in a service",
+      "canonical_id": "twilio_sync.service.items.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a map item in a specific sync map",
+      "canonical_id": "twilio_sync.service.items.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a map's sync configuration",
+      "canonical_id": "twilio_sync.service.maps.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a service's configuration and webhooks",
+      "canonical_id": "twilio_sync.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific stream's TTL",
+      "canonical_id": "twilio_sync.service.streams.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a sync list with optional TTL settings",
+      "canonical_id": "twilio_sync.service.lists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an identity's permissions for a Sync List",
+      "canonical_id": "twilio_sync.service.permissions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an identity's permissions on a Sync Document",
+      "canonical_id": "twilio_sync.service.permissions.create"
+    }
+  ]
+}

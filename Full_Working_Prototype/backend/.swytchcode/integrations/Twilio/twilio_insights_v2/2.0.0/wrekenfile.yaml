@@ -1,0 +1,434 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://insights.twilio.com
+METHODS:
+  sample_reference_twilio.voice.reports.create:
+    SUMMARY: Create Account Level Report
+    DESC: Create a Report for a specific account with given time range and filters.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Voice/Reports
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(insights.v2.create_account_report_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(insights.v2.create_account_report_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v2.create_report_response)
+        RETURNVAR: sample_reference_twilio_voice_reports_create_201
+        STATUS: 201
+    CANONICAL_ID: sample_reference_twilio.voice.reports.create
+  sample_reference_twilio.voice.reports.get:
+    SUMMARY: Fetch Voice Insights Account Level Report
+    DESC: Get Account Level Report for the given Report Id.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Voice/Reports/{reportId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - reportId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v2.account_report)
+        RETURNVAR: sample_reference_twilio_voice_reports_get
+        STATUS: 200
+    CANONICAL_ID: sample_reference_twilio.voice.reports.get
+  sample_reference_twilio.voice.inbound.create:
+    SUMMARY: Create Inbound Phone Numbers Level Report
+    DESC: Create Inbound specific Phone Numbers Report for a specific account with given time range.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Voice/Reports/PhoneNumbers/Inbound
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(insights.v2.create_phone_numbers_report_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(insights.v2.create_phone_numbers_report_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v2.create_report_response)
+        RETURNVAR: sample_reference_twilio_voice_inbound_create_201
+        STATUS: 201
+    CANONICAL_ID: sample_reference_twilio.voice.inbound.create
+  sample_reference_twilio.voice.inbound.get:
+    SUMMARY: List Inbound Phone Numbers Level Reports
+    DESC: Get Inbound Phone Numbers Level Reports for the given Report Id.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Voice/Reports/PhoneNumbers/Inbound/{reportId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - reportId:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.inbound.getResponse200)
+        RETURNVAR: sample_reference_twilio_voice_inbound_get
+        STATUS: 200
+    CANONICAL_ID: sample_reference_twilio.voice.inbound.get
+  sample_reference_twilio.voice.outbound.create:
+    SUMMARY: Create Outbound Phone Numbers Level Report
+    DESC: Create Outbound specific Phone Numbers Report for a specific account with given time range.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Voice/Reports/PhoneNumbers/Outbound
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(insights.v2.create_phone_numbers_report_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(insights.v2.create_phone_numbers_report_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v2.create_report_response)
+        RETURNVAR: sample_reference_twilio_voice_outbound_create_201
+        STATUS: 201
+    CANONICAL_ID: sample_reference_twilio.voice.outbound.create
+  sample_reference_twilio.voice.outbound.get:
+    SUMMARY: List Outbound Phone Numbers Level Reports
+    DESC: Get Outbound Phone Numbers Level Report for the given Report Id.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Voice/Reports/PhoneNumbers/Outbound/{reportId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - reportId:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.outbound.getResponse200)
+        RETURNVAR: sample_reference_twilio_voice_outbound_get
+        STATUS: 200
+    CANONICAL_ID: sample_reference_twilio.voice.outbound.get
+STRUCTS:
+  insights.v2.create_account_report_request:
+    - name: time_range
+      type: OBJECT
+      REQUIRED: false
+      comment: Optional start and end date time for the report window. Defaults to the most recent 7 days when omitted.
+    - name: filters
+      type: "[]STRUCT(report_filter)"
+      REQUIRED: false
+  report_filter:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: |
+        The name of the filter
+        'call_state', 'call_direction', 'call_type', 'twilio_regions', 'caller_country_code', 'callee_country_code', 'silent'
+    - name: values
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of supported filter values for the field name
+  insights.v2.create_report_response:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: report_id
+      type: STRING
+      REQUIRED: false
+      comment: The report identifier as Voice Insights Report TTID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: request_meta
+      type: STRUCT(report_metadata)
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  report_metadata:
+    - name: start_datetime
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Start date time of the report
+    - name: end_datetime
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: End date time of the report
+    - name: filters
+      type: "[]STRUCT(report_filter)"
+      REQUIRED: false
+      comment: Filter values applied to the report
+  insights.v2.account_report:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: report_id
+      type: STRING
+      REQUIRED: false
+      comment: The account level report identifier as Voice Insights Report TTID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: request_meta
+      type: STRUCT(report_metadata)
+      REQUIRED: false
+    - name: report
+      type: STRUCT(account_report)
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  account_report:
+    - name: call_deliverability_score
+      type: FLOAT
+      REQUIRED: false
+      comment: |
+        The call deliverability score measures the network effectiveness in delivering calls by scoring calls reach the intended recipient.
+        The score is a value between 0 and 100, where 100 indicates that all calls were successfully delivered.
+    - name: call_answer_score
+      type: FLOAT
+      REQUIRED: false
+      comment: |
+        The call answer score measures customers behavior to the delivered calls.
+        The score is a value between 0 and 100, where 100 indicates that all calls were successfully answered.
+    - name: total_calls
+      type: INT
+      REQUIRED: false
+      comment: Total number of calls made during the report period.
+    - name: call_direction
+      type: OBJECT
+      REQUIRED: false
+      comment: Number of calls made in each direction.
+    - name: call_state
+      type: OBJECT
+      REQUIRED: false
+      comment: Number of calls made in each state.
+    - name: call_type
+      type: OBJECT
+      REQUIRED: false
+      comment: |
+        Number of calls made in each type.
+        `carrier`, `sip`, `trunking`, `client`, `whatsapp`
+    - name: aloc
+      type: FLOAT
+      REQUIRED: false
+      comment: Average length of call in seconds.
+    - name: twilio_edge_location
+      type: map[STRING]INT
+      REQUIRED: false
+      comment: Number of calls made in each Twilio Edge location. Refer to [Public Edge Locations](https://www.twilio.com/docs/global-infrastructure/edge-locations#public-edge-locations) for more detail.
+    - name: caller_country_code
+      type: map[STRING]INT
+      REQUIRED: false
+      comment: Number of calls originating from each country (ISO alpha-2).
+    - name: callee_country_code
+      type: map[STRING]INT
+      REQUIRED: false
+      comment: Number of calls terminating in each country (ISO alpha-2).
+    - name: average_queue_time_ms
+      type: FLOAT
+      REQUIRED: false
+      comment: Average queue time in milliseconds.
+    - name: silent_calls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of silent calls.
+    - name: network_issues
+      type: OBJECT
+      REQUIRED: false
+      comment: Network-quality indicators for SDK and Twilio Gateway traffic during the report period.
+    - name: KYT
+      type: OBJECT
+      REQUIRED: false
+      comment: Know Your Traffic (KYT) metrics focused on outbound carrier performance and trust signals for the report period.
+    - name: answering_machine_detection
+      type: OBJECT
+      REQUIRED: false
+      comment: Number of calls made in each answering machine detection.
+  county_carrier_value:
+    - name: country
+      type: STRING
+      REQUIRED: false
+    - name: carriers
+      type: "[]ANY"
+      REQUIRED: false
+  insights.v2.create_phone_numbers_report_request:
+    - name: time_range
+      type: OBJECT
+      REQUIRED: false
+    - name: filters
+      type: "[]STRUCT(phone_number_report_filter)"
+      REQUIRED: false
+    - name: size
+      type: INT
+      REQUIRED: false
+      comment: The number of max available top Phone Numbers to generate.
+  phone_number_report_filter:
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: |
+        The name of the filter
+    - name: values
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of supported filter values for the field name
+  insights.v2.inbound_phone_number_report:
+    - name: handle
+      type: STRING
+      REQUIRED: false
+      comment: Inbound phone number handle represented in the report.
+    - name: total_calls
+      type: INT
+      REQUIRED: false
+      comment: Total number of calls made with the given handle during the report period.
+    - name: call_answer_score
+      type: FLOAT
+      REQUIRED: false
+      comment: |
+        The call answer score measures customers behavior to the delivered calls.
+        The score is a value between 0 and 100, where 100 indicates that all calls were successfully answered.
+    - name: call_state_percentage
+      type: OBJECT
+      REQUIRED: false
+      comment: Percentage of calls made in each state.
+    - name: silent_calls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of inbound calls with silence tags over total outbound calls. A silent tag is indicative of a connectivity issue or muted audio.
+  insights.v2.outbound_phone_number_report:
+    - name: handle
+      type: STRING
+      REQUIRED: false
+      comment: The outbound phone number handle.
+    - name: total_calls
+      type: INT
+      REQUIRED: false
+      comment: Total number of outbound calls made with the given handle during the report period.
+    - name: call_answer_score
+      type: FLOAT
+      REQUIRED: false
+      comment: |
+        The call answer score measures customers behavior to the delivered calls.
+        The score is a value between 0 and 100, where 100 indicates that all calls were successfully answered.
+    - name: calls_by_device_type
+      type: map[STRING]INT
+      REQUIRED: false
+      comment: |
+        Number of calls made with each device type.
+        `voip`, `mobile`, `landline`, `unknown`
+    - name: answer_rate_device_type
+      type: map[STRING]FLOAT
+      REQUIRED: false
+      comment: |
+        Answer rate for each device type.
+        `voip`, `mobile`, `landline`, `unknown`
+    - name: call_state_percentage
+      type: OBJECT
+      REQUIRED: false
+      comment: Percentage of calls made in each state.
+    - name: blocked_calls_by_carrier
+      type: "[]STRUCT(county_carrier_value)"
+      REQUIRED: false
+      comment: Percentage of blocked calls by carrier per country.
+    - name: silent_calls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of calls with silence tags over total calls. A silent tag is indicative of a connectivity issue or muted audio.
+    - name: short_duration_calls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of completed outbound calls under 10 seconds (PSTN Short call tags); More than 15% is typically low trust measured.
+    - name: long_duration_calls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of long duration calls ( >= 60 seconds)
+    - name: potential_robocalls_percentage
+      type: FLOAT
+      REQUIRED: false
+      comment: Percentage of completed outbound calls to unassigned or unallocated phone numbers.
+    - name: answering_machine_detection
+      type: OBJECT
+      REQUIRED: false
+      comment: Number of calls made in answering machine detection (AMD) enabled.
+  api.voice.inbound.getResponse200:
+    - name: reports
+      type: "[]STRUCT(insights.v2.inbound_phone_number_report)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.voice.outbound.getResponse200:
+    - name: reports
+      type: "[]STRUCT(insights.v2.outbound_phone_number_report)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

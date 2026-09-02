@@ -1,0 +1,418 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://bulkexports.twilio.com
+METHODS:
+  twilio_bulkexports.export.days.get:
+    SUMMARY: Fetch a specific Day.
+    DESC: Fetch a specific Day.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/{ResourceType}/Days/{Day}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+      - Day:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_bulkexports.export.days.get
+  twilio_bulkexports.export.days.get.1:
+    SUMMARY: Retrieve a list of all Days for a resource.
+    DESC: Retrieve a list of all Days for a resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/{ResourceType}/Days
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.export.days.getResponse200)
+        RETURNVAR: twilio_bulkexports_export_days_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.days.get.1
+  twilio_bulkexports.export.get:
+    SUMMARY: Fetch a specific Export.
+    DESC: Fetch a specific Export.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/{ResourceType}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(bulkexports.v1.export)
+        RETURNVAR: twilio_bulkexports_export_get
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.get
+  twilio_bulkexports.export.configuration.get:
+    SUMMARY: Fetch a specific Export Configuration.
+    DESC: Fetch a specific Export Configuration.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/{ResourceType}/Configuration
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(bulkexports.v1.export_configuration)
+        RETURNVAR: twilio_bulkexports_export_configuration_get
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.configuration.get
+  twilio_bulkexports.export.configuration.create:
+    SUMMARY: Update a specific Export Configuration.
+    DESC: Update a specific Export Configuration.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Exports/{ResourceType}/Configuration
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(bulkexports.v1.export_configuration)
+        RETURNVAR: twilio_bulkexports_export_configuration_create
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.configuration.create
+  twilio_bulkexports.export.jobs.get:
+    SUMMARY: Perform operation ListExportCustomJob
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/{ResourceType}/Jobs
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.export.jobs.getResponse200)
+        RETURNVAR: twilio_bulkexports_export_jobs_get
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.jobs.get
+  twilio_bulkexports.export.jobs.create:
+    SUMMARY: Perform operation CreateExportCustomJob
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Exports/{ResourceType}/Jobs
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ResourceType:
+          TYPE: STRING
+          LOCATION: path
+      - StartDay:
+          TYPE: STRING
+          LOCATION: body
+      - EndDay:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(bulkexports.v1.export.export_custom_job)
+        RETURNVAR: twilio_bulkexports_export_jobs_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_bulkexports.export.jobs.create
+  twilio_bulkexports.export.jobs.get.1:
+    SUMMARY: Perform operation FetchJob
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Exports/Jobs/{JobSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - JobSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(bulkexports.v1.export.job)
+        RETURNVAR: twilio_bulkexports_export_jobs_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_bulkexports.export.jobs.get.1
+  twilio_bulkexports.export.jobs.delete:
+    SUMMARY: Perform operation DeleteJob
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Exports/Jobs/{JobSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - JobSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_bulkexports.export.jobs.delete
+STRUCTS:
+  bulkexports.v1.export.day:
+    - name: day
+      type: STRING
+      REQUIRED: false
+      comment: The ISO 8601 format date of the resources in the file, for a UTC day
+    - name: size
+      type: INT
+      REQUIRED: false
+      comment: The size of the day's data file in bytes
+    - name: create_date
+      type: STRING
+      REQUIRED: false
+      comment: The ISO 8601 format date when resources is created
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name specified when creating the job
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of communication – Messages, Calls, Conferences, and Participants
+  bulkexports.v1.export:
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of communication – Messages, Calls, Conferences, and Participants
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Export.
+  bulkexports.v1.export_configuration:
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: If true, Twilio will automatically generate every day's file when the day is over.
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: Stores the URL destination for the method specified in webhook_method.
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+      comment: Sets whether Twilio should call a webhook URL when the automatic generation is complete, using GET or POST. The actual destination is set in the webhook_url
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of communication – Messages, Calls, Conferences, and Participants
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  bulkexports.v1.export.export_custom_job:
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name specified when creating the job
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of communication – Messages, Calls, Conferences, and Participants
+    - name: start_day
+      type: STRING
+      REQUIRED: false
+      comment: The start day for the custom export specified when creating the job
+    - name: end_day
+      type: STRING
+      REQUIRED: false
+      comment: The end day for the export specified when creating the job
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied.
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+      comment: This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The optional email to send the completion notification to
+    - name: job_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique job_sid returned when the custom export was created
+    - name: details
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The details of a job which is an object that contains an array of status grouped by `status` state.  Each `status` object has a `status` string, a count which is the number of days in that `status`, and list of days in that `status`. The day strings are in the format yyyy-MM-dd. As an example, a currently running job may have a status object for COMPLETED and a `status` object for SUBMITTED each with its own count and list of days.
+    - name: job_queue_position
+      type: STRING
+      REQUIRED: false
+      comment: This is the job position from the 1st in line. Your queue position will never increase. As jobs ahead of yours in the queue are processed, the queue position number will decrease
+    - name: estimated_completion_time
+      type: STRING
+      REQUIRED: false
+      comment: this is the time estimated until your job is complete. This is calculated each time you request the job list. The time is calculated based on the current rate of job completion (which may vary) and your job queue position
+  bulkexports.v1.export.job:
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of communication – Messages, Calls, Conferences, and Participants
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name specified when creating the job
+    - name: details
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The details of a job which is an object that contains an array of status grouped by `status` state.  Each `status` object has a `status` string, a count which is the number of days in that `status`, and list of days in that `status`. The day strings are in the format yyyy-MM-dd. As an example, a currently running job may have a status object for COMPLETED and a `status` object for SUBMITTED each with its own count and list of days.
+    - name: start_day
+      type: STRING
+      REQUIRED: false
+      comment: The start time for the export specified when creating the job
+    - name: end_day
+      type: STRING
+      REQUIRED: false
+      comment: The end time for the export specified when creating the job
+    - name: job_sid
+      type: STRING
+      REQUIRED: false
+      comment: The job_sid returned when the export was created
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The optional webhook url called on completion
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+      comment: This is the method used to call the webhook
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The optional email to send the completion notification to
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: job_queue_position
+      type: STRING
+      REQUIRED: false
+      comment: This is the job position from the 1st in line. Your queue position will never increase. As jobs ahead of yours in the queue are processed, the queue position number will decrease
+    - name: estimated_completion_time
+      type: STRING
+      REQUIRED: false
+      comment: this is the time estimated until your job is complete. This is calculated each time you request the job list. The time is calculated based on the current rate of job completion (which may vary) and your job queue position
+  api.export.days.getResponse200:
+    - name: days
+      type: "[]STRUCT(bulkexports.v1.export.day)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.export.jobs.getResponse200:
+    - name: jobs
+      type: "[]STRUCT(bulkexports.v1.export.export_custom_job)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

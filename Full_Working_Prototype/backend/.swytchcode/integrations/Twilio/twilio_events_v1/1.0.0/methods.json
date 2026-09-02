@@ -1,0 +1,114 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new data sink",
+      "canonical_id": "twilio_events.sink.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new subscription with specified details",
+      "canonical_id": "twilio_events.subscription.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a test event for a given sink",
+      "canonical_id": "twilio_events.sink.test.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific sink",
+      "canonical_id": "twilio_events.sink.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific subscription",
+      "canonical_id": "twilio_events.subscription.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of account subscriptions",
+      "canonical_id": "twilio_events.subscription.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of event types",
+      "canonical_id": "twilio_events.type.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a paginated list of schema versions",
+      "canonical_id": "twilio_events.schema.versions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific event type by its identifier",
+      "canonical_id": "twilio_events.type.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific schema and its version",
+      "canonical_id": "twilio_events.schema.versions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific sink by its ID",
+      "canonical_id": "twilio_events.sink.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific subscribed event for a subscription",
+      "canonical_id": "twilio_events.subscription.subscribedEvents.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific subscription by its ID",
+      "canonical_id": "twilio_events.subscription.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get subscribed event types for a subscription",
+      "canonical_id": "twilio_events.subscription.subscribedEvents.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List account's sinks with filtering and pagination",
+      "canonical_id": "twilio_events.sink.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a subscribed event type from a subscription",
+      "canonical_id": "twilio_events.subscription.subscribedEvents.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific schema and its nested versions",
+      "canonical_id": "twilio_events.schema.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Subscribe to an event type for a given subscription",
+      "canonical_id": "twilio_events.subscription.subscribedEvents.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific sink's description",
+      "canonical_id": "twilio_events.sink.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a subscribed event for a subscription",
+      "canonical_id": "twilio_events.subscription.subscribedEvents.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a subscription's details",
+      "canonical_id": "twilio_events.subscription.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Validate a test event was received for a Sink",
+      "canonical_id": "twilio_events.sink.validate"
+    }
+  ]
+}

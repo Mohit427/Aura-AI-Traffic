@@ -1,0 +1,24 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get event details by its ID",
+      "canonical_id": "twilio_monitor.event.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List alerts with optional filtering by log level and date range",
+      "canonical_id": "twilio_monitor.alert.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of account events, sorted by date",
+      "canonical_id": "twilio_monitor.event.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific alert by its ID",
+      "canonical_id": "twilio_monitor.alert.get"
+    }
+  ]
+}

@@ -1,0 +1,2614 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://chat.twilio.com
+METHODS:
+  twilio_chat.service.bindings.get:
+    SUMMARY: Perform operation ListBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Bindings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - BindingType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.bindings.getResponse200)
+        RETURNVAR: twilio_chat_service_bindings_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.bindings.get
+  twilio_chat.service.bindings.get.1:
+    SUMMARY: Perform operation FetchBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.binding)
+        RETURNVAR: twilio_chat_service_bindings_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.bindings.get.1
+  twilio_chat.service.bindings.delete:
+    SUMMARY: Perform operation DeleteBinding
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.bindings.delete
+  twilio_chat.service.channels.get:
+    SUMMARY: Perform operation FetchChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel)
+        RETURNVAR: twilio_chat_service_channels_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.get
+  twilio_chat.service.channels.delete:
+    SUMMARY: Perform operation DeleteChannel
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_chat.service.channels.delete
+  twilio_chat.service.channels.create:
+    SUMMARY: Perform operation UpdateChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - CreatedBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel)
+        RETURNVAR: twilio_chat_service_channels_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.create
+  twilio_chat.service.channels.create.1:
+    SUMMARY: Perform operation CreateChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - CreatedBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel)
+        RETURNVAR: twilio_chat_service_channels_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.channels.create.1
+  twilio_chat.service.channels.get.1:
+    SUMMARY: Perform operation ListChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.channels.getResponse200)
+        RETURNVAR: twilio_chat_service_channels_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.get.1
+  twilio_chat.service.webhooks.get:
+    SUMMARY: Perform operation ListChannelWebhook
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.webhooks.getResponse200)
+        RETURNVAR: twilio_chat_service_webhooks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.webhooks.get
+  twilio_chat.service.webhooks.create:
+    SUMMARY: Perform operation CreateChannelWebhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.RetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.channel_webhook)
+        RETURNVAR: twilio_chat_service_webhooks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.webhooks.create
+  twilio_chat.service.webhooks.get.1:
+    SUMMARY: Perform operation FetchChannelWebhook
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.channel_webhook)
+        RETURNVAR: twilio_chat_service_webhooks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.webhooks.get.1
+  twilio_chat.service.webhooks.create.1:
+    SUMMARY: Perform operation UpdateChannelWebhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.RetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.channel_webhook)
+        RETURNVAR: twilio_chat_service_webhooks_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.webhooks.create.1
+  twilio_chat.service.webhooks.delete:
+    SUMMARY: Perform operation DeleteChannelWebhook
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.webhooks.delete
+  twilio_chat.credential.list:
+    SUMMARY: Perform operation ListCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Credentials
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.listResponse200)
+        RETURNVAR: twilio_chat_credential_list
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.credential.list
+  twilio_chat.credential.create:
+    SUMMARY: Perform operation CreateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Credentials
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.credential)
+        RETURNVAR: twilio_chat_credential_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.credential.create
+  twilio_chat.credential.get:
+    SUMMARY: Perform operation FetchCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.credential)
+        RETURNVAR: twilio_chat_credential_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.credential.get
+  twilio_chat.credential.create.1:
+    SUMMARY: Perform operation UpdateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Credentials/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.credential)
+        RETURNVAR: twilio_chat_credential_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.credential.create.1
+  twilio_chat.credential.delete:
+    SUMMARY: Perform operation DeleteCredential
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.credential.delete
+  twilio_chat.service.invites.get:
+    SUMMARY: Perform operation FetchInvite
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.invite)
+        RETURNVAR: twilio_chat_service_invites_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.invites.get
+  twilio_chat.service.invites.delete:
+    SUMMARY: Perform operation DeleteInvite
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.invites.delete
+  twilio_chat.service.invites.create:
+    SUMMARY: Perform operation CreateInvite
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.invite)
+        RETURNVAR: twilio_chat_service_invites_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.invites.create
+  twilio_chat.service.invites.get.1:
+    SUMMARY: Perform operation ListInvite
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.invites.getResponse200)
+        RETURNVAR: twilio_chat_service_invites_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.invites.get.1
+  twilio_chat.service.members.get:
+    SUMMARY: Perform operation FetchMember
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.member)
+        RETURNVAR: twilio_chat_service_members_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.members.get
+  twilio_chat.service.members.delete:
+    SUMMARY: Perform operation DeleteMember
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_chat.service.members.delete
+  twilio_chat.service.members.create:
+    SUMMARY: Perform operation UpdateMember
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumedMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumptionTimestamp:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.member)
+        RETURNVAR: twilio_chat_service_members_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.members.create
+  twilio_chat.service.members.create.1:
+    SUMMARY: Perform operation CreateMember
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumedMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumptionTimestamp:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.member)
+        RETURNVAR: twilio_chat_service_members_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.members.create.1
+  twilio_chat.service.members.get.1:
+    SUMMARY: Perform operation ListMember
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Members
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.members.getResponse200)
+        RETURNVAR: twilio_chat_service_members_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.members.get.1
+  twilio_chat.service.messages.get:
+    SUMMARY: Perform operation FetchMessage
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.message)
+        RETURNVAR: twilio_chat_service_messages_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.messages.get
+  twilio_chat.service.messages.delete:
+    SUMMARY: Perform operation DeleteMessage
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_chat.service.messages.delete
+  twilio_chat.service.messages.create:
+    SUMMARY: Perform operation UpdateMessage
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - LastUpdatedBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.message)
+        RETURNVAR: twilio_chat_service_messages_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.messages.create
+  twilio_chat.service.messages.create.1:
+    SUMMARY: Perform operation CreateMessage
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - LastUpdatedBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MediaSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.channel.message)
+        RETURNVAR: twilio_chat_service_messages_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.messages.create.1
+  twilio_chat.service.messages.get.1:
+    SUMMARY: Perform operation ListMessage
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Channels/{ChannelSid}/Messages
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.messages.getResponse200)
+        RETURNVAR: twilio_chat_service_messages_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.messages.get.1
+  twilio_chat.service.roles.get:
+    SUMMARY: Perform operation FetchRole
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.role)
+        RETURNVAR: twilio_chat_service_roles_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.roles.get
+  twilio_chat.service.roles.delete:
+    SUMMARY: Perform operation DeleteRole
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.roles.delete
+  twilio_chat.service.roles.create:
+    SUMMARY: Perform operation UpdateRole
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.role)
+        RETURNVAR: twilio_chat_service_roles_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.roles.create
+  twilio_chat.service.roles.create.1:
+    SUMMARY: Perform operation CreateRole
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Roles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.role)
+        RETURNVAR: twilio_chat_service_roles_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.roles.create.1
+  twilio_chat.service.roles.get.1:
+    SUMMARY: Perform operation ListRole
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Roles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.roles.getResponse200)
+        RETURNVAR: twilio_chat_service_roles_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.roles.get.1
+  twilio_chat.service.get:
+    SUMMARY: Perform operation FetchService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service)
+        RETURNVAR: twilio_chat_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.get
+  twilio_chat.service.delete:
+    SUMMARY: Perform operation DeleteService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.delete
+  twilio_chat.service.create:
+    SUMMARY: Perform operation UpdateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultServiceRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultChannelRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultChannelCreatorRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReadStatusEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TypingIndicatorTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ConsumptionReportInterval:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.BadgeCountEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.AddedToChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.AddedToChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.AddedToChannel.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.RemovedFromChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.RemovedFromChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.RemovedFromChannel.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.InvitedToChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.InvitedToChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.InvitedToChannel.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PostWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookFilters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Limits.ChannelMembers:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Limits.UserChannels:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Media.CompatibilityMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreWebhookRetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - PostWebhookRetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.LogEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service)
+        RETURNVAR: twilio_chat_service_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.create
+  twilio_chat.service.create.1:
+    SUMMARY: Perform operation CreateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service)
+        RETURNVAR: twilio_chat_service_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.create.1
+  twilio_chat.service.list:
+    SUMMARY: Perform operation ListService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_chat_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.list
+  twilio_chat.service.users.get:
+    SUMMARY: Perform operation FetchUser
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user)
+        RETURNVAR: twilio_chat_service_users_get
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.users.get
+  twilio_chat.service.users.delete:
+    SUMMARY: Perform operation DeleteUser
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.users.delete
+  twilio_chat.service.users.create:
+    SUMMARY: Perform operation UpdateUser
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user)
+        RETURNVAR: twilio_chat_service_users_create
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.users.create
+  twilio_chat.service.users.create.1:
+    SUMMARY: Perform operation CreateUser
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Users
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user)
+        RETURNVAR: twilio_chat_service_users_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_chat.service.users.create.1
+  twilio_chat.service.users.get.1:
+    SUMMARY: Perform operation ListUser
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.users.getResponse200)
+        RETURNVAR: twilio_chat_service_users_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.users.get.1
+  twilio_chat.service.bindings.get.2:
+    SUMMARY: Perform operation ListUserBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Bindings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - BindingType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.bindings.getResponse200)
+        RETURNVAR: twilio_chat_service_bindings_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.bindings.get.2
+  twilio_chat.service.bindings.get.3:
+    SUMMARY: Perform operation FetchUserBinding
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user.user_binding)
+        RETURNVAR: twilio_chat_service_bindings_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.bindings.get.3
+  twilio_chat.service.bindings.delete.1:
+    SUMMARY: Perform operation DeleteUserBinding
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_chat.service.bindings.delete.1
+  twilio_chat.service.channels.get.2:
+    SUMMARY: List all Channels for a given User.
+    DESC: List all Channels for a given User.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.channels.getResponse200)
+        RETURNVAR: twilio_chat_service_channels_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.get.2
+  twilio_chat.service.channels.get.3:
+    SUMMARY: Perform operation FetchUserChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Channels/{ChannelSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user.user_channel)
+        RETURNVAR: twilio_chat_service_channels_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.get.3
+  twilio_chat.service.channels.delete.1:
+    SUMMARY: Removes User from selected Channel.
+    DESC: Removes User from selected Channel.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Channels/{ChannelSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_chat.service.channels.delete.1
+  twilio_chat.service.channels.create.2:
+    SUMMARY: Perform operation UpdateUserChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Users/{UserSid}/Channels/{ChannelSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - NotificationLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumedMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumptionTimestamp:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(chat.v2.service.user.user_channel)
+        RETURNVAR: twilio_chat_service_channels_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_chat.service.channels.create.2
+STRUCTS:
+  chat.v2.service.binding:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Binding resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Binding resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Binding resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: endpoint
+      type: STRING
+      REQUIRED: false
+      comment: The unique endpoint identifier for the Binding. The format of this value depends on the `binding_type`.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+    - name: credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/chat/rest/credential-resource) for the binding. See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
+    - name: binding_type
+      type: STRING
+      REQUIRED: false
+    - name: message_types
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The [Programmable Chat message types](https://www.twilio.com/docs/chat/push-notification-configuration#push-types) the binding is subscribed to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Binding resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of the Binding's [User](https://www.twilio.com/docs/chat/rest/user-resource).
+  chat.v2.service.channel:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Channel resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Channel resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Channel resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The `identity` of the User that created the channel. If the Channel was created by using the API, the value is `system`.
+    - name: members_count
+      type: INT
+      REQUIRED: false
+      comment: The number of Members in the Channel.
+    - name: messages_count
+      type: INT
+      REQUIRED: false
+      comment: The number of Messages that have been passed in the Channel.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Channel resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of the [Members](https://www.twilio.com/docs/chat/rest/member-resource), [Messages](https://www.twilio.com/docs/chat/rest/message-resource), [Invites](https://www.twilio.com/docs/chat/rest/invite-resource), Webhooks and, if it exists, the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) for the Channel.
+  chat.v2.service.channel.channel_webhook:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Channel Webhook resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Channel Webhook resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Channel Webhook resource is associated with.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Channel Webhook resource belongs to.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: "The type of webhook. Can be: `webhook`, `studio`, or `trigger`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Channel Webhook resource.
+    - name: configuration
+      type: ANY
+      REQUIRED: false
+      comment: The JSON string that describes how the channel webhook is configured. The configuration object contains the `url`, `method`, `filters`, and `retry_count` values that are configured by the create and update actions.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  chat.v2.credential:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Credential resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Credential resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: sandbox
+      type: STRING
+      REQUIRED: false
+      comment: "[APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production."
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Credential resource.
+  chat.v2.service.channel.invite:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Invite resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Invite resource.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Invite resource belongs to.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Invite resource is associated with.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the resource.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: The `identity` of the User that created the invite.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Invite resource.
+  chat.v2.service.channel.member:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Member resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Member resource.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Member resource belongs to.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Member resource is associated with.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the member.
+    - name: last_consumed_message_index
+      type: INT
+      REQUIRED: false
+      comment: The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read.
+    - name: last_consumption_timestamp
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) read event for the Member within the [Channel](https://www.twilio.com/docs/chat/channels).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Member resource.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned.
+  chat.v2.service.channel.message:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Message resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Message resource is associated with.
+    - name: to
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) that the message was sent to.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the Message resource belongs to.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: last_updated_by
+      type: STRING
+      REQUIRED: false
+      comment: The [Identity](https://www.twilio.com/docs/chat/identity) of the User who last updated the Message, if applicable.
+    - name: was_edited
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the message has been edited since it was created.
+    - name: from
+      type: STRING
+      REQUIRED: false
+      comment: The [Identity](https://www.twilio.com/docs/chat/identity) of the message's author. The default value is `system`.
+    - name: body
+      type: STRING
+      REQUIRED: false
+      comment: The content of the message.
+    - name: index
+      type: INT
+      REQUIRED: false
+      comment: The index of the message within the [Channel](https://www.twilio.com/docs/chat/channels). Indices may skip numbers, but will always be in order of when the message was received.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: "The Message type. Can be: `text` or `media`."
+    - name: media
+      type: ANY
+      REQUIRED: false
+      comment: "An object that describes the Message's media, if the message contains media. The object contains these fields: `content_type` with the MIME type of the media, `filename` with the name of the media, `sid` with the SID of the Media resource, and `size` with the media object's file size in bytes. If the Message has no media, this value is `null`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Message resource.
+  chat.v2.service.role:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Role resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Role resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the Role resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: permissions
+      type: "[]STRING"
+      REQUIRED: false
+      comment: An array of the permissions the role has been granted.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Role resource.
+  chat.v2.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: default_service_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The service role assigned to users when they are added to the service. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+    - name: default_channel_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The channel role assigned to users when they are added to a channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+    - name: default_channel_creator_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The channel role assigned to a channel creator when they join a new channel. See the [Role resource](https://www.twilio.com/docs/chat/rest/role-resource) for more info about roles.
+    - name: read_status_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the [Message Consumption Horizon](https://www.twilio.com/docs/chat/consumption-horizon) feature is enabled. The default is `true`.
+    - name: reachability_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the [Reachability Indicator](https://www.twilio.com/docs/chat/reachability-indicator) is enabled for this Service instance. The default is `false`.
+    - name: typing_indicator_timeout
+      type: INT
+      REQUIRED: false
+      comment: How long in seconds after a `started typing` event until clients should assume that user is no longer typing, even if no `ended typing` message was received.  The default is 5 seconds.
+    - name: consumption_report_interval
+      type: INT
+      REQUIRED: false
+      comment: DEPRECATED. The interval in seconds between consumption reports submission batches from client endpoints.
+    - name: limits
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the limits of the service instance. The `limits` object contains  `channel_members` to describe the members/channel limit and `user_channels` to describe the channels/user limit. `channel_members` can be 1,000 or less, with a default of 250. `user_channels` can be 1,000 or less, with a default value of 100.
+    - name: pre_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL for pre-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+    - name: post_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL for post-event webhooks, which are called by using the `webhook_method`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method to use for calls to the `pre_webhook_url` and `post_webhook_url` webhooks.  Can be: `POST` or `GET` and the default is `POST`. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details."
+    - name: webhook_filters
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of webhook events that are enabled for this Service instance. See [Webhook Events](https://www.twilio.com/docs/chat/webhook-events) for more details.
+    - name: pre_webhook_retry_count
+      type: INT
+      REQUIRED: false
+      comment: The number of times to retry a call to the `pre_webhook_url` if the request times out (after 5 seconds) or it receives a 429, 503, or 504 HTTP response. Default retry count is 0 times, which means the call won't be retried.
+    - name: post_webhook_retry_count
+      type: INT
+      REQUIRED: false
+      comment: The number of times to retry a call to the `post_webhook_url` if the request times out (after 5 seconds) or it receives a 429, 503, or 504 HTTP response. The default is 0, which means the call won't be retried.
+    - name: notifications
+      type: ANY
+      REQUIRED: false
+      comment: The notification configuration for the Service instance. See [Push Notification Configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
+    - name: media
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the properties of media that the service supports. The object contains the `size_limit_mb` property, which describes the size of the largest media file in MB; and the `compatibility_message` property, which contains the message text to send when a media message does not have any text.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of the Service's [Channels](https://www.twilio.com/docs/chat/channels), [Roles](https://www.twilio.com/docs/chat/rest/role-resource), [Bindings](https://www.twilio.com/docs/chat/rest/binding-resource), and [Users](https://www.twilio.com/docs/chat/rest/user-resource).
+  chat.v2.service.user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the User resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the User resource is associated with.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON string that stores application-specific data. If attributes have not been set, `{}` is returned.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Role](https://www.twilio.com/docs/chat/rest/role-resource) assigned to the user.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). This value is often a username or an email address, and is case-sensitive. See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+    - name: is_online
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User is actively connected to the Service instance and online. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, if the User has never been online for the Service instance, even if the Service's `reachability_enabled` is `true`.
+    - name: is_notifiable
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User has a potentially valid Push Notification registration (APN or GCM) for the Service instance. If at least one registration exists, `true`; otherwise `false`. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, and if the User has never had a notification registration, even if the Service's `reachability_enabled` is `true`.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: joined_channels_count
+      type: INT
+      REQUIRED: false
+      comment: The number of Channels the User is a Member of.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of the [Channel](https://www.twilio.com/docs/chat/channels) and [Binding](https://www.twilio.com/docs/chat/rest/binding-resource) resources related to the user.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the User resource.
+  chat.v2.service.user.user_binding:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the User Binding resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User Binding resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the User Binding resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: endpoint
+      type: STRING
+      REQUIRED: false
+      comment: The unique endpoint identifier for the User Binding. The format of the value depends on the `binding_type`.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's [User](https://www.twilio.com/docs/chat/rest/user-resource) within the [Service](https://www.twilio.com/docs/chat/rest/service-resource). See [access tokens](https://www.twilio.com/docs/chat/create-tokens) for more info.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) with the User Binding resource.  See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
+    - name: credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/chat/rest/credential-resource) for the binding. See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
+    - name: binding_type
+      type: STRING
+      REQUIRED: false
+    - name: message_types
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The [Programmable Chat message types](https://www.twilio.com/docs/chat/push-notification-configuration#push-types) the binding is subscribed to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the User Binding resource.
+  chat.v2.service.user.user_channel:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User Channel resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the User Channel resource is associated with.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Channel](https://www.twilio.com/docs/chat/channels) the User Channel resource belongs to.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [User](https://www.twilio.com/docs/chat/rest/user-resource) the User Channel belongs to.
+    - name: member_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of a [Member](https://www.twilio.com/docs/chat/rest/member-resource) that represents the User on the Channel.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: last_consumed_message_index
+      type: INT
+      REQUIRED: false
+      comment: The index of the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) in the [Channel](https://www.twilio.com/docs/chat/channels) that the Member has read.
+    - name: unread_messages_count
+      type: INT
+      REQUIRED: false
+      comment: The number of unread Messages in the Channel for the User. Note that retrieving messages on a client endpoint does not mean that messages are consumed or read. See [Consumption Horizon feature](https://www.twilio.com/docs/chat/consumption-horizon) to learn how to mark messages as consumed.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of the [Members](https://www.twilio.com/docs/chat/rest/member-resource), [Messages](https://www.twilio.com/docs/chat/rest/message-resource) , [Invites](https://www.twilio.com/docs/chat/rest/invite-resource) and, if it exists, the last [Message](https://www.twilio.com/docs/chat/rest/message-resource) for the Channel.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the User Channel resource.
+    - name: notification_level
+      type: STRING
+      REQUIRED: false
+  api.service.bindings.getResponse200:
+    - name: bindings
+      type: "[]STRUCT(chat.v2.service.binding)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.channels.getResponse200:
+    - name: channels
+      type: "[]STRUCT(chat.v2.service.channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.webhooks.getResponse200:
+    - name: webhooks
+      type: "[]STRUCT(chat.v2.service.channel.channel_webhook)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.credential.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(chat.v2.credential)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.invites.getResponse200:
+    - name: invites
+      type: "[]STRUCT(chat.v2.service.channel.invite)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.members.getResponse200:
+    - name: members
+      type: "[]STRUCT(chat.v2.service.channel.member)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.messages.getResponse200:
+    - name: messages
+      type: "[]STRUCT(chat.v2.service.channel.message)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.roles.getResponse200:
+    - name: roles
+      type: "[]STRUCT(chat.v2.service.role)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(chat.v2.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.users.getResponse200:
+    - name: users
+      type: "[]STRUCT(chat.v2.service.user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

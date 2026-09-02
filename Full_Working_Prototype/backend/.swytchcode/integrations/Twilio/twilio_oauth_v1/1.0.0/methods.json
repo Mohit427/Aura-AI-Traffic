@@ -1,0 +1,14 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Exchange OAuth grant for access, identity, and refresh tokens",
+      "canonical_id": "twilio_oauth.token.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the authorization URI for OAuth 2.0",
+      "canonical_id": "twilio_oauth.authorize.list"
+    }
+  ]
+}

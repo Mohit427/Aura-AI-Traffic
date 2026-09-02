@@ -1,0 +1,364 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://insights.twilio.com
+METHODS:
+  twilio_insights.insightsdomain.query.create:
+    SUMMARY: Execute a semantic query
+    DESC: Execute a semantic query against the Conversations domain.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v3/InsightsDomains/Conversations/Query
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(InsightsQueryRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - body:
+          TYPE: STRUCT(InsightsQueryRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(InsightsQueryResponse)
+        RETURNVAR: twilio_insights_insightsdomain_query_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(CreateQueryResults_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(CreateQueryResults_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(CreateQueryResults_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_insights.insightsdomain.query.create
+  twilio_insights.insightsdomain.query.list:
+    SUMMARY: Fetch semantic query results
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/InsightsDomains/Conversations/Query
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageToken:
+          TYPE: STRING
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(InsightsQueryResponse)
+        RETURNVAR: twilio_insights_insightsdomain_query_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchQueryResults_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(FetchQueryResults_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchQueryResults_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_insights.insightsdomain.query.list
+  twilio_insights.insightsdomain.metadata.list:
+    SUMMARY: Fetch Metadata for the Conversations domain
+    DESC: Fetch Metadata for the Conversations domain.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/InsightsDomains/Conversations/Metadata
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(InsightsMetadataResponse)
+        RETURNVAR: twilio_insights_insightsdomain_metadata_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchMetadata_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(FetchMetadata_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchMetadata_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_insights.insightsdomain.metadata.list
+STRUCTS:
+  PaginationMeta:
+    - name: key
+      type: STRING
+      REQUIRED: true
+      comment: |
+        The key of the list property contains the actual data items.
+        This enables programmatic iteration over paginated results.
+    - name: pageSize
+      type: INT
+      REQUIRED: true
+      comment: |
+        The actual number of items returned in this response.
+        May be less than the requested pageSize for the last page.
+    - name: previousToken
+      type: STRING
+      REQUIRED: false
+      comment: |
+        Token to fetch the previous page of results.
+        Only included if there is a previous page, otherwise omitted.
+    - name: nextToken
+      type: STRING
+      REQUIRED: false
+      comment: |
+        Token to fetch the next page of results.
+        Only included if there is a next page, otherwise omitted.
+  QueryDefinition:
+    - name: measures
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Array of measures to retrieve, representing quantitative values or metrics to be calculated
+    - name: dimensions
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Array of dimensions to retrieve, representing categorical attributes for grouping and organizing data
+    - name: filters
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Nested filter conditions. Always use `op` and `expressions`.
+    - name: orderBy
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Specifications for sorting the query results by specific fields in ascending or descending order
+  InsightsQueryRequest:
+    - name: domain
+      type: STRING
+      REQUIRED: false
+      comment: The business domain to execute the query against
+    - name: query
+      type: STRUCT(QueryDefinition)
+      REQUIRED: true
+  InsightsQueryResponse:
+    - name: domain
+      type: STRING
+      REQUIRED: false
+      comment: Indicates the business domain the query was executed against
+    - name: items
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Array of result objects containing the query results. Each object contains properties matching the requested measures and dimensions.
+    - name: meta
+      type: STRUCT(PaginationMeta)
+      REQUIRED: false
+  InsightsMetadataResponse:
+    - name: domain
+      type: STRING
+      REQUIRED: false
+      comment: The business domain name for which metadata is being provided
+    - name: cubes
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of data cubes available in the domain, each containing measures and dimensions
+  CreateQueryResults_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateQueryResults_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateQueryResults_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchQueryResults_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchQueryResults_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchQueryResults_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchMetadata_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchMetadata_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchMetadata_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information

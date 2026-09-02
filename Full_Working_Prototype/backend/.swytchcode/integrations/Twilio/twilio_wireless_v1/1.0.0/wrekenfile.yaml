@@ -1,0 +1,965 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://wireless.twilio.com
+METHODS:
+  twilio_wireless.usagerecord.list:
+    SUMMARY: Perform operation ListAccountUsageRecord
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/UsageRecords
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - End:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Start:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Granularity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.usagerecord.listResponse200)
+        RETURNVAR: twilio_wireless_usagerecord_list
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.usagerecord.list
+  twilio_wireless.command.get:
+    SUMMARY: Fetch a Command instance from your account.
+    DESC: Fetch a Command instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Commands/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.command)
+        RETURNVAR: twilio_wireless_command_get
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.command.get
+  twilio_wireless.command.delete:
+    SUMMARY: Delete a Command instance from your account.
+    DESC: Delete a Command instance from your account.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Commands/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_wireless.command.delete
+  twilio_wireless.command.list:
+    SUMMARY: Retrieve a list of Commands from your account.
+    DESC: Retrieve a list of Commands from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Commands
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Transport:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.command.listResponse200)
+        RETURNVAR: twilio_wireless_command_list
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.command.list
+  twilio_wireless.command.create:
+    SUMMARY: Send a Command to a Sim.
+    DESC: Send a Command to a Sim.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Commands
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Command:
+          TYPE: STRING
+          LOCATION: body
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandMode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IncludeSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeliveryReceiptRequested:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.command)
+        RETURNVAR: twilio_wireless_command_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_wireless.command.create
+  twilio_wireless.sim.dataSessions.get:
+    SUMMARY: Perform operation ListDataSession
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{SimSid}/DataSessions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SimSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.dataSessions.getResponse200)
+        RETURNVAR: twilio_wireless_sim_dataSessions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.sim.dataSessions.get
+  twilio_wireless.rateplan.list:
+    SUMMARY: Perform operation ListRatePlan
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/RatePlans
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.rateplan.listResponse200)
+        RETURNVAR: twilio_wireless_rateplan_list
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.rateplan.list
+  twilio_wireless.rateplan.create:
+    SUMMARY: Perform operation CreateRatePlan
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/RatePlans
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DataEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DataMetering:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VoiceEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - NationalRoamingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - InternationalRoaming:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - NationalRoamingDataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - InternationalRoamingDataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DataLimitStrategy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.rate_plan)
+        RETURNVAR: twilio_wireless_rateplan_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_wireless.rateplan.create
+  twilio_wireless.rateplan.get:
+    SUMMARY: Perform operation FetchRatePlan
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/RatePlans/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.rate_plan)
+        RETURNVAR: twilio_wireless_rateplan_get
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.rateplan.get
+  twilio_wireless.rateplan.create.1:
+    SUMMARY: Perform operation UpdateRatePlan
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/RatePlans/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.rate_plan)
+        RETURNVAR: twilio_wireless_rateplan_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.rateplan.create.1
+  twilio_wireless.rateplan.delete:
+    SUMMARY: Perform operation DeleteRatePlan
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/RatePlans/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_wireless.rateplan.delete
+  twilio_wireless.sim.get:
+    SUMMARY: Fetch a Sim resource on your Account.
+    DESC: Fetch a Sim resource on your Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.sim)
+        RETURNVAR: twilio_wireless_sim_get
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.sim.get
+  twilio_wireless.sim.create:
+    SUMMARY: Updates the given properties of a Sim resource on your Account.
+    DESC: Updates the given properties of a Sim resource on your Account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sims/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RatePlan:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandsCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandsCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ResetStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(wireless.v1.sim)
+        RETURNVAR: twilio_wireless_sim_create
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.sim.create
+  twilio_wireless.sim.delete:
+    SUMMARY: Delete a Sim resource on your Account.
+    DESC: Delete a Sim resource on your Account.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Sims/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_wireless.sim.delete
+  twilio_wireless.sim.list:
+    SUMMARY: Retrieve a list of Sim resources on your Account.
+    DESC: Retrieve a list of Sim resources on your Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Iccid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - RatePlan:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SimRegistrationCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.listResponse200)
+        RETURNVAR: twilio_wireless_sim_list
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.sim.list
+  twilio_wireless.sim.usageRecords.get:
+    SUMMARY: Perform operation ListUsageRecord
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{SimSid}/UsageRecords
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SimSid:
+          TYPE: STRING
+          LOCATION: path
+      - End:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Start:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Granularity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.usageRecords.getResponse200)
+        RETURNVAR: twilio_wireless_sim_usageRecords_get
+        STATUS: 200
+    CANONICAL_ID: twilio_wireless.sim.usageRecords.get
+STRUCTS:
+  wireless.v1.account_usage_record:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AccountUsageRecord resource.
+    - name: period
+      type: ANY
+      REQUIRED: false
+      comment: The time period for which usage is reported. Contains `start` and `end` properties that describe the period using GMT date-time values specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: commands
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the aggregated Commands usage for all SIMs during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#commands-usage-object).
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the aggregated Data usage for all SIMs over the period. See [Data Usage Object](https://www.twilio.com/docs/iot/wireless/api/account-usagerecord-resource#data-usage-object).
+  wireless.v1.command:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Command resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Command resource.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that the Command was sent to or from.
+    - name: command
+      type: STRING
+      REQUIRED: false
+      comment: The message being sent to or from the SIM. For text mode messages, this can be up to 160 characters. For binary mode messages, this is a series of up to 140 bytes of data encoded using base64.
+    - name: command_mode
+      type: STRING
+      REQUIRED: false
+    - name: transport
+      type: STRING
+      REQUIRED: false
+    - name: delivery_receipt_requested
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to request a delivery receipt.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: direction
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  wireless.v1.sim.data_session:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the DataSession resource.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that the Data Session is for.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the DataSession resource.
+    - name: radio_link
+      type: STRING
+      REQUIRED: false
+      comment: The generation of wireless technology that the device was using.
+    - name: operator_mcc
+      type: STRING
+      REQUIRED: false
+      comment: "The 'mobile country code' is the unique ID of the home country where the Data Session took place. See: [MCC/MNC lookup](http://mcc-mnc.com/)."
+    - name: operator_mnc
+      type: STRING
+      REQUIRED: false
+      comment: The 'mobile network code' is the unique ID specific to the mobile operator network where the Data Session took place.
+    - name: operator_country
+      type: STRING
+      REQUIRED: false
+      comment: The three letter country code representing where the device's Data Session took place. This is determined by looking up the `operator_mcc`.
+    - name: operator_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of the mobile operator network that the [SIM](https://www.twilio.com/docs/iot/wireless/api/sim-resource)-connected device is attached to. This is determined by looking up the `operator_mnc`.
+    - name: cell_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the cellular tower that the device was attached to at the moment when the Data Session was last updated.
+    - name: cell_location_estimate
+      type: ANY
+      REQUIRED: false
+      comment: "An object that describes the estimated location in latitude and longitude where the device's Data Session took place. The location is derived from the `cell_id` when the Data Session was last updated. See [Cell Location Estimate Object](https://www.twilio.com/docs/iot/wireless/api/datasession-resource#cell-location-estimate-object). "
+    - name: packets_uploaded
+      type: INT
+      REQUIRED: false
+      comment: The number of packets uploaded by the device between the `start` time and when the Data Session was last updated.
+    - name: packets_downloaded
+      type: INT
+      REQUIRED: false
+      comment: The number of packets downloaded by the device between the `start` time and when the Data Session was last updated.
+    - name: last_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the resource was last updated, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: start
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the Data Session started, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: end
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the record ended, given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: imei
+      type: STRING
+      REQUIRED: false
+      comment: "The 'international mobile equipment identity' is the unique ID of the device using the SIM to connect. An IMEI is a 15-digit string: 14 digits for the device identifier plus a check digit calculated using the Luhn formula."
+  wireless.v1.rate_plan:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RatePlan resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RatePlan resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: data_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether SIMs can use GPRS/3G/4G/LTE data connectivity.
+    - name: data_metering
+      type: STRING
+      REQUIRED: false
+      comment: "The model used to meter data usage. Can be: `payg` and `quota-1`, `quota-10`, and `quota-50`. Learn more about the available [data metering models](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#payg-vs-quota-data-plans)."
+    - name: data_limit
+      type: INT
+      REQUIRED: false
+      comment: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on the home network (T-Mobile USA). The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB.
+    - name: messaging_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether SIMs can make, send, and receive SMS using [Commands](https://www.twilio.com/docs/iot/wireless/api/command-resource).
+    - name: voice_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Deprecated. Whether SIMs can make and receive voice calls.
+    - name: national_roaming_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether SIMs can roam on networks other than the home network (T-Mobile USA) in the United States. See [national roaming](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource#national-roaming).
+    - name: national_roaming_data_limit
+      type: INT
+      REQUIRED: false
+      comment: The total data usage (download and upload combined) in Megabytes that the Network allows during one month on non-home networks in the United States. The metering period begins the day of activation and ends on the same day in the following month. Can be up to 2TB.
+    - name: international_roaming
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "The list of services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can use outside of the United States. Can contain: `data` and `messaging`."
+    - name: international_roaming_data_limit
+      type: INT
+      REQUIRED: false
+      comment: The total data usage (download and upload combined) in Megabytes that the Network allows during one month when roaming outside the United States. Can be up to 2TB.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  wireless.v1.sim:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Sim resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the Sim resource belongs.
+    - name: rate_plan_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [RatePlan resource](https://www.twilio.com/docs/iot/wireless/api/rateplan-resource) to which the Sim resource is assigned.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Sim resource.
+    - name: iccid
+      type: STRING
+      REQUIRED: false
+      comment: The [ICCID](https://en.wikipedia.org/wiki/SIM_card#ICCID) associated with the SIM.
+    - name: e_id
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: reset_status
+      type: STRING
+      REQUIRED: false
+    - name: commands_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `commands_callback_method` when the SIM originates a machine-to-machine [Command](https://www.twilio.com/docs/iot/wireless/api/command-resource). Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+    - name: commands_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `commands_callback_url`.  Can be: `POST` or `GET`. Default is `POST`."
+    - name: sms_fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: sms_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: sms_method
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: sms_url
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+    - name: voice_fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: "Deprecated. The HTTP method we use to call `voice_fallback_url`. Can be: `GET` or `POST`. Default is `POST`."
+    - name: voice_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated. The URL we call using the `voice_fallback_method` when an error occurs while retrieving or executing the TwiML requested from `voice_url`.
+    - name: voice_method
+      type: STRING
+      REQUIRED: false
+      comment: "Deprecated. The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`. Default is `POST`."
+    - name: voice_url
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated. The URL we call using the `voice_method` when the SIM-connected device makes a voice call.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Sim resource was last updated specified in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related subresources.
+    - name: ip_address
+      type: STRING
+      REQUIRED: false
+      comment: Deprecated.
+  wireless.v1.sim.usage_record:
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sim resource](https://www.twilio.com/docs/iot/wireless/api/sim-resource) that this Usage Record is for.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the UsageRecord resource.
+    - name: period
+      type: ANY
+      REQUIRED: false
+      comment: The time period for which the usage is reported. Contains `start` and `end` datetime values given as GMT in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format.
+    - name: commands
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the SIM's usage of Commands during the specified period. See [Commands Usage Object](https://www.twilio.com/docs/iot/wireless/api/sim-usagerecord-resource#commands-usage-object).
+    - name: data
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the SIM's data usage during the specified period. See [Data Usage Object](https://www.twilio.com/docs/iot/wireless/api/sim-usagerecord-resource#data-usage-object).
+  api.usagerecord.listResponse200:
+    - name: usage_records
+      type: "[]STRUCT(wireless.v1.account_usage_record)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.command.listResponse200:
+    - name: commands
+      type: "[]STRUCT(wireless.v1.command)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sim.dataSessions.getResponse200:
+    - name: data_sessions
+      type: "[]STRUCT(wireless.v1.sim.data_session)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.rateplan.listResponse200:
+    - name: rate_plans
+      type: "[]STRUCT(wireless.v1.rate_plan)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sim.listResponse200:
+    - name: sims
+      type: "[]STRUCT(wireless.v1.sim)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sim.usageRecords.getResponse200:
+    - name: usage_records
+      type: "[]STRUCT(wireless.v1.sim.usage_record)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

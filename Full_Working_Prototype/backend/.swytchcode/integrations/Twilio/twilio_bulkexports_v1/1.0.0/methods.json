@@ -1,0 +1,49 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a custom export job for specified data",
+      "canonical_id": "twilio_bulkexports.export.jobs.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific export job by its ID",
+      "canonical_id": "twilio_bulkexports.export.jobs.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific export by resource type",
+      "canonical_id": "twilio_bulkexports.export.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all Days for a specified resource",
+      "canonical_id": "twilio_bulkexports.export.days.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get export data for a specific day and resource type",
+      "canonical_id": "twilio_bulkexports.export.days.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get specific export configuration details",
+      "canonical_id": "twilio_bulkexports.export.configuration.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List custom export jobs for a resource",
+      "canonical_id": "twilio_bulkexports.export.jobs.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details for a specific export job",
+      "canonical_id": "twilio_bulkexports.export.jobs.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update export configuration settings for a resource",
+      "canonical_id": "twilio_bulkexports.export.configuration.create"
+    }
+  ]
+}

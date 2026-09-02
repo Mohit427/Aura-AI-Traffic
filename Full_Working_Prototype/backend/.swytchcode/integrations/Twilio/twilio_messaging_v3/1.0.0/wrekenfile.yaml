@@ -1,0 +1,98 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://messaging.twilio.com
+METHODS:
+  twilio_messaging.indicator.typing.create:
+    SUMMARY: Send a typing indicator
+    DESC: |
+      Send a typing indicator to notify the recipient that you are composing a message. Supported channels: WhatsApp, Apple Messages for Business. The request body varies by channel — use the `channel` field as the discriminator.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v3/Indicators/Typing.json
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: OBJECT
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: OBJECT
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.indicator.typing.createResponse200)
+        RETURNVAR: twilio_messaging_indicator_typing_create
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(CreateV3TypingIndicator_Error400)
+        STATUS: 400
+        WHEN: Invalid request. The request body is missing required fields or contains invalid values. (HTTP 400)
+      - TYPE: STRUCT(CreateV3TypingIndicator_Error401)
+        STATUS: 401
+        WHEN: Authentication credentials are missing or invalid. (HTTP 401)
+      - TYPE: STRUCT(CreateV3TypingIndicator_Error403)
+        STATUS: 403
+        WHEN: The account is not authorized to send typing indicators for this channel. (HTTP 403)
+    CANONICAL_ID: twilio_messaging.indicator.typing.create
+STRUCTS:
+  api.indicator.typing.createResponse200:
+    - name: success
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if the typing indicator was sent successfully.
+  CreateV3TypingIndicator_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateV3TypingIndicator_Error401:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateV3TypingIndicator_Error403:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code

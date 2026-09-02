@@ -1,0 +1,756 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://marketplace.twilio.com
+METHODS:
+  twilio_marketplace.availableaddon.list:
+    SUMMARY: Retrieve a list of Add-ons currently available to be installed.
+    DESC: Retrieve a list of Add-ons currently available to be installed.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/AvailableAddOns
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.availableaddon.listResponse200)
+        RETURNVAR: twilio_marketplace_availableaddon_list
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.availableaddon.list
+  twilio_marketplace.availableaddon.get:
+    SUMMARY: Fetch an instance of an Add-on currently available to be installed.
+    DESC: Fetch an instance of an Add-on currently available to be installed.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/AvailableAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.available_add_on)
+        RETURNVAR: twilio_marketplace_availableaddon_get
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.availableaddon.get
+  twilio_marketplace.availableaddon.extensions.get:
+    SUMMARY: Retrieve a list of Extensions for the Available Add-on.
+    DESC: Retrieve a list of Extensions for the Available Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/AvailableAddOns/{AvailableAddOnSid}/Extensions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.availableaddon.extensions.getResponse200)
+        RETURNVAR: twilio_marketplace_availableaddon_extensions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.availableaddon.extensions.get
+  twilio_marketplace.availableaddon.extensions.get.1:
+    SUMMARY: Fetch an instance of an Extension for the Available Add-on.
+    DESC: Fetch an instance of an Extension for the Available Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/AvailableAddOns/{AvailableAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.available_add_on.available_add_on_extension)
+        RETURNVAR: twilio_marketplace_availableaddon_extensions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.availableaddon.extensions.get.1
+  twilio_marketplace.installedaddon.create:
+    SUMMARY: Install an Add-on for the Account specified.
+    DESC: Install an Add-on for the Account specified.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/InstalledAddOns
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: body
+      - AcceptTermsOfService:
+          TYPE: BOOL
+          LOCATION: body
+      - Configuration:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on)
+        RETURNVAR: twilio_marketplace_installedaddon_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(marketplace.v1.TwilioServiceErrorResponse)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+    CANONICAL_ID: twilio_marketplace.installedaddon.create
+  twilio_marketplace.installedaddon.list:
+    SUMMARY: Retrieve a list of Add-ons currently installed on this Account.
+    DESC: Retrieve a list of Add-ons currently installed on this Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/InstalledAddOns
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.installedaddon.listResponse200)
+        RETURNVAR: twilio_marketplace_installedaddon_list
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.list
+  twilio_marketplace.installedaddon.delete:
+    SUMMARY: Remove an Add-on installation from your account
+    DESC: Remove an Add-on installation from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/InstalledAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_marketplace.installedaddon.delete
+  twilio_marketplace.installedaddon.get:
+    SUMMARY: Fetch an instance of an Add-on currently installed on this Account.
+    DESC: Fetch an instance of an Add-on currently installed on this Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/InstalledAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on)
+        RETURNVAR: twilio_marketplace_installedaddon_get
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.get
+  twilio_marketplace.installedaddon.create.1:
+    SUMMARY: Update an Add-on installation for the Account specified.
+    DESC: Update an Add-on installation for the Account specified.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/InstalledAddOns/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on)
+        RETURNVAR: twilio_marketplace_installedaddon_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.create.1
+  twilio_marketplace.installedaddon.extensions.get:
+    SUMMARY: Retrieve a list of Extensions for the Installed Add-on.
+    DESC: Retrieve a list of Extensions for the Installed Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/InstalledAddOns/{InstalledAddOnSid}/Extensions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.installedaddon.extensions.getResponse200)
+        RETURNVAR: twilio_marketplace_installedaddon_extensions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.extensions.get
+  twilio_marketplace.installedaddon.extensions.get.1:
+    SUMMARY: Fetch an instance of an Extension for the Installed Add-on.
+    DESC: Fetch an instance of an Extension for the Installed Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/InstalledAddOns/{InstalledAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on.installed_add_on_extension)
+        RETURNVAR: twilio_marketplace_installedaddon_extensions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.extensions.get.1
+  twilio_marketplace.installedaddon.extensions.create:
+    SUMMARY: Update an Extension for an Add-on installation.
+    DESC: Update an Extension for an Add-on installation.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/InstalledAddOns/{InstalledAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Enabled:
+          TYPE: BOOL
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on.installed_add_on_extension)
+        RETURNVAR: twilio_marketplace_installedaddon_extensions_create
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.installedaddon.extensions.create
+  twilio_marketplace.installedaddon.usage.create:
+    SUMMARY: Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own.
+    DESC: Allows Twilio Marketplace publishers to manually report customer usage on No-code Partner Listings that they own.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/InstalledAddOns/{InstalledAddOnSid}/Usage
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(marketplace.v1.installed_add_on.installed_add_on_usage)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(marketplace.v1.installed_add_on.installed_add_on_usage)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.installed_add_on.installed_add_on_usage)
+        RETURNVAR: twilio_marketplace_installedaddon_usage_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_marketplace.installedaddon.usage.create
+  twilio_marketplace.referralconversion.create:
+    SUMMARY: Perform operation CreateReferralConversion
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ReferralConversion
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.referralconversion.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.referralconversion.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.referral_conversion)
+        RETURNVAR: twilio_marketplace_referralconversion_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(marketplace.v1.referral_conversion)
+        RETURNVAR: twilio_marketplace_referralconversion_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(marketplace.v1.TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: NOT_FOUND (HTTP 400)
+    CANONICAL_ID: twilio_marketplace.referralconversion.create
+  twilio_marketplace.listing.create:
+    SUMMARY: This endpoint creates a Listing based on the given data.
+    DESC: This endpoint creates a Listing based on the given data.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Listings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ModuleInfo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.module_data_management)
+        RETURNVAR: twilio_marketplace_listing_create
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.listing.create
+  twilio_marketplace.listing.list:
+    SUMMARY: This endpoint returns the Listings owned by the authenticated Account.
+    DESC: This endpoint returns the Listings owned by the authenticated Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Listings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.listing.listResponse200)
+        RETURNVAR: twilio_marketplace_listing_list
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.listing.list
+  twilio_marketplace.listing.create.1:
+    SUMMARY: This endpoint updates the data of a given Listing
+    DESC: This endpoint updates the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](https://www.twilio.com/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing. Only Listing owners are allowed to update the Listing.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Listing/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - ModuleInfo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Documentation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Policies:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Support:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Pricing:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.module_data_management)
+        RETURNVAR: twilio_marketplace_listing_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.listing.create.1
+  twilio_marketplace.listing.get:
+    SUMMARY: This endpoint returns the data of a given Listing
+    DESC: This endpoint returns the data of a given Listing. To find a Listing's SID, use the [Available Add-ons resource](/docs/marketplace/api/available-add-ons) or view its Listing details page in the Console by visiting the [Catalog](https://console.twilio.com/us1/develop/add-ons/catalog) or the [My Listings tab](https://console.twilio.com/us1/develop/add-ons/publish/my-listings) and selecting the Listing.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Listing/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(marketplace.v1.module_data_management)
+        RETURNVAR: twilio_marketplace_listing_get
+        STATUS: 200
+    CANONICAL_ID: twilio_marketplace.listing.get
+STRUCTS:
+  marketplace.v1.available_add_on:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AvailableAddOn resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A short description of the Add-on's functionality.
+    - name: pricing_type
+      type: STRING
+      REQUIRED: false
+      comment: How customers are charged for using this Add-on.
+    - name: configuration_schema
+      type: OBJECT
+      REQUIRED: false
+      comment: The JSON object with the configuration that must be provided when installing a given Add-on.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  marketplace.v1.available_add_on.available_add_on_extension:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AvailableAddOnExtension resource.
+    - name: available_add_on_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the AvailableAddOn resource to which this extension applies.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: product_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Product this Extension is used within.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  marketplace.v1.installed_add_on:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the InstalledAddOn resource. This Sid can also be found in the Console on that specific Add-ons page as the 'Available Add-on Sid'.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the InstalledAddOn resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A short description of the Add-on's functionality.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: The JSON object that represents the current configuration of installed Add-on.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  marketplace.v1.installed_add_on.installed_add_on_extension:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the InstalledAddOn Extension resource.
+    - name: installed_add_on_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the InstalledAddOn resource to which this extension applies.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: product_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Product this Extension is used within.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Extension will be invoked.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  marketplace.v1.installed_add_on.installed_add_on_usage:
+    - name: total_submitted
+      type: FLOAT
+      REQUIRED: false
+      comment: Total amount in local currency that was billed in this request. Aggregates all billable_items that were successfully submitted.
+    - name: billable_items
+      type: "[]ANY"
+      REQUIRED: true
+  marketplace.v1.module_data_management:
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: URL to query the subresource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: ModuleSid that identifies this Listing.
+    - name: description
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object describing the module and is displayed under the Description tab of the Module detail page. You can define the main body of the description, highlight key features or aspects of the module and if applicable, provide code samples for developers
+    - name: support
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object containing information on how customers can obtain support for the module. Use this parameter to provide details such as contact information and support description.
+    - name: policies
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object describing the module's privacy and legal policies and is displayed under the Policies tab of the Module detail page. The maximum file size for Policies is 5MB
+    - name: module_info
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object containing essential attributes that define a module. This information is presented on the Module detail page in the Twilio Marketplace Catalog. You can pass the following attributes in the JSON object
+    - name: documentation
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object for providing comprehensive information, instructions, and resources related to the module
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object for providing listing specific configuration. Contains button setup, notification url, among others.
+    - name: pricing
+      type: OBJECT
+      REQUIRED: false
+      comment: A JSON object for providing Listing specific pricing information.
+  marketplace.v1.referral_conversion:
+    - name: converted_account_sid
+      type: STRING
+      REQUIRED: false
+  marketplace.v1.TwilioServiceErrorResponse:
+    - name: code
+      type: INT
+      REQUIRED: false
+    - name: message
+      type: STRING
+      REQUIRED: false
+    - name: params
+      type: OBJECT
+      REQUIRED: false
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  api.availableaddon.listResponse200:
+    - name: available_add_ons
+      type: "[]STRUCT(marketplace.v1.available_add_on)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.availableaddon.extensions.getResponse200:
+    - name: extensions
+      type: "[]STRUCT(marketplace.v1.available_add_on.available_add_on_extension)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.installedaddon.listResponse200:
+    - name: installed_add_ons
+      type: "[]STRUCT(marketplace.v1.installed_add_on)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.installedaddon.extensions.getResponse200:
+    - name: extensions
+      type: "[]STRUCT(marketplace.v1.installed_add_on.installed_add_on_extension)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.referralconversion.createRequest:
+    - name: referral_account_sid
+      type: STRING
+      REQUIRED: false
+  api.listing.listResponse200:
+    - name: listings
+      type: "[]ANY"
+      REQUIRED: false

@@ -1,0 +1,3692 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://flex-api.twilio.com
+METHODS:
+  twilio_flex.channel.list:
+    SUMMARY: Perform operation ListChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.channel.listResponse200)
+        RETURNVAR: twilio_flex_channel_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.channel.list
+  twilio_flex.channel.create:
+    SUMMARY: Perform operation CreateChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Channels
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlexFlowSid:
+          TYPE: STRING
+          LOCATION: body
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - ChatUserFriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - ChatFriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Target:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChatUniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreEngagementData:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TaskSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TaskAttributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LongLived:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.channel)
+        RETURNVAR: twilio_flex_channel_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.channel.create
+  twilio_flex.channel.get:
+    SUMMARY: Perform operation FetchChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.channel)
+        RETURNVAR: twilio_flex_channel_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.channel.get
+  twilio_flex.channel.delete:
+    SUMMARY: Perform operation DeleteChannel
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_flex.channel.delete
+  twilio_flex.configuration.list:
+    SUMMARY: Perform operation FetchConfiguration
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Configuration
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UiVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.configuration)
+        RETURNVAR: twilio_flex_configuration_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.configuration.list
+  twilio_flex.configuration.create:
+    SUMMARY: Perform operation UpdateConfiguration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Configuration
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.configuration.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.configuration.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.configuration)
+        RETURNVAR: twilio_flex_configuration_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.configuration.create
+  twilio_flex.pluginservice.plugins.get:
+    SUMMARY: Perform operation ListConfiguredPlugin
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Configurations/{ConfigurationSid}/Plugins
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConfigurationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.pluginservice.plugins.getResponse200)
+        RETURNVAR: twilio_flex_pluginservice_plugins_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.get
+  twilio_flex.pluginservice.plugins.get.1:
+    SUMMARY: Perform operation FetchConfiguredPlugin
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Configurations/{ConfigurationSid}/Plugins/{PluginSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConfigurationSid:
+          TYPE: STRING
+          LOCATION: path
+      - PluginSid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_configuration.configured_plugin)
+        RETURNVAR: twilio_flex_pluginservice_plugins_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.get.1
+  twilio_flex.flexflow.list:
+    SUMMARY: Perform operation ListFlexFlow
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/FlexFlows
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.flexflow.listResponse200)
+        RETURNVAR: twilio_flex_flexflow_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.flexflow.list
+  twilio_flex.flexflow.create:
+    SUMMARY: Perform operation CreateFlexFlow
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/FlexFlows
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: body
+      - ChannelType:
+          TYPE: STRING
+          LOCATION: body
+      - ContactIdentity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - IntegrationType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.WorkspaceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.WorkflowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Channel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Timeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Integration.CreationOnMessage:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - LongLived:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - JanitorEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Integration.RetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.flex_flow)
+        RETURNVAR: twilio_flex_flexflow_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.flexflow.create
+  twilio_flex.flexflow.get:
+    SUMMARY: Perform operation FetchFlexFlow
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/FlexFlows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.flex_flow)
+        RETURNVAR: twilio_flex_flexflow_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.flexflow.get
+  twilio_flex.flexflow.create.1:
+    SUMMARY: Perform operation UpdateFlexFlow
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/FlexFlows/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChatServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChannelType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContactIdentity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - IntegrationType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.WorkspaceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.WorkflowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Channel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Timeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Integration.Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Integration.CreationOnMessage:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - LongLived:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - JanitorEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Integration.RetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.flex_flow)
+        RETURNVAR: twilio_flex_flexflow_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.flexflow.create.1
+  twilio_flex.flexflow.delete:
+    SUMMARY: Perform operation DeleteFlexFlow
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/FlexFlows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_flex.flexflow.delete
+  twilio_flex.insight.assessments.create:
+    SUMMARY: Add assessments against conversation to dynamo db. Used in assessments screen by user. Users can select the questionnaire and pick up answers for each and every question.
+    DESC: Add assessments against conversation to dynamo db. Used in assessments screen by user. Users can select the questionnaire and pick up answers for each and every question.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Assessments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - CategorySid:
+          TYPE: STRING
+          LOCATION: body
+      - CategoryName:
+          TYPE: STRING
+          LOCATION: body
+      - SegmentId:
+          TYPE: STRING
+          LOCATION: body
+      - AgentId:
+          TYPE: STRING
+          LOCATION: body
+      - Offset:
+          TYPE: FLOAT
+          LOCATION: body
+      - MetricId:
+          TYPE: STRING
+          LOCATION: body
+      - MetricName:
+          TYPE: STRING
+          LOCATION: body
+      - AnswerText:
+          TYPE: STRING
+          LOCATION: body
+      - AnswerId:
+          TYPE: STRING
+          LOCATION: body
+      - QuestionnaireSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_assessments)
+        RETURNVAR: twilio_flex_insight_assessments_create_201
+        STATUS: 201
+        PAGINATION:
+          TYPE: offset
+          OFFSET_FIELD: offset
+    CANONICAL_ID: twilio_flex.insight.assessments.create
+  twilio_flex.insight.assessments.list:
+    SUMMARY: Get assessments done for a conversation by logged in user
+    DESC: Get assessments done for a conversation by logged in user
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Assessments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - SegmentId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.assessments.listResponse200)
+        RETURNVAR: twilio_flex_insight_assessments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.assessments.list
+  twilio_flex.insight.assessments.create.1:
+    SUMMARY: Update a specific Assessment assessed earlier
+    DESC: Update a specific Assessment assessed earlier
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Assessments/{AssessmentSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AssessmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Offset:
+          TYPE: FLOAT
+          LOCATION: body
+      - AnswerText:
+          TYPE: STRING
+          LOCATION: body
+      - AnswerId:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_assessments)
+        RETURNVAR: twilio_flex_insight_assessments_create_1
+        STATUS: 200
+        PAGINATION:
+          TYPE: offset
+          OFFSET_FIELD: offset
+    CANONICAL_ID: twilio_flex.insight.assessments.create.1
+  twilio_flex.insight.comments.create:
+    SUMMARY: To create a comment assessment for a conversation
+    DESC: To create a comment assessment for a conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Assessments/Comments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - CategoryId:
+          TYPE: STRING
+          LOCATION: body
+      - CategoryName:
+          TYPE: STRING
+          LOCATION: body
+      - Comment:
+          TYPE: STRING
+          LOCATION: body
+      - SegmentId:
+          TYPE: STRING
+          LOCATION: body
+      - AgentId:
+          TYPE: STRING
+          LOCATION: body
+      - Offset:
+          TYPE: FLOAT
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_assessments_comment)
+        RETURNVAR: twilio_flex_insight_comments_create_201
+        STATUS: 201
+        PAGINATION:
+          TYPE: offset
+          OFFSET_FIELD: offset
+    CANONICAL_ID: twilio_flex.insight.comments.create
+  twilio_flex.insight.comments.list:
+    SUMMARY: To create a comment assessment for a conversation
+    DESC: To create a comment assessment for a conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Assessments/Comments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - SegmentId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AgentId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.comments.listResponse200)
+        RETURNVAR: twilio_flex_insight_comments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.comments.list
+  twilio_flex.insight.conversations.list:
+    SUMMARY: To get conversation with segment id
+    DESC: To get conversation with segment id
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - SegmentId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.conversations.listResponse200)
+        RETURNVAR: twilio_flex_insight_conversations_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.conversations.list
+  twilio_flex.insight.questionnaires.create:
+    SUMMARY: To create a Questionnaire
+    DESC: To create a Questionnaire
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Questionnaires
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Name:
+          TYPE: STRING
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Active:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - QuestionSids:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires)
+        RETURNVAR: twilio_flex_insight_questionnaires_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.insight.questionnaires.create
+  twilio_flex.insight.questionnaires.list:
+    SUMMARY: To get all questionnaires with questions
+    DESC: To get all questionnaires with questions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Questionnaires
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - IncludeInactive:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.questionnaires.listResponse200)
+        RETURNVAR: twilio_flex_insight_questionnaires_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.questionnaires.list
+  twilio_flex.insight.questionnaires.create.1:
+    SUMMARY: To update the questionnaire
+    DESC: To update the questionnaire
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Questionnaires/{QuestionnaireSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - QuestionnaireSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Active:
+          TYPE: BOOL
+          LOCATION: body
+      - Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - QuestionSids:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires)
+        RETURNVAR: twilio_flex_insight_questionnaires_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.questionnaires.create.1
+  twilio_flex.insight.questionnaires.delete:
+    SUMMARY: To delete the questionnaire
+    DESC: To delete the questionnaire
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Insights/QualityManagement/Questionnaires/{QuestionnaireSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - QuestionnaireSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_flex.insight.questionnaires.delete
+  twilio_flex.insight.questionnaires.get:
+    SUMMARY: To get the Questionnaire Detail
+    DESC: To get the Questionnaire Detail
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Questionnaires/{QuestionnaireSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - QuestionnaireSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires)
+        RETURNVAR: twilio_flex_insight_questionnaires_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.questionnaires.get
+  twilio_flex.insight.categories.create:
+    SUMMARY: To create a category for Questions
+    DESC: To create a category for Questions
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Categories
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Name:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires_category)
+        RETURNVAR: twilio_flex_insight_categories_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.insight.categories.create
+  twilio_flex.insight.categories.list:
+    SUMMARY: To get all the categories
+    DESC: To get all the categories
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Categories
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.categories.listResponse200)
+        RETURNVAR: twilio_flex_insight_categories_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.categories.list
+  twilio_flex.insight.categories.create.1:
+    SUMMARY: To update the category for Questions
+    DESC: To update the category for Questions
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Categories/{CategorySid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CategorySid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Name:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires_category)
+        RETURNVAR: twilio_flex_insight_categories_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.categories.create.1
+  twilio_flex.insight.categories.delete:
+    SUMMARY: Perform operation DeleteInsightsQuestionnairesCategory
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Insights/QualityManagement/Categories/{CategorySid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CategorySid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_flex.insight.categories.delete
+  twilio_flex.insight.questions.create:
+    SUMMARY: To create a question for a Category
+    DESC: To create a question for a Category
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Questions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - CategorySid:
+          TYPE: STRING
+          LOCATION: body
+      - Question:
+          TYPE: STRING
+          LOCATION: body
+      - AnswerSetId:
+          TYPE: STRING
+          LOCATION: body
+      - AllowNa:
+          TYPE: BOOL
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires_question)
+        RETURNVAR: twilio_flex_insight_questions_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.insight.questions.create
+  twilio_flex.insight.questions.list:
+    SUMMARY: To get all the question for the given categories
+    DESC: To get all the question for the given categories
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Questions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - CategorySid:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.questions.listResponse200)
+        RETURNVAR: twilio_flex_insight_questions_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.questions.list
+  twilio_flex.insight.questions.create.1:
+    SUMMARY: To update the question
+    DESC: To update the question
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/QualityManagement/Questions/{QuestionSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - QuestionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - AllowNa:
+          TYPE: BOOL
+          LOCATION: body
+      - CategorySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Question:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AnswerSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_questionnaires_question)
+        RETURNVAR: twilio_flex_insight_questions_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.questions.create.1
+  twilio_flex.insight.questions.delete:
+    SUMMARY: Perform operation DeleteInsightsQuestionnairesQuestion
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Insights/QualityManagement/Questions/{QuestionSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - QuestionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_flex.insight.questions.delete
+  twilio_flex.insight.segments.list:
+    SUMMARY: To get segments for given reservation Ids
+    DESC: To get segments for given reservation Ids
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/Segments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - SegmentId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ReservationId:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.insight.segments.listResponse200)
+        RETURNVAR: twilio_flex_insight_segments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.segments.list
+  twilio_flex.insight.session.create:
+    SUMMARY: To obtain session details for fetching reports and dashboards
+    DESC: To obtain session details for fetching reports and dashboards
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Insights/Session
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_session)
+        RETURNVAR: twilio_flex_insight_session_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.insight.session.create
+  twilio_flex.insight.answerSets.list:
+    SUMMARY: To get the Answer Set Settings for an Account
+    DESC: To get the Answer Set Settings for an Account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Settings/AnswerSets
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_settings_answersets)
+        RETURNVAR: twilio_flex_insight_answerSets_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.answerSets.list
+  twilio_flex.insight.commentTags.list:
+    SUMMARY: To get the Comment Settings for an Account
+    DESC: To get the Comment Settings for an Account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/QualityManagement/Settings/CommentTags
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_settings_comment)
+        RETURNVAR: twilio_flex_insight_commentTags_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.commentTags.list
+  twilio_flex.insight.userRoles.list:
+    SUMMARY: This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user
+    DESC: This is used by Flex UI and Quality Management to fetch the Flex Insights roles for the user
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Insights/UserRoles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Authorization:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.insights_user_roles)
+        RETURNVAR: twilio_flex_insight_userRoles_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.insight.userRoles.list
+  twilio_flex.interaction.get:
+    SUMMARY: Perform operation FetchInteraction
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction)
+        RETURNVAR: twilio_flex_interaction_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.get
+  twilio_flex.interaction.create:
+    SUMMARY: Updates an interaction.
+    DESC: Updates an interaction.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - WebhookTtid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction)
+        RETURNVAR: twilio_flex_interaction_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.create
+  twilio_flex.interaction.create.1:
+    SUMMARY: Create a new Interaction.
+    DESC: Create a new Interaction.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Channel:
+          TYPE: ANY
+          LOCATION: body
+      - Routing:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - InteractionContextSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookTtid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction)
+        RETURNVAR: twilio_flex_interaction_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.create.1
+  twilio_flex.interaction.channels.get:
+    SUMMARY: Fetch a Channel for an Interaction.
+    DESC: Fetch a Channel for an Interaction.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel)
+        RETURNVAR: twilio_flex_interaction_channels_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.channels.get
+  twilio_flex.interaction.channels.create:
+    SUMMARY: Update an existing Interaction Channel.
+    DESC: Update an existing Interaction Channel.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+      - Routing:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel)
+        RETURNVAR: twilio_flex_interaction_channels_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.channels.create
+  twilio_flex.interaction.channels.get.1:
+    SUMMARY: List all Channels for an Interaction.
+    DESC: List all Channels for an Interaction.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.interaction.channels.getResponse200)
+        RETURNVAR: twilio_flex_interaction_channels_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.channels.get.1
+  twilio_flex.interaction.invites.create:
+    SUMMARY: Invite an Agent or a TaskQueue to a Channel.
+    DESC: Invite an Agent or a TaskQueue to a Channel.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Routing:
+          TYPE: ANY
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_channel_invite)
+        RETURNVAR: twilio_flex_interaction_invites_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.invites.create
+  twilio_flex.interaction.invites.get:
+    SUMMARY: List all Invites for a Channel.
+    DESC: List all Invites for a Channel.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.interaction.invites.getResponse200)
+        RETURNVAR: twilio_flex_interaction_invites_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.invites.get
+  twilio_flex.interaction.participants.create:
+    SUMMARY: Add a Participant to a Channel.
+    DESC: Add a Participant to a Channel.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Participants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - MediaProperties:
+          TYPE: ANY
+          LOCATION: body
+      - RoutingProperties:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_channel_participant)
+        RETURNVAR: twilio_flex_interaction_participants_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.participants.create
+  twilio_flex.interaction.participants.get:
+    SUMMARY: List all Participants for a Channel.
+    DESC: List all Participants for a Channel.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.interaction.participants.getResponse200)
+        RETURNVAR: twilio_flex_interaction_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.participants.get
+  twilio_flex.interaction.participants.create.1:
+    SUMMARY: Update an existing Channel Participant.
+    DESC: Update an existing Channel Participant.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Participants/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_channel_participant)
+        RETURNVAR: twilio_flex_interaction_participants_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.participants.create.1
+  twilio_flex.interaction.transfers.create:
+    SUMMARY: Create a new Transfer.
+    DESC: Create a new Transfer.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Transfers
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.interaction.transfers.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.interaction.transfers.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_transfer)
+        RETURNVAR: twilio_flex_interaction_transfers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.interaction.transfers.create
+  twilio_flex.interaction.transfers.get:
+    SUMMARY: Fetch a specific Transfer by SID.
+    DESC: Fetch a specific Transfer by SID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Transfers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_transfer)
+        RETURNVAR: twilio_flex_interaction_transfers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.transfers.get
+  twilio_flex.interaction.transfers.create.1:
+    SUMMARY: Update an existing Transfer.
+    DESC: Update an existing Transfer.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Interactions/{InteractionSid}/Channels/{ChannelSid}/Transfers/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.interaction.transfers.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InteractionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.interaction.transfers.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.interaction.interaction_channel.interaction_transfer)
+        RETURNVAR: twilio_flex_interaction_transfers_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.interaction.transfers.create.1
+  twilio_flex.pluginservice.plugins.list:
+    SUMMARY: Perform operation ListPlugin
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Plugins
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.pluginservice.plugins.listResponse200)
+        RETURNVAR: twilio_flex_pluginservice_plugins_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.list
+  twilio_flex.pluginservice.plugins.create:
+    SUMMARY: Perform operation CreatePlugin
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Plugins
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin)
+        RETURNVAR: twilio_flex_pluginservice_plugins_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.create
+  twilio_flex.pluginservice.plugins.get.2:
+    SUMMARY: Perform operation FetchPlugin
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Plugins/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin)
+        RETURNVAR: twilio_flex_pluginservice_plugins_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.get.2
+  twilio_flex.pluginservice.plugins.create.1:
+    SUMMARY: Perform operation UpdatePlugin
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Plugins/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin)
+        RETURNVAR: twilio_flex_pluginservice_plugins_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.plugins.create.1
+  twilio_flex.pluginservice.archive.create:
+    SUMMARY: Perform operation UpdatePluginArchive
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Plugins/{Sid}/Archive
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_archive)
+        RETURNVAR: twilio_flex_pluginservice_archive_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.archive.create
+  twilio_flex.pluginservice.configurations.list:
+    SUMMARY: Perform operation ListPluginConfiguration
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Configurations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.pluginservice.configurations.listResponse200)
+        RETURNVAR: twilio_flex_pluginservice_configurations_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.configurations.list
+  twilio_flex.pluginservice.configurations.create:
+    SUMMARY: Perform operation CreatePluginConfiguration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Configurations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Name:
+          TYPE: STRING
+          LOCATION: body
+      - Plugins:
+          TYPE: "[]ANY"
+          REQUIRED: false
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_configuration)
+        RETURNVAR: twilio_flex_pluginservice_configurations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.pluginservice.configurations.create
+  twilio_flex.pluginservice.configurations.get:
+    SUMMARY: Perform operation FetchPluginConfiguration
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Configurations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_configuration)
+        RETURNVAR: twilio_flex_pluginservice_configurations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.configurations.get
+  twilio_flex.pluginservice.archive.create.1:
+    SUMMARY: Perform operation UpdatePluginConfigurationArchive
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Configurations/{Sid}/Archive
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_configuration_archive)
+        RETURNVAR: twilio_flex_pluginservice_archive_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.archive.create.1
+  twilio_flex.pluginservice.releases.list:
+    SUMMARY: Perform operation ListPluginRelease
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Releases
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.pluginservice.releases.listResponse200)
+        RETURNVAR: twilio_flex_pluginservice_releases_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.releases.list
+  twilio_flex.pluginservice.releases.create:
+    SUMMARY: Perform operation CreatePluginRelease
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Releases
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - ConfigurationId:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_release)
+        RETURNVAR: twilio_flex_pluginservice_releases_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.pluginservice.releases.create
+  twilio_flex.pluginservice.releases.get:
+    SUMMARY: Perform operation FetchPluginRelease
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Releases/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_release)
+        RETURNVAR: twilio_flex_pluginservice_releases_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.releases.get
+  twilio_flex.pluginservice.versions.get:
+    SUMMARY: Perform operation ListPluginVersion
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Plugins/{PluginSid}/Versions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PluginSid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.pluginservice.versions.getResponse200)
+        RETURNVAR: twilio_flex_pluginservice_versions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.versions.get
+  twilio_flex.pluginservice.versions.create:
+    SUMMARY: Perform operation CreatePluginVersion
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Plugins/{PluginSid}/Versions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PluginSid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Version:
+          TYPE: STRING
+          LOCATION: body
+      - PluginUrl:
+          TYPE: STRING
+          LOCATION: body
+      - Changelog:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Private:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CliVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ValidateStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin.plugin_version)
+        RETURNVAR: twilio_flex_pluginservice_versions_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.pluginservice.versions.create
+  twilio_flex.pluginservice.versions.get.1:
+    SUMMARY: Perform operation FetchPluginVersion
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PluginService/Plugins/{PluginSid}/Versions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PluginSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin.plugin_version)
+        RETURNVAR: twilio_flex_pluginservice_versions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.versions.get.1
+  twilio_flex.pluginservice.archive.create.2:
+    SUMMARY: Perform operation UpdatePluginVersionArchive
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/PluginService/Plugins/{PluginSid}/Versions/{Sid}/Archive
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PluginSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Flex-Metadata:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.plugin_version_archive)
+        RETURNVAR: twilio_flex_pluginservice_archive_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.pluginservice.archive.create.2
+  twilio_flex.account.status.list:
+    SUMMARY: Perform operation FetchProvisioningStatus
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/account/provision/status
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.provisioning_status)
+        RETURNVAR: twilio_flex_account_status_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.account.status.list
+  twilio_flex.webchannel.list:
+    SUMMARY: Perform operation ListWebChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/WebChannels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.webchannel.listResponse200)
+        RETURNVAR: twilio_flex_webchannel_list
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.webchannel.list
+  twilio_flex.webchannel.create:
+    SUMMARY: Perform operation CreateWebChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/WebChannels
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlexFlowSid:
+          TYPE: STRING
+          LOCATION: body
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - CustomerFriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - ChatFriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - ChatUniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreEngagementData:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.web_channel)
+        RETURNVAR: twilio_flex_webchannel_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.webchannel.create
+  twilio_flex.webchannel.get:
+    SUMMARY: Perform operation FetchWebChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/WebChannels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.web_channel)
+        RETURNVAR: twilio_flex_webchannel_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.webchannel.get
+  twilio_flex.webchannel.create.1:
+    SUMMARY: Perform operation UpdateWebChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/WebChannels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - ChatStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PostEngagementData:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v1.web_channel)
+        RETURNVAR: twilio_flex_webchannel_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.webchannel.create.1
+  twilio_flex.webchannel.delete:
+    SUMMARY: Perform operation DeleteWebChannel
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/WebChannels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_flex.webchannel.delete
+STRUCTS:
+  flex.v1.channel:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Channel resource and owns this Workflow.
+    - name: flex_flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Flow.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Channel resource.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the chat user.
+    - name: task_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskRouter Task. Only valid when integration type is `task`. `null` for integration types `studio` & `external`
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex chat channel resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex chat channel was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex chat channel was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  flex.v1.configuration:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Configuration resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Configuration resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Configuration resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains application-specific data.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: taskrouter_workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskRouter Workspace.
+    - name: taskrouter_target_workflow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskRouter target Workflow.
+    - name: taskrouter_target_taskqueue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskRouter Target TaskQueue.
+    - name: taskrouter_taskqueues
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of TaskRouter TaskQueues.
+    - name: taskrouter_skills
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The Skill description for TaskRouter workers.
+    - name: taskrouter_worker_channels
+      type: ANY
+      REQUIRED: false
+      comment: The TaskRouter default channel capacities and availability for workers.
+    - name: taskrouter_worker_attributes
+      type: ANY
+      REQUIRED: false
+      comment: The TaskRouter Worker attributes.
+    - name: taskrouter_offline_activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The TaskRouter SID of the offline activity.
+    - name: runtime_domain
+      type: STRING
+      REQUIRED: false
+      comment: The URL where the Flex instance is hosted.
+    - name: messaging_service_instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Messaging service instance.
+    - name: chat_service_instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the chat service this user belongs to.
+    - name: flex_service_instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex service instance.
+    - name: flex_instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex instance.
+    - name: ui_language
+      type: STRING
+      REQUIRED: false
+      comment: The primary language of the Flex UI.
+    - name: ui_attributes
+      type: ANY
+      REQUIRED: false
+      comment: The object that describes Flex UI characteristics and settings.
+    - name: ui_dependencies
+      type: ANY
+      REQUIRED: false
+      comment: The object that defines the NPM packages and versions to be used in Hosted Flex.
+    - name: ui_version
+      type: STRING
+      REQUIRED: false
+      comment: The Pinned UI version.
+    - name: service_version
+      type: STRING
+      REQUIRED: false
+      comment: The Flex Service version.
+    - name: call_recording_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether call recording is enabled.
+    - name: call_recording_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The call recording webhook URL.
+    - name: crm_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether CRM is present for Flex.
+    - name: crm_type
+      type: STRING
+      REQUIRED: false
+      comment: The CRM type.
+    - name: crm_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The CRM Callback URL.
+    - name: crm_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: The CRM Fallback URL.
+    - name: crm_attributes
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the CRM attributes.
+    - name: public_attributes
+      type: ANY
+      REQUIRED: false
+      comment: The list of public attributes, which are visible to unauthenticated clients.
+    - name: plugin_service_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the plugin service enabled.
+    - name: plugin_service_attributes
+      type: ANY
+      REQUIRED: false
+      comment: The plugin service attributes.
+    - name: integrations
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of objects that contain the configurations for the Integrations supported in this configuration.
+    - name: outbound_call_flows
+      type: ANY
+      REQUIRED: false
+      comment: The list of outbound call flows.
+    - name: serverless_service_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of serverless service SIDs.
+    - name: queue_stats_configuration
+      type: ANY
+      REQUIRED: false
+      comment: Configurable parameters for Queues Statistics.
+    - name: notifications
+      type: ANY
+      REQUIRED: false
+      comment: Configurable parameters for Notifications.
+    - name: markdown
+      type: ANY
+      REQUIRED: false
+      comment: Configurable parameters for Markdown.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Configuration resource.
+    - name: flex_insights_hr
+      type: ANY
+      REQUIRED: false
+      comment: Object with enabled/disabled flag with list of workspaces.
+    - name: flex_insights_drilldown
+      type: BOOL
+      REQUIRED: false
+      comment: Setting this to true will redirect Flex UI to the URL set in flex_url
+    - name: flex_url
+      type: STRING
+      REQUIRED: false
+      comment: URL to redirect to in case drilldown is enabled.
+    - name: channel_configs
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Settings for different limits for Flex Conversations channels attachments.
+    - name: debugger_integration
+      type: ANY
+      REQUIRED: false
+      comment: Configurable parameters for Debugger Integration.
+    - name: flex_ui_status_report
+      type: ANY
+      REQUIRED: false
+      comment: Configurable parameters for Flex UI Status report.
+    - name: agent_conv_end_methods
+      type: ANY
+      REQUIRED: false
+      comment: Agent conversation end methods.
+    - name: citrix_voice_vdi
+      type: ANY
+      REQUIRED: false
+      comment: Citrix voice vdi configuration and settings.
+    - name: offline_config
+      type: ANY
+      REQUIRED: false
+      comment: Presence and presence ttl configuration
+  flex.v1.plugin_configuration.configured_plugin:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Flex Plugin resource is installed for.
+    - name: configuration_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Plugin Configuration that this Flex Plugin belongs to.
+    - name: plugin_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Plugin.
+    - name: plugin_version_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Plugin Version.
+    - name: phase
+      type: INT
+      REQUIRED: false
+      comment: The phase this Flex Plugin would initialize at runtime.
+    - name: plugin_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of where the Flex Plugin Version JavaScript bundle is hosted on.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that uniquely identifies this Flex Plugin resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of this Flex Plugin resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long
+    - name: plugin_archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin is archived. The default value is false.
+    - name: version
+      type: STRING
+      REQUIRED: false
+      comment: The latest version of this Flex Plugin Version.
+    - name: changelog
+      type: STRING
+      REQUIRED: false
+      comment: A changelog that describes the changes this Flex Plugin Version brings.
+    - name: plugin_version_archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Version is archived. The default value is false.
+    - name: private
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to validate the request is authorized to access the Flex Plugin Version.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin was installed specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin resource.
+  flex.v1.flex_flow:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Flow resource and owns this Workflow.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Flow resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the chat service.
+    - name: channel_type
+      type: STRING
+      REQUIRED: false
+    - name: contact_identity
+      type: STRING
+      REQUIRED: false
+      comment: The channel contact's Identity.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Flow is enabled.
+    - name: integration_type
+      type: STRING
+      REQUIRED: false
+    - name: integration
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains specific parameters for the integration.
+    - name: long_lived
+      type: BOOL
+      REQUIRED: false
+      comment: When enabled, Flex will keep the chat channel active so that it may be used for subsequent interactions with a contact identity. Defaults to `false`.
+    - name: janitor_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: When enabled, the Messaging Channel Janitor will remove active Proxy sessions if the associated Task is deleted outside of the Flex UI. Defaults to `false`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Flow resource.
+  flex.v1.insights_assessments:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: assessment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the assessment
+    - name: offset
+      type: STRING
+      REQUIRED: false
+      comment: Offset of the conversation
+    - name: report
+      type: BOOL
+      REQUIRED: false
+      comment: "The flag indicating if this assessment is part of report "
+    - name: weight
+      type: STRING
+      REQUIRED: false
+      comment: The weightage given to this comment
+    - name: agent_id
+      type: STRING
+      REQUIRED: false
+      comment: The id of the Agent
+    - name: segment_id
+      type: STRING
+      REQUIRED: false
+      comment: Segment Id of conversation
+    - name: user_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the user.
+    - name: user_email
+      type: STRING
+      REQUIRED: false
+      comment: The email id of the user.
+    - name: answer_text
+      type: STRING
+      REQUIRED: false
+      comment: The answer text selected by user
+    - name: answer_id
+      type: STRING
+      REQUIRED: false
+      comment: The id of the answer selected by user
+    - name: assessment
+      type: ANY
+      REQUIRED: false
+      comment: Assessment Details associated with an assessment
+    - name: timestamp
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_assessments_comment:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: assessment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the assessment.
+    - name: comment
+      type: ANY
+      REQUIRED: false
+      comment: The comment added for assessment.
+    - name: offset
+      type: STRING
+      REQUIRED: false
+      comment: The offset
+    - name: report
+      type: BOOL
+      REQUIRED: false
+      comment: "The flag indicating if this assessment is part of report "
+    - name: weight
+      type: STRING
+      REQUIRED: false
+      comment: The weightage given to this comment
+    - name: agent_id
+      type: STRING
+      REQUIRED: false
+      comment: The id of the agent.
+    - name: segment_id
+      type: STRING
+      REQUIRED: false
+      comment: The id of the segment.
+    - name: user_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the user.
+    - name: user_email
+      type: STRING
+      REQUIRED: false
+      comment: The email id of the user.
+    - name: timestamp
+      type: STRING
+      REQUIRED: false
+      comment: The timestamp when the record is inserted
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_conversations:
+    - name: account_id
+      type: STRING
+      REQUIRED: false
+      comment: The id of the account.
+    - name: conversation_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique id of the conversation
+    - name: segment_count
+      type: INT
+      REQUIRED: false
+      comment: The count of segments for a conversation
+    - name: segments
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The Segments of a conversation
+  flex.v1.insights_questionnaires:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: questionnaire_sid
+      type: STRING
+      REQUIRED: false
+      comment: The sid of this questionnaire
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of this category.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of this questionnaire
+    - name: active
+      type: BOOL
+      REQUIRED: false
+      comment: The flag to enable or disable questionnaire
+    - name: questions
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of questions with category for a questionnaire
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_questionnaires_category:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: category_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the category
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of this category.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_questionnaires_question:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: question_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the question
+    - name: question
+      type: STRING
+      REQUIRED: false
+      comment: The question.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description for the question.
+    - name: category
+      type: ANY
+      REQUIRED: false
+      comment: The Category for the question.
+    - name: answer_set_id
+      type: STRING
+      REQUIRED: false
+      comment: The answer_set for the question.
+    - name: allow_na
+      type: BOOL
+      REQUIRED: false
+      comment: The flag  to enable for disable NA for answer.
+    - name: usage
+      type: INT
+      REQUIRED: false
+      comment: Integer value that tells a particular question is used by how many questionnaires
+    - name: answer_set
+      type: ANY
+      REQUIRED: false
+      comment: Set of answers for the question
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_segments:
+    - name: segment_id
+      type: STRING
+      REQUIRED: false
+      comment: To unique id of the segment
+    - name: external_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique id for the conversation.
+    - name: queue
+      type: STRING
+      REQUIRED: false
+    - name: external_contact
+      type: STRING
+      REQUIRED: false
+    - name: external_segment_link_id
+      type: STRING
+      REQUIRED: false
+      comment: The uuid for the external_segment_link.
+    - name: date
+      type: STRING
+      REQUIRED: false
+      comment: The date of the conversation.
+    - name: account_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique id for the account.
+    - name: external_segment_link
+      type: STRING
+      REQUIRED: false
+      comment: The hyperlink to recording of the task event.
+    - name: agent_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique id for the agent.
+    - name: agent_phone
+      type: STRING
+      REQUIRED: false
+      comment: The phone number of the agent.
+    - name: agent_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the agent.
+    - name: agent_team_name
+      type: STRING
+      REQUIRED: false
+      comment: The team name to which agent belongs.
+    - name: agent_team_name_in_hierarchy
+      type: STRING
+      REQUIRED: false
+      comment: he team name to which agent belongs.
+    - name: agent_link
+      type: STRING
+      REQUIRED: false
+      comment: The link to the agent conversation.
+    - name: customer_phone
+      type: STRING
+      REQUIRED: false
+      comment: The phone number of the customer.
+    - name: customer_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the customer.
+    - name: customer_link
+      type: STRING
+      REQUIRED: false
+      comment: The link to the customer conversation.
+    - name: segment_recording_offset
+      type: STRING
+      REQUIRED: false
+      comment: The offset value for the recording.
+    - name: media
+      type: ANY
+      REQUIRED: false
+      comment: The media identifiers of the conversation.
+    - name: assessment_type
+      type: ANY
+      REQUIRED: false
+      comment: The type of the assessment.
+    - name: assessment_percentage
+      type: ANY
+      REQUIRED: false
+      comment: The percentage scored on the Assessments.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_session:
+    - name: workspace_id
+      type: STRING
+      REQUIRED: false
+      comment: Unique ID to identify the user's workspace
+    - name: session_expiry
+      type: STRING
+      REQUIRED: false
+      comment: The session expiry date and time, given in ISO 8601 format.
+    - name: session_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID for the session
+    - name: base_url
+      type: STRING
+      REQUIRED: false
+      comment: The base URL to fetch reports and dashboards
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  flex.v1.insights_settings_answersets:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: answer_sets
+      type: ANY
+      REQUIRED: false
+      comment: The lis of answer sets
+    - name: answer_set_categories
+      type: ANY
+      REQUIRED: false
+      comment: The list of answer set categories
+    - name: not_applicable
+      type: ANY
+      REQUIRED: false
+      comment: The details for not applicable answer set
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_settings_comment:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Insights resource and owns this resource.
+    - name: comments
+      type: ANY
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.insights_user_roles:
+    - name: roles
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Flex Insights roles for the user
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.interaction:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
+    - name: channel
+      type: ANY
+      REQUIRED: false
+      comment: A JSON object that defines the Interaction’s communication channel and includes details about the channel. See the [Outbound SMS](https://www.twilio.com/docs/flex/developer/conversations/interactions-api/interactions#agent-initiated-outbound-interactions) and [inbound (API-initiated)](https://www.twilio.com/docs/flex/developer/conversations/interactions-api/interactions#api-initiated-contact) Channel object examples.
+    - name: routing
+      type: ANY
+      REQUIRED: false
+      comment: |-
+        A JSON Object representing the routing rules for the Interaction Channel. See [Outbound SMS Example](https://www.twilio.com/docs/flex/developer/conversations/interactions-api/interactions#agent-initiated-outbound-interactions) for an example Routing object. The Interactions resource uses TaskRouter for all routing functionality.
+         All attributes in the Routing object on your Interaction request body are added “as is” to the task. For a list of known attributes consumed by the Flex UI and/or Flex Insights, see [Known Task Attributes](https://www.twilio.com/docs/flex/developer/conversations/interactions-api#task-attributes).
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+    - name: interaction_context_sid
+      type: STRING
+      REQUIRED: false
+    - name: webhook_ttid
+      type: STRING
+      REQUIRED: false
+  flex.v1.interaction.interaction_channel:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction Channel resource, prefixed with UO.
+    - name: interaction_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction resource, prefixed with KD.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+      comment: The Twilio error code for a failed channel.
+    - name: error_message
+      type: STRING
+      REQUIRED: false
+      comment: The error message for a failed channel.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  flex.v1.interaction.interaction_channel.interaction_channel_invite:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction Channel Invite resource.
+    - name: interaction_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Interaction SID for this Channel.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Channel SID for this Invite.
+    - name: routing
+      type: ANY
+      REQUIRED: false
+      comment: |-
+        A JSON object representing the routing rules for the Interaction Channel. See [Outbound SMS Example](https://www.twilio.com/docs/flex/developer/conversations/interactions-api/interactions#agent-initiated-outbound-interactions) for an example Routing object. The Interactions resource uses TaskRouter for all routing functionality.
+         All attributes in the Routing object on your Interaction request body are added “as is” to the task. For a list of known attributes consumed by the Flex UI and/or Flex Insights, see [Known Task Attributes](https://www.twilio.com/docs/flex/developer/conversations/interactions-api#task-attributes).
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.interaction.interaction_channel.interaction_channel_participant:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction Channel Participant resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: interaction_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Interaction Sid for this channel.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Channel Sid for this Participant.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: routing_properties
+      type: ANY
+      REQUIRED: false
+      comment: The Participant's routing properties.
+  flex.v1.interaction.interaction_channel.interaction_transfer:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify an Interaction Transfer resource.
+    - name: instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Instance associated with the Transfer.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Account that created the Transfer.
+    - name: interaction_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Interaction Sid for this channel.
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Channel Sid for this Transfer.
+    - name: execution_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Execution SID associated with the Transfer.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: from
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Participant initiating the Transfer.
+    - name: to
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Participant receiving the Transfer.
+    - name: note_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Note associated with the Transfer.
+    - name: summary_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Summary associated with the Transfer.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time when the Transfer was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time when the Transfer was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v1.plugin:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin resource and owns this resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that uniquely identifies this Flex Plugin resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name this Flex Plugin resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin is archived. The default value is false.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT-7 when the Flex Plugin was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT-7 when the Flex Plugin was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  flex.v1.plugin_archive:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin resource and owns this resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that uniquely identifies this Flex Plugin resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name this Flex Plugin resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A descriptive string that you create to describe the plugin resource. It can be up to 500 characters long
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin is archived. The default value is false.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin resource.
+  flex.v1.plugin_configuration:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin Configuration resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin Configuration resource and owns this resource.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of this Flex Plugin Configuration.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Flex Plugin Configuration resource.
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Configuration is archived. The default value is false.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin Configuration was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin Configuration resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  flex.v1.plugin_configuration_archive:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin Configuration resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin Configuration resource and owns this resource.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of this Flex Plugin Configuration.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Flex Plugin Configuration resource.
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Configuration is archived. The default value is false.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin Configuration was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin Configuration resource.
+  flex.v1.plugin_release:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Plugin Release resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Plugin Release resource and owns this resource.
+    - name: configuration_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Plugin Configuration resource to release.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin Release was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Plugin Release resource.
+  flex.v1.plugin.plugin_version:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin Version resource.
+    - name: plugin_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Plugin resource this Flex Plugin Version belongs to.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin Version resource and owns this resource.
+    - name: version
+      type: STRING
+      REQUIRED: false
+      comment: The unique version of this Flex Plugin Version.
+    - name: plugin_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of where the Flex Plugin Version JavaScript bundle is hosted on.
+    - name: changelog
+      type: STRING
+      REQUIRED: false
+      comment: A changelog that describes the changes this Flex Plugin Version brings.
+    - name: private
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Version is validated. The default value is false.
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Version is archived. The default value is false.
+    - name: validated
+      type: BOOL
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin Version was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin Version resource.
+  flex.v1.plugin_version_archive:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flex Plugin Version resource.
+    - name: plugin_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Plugin resource this Flex Plugin Version belongs to.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flex Plugin Version resource and owns this resource.
+    - name: version
+      type: STRING
+      REQUIRED: false
+      comment: The unique version of this Flex Plugin Version.
+    - name: plugin_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of where the Flex Plugin Version JavaScript bundle is hosted on.
+    - name: changelog
+      type: STRING
+      REQUIRED: false
+      comment: A changelog that describes the changes this Flex Plugin Version brings.
+    - name: private
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to inject credentials while accessing this Plugin Version. The default value is false.
+    - name: archived
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Flex Plugin Version is archived. The default value is false.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Flex Plugin Version was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Flex Plugin Version resource.
+  flex.v1.provisioning_status:
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  flex.v1.web_channel:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the WebChannel resource and owns this Workflow.
+    - name: flex_flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flex Flow.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the WebChannel resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the WebChannel resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  api.channel.listResponse200:
+    - name: flex_chat_channels
+      type: "[]STRUCT(flex.v1.channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.pluginservice.plugins.getResponse200:
+    - name: plugins
+      type: "[]STRUCT(flex.v1.plugin_configuration.configured_plugin)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.flexflow.listResponse200:
+    - name: flex_flows
+      type: "[]STRUCT(flex.v1.flex_flow)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.assessments.listResponse200:
+    - name: assessments
+      type: "[]STRUCT(flex.v1.insights_assessments)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.comments.listResponse200:
+    - name: comments
+      type: "[]STRUCT(flex.v1.insights_assessments_comment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.conversations.listResponse200:
+    - name: conversations
+      type: "[]STRUCT(flex.v1.insights_conversations)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.questionnaires.listResponse200:
+    - name: questionnaires
+      type: "[]STRUCT(flex.v1.insights_questionnaires)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.categories.listResponse200:
+    - name: categories
+      type: "[]STRUCT(flex.v1.insights_questionnaires_category)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.questions.listResponse200:
+    - name: questions
+      type: "[]STRUCT(flex.v1.insights_questionnaires_question)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.insight.segments.listResponse200:
+    - name: segments
+      type: "[]STRUCT(flex.v1.insights_segments)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.interaction.channels.getResponse200:
+    - name: channels
+      type: "[]STRUCT(flex.v1.interaction.interaction_channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.interaction.invites.getResponse200:
+    - name: invites
+      type: "[]STRUCT(flex.v1.interaction.interaction_channel.interaction_channel_invite)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.interaction.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(flex.v1.interaction.interaction_channel.interaction_channel_participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.pluginservice.plugins.listResponse200:
+    - name: plugins
+      type: "[]STRUCT(flex.v1.plugin)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.pluginservice.configurations.listResponse200:
+    - name: configurations
+      type: "[]STRUCT(flex.v1.plugin_configuration)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.pluginservice.releases.listResponse200:
+    - name: releases
+      type: "[]STRUCT(flex.v1.plugin_release)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.pluginservice.versions.getResponse200:
+    - name: plugin_versions
+      type: "[]STRUCT(flex.v1.plugin.plugin_version)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.webchannel.listResponse200:
+    - name: flex_chat_channels
+      type: "[]STRUCT(flex.v1.web_channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

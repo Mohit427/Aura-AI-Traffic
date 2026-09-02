@@ -1,0 +1,3982 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://taskrouter.twilio.com
+METHODS:
+  twilio_taskrouter.workspace.activities.get:
+    SUMMARY: Perform operation FetchActivity
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Activities/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.activity)
+        RETURNVAR: twilio_taskrouter_workspace_activities_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.activities.get
+  twilio_taskrouter.workspace.activities.create:
+    SUMMARY: Perform operation UpdateActivity
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Activities/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.activity)
+        RETURNVAR: twilio_taskrouter_workspace_activities_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.activities.create
+  twilio_taskrouter.workspace.activities.delete:
+    SUMMARY: Perform operation DeleteActivity
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Activities/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_taskrouter.workspace.activities.delete
+  twilio_taskrouter.workspace.activities.get.1:
+    SUMMARY: Perform operation ListActivity
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Activities
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Available:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.activities.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_activities_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.activities.get.1
+  twilio_taskrouter.workspace.activities.create.1:
+    SUMMARY: Perform operation CreateActivity
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Activities
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Available:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.activity)
+        RETURNVAR: twilio_taskrouter_workspace_activities_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.activities.create.1
+  twilio_taskrouter.workspace.events.get:
+    SUMMARY: Perform operation FetchEvent
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Events/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.event)
+        RETURNVAR: twilio_taskrouter_workspace_events_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.events.get
+  twilio_taskrouter.workspace.events.get.1:
+    SUMMARY: Perform operation ListEvent
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Events
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EventType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - ReservationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - WorkerSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - WorkflowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Sid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.events.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_events_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.events.get.1
+  twilio_taskrouter.workspace.tasks.get:
+    SUMMARY: Perform operation FetchTask
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task)
+        RETURNVAR: twilio_taskrouter_workspace_tasks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.tasks.get
+  twilio_taskrouter.workspace.tasks.create:
+    SUMMARY: Perform operation UpdateTask
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AssignmentStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Reason:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VirtualStartTime:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task)
+        RETURNVAR: twilio_taskrouter_workspace_tasks_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.tasks.create
+  twilio_taskrouter.workspace.tasks.delete:
+    SUMMARY: Perform operation DeleteTask
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_taskrouter.workspace.tasks.delete
+  twilio_taskrouter.workspace.tasks.get.1:
+    SUMMARY: Perform operation ListTask
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - AssignmentStatus:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - WorkflowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - WorkflowName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EvaluateTaskAttributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - RoutingTarget:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Ordering:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - HasAddons:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.tasks.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_tasks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.tasks.get.1
+  twilio_taskrouter.workspace.tasks.create.1:
+    SUMMARY: Perform operation CreateTask
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Timeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WorkflowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VirtualStartTime:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - RoutingTarget:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IgnoreCapacity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TaskQueueSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task)
+        RETURNVAR: twilio_taskrouter_workspace_tasks_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.tasks.create.1
+  twilio_taskrouter.workspace.taskChannels.get:
+    SUMMARY: Perform operation FetchTaskChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskChannels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_channel)
+        RETURNVAR: twilio_taskrouter_workspace_taskChannels_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskChannels.get
+  twilio_taskrouter.workspace.taskChannels.create:
+    SUMMARY: Perform operation UpdateTaskChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskChannels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChannelOptimizedRouting:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_channel)
+        RETURNVAR: twilio_taskrouter_workspace_taskChannels_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskChannels.create
+  twilio_taskrouter.workspace.taskChannels.delete:
+    SUMMARY: Perform operation DeleteTaskChannel
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskChannels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_taskrouter.workspace.taskChannels.delete
+  twilio_taskrouter.workspace.taskChannels.get.1:
+    SUMMARY: Perform operation ListTaskChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskChannels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.taskChannels.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_taskChannels_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskChannels.get.1
+  twilio_taskrouter.workspace.taskChannels.create.1:
+    SUMMARY: Perform operation CreateTaskChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskChannels
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - ChannelOptimizedRouting:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_channel)
+        RETURNVAR: twilio_taskrouter_workspace_taskChannels_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.taskChannels.create.1
+  twilio_taskrouter.workspace.taskQueues.get:
+    SUMMARY: Perform operation FetchTaskQueue
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue)
+        RETURNVAR: twilio_taskrouter_workspace_taskQueues_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskQueues.get
+  twilio_taskrouter.workspace.taskQueues.create:
+    SUMMARY: Perform operation UpdateTaskQueue
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TargetWorkers:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReservationActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AssignmentActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MaxReservedWorkers:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - TaskOrder:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue)
+        RETURNVAR: twilio_taskrouter_workspace_taskQueues_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskQueues.create
+  twilio_taskrouter.workspace.taskQueues.delete:
+    SUMMARY: Perform operation DeleteTaskQueue
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_taskrouter.workspace.taskQueues.delete
+  twilio_taskrouter.workspace.taskQueues.get.1:
+    SUMMARY: Perform operation ListTaskQueue
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EvaluateWorkerAttributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - WorkerSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Ordering:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.taskQueues.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_taskQueues_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.taskQueues.get.1
+  twilio_taskrouter.workspace.taskQueues.create.1:
+    SUMMARY: Perform operation CreateTaskQueue
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - TargetWorkers:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MaxReservedWorkers:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - TaskOrder:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReservationActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AssignmentActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue)
+        RETURNVAR: twilio_taskrouter_workspace_taskQueues_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.taskQueues.create.1
+  twilio_taskrouter.workspace.realTimeStatistics.create:
+    SUMMARY: Fetch a Task Queue Real Time Statistics in bulk for the array of TaskQueue SIDs, support upto 50 in a request.
+    DESC: Fetch a Task Queue Real Time Statistics in bulk for the array of TaskQueue SIDs, support upto 50 in a request.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/RealTimeStatistics
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.workspace.realTimeStatistics.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.workspace.realTimeStatistics.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue.task_queue_bulk_real_time_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_realTimeStatistics_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.realTimeStatistics.create
+  twilio_taskrouter.workspace.cumulativeStatistics.get:
+    SUMMARY: Perform operation FetchTaskQueueCumulativeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/CumulativeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskQueueSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue.task_queue_cumulative_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_cumulativeStatistics_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.cumulativeStatistics.get
+  twilio_taskrouter.workspace.realTimeStatistics.get:
+    SUMMARY: Perform operation FetchTaskQueueRealTimeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/RealTimeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskQueueSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue.task_queue_real_time_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_realTimeStatistics_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.realTimeStatistics.get
+  twilio_taskrouter.workspace.statistics.get:
+    SUMMARY: Perform operation FetchTaskQueueStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/{TaskQueueSid}/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskQueueSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task_queue.task_queue_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get
+  twilio_taskrouter.workspace.statistics.get.1:
+    SUMMARY: Perform operation ListTaskQueuesStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/TaskQueues/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.statistics.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get.1
+  twilio_taskrouter.workspace.reservations.get:
+    SUMMARY: Perform operation ListTaskReservation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskSid:
+          TYPE: STRING
+          LOCATION: path
+      - ReservationStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - WorkerSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.reservations.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.get
+  twilio_taskrouter.workspace.reservations.get.1:
+    SUMMARY: Perform operation FetchTaskReservation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task.task_reservation)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.get.1
+  twilio_taskrouter.workspace.reservations.create:
+    SUMMARY: Perform operation UpdateTaskReservation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Tasks/{TaskSid}/Reservations/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - ReservationStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WorkerActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Instruction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeuePostWorkActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueFrom:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DequeueTo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueStatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallFrom:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CallTo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallStatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallAccept:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RedirectCallSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RedirectAccept:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RedirectUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - To:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Timeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Record:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Muted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Beep:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StartConferenceOnEnter:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - EndConferenceOnExit:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - WaitUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WaitMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EarlyMedia:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MaxParticipants:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceTrim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingChannels:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecordingStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecordingStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Region:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SipAuthUsername:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SipAuthPassword:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueStatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - PostWorkActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SupervisorMode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Supervisor:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EndConferenceOnCustomerExit:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - BeepOnCustomerEntrance:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - JitterBufferSize:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.task.task_reservation)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.create
+  twilio_taskrouter.workspace.workers.get:
+    SUMMARY: Perform operation ListWorker
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ActivityName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Available:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TargetWorkersExpression:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Ordering:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.workers.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_workers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workers.get
+  twilio_taskrouter.workspace.workers.create:
+    SUMMARY: Perform operation CreateWorker
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - ActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker)
+        RETURNVAR: twilio_taskrouter_workspace_workers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.workers.create
+  twilio_taskrouter.workspace.workers.get.1:
+    SUMMARY: Perform operation FetchWorker
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker)
+        RETURNVAR: twilio_taskrouter_workspace_workers_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workers.get.1
+  twilio_taskrouter.workspace.workers.create.1:
+    SUMMARY: Perform operation UpdateWorker
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - ActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RejectPendingReservations:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker)
+        RETURNVAR: twilio_taskrouter_workspace_workers_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workers.create.1
+  twilio_taskrouter.workspace.workers.delete:
+    SUMMARY: Perform operation DeleteWorker
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_taskrouter.workspace.workers.delete
+  twilio_taskrouter.workspace.channels.get:
+    SUMMARY: Perform operation ListWorkerChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.channels.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_channels_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.channels.get
+  twilio_taskrouter.workspace.channels.get.1:
+    SUMMARY: Perform operation FetchWorkerChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_channel)
+        RETURNVAR: twilio_taskrouter_workspace_channels_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.channels.get.1
+  twilio_taskrouter.workspace.channels.create:
+    SUMMARY: Perform operation UpdateWorkerChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Channels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Capacity:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Available:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_channel)
+        RETURNVAR: twilio_taskrouter_workspace_channels_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.channels.create
+  twilio_taskrouter.workspace.statistics.get.2:
+    SUMMARY: Perform operation FetchWorkerInstanceStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_instance_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get.2
+  twilio_taskrouter.workspace.reservations.get.2:
+    SUMMARY: Perform operation ListWorkerReservation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - ReservationStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.reservations.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.get.2
+  twilio_taskrouter.workspace.reservations.get.3:
+    SUMMARY: Perform operation FetchWorkerReservation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_reservation)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.get.3
+  twilio_taskrouter.workspace.reservations.create.1:
+    SUMMARY: Perform operation UpdateWorkerReservation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/{WorkerSid}/Reservations/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkerSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - ReservationStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WorkerActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Instruction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeuePostWorkActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueFrom:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DequeueTo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueStatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallFrom:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CallTo:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallStatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallAccept:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RedirectCallSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RedirectAccept:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RedirectUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - To:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Timeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Record:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Muted:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Beep:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StartConferenceOnEnter:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - EndConferenceOnExit:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - WaitUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WaitMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EarlyMedia:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MaxParticipants:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceStatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecord:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceTrim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingChannels:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecordingStatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConferenceRecordingStatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Region:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SipAuthUsername:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SipAuthPassword:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DequeueStatusCallbackEvent:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - PostWorkActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EndConferenceOnCustomerExit:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - BeepOnCustomerEntrance:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - JitterBufferSize:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_reservation)
+        RETURNVAR: twilio_taskrouter_workspace_reservations_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.reservations.create.1
+  twilio_taskrouter.workspace.statistics.get.3:
+    SUMMARY: Perform operation FetchWorkerStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskQueueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.worker_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get.3
+  twilio_taskrouter.workspace.cumulativeStatistics.get.1:
+    SUMMARY: Perform operation FetchWorkersCumulativeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/CumulativeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.workers_cumulative_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_cumulativeStatistics_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.cumulativeStatistics.get.1
+  twilio_taskrouter.workspace.realTimeStatistics.get.1:
+    SUMMARY: Perform operation FetchWorkersRealTimeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workers/RealTimeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.worker.workers_real_time_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_realTimeStatistics_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.realTimeStatistics.get.1
+  twilio_taskrouter.workspace.workflows.get:
+    SUMMARY: Perform operation FetchWorkflow
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow)
+        RETURNVAR: twilio_taskrouter_workspace_workflows_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workflows.get
+  twilio_taskrouter.workspace.workflows.create:
+    SUMMARY: Perform operation UpdateWorkflow
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AssignmentCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackAssignmentCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TaskReservationTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ReEvaluateTasks:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow)
+        RETURNVAR: twilio_taskrouter_workspace_workflows_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workflows.create
+  twilio_taskrouter.workspace.workflows.delete:
+    SUMMARY: Perform operation DeleteWorkflow
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_taskrouter.workspace.workflows.delete
+  twilio_taskrouter.workspace.workflows.get.1:
+    SUMMARY: Perform operation ListWorkflow
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.workflows.getResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_workflows_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.workflows.get.1
+  twilio_taskrouter.workspace.workflows.create.1:
+    SUMMARY: Perform operation CreateWorkflow
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Configuration:
+          TYPE: STRING
+          LOCATION: body
+      - AssignmentCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackAssignmentCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TaskReservationTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow)
+        RETURNVAR: twilio_taskrouter_workspace_workflows_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.workflows.create.1
+  twilio_taskrouter.workspace.cumulativeStatistics.get.2:
+    SUMMARY: Perform operation FetchWorkflowCumulativeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/CumulativeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkflowSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow.workflow_cumulative_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_cumulativeStatistics_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.cumulativeStatistics.get.2
+  twilio_taskrouter.workspace.realTimeStatistics.get.2:
+    SUMMARY: Perform operation FetchWorkflowRealTimeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/RealTimeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkflowSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow.workflow_real_time_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_realTimeStatistics_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.realTimeStatistics.get.2
+  twilio_taskrouter.workspace.statistics.get.4:
+    SUMMARY: Perform operation FetchWorkflowStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Workflows/{WorkflowSid}/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - WorkflowSid:
+          TYPE: STRING
+          LOCATION: path
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workflow.workflow_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get_4
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get.4
+  twilio_taskrouter.workspace.get:
+    SUMMARY: Perform operation FetchWorkspace
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace)
+        RETURNVAR: twilio_taskrouter_workspace_get
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.get
+  twilio_taskrouter.workspace.create:
+    SUMMARY: Perform operation UpdateWorkspace
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - DefaultActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EventCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EventsFilter:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MultiTaskEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TimeoutActivitySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrioritizeQueueOrder:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace)
+        RETURNVAR: twilio_taskrouter_workspace_create
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.create
+  twilio_taskrouter.workspace.delete:
+    SUMMARY: Perform operation DeleteWorkspace
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Workspaces/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_taskrouter.workspace.delete
+  twilio_taskrouter.workspace.list:
+    SUMMARY: Perform operation ListWorkspace
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.workspace.listResponse200)
+        RETURNVAR: twilio_taskrouter_workspace_list
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.list
+  twilio_taskrouter.workspace.create.1:
+    SUMMARY: Perform operation CreateWorkspace
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Workspaces
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - EventCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EventsFilter:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MultiTaskEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrioritizeQueueOrder:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace)
+        RETURNVAR: twilio_taskrouter_workspace_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_taskrouter.workspace.create.1
+  twilio_taskrouter.workspace.cumulativeStatistics.get.3:
+    SUMMARY: Perform operation FetchWorkspaceCumulativeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/CumulativeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workspace_cumulative_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_cumulativeStatistics_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.cumulativeStatistics.get.3
+  twilio_taskrouter.workspace.realTimeStatistics.get.3:
+    SUMMARY: Perform operation FetchWorkspaceRealTimeStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/RealTimeStatistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workspace_real_time_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_realTimeStatistics_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.realTimeStatistics.get.3
+  twilio_taskrouter.workspace.statistics.get.5:
+    SUMMARY: Perform operation FetchWorkspaceStatistics
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Workspaces/{WorkspaceSid}/Statistics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WorkspaceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Minutes:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - TaskChannel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SplitByWaitTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(taskrouter.v1.workspace.workspace_statistics)
+        RETURNVAR: twilio_taskrouter_workspace_statistics_get_5
+        STATUS: 200
+    CANONICAL_ID: twilio_taskrouter.workspace.statistics.get.5
+STRUCTS:
+  taskrouter.v1.workspace.activity:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Activity resource.
+    - name: available
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Worker is eligible to receive a Task when it occupies the Activity. A value of `true`, `1`, or `yes` indicates the Activity is available. All other values indicate that it is not. The value cannot be changed after the Activity is created.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Activity resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Activity resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Activity.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Activity resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  taskrouter.v1.workspace.event:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Event resource.
+    - name: actor_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the resource that triggered the event.
+    - name: actor_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of resource that triggered the event.
+    - name: actor_url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource that triggered the event.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A description of the event.
+    - name: event_data
+      type: ANY
+      REQUIRED: false
+      comment: Data about the event. For more information, see [Event types](https://www.twilio.com/docs/taskrouter/api/event#event-types).
+    - name: event_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time the event was sent, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: event_date_ms
+      type: INT
+      REQUIRED: false
+      comment: The time the event was sent in milliseconds.
+    - name: event_type
+      type: STRING
+      REQUIRED: false
+      comment: The identifier for the event.
+    - name: resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the object the event is most relevant to, such as a TaskSid, ReservationSid, or a  WorkerSid.
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of object the event is most relevant to, such as a Task, Reservation, or a Worker).
+    - name: resource_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the resource the event is most relevant to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Event resource.
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: Where the Event originated.
+    - name: source_ip_address
+      type: STRING
+      REQUIRED: false
+      comment: The IP from which the Event originated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Event resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Event.
+  taskrouter.v1.workspace.task:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Task resource.
+    - name: age
+      type: INT
+      REQUIRED: false
+      comment: The number of seconds since the Task was created.
+    - name: assignment_status
+      type: STRING
+      REQUIRED: false
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON string with custom attributes of the work. **Note** If this property has been assigned a value, it will only be displayed in FETCH action that returns a single resource. Otherwise, it will be null.
+    - name: addons
+      type: STRING
+      REQUIRED: false
+      comment: An object that contains the [Add-on](https://www.twilio.com/docs/add-ons) data for all installed Add-ons.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: task_queue_entered_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Task entered the TaskQueue, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: priority
+      type: INT
+      REQUIRED: false
+      comment: The current priority score of the Task as assigned to a Worker by the workflow. Tasks with higher priority values will be assigned before Tasks with lower values.
+    - name: reason
+      type: STRING
+      REQUIRED: false
+      comment: The reason the Task was canceled or completed, if applicable.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Task resource.
+    - name: task_queue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskQueue.
+    - name: task_queue_friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of the TaskQueue.
+    - name: task_channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskChannel.
+    - name: task_channel_unique_name
+      type: STRING
+      REQUIRED: false
+      comment: The unique name of the TaskChannel.
+    - name: timeout
+      type: INT
+      REQUIRED: false
+      comment: The amount of time in seconds that the Task can live before being assigned.
+    - name: workflow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workflow that is controlling the Task.
+    - name: workflow_friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of the Workflow that is controlling the Task.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Task.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Task resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+    - name: virtual_start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT indicating the ordering for routing of the Task specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: ignore_capacity
+      type: BOOL
+      REQUIRED: false
+      comment: "A boolean that indicates if the Task should respect a Worker's capacity and availability during assignment. This field can only be used when the `RoutingTarget` field is set to a Worker SID. By setting `IgnoreCapacity` to a value of `true`, `1`, or `yes`, the Task will be routed to the Worker without respecting their capacity and availability. Any other value will enforce the Worker's capacity and availability. The default value of `IgnoreCapacity` is `true` when the `RoutingTarget` is set to a Worker SID. "
+    - name: routing_target
+      type: STRING
+      REQUIRED: false
+      comment: A SID of a Worker, Queue, or Workflow to route a Task to
+  taskrouter.v1.workspace.task_channel:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Task Channel resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Task Channel resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the Task Channel, such as `voice` or `sms`.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Task Channel.
+    - name: channel_optimized_routing
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Task Channel will prioritize Workers that have been idle. When `true`, Workers that have been idle the longest are prioritized.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Task Channel resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.task_queue:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: assignment_activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Activity to assign Workers when a task is assigned for them.
+    - name: assignment_activity_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Activity to assign Workers when a task is assigned for them.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: max_reserved_workers
+      type: INT
+      REQUIRED: false
+      comment: The maximum number of Workers to reserve for the assignment of a task in the queue. Can be an integer between 1 and 50, inclusive and defaults to 1.
+    - name: reservation_activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Activity to assign Workers once a task is reserved for them.
+    - name: reservation_activity_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Activity to assign Workers once a task is reserved for them.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the TaskQueue resource.
+    - name: target_workers
+      type: STRING
+      REQUIRED: false
+      comment: A string describing the Worker selection criteria for any Tasks that enter the TaskQueue. For example `'"language" == "spanish"'` If no TargetWorkers parameter is provided, Tasks will wait in the TaskQueue until they are either deleted or moved to another TaskQueue. Additional examples on how to describing Worker selection criteria below. Defaults to 1==1.
+    - name: task_order
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskQueue resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueue.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.task_queue.task_queue_bulk_real_time_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueue.
+    - name: task_queue_data
+      type: "[]ANY"
+      REQUIRED: false
+      comment: |
+        The real-time statistics for each requested TaskQueue SID. `task_queue_data` returns the following attributes:
+
+        `task_queue_sid`: The SID of the TaskQueue from which these statistics were calculated.
+
+        `total_available_workers`: The total number of Workers available for Tasks in the TaskQueue.
+
+        `total_eligible_workers`: The total number of Workers eligible for Tasks in the TaskQueue, regardless of their Activity state.
+
+        `total_tasks`: The total number of Tasks.
+
+        `longest_task_waiting_age`: The age of the longest waiting Task.
+
+        `longest_task_waiting_sid`: The SID of the longest waiting Task.
+
+        `tasks_by_status`: The number of Tasks grouped by their current status.
+
+        `tasks_by_priority`: The number of Tasks grouped by priority.
+
+        `activity_statistics`: The number of current Workers grouped by Activity.
+    - name: task_queue_response_count
+      type: INT
+      REQUIRED: false
+      comment: The number of TaskQueue statistics received in task_queue_data.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskQueue statistics resource.
+  taskrouter.v1.workspace.task_queue.task_queue_cumulative_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: avg_task_acceptance_time
+      type: INT
+      REQUIRED: false
+      comment: The average time in seconds between Task creation and acceptance.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: reservations_created
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations created for Tasks in the TaskQueue.
+    - name: reservations_accepted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations accepted for Tasks in the TaskQueue.
+    - name: reservations_rejected
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations rejected for Tasks in the TaskQueue.
+    - name: reservations_timed_out
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that timed out for Tasks in the TaskQueue.
+    - name: reservations_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations canceled for Tasks in the TaskQueue.
+    - name: reservations_rescinded
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations rescinded.
+    - name: split_by_wait_time
+      type: ANY
+      REQUIRED: false
+      comment: A list of objects that describe the number of Tasks canceled and reservations accepted above and below the thresholds specified in seconds.
+    - name: task_queue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskQueue from which these statistics were calculated.
+    - name: wait_duration_until_accepted
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks accepted while in the TaskQueue. Calculation is based on the time when the Tasks were created. For transfers, the wait duration is counted from the moment ***the Task was created***, and not from when the transfer was initiated.
+    - name: wait_duration_until_canceled
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks canceled while in the TaskQueue.
+    - name: wait_duration_in_queue_until_accepted
+      type: ANY
+      REQUIRED: false
+      comment: The relative wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks accepted while in the TaskQueue. Calculation is based on the time when the Tasks entered the TaskQueue.
+    - name: tasks_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks canceled in the TaskQueue.
+    - name: tasks_completed
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks completed in the TaskQueue.
+    - name: tasks_deleted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks deleted in the TaskQueue.
+    - name: tasks_entered
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks entered into the TaskQueue.
+    - name: tasks_moved
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were moved from one queue to another.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueue.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskQueue statistics resource.
+  taskrouter.v1.workspace.task_queue.task_queue_real_time_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: activity_statistics
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The number of current Workers by Activity.
+    - name: longest_task_waiting_age
+      type: INT
+      REQUIRED: false
+      comment: The age of the longest waiting Task.
+    - name: longest_task_waiting_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the longest waiting Task.
+    - name: longest_relative_task_age_in_queue
+      type: INT
+      REQUIRED: false
+      comment: The relative age in the TaskQueue for the longest waiting Task. Calculation is based on the time when the Task entered the TaskQueue.
+    - name: longest_relative_task_sid_in_queue
+      type: STRING
+      REQUIRED: false
+      comment: The Task SID of the Task waiting in the TaskQueue the longest. Calculation is based on the time when the Task entered the TaskQueue.
+    - name: task_queue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskQueue from which these statistics were calculated.
+    - name: tasks_by_priority
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by priority. For example: `{\"0\": \"10\", \"99\": \"5\"}` shows 10 Tasks at priority 0 and 5 at priority 99."
+    - name: tasks_by_status
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by their current status. For example: `{\"pending\": \"1\", \"reserved\": \"3\", \"assigned\": \"2\", \"completed\": \"5\"}`."
+    - name: total_available_workers
+      type: INT
+      REQUIRED: false
+      comment: The total number of Workers in the TaskQueue with an `available` status. Workers with an `available` status may already have active interactions or may have none.
+    - name: total_eligible_workers
+      type: INT
+      REQUIRED: false
+      comment: The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state.
+    - name: total_tasks
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueue.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskQueue statistics resource.
+  taskrouter.v1.workspace.task_queue.task_queue_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the TaskQueue.
+    - name: realtime
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the real-time statistics for the TaskQueue.
+    - name: task_queue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskQueue from which these statistics were calculated.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueue.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskQueue statistics resource.
+  taskrouter.v1.workspace.task_queue.task_queues_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskQueue resource.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the TaskQueues.
+    - name: realtime
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the real-time statistics for the TaskQueues.
+    - name: task_queue_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskQueue from which these statistics were calculated.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the TaskQueues.
+  taskrouter.v1.workspace.task.task_reservation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the TaskReservation resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: reservation_status
+      type: STRING
+      REQUIRED: false
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the TaskReservation resource.
+    - name: task_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the reserved Task resource.
+    - name: worker_name
+      type: STRING
+      REQUIRED: false
+      comment: The `friendly_name` of the Worker that is reserved.
+    - name: worker_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the reserved Worker resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that this task is contained within.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the TaskReservation reservation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.worker:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: activity_name
+      type: STRING
+      REQUIRED: false
+      comment: The `friendly_name` of the Worker's current Activity.
+    - name: activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Worker's current Activity.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: "The JSON string that describes the Worker. For example: `{ \"email\": \"Bob@example.com\", \"phone\": \"+5095551234\" }`. **Note** If this property has been assigned a value, it will only be displayed in FETCH actions that return a single resource. Otherwise, this property will be null, even if it has a value. This data is passed to the `assignment_callback_url` when TaskRouter assigns a Task to the Worker."
+    - name: available
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Worker is available to perform tasks.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_status_changed
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT of the last change to the Worker's activity specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. Used to calculate Workflow statistics.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource. Friendly names are case insensitive, and unique within the TaskRouter Workspace.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Worker resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Worker.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Worker resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.worker.worker_channel:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: assigned_tasks
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks assigned to Worker for the TaskChannel type.
+    - name: available
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Worker should receive Tasks of the TaskChannel type.
+    - name: available_capacity_percentage
+      type: INT
+      REQUIRED: false
+      comment: The current percentage of capacity the TaskChannel has available. Can be a number between `0` and `100`. A value of `0` indicates that TaskChannel has no capacity available and a value of `100` means the  Worker is available to receive any Tasks of this TaskChannel type.
+    - name: configured_capacity
+      type: INT
+      REQUIRED: false
+      comment: The current configured capacity for the WorkerChannel. TaskRouter will not create any reservations after the assigned Tasks for the Worker reaches the value.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the WorkerChannel resource.
+    - name: task_channel_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the TaskChannel.
+    - name: task_channel_unique_name
+      type: STRING
+      REQUIRED: false
+      comment: The unique name of the TaskChannel, such as `voice` or `sms`.
+    - name: worker_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Worker that contains the WorkerChannel.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the WorkerChannel.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the WorkerChannel resource.
+  taskrouter.v1.workspace.worker.worker_instance_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the Worker.
+    - name: worker_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Worker that contains the WorkerChannel.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the WorkerChannel.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the WorkerChannel statistics resource.
+  taskrouter.v1.workspace.worker.worker_reservation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the WorkerReservation resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: reservation_status
+      type: STRING
+      REQUIRED: false
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the WorkerReservation resource.
+    - name: task_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the reserved Task resource.
+    - name: worker_name
+      type: STRING
+      REQUIRED: false
+      comment: The `friendly_name` of the Worker that is reserved.
+    - name: worker_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the reserved Worker resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that this worker is contained within.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the WorkerReservation resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.worker.worker_statistics:
+    - name: realtime
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the real-time statistics for the Worker.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the Worker.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Worker.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Worker statistics resource.
+  taskrouter.v1.workspace.worker.workers_cumulative_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: activity_durations
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The minimum, average, maximum, and total time (in seconds) that Workers spent in each Activity.
+    - name: reservations_created
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were created.
+    - name: reservations_accepted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were accepted.
+    - name: reservations_rejected
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rejected.
+    - name: reservations_timed_out
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were timed out.
+    - name: reservations_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were canceled.
+    - name: reservations_rescinded
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rescinded.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workers.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workers statistics resource.
+  taskrouter.v1.workspace.worker.workers_real_time_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Worker resource.
+    - name: activity_statistics
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The number of current Workers by Activity.
+    - name: total_workers
+      type: INT
+      REQUIRED: false
+      comment: The total number of Workers.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workers.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workers statistics resource.
+  taskrouter.v1.workspace.workflow:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource.
+    - name: assignment_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call when a task managed by the Workflow is assigned to a Worker. See Assignment Callback URL for more information.
+    - name: configuration
+      type: STRING
+      REQUIRED: false
+      comment: A JSON string that contains the Workflow's configuration. See [Configuring Workflows](https://www.twilio.com/docs/taskrouter/workflow-configuration) for more information.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: document_content_type
+      type: STRING
+      REQUIRED: false
+      comment: The MIME type of the document.
+    - name: fallback_assignment_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call when a call to the `assignment_callback_url` fails.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Workflow resource. For example, `Customer Support` or `2014 Election Campaign`.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Workflow resource.
+    - name: task_reservation_timeout
+      type: INT
+      REQUIRED: false
+      comment: How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker. Can be up to `86,400` (24 hours) and the default is `120`.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workflow.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workflow resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.workflow.workflow_cumulative_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource.
+    - name: avg_task_acceptance_time
+      type: INT
+      REQUIRED: false
+      comment: The average time in seconds between Task creation and acceptance.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: reservations_created
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were created for Workers.
+    - name: reservations_accepted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations accepted by Workers.
+    - name: reservations_rejected
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rejected.
+    - name: reservations_timed_out
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were timed out.
+    - name: reservations_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were canceled.
+    - name: reservations_rescinded
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rescinded.
+    - name: split_by_wait_time
+      type: ANY
+      REQUIRED: false
+      comment: A list of objects that describe the number of Tasks canceled and reservations accepted above and below the thresholds specified in seconds.
+    - name: wait_duration_until_accepted
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks that were accepted.
+    - name: wait_duration_until_canceled
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks that were canceled.
+    - name: tasks_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were canceled.
+    - name: tasks_completed
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were completed.
+    - name: tasks_entered
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that entered the Workflow.
+    - name: tasks_deleted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were deleted.
+    - name: tasks_moved
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were moved from one queue to another.
+    - name: tasks_timed_out_in_workflow
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were timed out of their Workflows (and deleted).
+    - name: workflow_sid
+      type: STRING
+      REQUIRED: false
+      comment: Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workflow.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workflow statistics resource.
+  taskrouter.v1.workspace.workflow.workflow_real_time_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource.
+    - name: longest_task_waiting_age
+      type: INT
+      REQUIRED: false
+      comment: The age of the longest waiting Task.
+    - name: longest_task_waiting_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the longest waiting Task.
+    - name: tasks_by_priority
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by priority. For example: `{\"0\": \"10\", \"99\": \"5\"}` shows 10 Tasks at priority 0 and 5 at priority 99."
+    - name: tasks_by_status
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by their current status. For example: `{\"pending\": \"1\", \"reserved\": \"3\", \"assigned\": \"2\", \"completed\": \"5\"}`."
+    - name: total_tasks
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks.
+    - name: workflow_sid
+      type: STRING
+      REQUIRED: false
+      comment: Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workflow.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workflow statistics resource.
+  taskrouter.v1.workspace.workflow.workflow_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workflow resource.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the Workflow.
+    - name: realtime
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the real-time statistics for the Workflow.
+    - name: workflow_sid
+      type: STRING
+      REQUIRED: false
+      comment: Returns the list of Tasks that are being controlled by the Workflow with the specified SID value.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace that contains the Workflow.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workflow statistics resource.
+  taskrouter.v1.workspace:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workspace resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: default_activity_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the default activity.
+    - name: default_activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Activity that will be used when new Workers are created in the Workspace.
+    - name: event_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call when an event occurs. If provided, the Workspace will publish events to this URL, for example, to collect data for reporting. See [Workspace Events](https://www.twilio.com/docs/taskrouter/api/event) for more information. This parameter supports Twilio's [Webhooks (HTTP callbacks) Connection Overrides](https://www.twilio.com/docs/usage/webhooks/webhooks-connection-overrides).
+    - name: events_filter
+      type: STRING
+      REQUIRED: false
+      comment: The list of Workspace events for which to call `event_callback_url`. For example, if `EventsFilter=task.created, task.canceled, worker.activity.update`, then TaskRouter will call event_callback_url only when a task is created, canceled, or a Worker activity is updated.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Workspace resource. For example `Customer Support` or `2014 Election Campaign`.
+    - name: multi_task_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether multi-tasking is enabled. The default is `true`, which enables multi-tasking. Multi-tasking allows Workers to handle multiple Tasks simultaneously. When enabled (`true`), each Worker can receive parallel reservations up to the per-channel maximums defined in the Workers section. In single-tasking each Worker would only receive a new reservation when the previous task is completed. Learn more at [Multitasking](https://www.twilio.com/docs/taskrouter/multitasking).
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Workspace resource.
+    - name: timeout_activity_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the timeout activity.
+    - name: timeout_activity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.
+    - name: prioritize_queue_order
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workspace resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  taskrouter.v1.workspace.workspace_cumulative_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workspace resource.
+    - name: avg_task_acceptance_time
+      type: INT
+      REQUIRED: false
+      comment: The average time in seconds between Task creation and acceptance.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The beginning of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The end of the interval during which these statistics were calculated, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: reservations_created
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were created for Workers.
+    - name: reservations_accepted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations accepted by Workers.
+    - name: reservations_rejected
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rejected.
+    - name: reservations_timed_out
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were timed out.
+    - name: reservations_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were canceled.
+    - name: reservations_rescinded
+      type: INT
+      REQUIRED: false
+      comment: The total number of Reservations that were rescinded.
+    - name: split_by_wait_time
+      type: ANY
+      REQUIRED: false
+      comment: A list of objects that describe the number of Tasks canceled and reservations accepted above and below the thresholds specified in seconds.
+    - name: wait_duration_until_accepted
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks that were accepted.
+    - name: wait_duration_until_canceled
+      type: ANY
+      REQUIRED: false
+      comment: The wait duration statistics (`avg`, `min`, `max`, `total`) for Tasks that were canceled.
+    - name: tasks_canceled
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were canceled.
+    - name: tasks_completed
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were completed.
+    - name: tasks_created
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks created.
+    - name: tasks_deleted
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were deleted.
+    - name: tasks_moved
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were moved from one queue to another.
+    - name: tasks_timed_out_in_workflow
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks that were timed out of their Workflows (and deleted).
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workspace statistics resource.
+  taskrouter.v1.workspace.workspace_real_time_statistics:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workspace resource.
+    - name: activity_statistics
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The number of current Workers by Activity.
+    - name: longest_task_waiting_age
+      type: INT
+      REQUIRED: false
+      comment: The age of the longest waiting Task.
+    - name: longest_task_waiting_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the longest waiting Task.
+    - name: tasks_by_priority
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by priority. For example: `{\"0\": \"10\", \"99\": \"5\"}` shows 10 Tasks at priority 0 and 5 at priority 99."
+    - name: tasks_by_status
+      type: ANY
+      REQUIRED: false
+      comment: "The number of Tasks by their current status. For example: `{\"pending\": \"1\", \"reserved\": \"3\", \"assigned\": \"2\", \"completed\": \"5\"}`."
+    - name: total_tasks
+      type: INT
+      REQUIRED: false
+      comment: The total number of Tasks.
+    - name: total_workers
+      type: INT
+      REQUIRED: false
+      comment: The total number of Workers in the Workspace.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workspace statistics resource.
+  taskrouter.v1.workspace.workspace_statistics:
+    - name: realtime
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the real-time statistics for the Workspace.
+    - name: cumulative
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the cumulative statistics for the Workspace.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Workspace resource.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Workspace.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Workspace statistics resource.
+  api.workspace.activities.getResponse200:
+    - name: activities
+      type: "[]STRUCT(taskrouter.v1.workspace.activity)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.events.getResponse200:
+    - name: events
+      type: "[]STRUCT(taskrouter.v1.workspace.event)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.tasks.getResponse200:
+    - name: tasks
+      type: "[]STRUCT(taskrouter.v1.workspace.task)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.taskChannels.getResponse200:
+    - name: channels
+      type: "[]STRUCT(taskrouter.v1.workspace.task_channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.taskQueues.getResponse200:
+    - name: task_queues
+      type: "[]STRUCT(taskrouter.v1.workspace.task_queue)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.statistics.getResponse200:
+    - name: task_queues_statistics
+      type: "[]STRUCT(taskrouter.v1.workspace.task_queue.task_queues_statistics)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.reservations.getResponse200:
+    - name: reservations
+      type: "[]STRUCT(taskrouter.v1.workspace.task.task_reservation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.workers.getResponse200:
+    - name: workers
+      type: "[]STRUCT(taskrouter.v1.workspace.worker)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.channels.getResponse200:
+    - name: channels
+      type: "[]STRUCT(taskrouter.v1.workspace.worker.worker_channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.workflows.getResponse200:
+    - name: workflows
+      type: "[]STRUCT(taskrouter.v1.workspace.workflow)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.workspace.listResponse200:
+    - name: workspaces
+      type: "[]STRUCT(taskrouter.v1.workspace)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

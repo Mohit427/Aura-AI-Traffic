@@ -1,0 +1,94 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new listing with provided details",
+      "canonical_id": "twilio_marketplace.listing.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a referral conversion",
+      "canonical_id": "twilio_marketplace.referralconversion.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an installed add-on from your account",
+      "canonical_id": "twilio_marketplace.installedaddon.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of available add-ons to install",
+      "canonical_id": "twilio_marketplace.availableaddon.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of installed add-ons for this account",
+      "canonical_id": "twilio_marketplace.installedaddon.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific extension for an available add-on",
+      "canonical_id": "twilio_marketplace.availableaddon.extensions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific extension for an installed add-on",
+      "canonical_id": "twilio_marketplace.installedaddon.extensions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get available add-on extensions",
+      "canonical_id": "twilio_marketplace.availableaddon.extensions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for an available add-on by its SID",
+      "canonical_id": "twilio_marketplace.availableaddon.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details of an installed add-on by its SID",
+      "canonical_id": "twilio_marketplace.installedaddon.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get listing data by SID",
+      "canonical_id": "twilio_marketplace.listing.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get listings owned by the authenticated account",
+      "canonical_id": "twilio_marketplace.listing.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Install an add-on for the specified account",
+      "canonical_id": "twilio_marketplace.installedaddon.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List extensions for an installed add-on",
+      "canonical_id": "twilio_marketplace.installedaddon.extensions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Report customer usage for your no-code partner listings",
+      "canonical_id": "twilio_marketplace.installedaddon.usage.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific listing's details",
+      "canonical_id": "twilio_marketplace.listing.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an add-on installation's extension",
+      "canonical_id": "twilio_marketplace.installedaddon.extensions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an installed add-on for an account",
+      "canonical_id": "twilio_marketplace.installedaddon.create.1"
+    }
+  ]
+}

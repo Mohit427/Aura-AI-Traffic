@@ -1,0 +1,129 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a service session",
+      "canonical_id": "twilio_proxy.service.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a phone number to a service's proxy number pool",
+      "canonical_id": "twilio_proxy.service.phoneNumbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new session for a service",
+      "canonical_id": "twilio_proxy.service.sessions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Twilio Proxy Service",
+      "canonical_id": "twilio_proxy.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific interaction",
+      "canonical_id": "twilio_proxy.service.interactions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific service by its ID",
+      "canonical_id": "twilio_proxy.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific session",
+      "canonical_id": "twilio_proxy.service.sessions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific interaction for a session",
+      "canonical_id": "twilio_proxy.service.interactions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific message interaction for a participant in a session",
+      "canonical_id": "twilio_proxy.service.messageInteractions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant in a service session",
+      "canonical_id": "twilio_proxy.service.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific phone number for a service",
+      "canonical_id": "twilio_proxy.service.phoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific service by its ID",
+      "canonical_id": "twilio_proxy.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific session by service and session IDs",
+      "canonical_id": "twilio_proxy.service.sessions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all interactions for a specific session",
+      "canonical_id": "twilio_proxy.service.interactions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all sessions for a service",
+      "canonical_id": "twilio_proxy.service.sessions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all participants in a specific session",
+      "canonical_id": "twilio_proxy.service.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all Twilio Proxy services, with pagination",
+      "canonical_id": "twilio_proxy.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List message interactions for a participant in a session",
+      "canonical_id": "twilio_proxy.service.messageInteractions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List phone numbers in a service's proxy pool",
+      "canonical_id": "twilio_proxy.service.phoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a participant from a session",
+      "canonical_id": "twilio_proxy.service.participants.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from a service",
+      "canonical_id": "twilio_proxy.service.phoneNumbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a participant in a session",
+      "canonical_id": "twilio_proxy.service.messageInteractions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific proxy phone number",
+      "canonical_id": "twilio_proxy.service.phoneNumbers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific service's configuration",
+      "canonical_id": "twilio_proxy.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific session's details",
+      "canonical_id": "twilio_proxy.service.sessions.create"
+    }
+  ]
+}

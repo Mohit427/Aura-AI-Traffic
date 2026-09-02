@@ -1,0 +1,369 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a channel",
+      "canonical_id": "twilio_flex.interaction.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Archive a plugin by its ID",
+      "canonical_id": "twilio_flex.pluginservice.archive.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Archive a plugin configuration by its ID",
+      "canonical_id": "twilio_flex.pluginservice.archive.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Archive a specific plugin version",
+      "canonical_id": "twilio_flex.pluginservice.archive.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new chat channel",
+      "canonical_id": "twilio_flex.channel.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new Flex Flow with specified details",
+      "canonical_id": "twilio_flex.flexflow.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new interaction",
+      "canonical_id": "twilio_flex.interaction.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new plugin configuration with specified details",
+      "canonical_id": "twilio_flex.pluginservice.configurations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new plugin release with the provided configuration",
+      "canonical_id": "twilio_flex.pluginservice.releases.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new plugin with its details",
+      "canonical_id": "twilio_flex.pluginservice.plugins.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new question category",
+      "canonical_id": "twilio_flex.insight.categories.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new questionnaire with questions and details",
+      "canonical_id": "twilio_flex.insight.questionnaires.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new transfer for an interaction channel",
+      "canonical_id": "twilio_flex.interaction.transfers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new version for a specific plugin",
+      "canonical_id": "twilio_flex.pluginservice.versions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new web channel for customer engagement",
+      "canonical_id": "twilio_flex.webchannel.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a quality assessment comment for a conversation",
+      "canonical_id": "twilio_flex.insight.comments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a quality management question for a category",
+      "canonical_id": "twilio_flex.insight.questions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a channel by its unique identifier",
+      "canonical_id": "twilio_flex.channel.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a Flex Flow by its SID",
+      "canonical_id": "twilio_flex.flexflow.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a quality management category by its SID",
+      "canonical_id": "twilio_flex.insight.categories.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a questionnaire by its unique identifier",
+      "canonical_id": "twilio_flex.insight.questionnaires.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific question from a questionnaire",
+      "canonical_id": "twilio_flex.insight.questions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a web channel by its ID",
+      "canonical_id": "twilio_flex.webchannel.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch interaction details by SID",
+      "canonical_id": "twilio_flex.interaction.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific channel by its ID",
+      "canonical_id": "twilio_flex.channel.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific channel for an interaction",
+      "canonical_id": "twilio_flex.interaction.channels.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific plugin version by its plugin and version IDs",
+      "canonical_id": "twilio_flex.pluginservice.versions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific plugin's configuration details",
+      "canonical_id": "twilio_flex.pluginservice.plugins.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific transfer by its SID",
+      "canonical_id": "twilio_flex.interaction.transfers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a web channel by its SID",
+      "canonical_id": "twilio_flex.webchannel.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get application configuration settings",
+      "canonical_id": "twilio_flex.configuration.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get comment tags and settings for an account",
+      "canonical_id": "twilio_flex.insight.commentTags.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversation assessments by the logged-in user",
+      "canonical_id": "twilio_flex.insight.assessments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get plugin release information by its ID",
+      "canonical_id": "twilio_flex.pluginservice.releases.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get quality management assessment comments for a conversation",
+      "canonical_id": "twilio_flex.insight.comments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get questionnaire details by QuestionnaireSid",
+      "canonical_id": "twilio_flex.insight.questionnaires.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get segments for reservation IDs",
+      "canonical_id": "twilio_flex.insight.segments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get session details for reports and dashboards",
+      "canonical_id": "twilio_flex.insight.session.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of account provisioning",
+      "canonical_id": "twilio_flex.account.status.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get user roles for Flex Insights",
+      "canonical_id": "twilio_flex.insight.userRoles.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Invite an agent or taskqueue to a channel",
+      "canonical_id": "twilio_flex.interaction.invites.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all channels for a given interaction",
+      "canonical_id": "twilio_flex.interaction.channels.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all invites for a specific channel",
+      "canonical_id": "twilio_flex.interaction.invites.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all participants for a specific channel within an interaction",
+      "canonical_id": "twilio_flex.interaction.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available channels",
+      "canonical_id": "twilio_flex.channel.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available FlexFlows with optional filtering and pagination",
+      "canonical_id": "twilio_flex.flexflow.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available plugin releases",
+      "canonical_id": "twilio_flex.pluginservice.releases.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available plugins with pagination",
+      "canonical_id": "twilio_flex.pluginservice.plugins.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available web channels with pagination",
+      "canonical_id": "twilio_flex.webchannel.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List plugin configurations with pagination",
+      "canonical_id": "twilio_flex.pluginservice.configurations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List plugins configured for a specific configuration",
+      "canonical_id": "twilio_flex.pluginservice.plugins.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List versions for a specific plugin",
+      "canonical_id": "twilio_flex.pluginservice.versions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific Flex Flow by its SID",
+      "canonical_id": "twilio_flex.flexflow.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all quality management categories",
+      "canonical_id": "twilio_flex.insight.categories.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all questionnaires with their associated questions",
+      "canonical_id": "twilio_flex.insight.questionnaires.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve answer set settings for an account",
+      "canonical_id": "twilio_flex.insight.answerSets.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve conversations for a specific segment",
+      "canonical_id": "twilio_flex.insight.conversations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve plugin configuration by its unique identifier",
+      "canonical_id": "twilio_flex.pluginservice.configurations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve plugin details by its unique identifier",
+      "canonical_id": "twilio_flex.pluginservice.plugins.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve quality management questions by category",
+      "canonical_id": "twilio_flex.insight.questions.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Submit conversation assessments with detailed answers",
+      "canonical_id": "twilio_flex.insight.assessments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel participant's status",
+      "canonical_id": "twilio_flex.interaction.participants.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Flex Flow by its SID",
+      "canonical_id": "twilio_flex.flexflow.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a plugin's details by its ID",
+      "canonical_id": "twilio_flex.pluginservice.plugins.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a quality management question by its SID",
+      "canonical_id": "twilio_flex.insight.questions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a question's category by its SID",
+      "canonical_id": "twilio_flex.insight.categories.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a questionnaire by its ID",
+      "canonical_id": "twilio_flex.insight.questionnaires.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific assessment with new details",
+      "canonical_id": "twilio_flex.insight.assessments.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a web channel's chat status or engagement data",
+      "canonical_id": "twilio_flex.webchannel.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing transfer for an interaction and channel",
+      "canonical_id": "twilio_flex.interaction.transfers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an interaction channel's status and routing",
+      "canonical_id": "twilio_flex.interaction.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an interaction's webhook details",
+      "canonical_id": "twilio_flex.interaction.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update the system configuration",
+      "canonical_id": "twilio_flex.configuration.create"
+    }
+  ]
+}

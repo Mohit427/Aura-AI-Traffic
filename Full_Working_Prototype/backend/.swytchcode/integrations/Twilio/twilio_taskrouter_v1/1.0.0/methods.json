@@ -1,0 +1,309 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new activity for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.activities.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new task channel within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskChannels.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new task queue in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskQueues.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new task within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.tasks.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new worker within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new workflow for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workflows.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new workspace with specified details",
+      "canonical_id": "twilio_taskrouter.workspace.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific activity from a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.activities.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific task queue within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskQueues.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a task channel from a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskChannels.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a task from a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.tasks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a workflow from a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workflows.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a workspace by its unique identifier",
+      "canonical_id": "twilio_taskrouter.workspace.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch real-time statistics for a specific workflow",
+      "canonical_id": "twilio_taskrouter.workspace.realTimeStatistics.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch workspace details by its ID",
+      "canonical_id": "twilio_taskrouter.workspace.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific task channel within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskChannels.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific task queue within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskQueues.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific task reservation within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific task within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.tasks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific worker channel for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.channels.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific worker reservation by its ID",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific workflow for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workflows.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific workspace activity by its ID",
+      "canonical_id": "twilio_taskrouter.workspace.activities.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get cumulative statistics for a task queue in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.cumulativeStatistics.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get cumulative statistics for a workflow",
+      "canonical_id": "twilio_taskrouter.workspace.cumulativeStatistics.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get cumulative statistics for workers in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.cumulativeStatistics.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get cumulative workspace statistics",
+      "canonical_id": "twilio_taskrouter.workspace.cumulativeStatistics.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get real-time statistics for a specific task queue",
+      "canonical_id": "twilio_taskrouter.workspace.realTimeStatistics.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get real-time statistics for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.realTimeStatistics.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get real-time statistics for multiple task queues",
+      "canonical_id": "twilio_taskrouter.workspace.realTimeStatistics.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get real-time statistics for workers in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.realTimeStatistics.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get statistics for a specific task queue within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get statistics for a specific worker in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get task queue statistics for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get worker statistics for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get workflow statistics for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get.4"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get workspace statistics with optional filters",
+      "canonical_id": "twilio_taskrouter.workspace.statistics.get.5"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List activities for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.activities.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all channels for a specific worker in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.channels.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all workers in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all workflows in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workflows.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List events for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.events.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List reservations for a specific task in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List reservations for a specific worker in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List task channels for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskChannels.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List task queues for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.taskQueues.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List tasks within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.tasks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List workspaces with optional filtering and pagination",
+      "canonical_id": "twilio_taskrouter.workspace.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific worker from a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific event for a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.events.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific worker within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.workers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a task channel's configuration",
+      "canonical_id": "twilio_taskrouter.workspace.taskChannels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a task queue's configuration and settings",
+      "canonical_id": "twilio_taskrouter.workspace.taskQueues.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a task within a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.tasks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a worker's activity, name, or attributes",
+      "canonical_id": "twilio_taskrouter.workspace.workers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a worker's channel capacity or availability",
+      "canonical_id": "twilio_taskrouter.workspace.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a worker's reservation status and associated call details",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a workflow's configuration and settings",
+      "canonical_id": "twilio_taskrouter.workspace.workflows.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an activity's friendly name in a workspace",
+      "canonical_id": "twilio_taskrouter.workspace.activities.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing workspace with new details",
+      "canonical_id": "twilio_taskrouter.workspace.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update task reservation with reservation status and call details",
+      "canonical_id": "twilio_taskrouter.workspace.reservations.create"
+    }
+  ]
+}

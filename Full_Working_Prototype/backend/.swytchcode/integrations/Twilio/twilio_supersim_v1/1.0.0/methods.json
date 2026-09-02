@@ -1,0 +1,159 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a network to a network access profile",
+      "canonical_id": "twilio_supersim.networkaccessprofile.networks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new fleet with specified network access profile",
+      "canonical_id": "twilio_supersim.fleet.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new network access profile",
+      "canonical_id": "twilio_supersim.networkaccessprofile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a network from a network access profile",
+      "canonical_id": "twilio_supersim.networkaccessprofile.networks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch an eSIM profile by its SID",
+      "canonical_id": "twilio_supersim.esimprofile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of eSIM profiles with optional filtering",
+      "canonical_id": "twilio_supersim.esimprofile.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of network access profiles",
+      "canonical_id": "twilio_supersim.networkaccessprofile.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of settings updates with filtering and pagination",
+      "canonical_id": "twilio_supersim.settingsupdate.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of SMS commands",
+      "canonical_id": "twilio_supersim.smscommand.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of Super SIMs with filtering options",
+      "canonical_id": "twilio_supersim.sim.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of your Fleets",
+      "canonical_id": "twilio_supersim.fleet.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a Network Access Profile's Network resource",
+      "canonical_id": "twilio_supersim.networkaccessprofile.networks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific fleet instance from your account",
+      "canonical_id": "twilio_supersim.fleet.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific network access profile by its ID",
+      "canonical_id": "twilio_supersim.networkaccessprofile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific network by its ID",
+      "canonical_id": "twilio_supersim.network.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a Super SIM instance by its SID",
+      "canonical_id": "twilio_supersim.sim.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get billing periods for a Super SIM",
+      "canonical_id": "twilio_supersim.sim.billingPeriods.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get IP addresses for a Super SIM",
+      "canonical_id": "twilio_supersim.sim.ipAddresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get IP commands for your account",
+      "canonical_id": "twilio_supersim.ipcommand.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get networks associated with a network access profile",
+      "canonical_id": "twilio_supersim.networkaccessprofile.networks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available network resources",
+      "canonical_id": "twilio_supersim.network.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Order an eSIM profile",
+      "canonical_id": "twilio_supersim.esimprofile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a Super SIM to your account",
+      "canonical_id": "twilio_supersim.sim.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific SMS command by its ID",
+      "canonical_id": "twilio_supersim.smscommand.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve an IP Command instance by its SID",
+      "canonical_id": "twilio_supersim.ipcommand.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve usage records with optional filtering and pagination",
+      "canonical_id": "twilio_supersim.usagerecord.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send an IP command to a Super SIM",
+      "canonical_id": "twilio_supersim.ipcommand.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send an SMS command to a SIM card",
+      "canonical_id": "twilio_supersim.smscommand.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Network Access Profile's properties",
+      "canonical_id": "twilio_supersim.networkaccessprofile.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Super SIM Fleet's properties",
+      "canonical_id": "twilio_supersim.fleet.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Super SIM instance's properties",
+      "canonical_id": "twilio_supersim.sim.create.1"
+    }
+  ]
+}

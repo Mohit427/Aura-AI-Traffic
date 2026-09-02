@@ -1,0 +1,1502 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://insights.twilio.com
+METHODS:
+  twilio_insights.voice.settings.list:
+    SUMMARY: Get the Voice Insights Settings.
+    DESC: Get the Voice Insights Settings.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/Settings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubaccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.account_settings)
+        RETURNVAR: twilio_insights_voice_settings_list
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.settings.list
+  twilio_insights.voice.settings.create:
+    SUMMARY: Update a specific Voice Insights Setting.
+    DESC: Update a specific Voice Insights Setting.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Voice/Settings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AdvancedFeatures:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VoiceTrace:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SubaccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.account_settings)
+        RETURNVAR: twilio_insights_voice_settings_create
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.settings.create
+  twilio_insights.voice.annotation.create:
+    SUMMARY: Update an Annotation for a specific Call.
+    DESC: Update an Annotation for a specific Call.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Voice/{CallSid}/Annotation
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallSid:
+          TYPE: STRING
+          LOCATION: path
+      - AnsweredBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ConnectivityIssue:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - QualityIssues:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Spam:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CallScore:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Comment:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Incident:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.call.annotation)
+        RETURNVAR: twilio_insights_voice_annotation_create
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.annotation.create
+  twilio_insights.voice.annotation.get:
+    SUMMARY: Get the Annotation for a specific Call.
+    DESC: Get the Annotation for a specific Call.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/{CallSid}/Annotation
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.call.annotation)
+        RETURNVAR: twilio_insights_voice_annotation_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.annotation.get
+  twilio_insights.voice.get:
+    SUMMARY: Perform operation FetchCall
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.call)
+        RETURNVAR: twilio_insights_voice_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.get
+  twilio_insights.voice.summaries.list:
+    SUMMARY: Get a list of Call Summaries.
+    DESC: Get a list of Call Summaries.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/Summaries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - To:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FromCarrier:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ToCarrier:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FromCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ToCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VerifiedCaller:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - HasTag:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - StartTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EndTime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CallType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CallState:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ProcessingState:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Subaccount:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AbnormalSession:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - AnsweredBy:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AnsweredByAnnotation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ConnectivityIssueAnnotation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - QualityIssueAnnotation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SpamAnnotation:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - CallScoreAnnotation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BrandedEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - VoiceIntegrityEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - BrandedBundleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BrandedLogo:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - BrandedType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BrandedUseCase:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BrandedCallReason:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VoiceIntegrityBundleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VoiceIntegrityUseCase:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BusinessProfileIdentity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BusinessProfileIndustry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BusinessProfileBundleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - BusinessProfileType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.summaries.listResponse200)
+        RETURNVAR: twilio_insights_voice_summaries_list
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.summaries.list
+  twilio_insights.conference.get:
+    SUMMARY: Get a specific Conference Summary.
+    DESC: Get a specific Conference Summary.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conferences/{ConferenceSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConferenceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.conference)
+        RETURNVAR: twilio_insights_conference_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.conference.get
+  twilio_insights.conference.list:
+    SUMMARY: Get a list of Conference Summaries.
+    DESC: Get a list of Conference Summaries.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conferences
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConferenceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CreatedAfter:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CreatedBefore:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - MixerRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Tags:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Subaccount:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DetectedIssues:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EndReason:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conference.listResponse200)
+        RETURNVAR: twilio_insights_conference_list
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.conference.list
+  twilio_insights.conference.participants.get:
+    SUMMARY: Get a specific Conference Participant Summary for a Conference.
+    DESC: Get a specific Conference Participant Summary for a Conference.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conferences/{ConferenceSid}/Participants/{ParticipantSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConferenceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Events:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Metrics:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.conference.conference_participant)
+        RETURNVAR: twilio_insights_conference_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.conference.participants.get
+  twilio_insights.conference.participants.get.1:
+    SUMMARY: Get a list of Conference Participants Summaries for a Conference.
+    DESC: Get a list of Conference Participants Summaries for a Conference.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conferences/{ConferenceSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConferenceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Label:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Events:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conference.participants.getResponse200)
+        RETURNVAR: twilio_insights_conference_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.conference.participants.get.1
+  twilio_insights.voice.events.get:
+    SUMMARY: Get a list of Call Insight Events for a Call.
+    DESC: Get a list of Call Insight Events for a Call.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/{CallSid}/Events
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallSid:
+          TYPE: STRING
+          LOCATION: path
+      - Edge:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.events.getResponse200)
+        RETURNVAR: twilio_insights_voice_events_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.events.get
+  twilio_insights.voice.metrics.get:
+    SUMMARY: Get a list of Call Metrics for a Call.
+    DESC: Get a list of Call Metrics for a Call.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/{CallSid}/Metrics
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallSid:
+          TYPE: STRING
+          LOCATION: path
+      - Edge:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.metrics.getResponse200)
+        RETURNVAR: twilio_insights_voice_metrics_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.metrics.get
+  twilio_insights.voice.summary.get:
+    SUMMARY: Get a specific Call Summary.
+    DESC: Get a specific Call Summary.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/{CallSid}/Summary
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallSid:
+          TYPE: STRING
+          LOCATION: path
+      - ProcessingState:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.call.summary)
+        RETURNVAR: twilio_insights_voice_summary_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.voice.summary.get
+  twilio_insights.video.participants.get:
+    SUMMARY: Get Video Log Analyzer data for a Room Participant.
+    DESC: Get Video Log Analyzer data for a Room Participant.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Video/Rooms/{RoomSid}/Participants/{ParticipantSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.video_room_summary.video_participant_summary)
+        RETURNVAR: twilio_insights_video_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.video.participants.get
+  twilio_insights.video.participants.get.1:
+    SUMMARY: Get a list of room participants.
+    DESC: Get a list of room participants.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Video/Rooms/{RoomSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.video.participants.getResponse200)
+        RETURNVAR: twilio_insights_video_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.video.participants.get.1
+  twilio_insights.video.rooms.get:
+    SUMMARY: Get Video Log Analyzer data for a Room.
+    DESC: Get Video Log Analyzer data for a Room.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Video/Rooms/{RoomSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(insights.v1.video_room_summary)
+        RETURNVAR: twilio_insights_video_rooms_get
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.video.rooms.get
+  twilio_insights.video.rooms.list:
+    SUMMARY: Get a list of Programmable Video Rooms.
+    DESC: Get a list of Programmable Video Rooms.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Video/Rooms
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - Codec:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - RoomName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - CreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.video.rooms.listResponse200)
+        RETURNVAR: twilio_insights_video_rooms_list
+        STATUS: 200
+    CANONICAL_ID: twilio_insights.video.rooms.list
+STRUCTS:
+  insights.v1.account_settings:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: advanced_features
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean flag indicating whether Advanced Features for Voice Insights are enabled.
+    - name: voice_trace
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean flag indicating whether Voice Trace is enabled.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  insights.v1.call.annotation:
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Call.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: answered_by
+      type: STRING
+      REQUIRED: false
+      comment: "Specifies which entity answered the call as determined by Answering Machine Detection. Possible enumerated values, one of: `human`, `machine`. `human` indicates the call was answered by a person. `machine` indicates the call was answered by an answering machine."
+    - name: connectivity_issue
+      type: STRING
+      REQUIRED: false
+      comment: Specifies if the call had any connectivity issues. One of `no_connectivity_issue`, `invalid_number`, `caller_id`, `dropped_call`, or `number_reachability`.
+    - name: quality_issues
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Specifies if the call had any subjective quality issues. Possible values are one or more of `no_quality_issue`, `low_volume`, `choppy_robotic`, `echo`, `dtmf`, `latency`, `owa`, or `static_noise`.
+    - name: spam
+      type: BOOL
+      REQUIRED: false
+      comment: "Specifies if the call was a spam call. Use this to provide feedback on whether calls placed from your account were marked as spam, or if inbound calls received by your account were unwanted spam. Is of type Boolean: true, false. Use true if the call was a spam call."
+    - name: call_score
+      type: INT
+      REQUIRED: false
+      comment: "Specifies the Call Score, if available. This is of type integer. Use a range of 1-5 to indicate the call experience score, with the following mapping as a reference for rating the call [5: Excellent, 4: Good, 3 : Fair, 2 : Poor, 1: Bad]."
+    - name: comment
+      type: STRING
+      REQUIRED: false
+      comment: Specifies any comments pertaining to the call. Twilio does not treat this field as PII, so no PII should be included in comments.
+    - name: incident
+      type: STRING
+      REQUIRED: false
+      comment: Incident or support ticket associated with this call. The `incident` property is of type string with a maximum character limit of 100. Twilio does not treat this field as PII, so no PII should be included in `incident`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  insights.v1.call:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  insights.v1.call_summaries:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Call.
+    - name: answered_by
+      type: STRING
+      REQUIRED: false
+      comment: The Answered By value for the summarized call based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. Refer to [AMD](https://www.twilio.com/docs/voice/answering-machine-detection) for more detail.
+    - name: call_type
+      type: STRING
+      REQUIRED: false
+      comment: The Call Type of the summarized Call. One of `carrier`, `sip`, `trunking` or `client`.
+    - name: call_state
+      type: STRING
+      REQUIRED: false
+      comment: The Call State of the summarized Call. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+    - name: processing_state
+      type: STRING
+      REQUIRED: false
+      comment: The Processing State of the Call Summary. The Processing State will be `partial` until the assembly of the Call Summary finishes, which occurs approximately 30 minutes after Call end. Then the Processing State changes to `complete`
+    - name: created_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was created, given in ISO 8601 format. Can be different from `start_time` in the event of queueing due to CPS
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was started, given in ISO 8601 format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was ended, given in ISO 8601 format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: Duration between when the call was initiated and the call was ended
+    - name: connect_duration
+      type: INT
+      REQUIRED: false
+      comment: Duration between when the call was answered and when it ended
+    - name: from
+      type: ANY
+      REQUIRED: false
+      comment: "`object` The calling party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties."
+    - name: to
+      type: ANY
+      REQUIRED: false
+      comment: "`object` The called party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties."
+    - name: carrier_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a PSTN call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: client_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a Client call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sdk_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the SDK sensor library for Client calls. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sip_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: tags
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Tags applied to calls by Voice Insights analysis indicating a condition that could result in subjective degradation of the call quality.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Attributes capturing call-flow-specific details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#attributes-object) for the object properties."
+    - name: properties
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains edge-agnostic call-level details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#properties-object) for the object properties."
+    - name: trust
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains trusted communications details including Branded Call and verified caller ID. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#trust-object) for the object properties."
+    - name: annotation
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Programmatically labeled annotations for the Call. Developers can update the Call Summary records with Annotation during or after a Call. Annotations can be updated as long as the Call Summary record is addressable via the API. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#annotation-object) for the object properties."
+  insights.v1.conference:
+    - name: conference_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Conference.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: Custom label for the conference resource, up to 64 characters.
+    - name: create_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Conference creation date and time in ISO 8601 format.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp in ISO 8601 format when the conference started. Conferences do not start until at least two participants join, at least one of whom has startConferenceOnEnter=true.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Conference end date and time in ISO 8601 format.
+    - name: duration_seconds
+      type: INT
+      REQUIRED: false
+      comment: Conference duration in seconds.
+    - name: connect_duration_seconds
+      type: INT
+      REQUIRED: false
+      comment: Duration of the between conference start event and conference end event in seconds.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: Status of this Conference; `in_progress`, `not_started`, `completed` or `summary_timeout`. if Twilio don't receive `last_participant_left` event, summary will be timeout after 24 hours
+    - name: max_participants
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of concurrent participants as specified by the configuration.
+    - name: max_concurrent_participants
+      type: INT
+      REQUIRED: false
+      comment: Actual maximum number of concurrent participants in the conference.
+    - name: unique_participants
+      type: INT
+      REQUIRED: false
+      comment: Unique conference participants based on caller ID.
+    - name: end_reason
+      type: STRING
+      REQUIRED: false
+      comment: Conference end reason; e.g. last participant left, modified by API, etc.
+    - name: ended_by
+      type: STRING
+      REQUIRED: false
+      comment: Call SID of the participant whose actions ended the conference.
+    - name: mixer_region
+      type: STRING
+      REQUIRED: false
+      comment: Twilio region where the conference media was mixed.
+    - name: mixer_region_requested
+      type: STRING
+      REQUIRED: false
+      comment: Twilio region where conference mixed was specified to be mixed in configuration.
+    - name: recording_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean. Indicates whether recording was enabled at the conference mixer.
+    - name: detected_issues
+      type: ANY
+      REQUIRED: false
+      comment: Potential issues detected by Twilio during the conference.
+    - name: tags
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Tags for detected conference conditions and participant behaviors which may be of interest.
+    - name: tag_info
+      type: ANY
+      REQUIRED: false
+      comment: Object. Contains details about conference tags including severity.
+    - name: processing_state
+      type: STRING
+      REQUIRED: false
+      comment: Processing state for the Conference Summary resource. Will be `in_progress` while data is being aggregated, `timeout` if Twilio couldn't process the summary in 24hrs, and `complete` once aggregations and analysis has ended.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Conference.
+  insights.v1.conference.conference_participant:
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: SID for this participant.
+    - name: label
+      type: STRING
+      REQUIRED: false
+      comment: The user-specified label of this participant.
+    - name: conference_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Conference.
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: Unique SID identifier of the call that generated the Participant resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: call_direction
+      type: STRING
+      REQUIRED: false
+      comment: Call direction of the participant; inbound or outbound.
+    - name: from
+      type: STRING
+      REQUIRED: false
+      comment: Caller ID of the calling party.
+    - name: to
+      type: STRING
+      REQUIRED: false
+      comment: Called party.
+    - name: call_status
+      type: STRING
+      REQUIRED: false
+      comment: Call status of the call that generated the participant.
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+      comment: ISO alpha-2 country code of the participant based on caller ID or called number.
+    - name: is_moderator
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean. Indicates whether participant had startConferenceOnEnter=true or endConferenceOnExit=true.
+    - name: join_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: ISO 8601 timestamp of participant join event.
+    - name: leave_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: ISO 8601 timestamp of participant leave event.
+    - name: duration_seconds
+      type: INT
+      REQUIRED: false
+      comment: Participant durations in seconds.
+    - name: outbound_queue_length
+      type: INT
+      REQUIRED: false
+      comment: Add Participant API only. Estimated time in queue at call creation.
+    - name: outbound_time_in_queue
+      type: INT
+      REQUIRED: false
+      comment: Add Participant API only. Actual time in queue in seconds.
+    - name: jitter_buffer_size
+      type: STRING
+      REQUIRED: false
+      comment: The Jitter Buffer Size of this Conference Participant. One of `large`, `small`, `medium` or `off`.
+    - name: is_coach
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean. Indicated whether participant was a coach.
+    - name: coached_participants
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Call SIDs coached by this participant.
+    - name: participant_region
+      type: STRING
+      REQUIRED: false
+      comment: Twilio region where the participant media originates.
+    - name: conference_region
+      type: STRING
+      REQUIRED: false
+      comment: The Conference Region of this Conference Participant. One of `us1`, `us2`, `au1`, `br1`, `ie1`, `jp1`, `sg1` or `de1`.
+    - name: call_type
+      type: STRING
+      REQUIRED: false
+      comment: The Call Type of this Conference Participant. One of `carrier`, `client` or `sip`.
+    - name: processing_state
+      type: STRING
+      REQUIRED: false
+      comment: Processing state of the Participant Summary. Will be `in_progress` while data is being aggregated, `timeout` if Twilio couldn't process the summary in 24hrs, and `complete` once aggregations and analysis has ended.
+    - name: properties
+      type: ANY
+      REQUIRED: false
+      comment: Participant properties and metadata.
+    - name: events
+      type: ANY
+      REQUIRED: false
+      comment: Object containing information of actions taken by participants. Contains a dictionary of URL links to nested resources of this Conference Participant.
+    - name: metrics
+      type: ANY
+      REQUIRED: false
+      comment: Object. Contains participant call quality metrics.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  insights.v1.call.event:
+    - name: timestamp
+      type: STRING
+      REQUIRED: false
+      comment: Event time.
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Call.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: edge
+      type: STRING
+      REQUIRED: false
+      comment: The Edge of this Event. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
+    - name: group
+      type: STRING
+      REQUIRED: false
+      comment: Event group.
+    - name: level
+      type: STRING
+      REQUIRED: false
+      comment: The Level of this Event. One of `UNKNOWN`, `DEBUG`, `INFO`, `WARNING` or `ERROR`.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: Event name.
+    - name: carrier_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Represents the connection between Twilio and our immediate carrier partners. The events here describe the call lifecycle as reported by Twilio's carrier media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sip_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Represents the Twilio media gateway for SIP interface and SIP trunking calls. The events here describe the call lifecycle as reported by Twilio's public media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sdk_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Represents the Voice SDK running locally in the browser or in the Android/iOS application. The events here are emitted by the Voice SDK in response to certain call progress events, network changes, or call quality conditions. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: client_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Represents the Twilio media gateway for Client calls. The events here describe the call lifecycle as reported by Twilio's Voice SDK media gateways. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+  insights.v1.call.metric:
+    - name: timestamp
+      type: STRING
+      REQUIRED: false
+      comment: Timestamp of metric sample. Samples are taken every 10 seconds and contain the metrics for the previous 10 seconds.
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Call.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: edge
+      type: STRING
+      REQUIRED: false
+      comment: The Twilio media edge this Metric was captured on. One of `unknown_edge`, `carrier_edge`, `sip_edge`, `sdk_edge` or `client_edge`.
+    - name: direction
+      type: STRING
+      REQUIRED: false
+      comment: The Direction of the media stream from the perspective of the Twilio media edge. One of `unknown`, `inbound`, `outbound` or `both`.
+    - name: carrier_edge
+      type: ANY
+      REQUIRED: false
+      comment: Contains metrics and properties for the Twilio media gateway of a PSTN call.
+    - name: sip_edge
+      type: ANY
+      REQUIRED: false
+      comment: Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call.
+    - name: sdk_edge
+      type: ANY
+      REQUIRED: false
+      comment: Contains metrics and properties for the SDK sensor library for Client calls.
+    - name: client_edge
+      type: ANY
+      REQUIRED: false
+      comment: Contains metrics and properties for the Twilio media gateway of a Client call.
+  insights.v1.call.summary:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: call_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Call.
+    - name: call_type
+      type: STRING
+      REQUIRED: false
+      comment: The Call Type of the summarized Call. One of `carrier`, `sip`, `trunking`, `client` and `whatsapp`.
+    - name: call_state
+      type: STRING
+      REQUIRED: false
+      comment: The Call State of the summarized Call. One of `ringing`, `completed`, `busy`, `fail`, `noanswer`, `canceled`, `answered`, `undialed`.
+    - name: answered_by
+      type: STRING
+      REQUIRED: false
+      comment: The Answered By value for the summarized call based on `Answering Machine Detection (AMD)`. One of `unknown`, `machine_start`, `machine_end_beep`, `machine_end_silence`, `machine_end_other`, `human` or `fax`. Refer to [AMD](https://www.twilio.com/docs/voice/answering-machine-detection) for more detail.
+    - name: processing_state
+      type: STRING
+      REQUIRED: false
+      comment: The Processing State of the Call Summary. The Processing State will be `partial` until the assembly of the Call Summary finishes, which occurs approximately 30 minutes after Call end. Then the Processing State changes to `complete`
+    - name: created_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was created, given in ISO 8601 format. Can be different from `start_time` in the event of queueing due to CPS
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was started, given in ISO 8601 format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time at which the Call was ended, given in ISO 8601 format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: Duration between when the call was initiated and the call was ended
+    - name: connect_duration
+      type: INT
+      REQUIRED: false
+      comment: Duration between when the call was answered and when it ended
+    - name: from
+      type: ANY
+      REQUIRED: false
+      comment: "`object` The calling party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties."
+    - name: to
+      type: ANY
+      REQUIRED: false
+      comment: "`object` The called party. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#tofrom-object) for the object properties."
+    - name: carrier_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a PSTN call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: client_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a Client call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sdk_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the SDK sensor library for Client calls. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: sip_edge
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains metrics and properties for the Twilio media gateway of a SIP Interface or Trunking call. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#edges-and-their-properties) for the object properties."
+    - name: tags
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Tags applied to calls by Voice Insights analysis indicating a condition that could result in subjective degradation of the call quality.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Attributes capturing call-flow-specific details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#attributes-object) for the object properties."
+    - name: properties
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains edge-agnostic call-level details. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#properties-object) for the object properties."
+    - name: trust
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Contains trusted communications details including Branded Call and verified caller ID. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#trust-object) for the object properties."
+    - name: annotation
+      type: ANY
+      REQUIRED: false
+      comment: "`object` Programmatically labeled annotations for the Call. Developers can update the Call Summary records with Annotation during or after a Call. Annotations can be updated as long as the Call Summary record is addressable via the API. See [Details: Call Summary](https://www.twilio.com/docs/voice/voice-insights/api/call/details-call-summary#annotation-object) for the object properties."
+  insights.v1.video_room_summary.video_participant_summary:
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier for the participant.
+    - name: participant_identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the participant within a Room.
+    - name: join_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: When the participant joined the room.
+    - name: leave_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: When the participant left the room.
+    - name: duration_sec
+      type: INT
+      REQUIRED: false
+      comment: Amount of time in seconds the participant was in the room.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: Account SID associated with the room.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier for the room.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: Status of the room. Can be `in_progress` or `completed`.
+    - name: codecs
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Codecs detected from the participant. Can be `VP8`, `H264`, or `VP9`.
+    - name: end_reason
+      type: STRING
+      REQUIRED: false
+      comment: Reason the participant left the room. See [the list of possible values here](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#end_reason).
+    - name: error_code
+      type: INT
+      REQUIRED: false
+      comment: Errors encountered by the participant.
+    - name: error_code_url
+      type: STRING
+      REQUIRED: false
+      comment: Twilio error code dictionary link.
+    - name: media_region
+      type: STRING
+      REQUIRED: false
+      comment: Twilio media region the participant connected to. See [the list of possible media servers here](https://www.twilio.com/docs/video/ip-addresses).
+    - name: properties
+      type: ANY
+      REQUIRED: false
+      comment: Object containing information about the participant's data from the room. See [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#properties) for more information.
+    - name: edge_location
+      type: STRING
+      REQUIRED: false
+      comment: Name of the edge location the participant connected to. See [the list of public edge locations](https://www.twilio.com/docs/global-infrastructure/edge-locations#public-edge-locations) for the possible values.
+    - name: publisher_info
+      type: ANY
+      REQUIRED: false
+      comment: Object containing information about the SDK name and version. See [below](https://www.twilio.com/docs/video/troubleshooting/video-log-analyzer-api#publisher_info) for more information.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: URL of the participant resource.
+  insights.v1.video_room_summary:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: Account SID associated with this room.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier for the room.
+    - name: room_name
+      type: STRING
+      REQUIRED: false
+      comment: Room friendly name.
+    - name: create_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Creation time of the room.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: End time for the room.
+    - name: room_type
+      type: STRING
+      REQUIRED: false
+      comment: Type of room. Can be `go`, `peer_to_peer`, `group`, or `group_small`.
+    - name: room_status
+      type: STRING
+      REQUIRED: false
+      comment: Status of the room. Can be `in_progress` or `completed`.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: Webhook provided for status callbacks.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: HTTP method provided for status callback URL.
+    - name: created_method
+      type: STRING
+      REQUIRED: false
+      comment: How the room was created. Can be `sdk`, `ad_hoc`, or `api`.
+    - name: end_reason
+      type: STRING
+      REQUIRED: false
+      comment: Reason the room ended. Can be `room_ended_via_api` or `timeout`.
+    - name: max_participants
+      type: INT
+      REQUIRED: false
+      comment: Max number of total participants allowed by the application settings.
+    - name: unique_participants
+      type: INT
+      REQUIRED: false
+      comment: Number of participants. May include duplicate identities for participants who left and rejoined.
+    - name: unique_participant_identities
+      type: INT
+      REQUIRED: false
+      comment: Unique number of participant identities.
+    - name: concurrent_participants
+      type: INT
+      REQUIRED: false
+      comment: Actual number of concurrent participants.
+    - name: max_concurrent_participants
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of participants allowed in the room at the same time allowed by the application settings.
+    - name: codecs
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Codecs used by participants in the room. Can be `VP8`, `H264`, or `VP9`.
+    - name: media_region
+      type: STRING
+      REQUIRED: false
+      comment: Region of Twilio media servers for the room. See [the list of possible media servers here](https://www.twilio.com/docs/video/ip-addresses).
+    - name: duration_sec
+      type: INT
+      REQUIRED: false
+      comment: Total room duration from create time to end time.
+    - name: total_participant_duration_sec
+      type: INT
+      REQUIRED: false
+      comment: Combined amount of participant time in the room.
+    - name: total_recording_duration_sec
+      type: INT
+      REQUIRED: false
+      comment: Combined amount of recorded seconds for participants in the room.
+    - name: processing_state
+      type: STRING
+      REQUIRED: false
+      comment: Video Log Analyzer resource state. Will be either `in-progress` or `complete`. `in-progress` indicates that more details may be appended to the resource. `complete` indicates no further information will be added.
+    - name: recording_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean indicating if recording is enabled for the room.
+    - name: edge_location
+      type: STRING
+      REQUIRED: false
+      comment: Edge location of Twilio media servers for the room. See [the list of public edge locations](https://www.twilio.com/docs/global-infrastructure/edge-locations#public-edge-locations) for the possible values.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: URL for the room resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Room subresources.
+  api.voice.summaries.listResponse200:
+    - name: call_summaries
+      type: "[]STRUCT(insights.v1.call_summaries)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conference.listResponse200:
+    - name: conferences
+      type: "[]STRUCT(insights.v1.conference)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conference.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(insights.v1.conference.conference_participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.voice.events.getResponse200:
+    - name: events
+      type: "[]STRUCT(insights.v1.call.event)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.voice.metrics.getResponse200:
+    - name: metrics
+      type: "[]STRUCT(insights.v1.call.metric)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.video.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(insights.v1.video_room_summary.video_participant_summary)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.video.rooms.listResponse200:
+    - name: rooms
+      type: "[]STRUCT(insights.v1.video_room_summary)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

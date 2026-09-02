@@ -1,0 +1,289 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new factor to an entity for a service",
+      "canonical_id": "twilio_verify.service.factors.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a phone number to the SafeList",
+      "canonical_id": "twilio_verify.safelist.numbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Approve a passkey challenge for a service",
+      "canonical_id": "twilio_verify.service.approveChallenge.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Check if a phone number is on the SafeList",
+      "canonical_id": "twilio_verify.safelist.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a messaging configuration for a service",
+      "canonical_id": "twilio_verify.service.messagingConfigurations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new bucket for a rate limit",
+      "canonical_id": "twilio_verify.service.buckets.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new challenge for a factor",
+      "canonical_id": "twilio_verify.service.challenges.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new entity for a service",
+      "canonical_id": "twilio_verify.service.entities.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new passkey challenge for a service",
+      "canonical_id": "twilio_verify.service.challenges.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new passkey factor for a service",
+      "canonical_id": "twilio_verify.service.factors.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new verification service with custom settings",
+      "canonical_id": "twilio_verify.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a rate limit for a service",
+      "canonical_id": "twilio_verify.service.rateLimits.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a verification for a service",
+      "canonical_id": "twilio_verify.service.verifications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create an enrollment Access Token for a service",
+      "canonical_id": "twilio_verify.service.accessTokens.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific Factor for an Identity within a Service",
+      "canonical_id": "twilio_verify.service.factors.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific rate limit",
+      "canonical_id": "twilio_verify.service.rateLimits.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific rate limit bucket",
+      "canonical_id": "twilio_verify.service.buckets.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific Verification Service Instance",
+      "canonical_id": "twilio_verify.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific webhook",
+      "canonical_id": "twilio_verify.service.webhooks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific verification",
+      "canonical_id": "twilio_verify.service.verifications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific Verification Service Instance by its SID",
+      "canonical_id": "twilio_verify.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of available templates for an account",
+      "canonical_id": "twilio_verify.template.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific bucket for a rate limit",
+      "canonical_id": "twilio_verify.service.buckets.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific challenge by service, identity, and challenge SID",
+      "canonical_id": "twilio_verify.service.challenges.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific entity by service and identity",
+      "canonical_id": "twilio_verify.service.entities.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific factor for a user in a service",
+      "canonical_id": "twilio_verify.service.factors.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific rate limit for a service",
+      "canonical_id": "twilio_verify.service.rateLimits.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific verification attempt by its ID",
+      "canonical_id": "twilio_verify.attempt.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all entities for a service",
+      "canonical_id": "twilio_verify.service.entities.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all rate limits for a specific service",
+      "canonical_id": "twilio_verify.service.rateLimits.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all webhooks for a specific service",
+      "canonical_id": "twilio_verify.service.webhooks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an access token for a specific entity",
+      "canonical_id": "twilio_verify.service.accessTokens.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get attempt and conversion summary",
+      "canonical_id": "twilio_verify.attempt.summary.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get forms by specific form type",
+      "canonical_id": "twilio_verify.form.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get messaging configuration for a country and service",
+      "canonical_id": "twilio_verify.service.messagingConfigurations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get verification attempts for an account",
+      "canonical_id": "twilio_verify.attempt.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all buckets for a specific rate limit",
+      "canonical_id": "twilio_verify.service.buckets.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all challenges for a specific factor",
+      "canonical_id": "twilio_verify.service.challenges.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all factors for an entity",
+      "canonical_id": "twilio_verify.service.factors.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all messaging configurations for a service",
+      "canonical_id": "twilio_verify.service.messagingConfigurations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all verification services for an account",
+      "canonical_id": "twilio_verify.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a webhook for a service",
+      "canonical_id": "twilio_verify.service.webhooks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a messaging configuration for a specific country and service",
+      "canonical_id": "twilio_verify.service.messagingConfigurations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from SafeList",
+      "canonical_id": "twilio_verify.safelist.numbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific entity from a service",
+      "canonical_id": "twilio_verify.service.entities.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific webhook",
+      "canonical_id": "twilio_verify.service.webhooks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a notification for a specific challenge",
+      "canonical_id": "twilio_verify.service.notifications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a messaging configuration for a specific country and service",
+      "canonical_id": "twilio_verify.service.messagingConfigurations.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Factor or verify it with an AuthPayload",
+      "canonical_id": "twilio_verify.service.factors.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific rate limit bucket's max and interval",
+      "canonical_id": "twilio_verify.service.buckets.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific rate limit for a service",
+      "canonical_id": "twilio_verify.service.rateLimits.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific verification service",
+      "canonical_id": "twilio_verify.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a verification's status",
+      "canonical_id": "twilio_verify.service.verifications.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a webhook for a specific service",
+      "canonical_id": "twilio_verify.service.webhooks.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Verify a passkey factor for a service",
+      "canonical_id": "twilio_verify.service.verifyFactor.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Verify a specific challenge for a user",
+      "canonical_id": "twilio_verify.service.challenges.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Verify a specific verification check",
+      "canonical_id": "twilio_verify.service.verificationCheck.create"
+    }
+  ]
+}

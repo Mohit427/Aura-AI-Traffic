@@ -1,0 +1,19 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel's settings and details",
+      "canonical_id": "twilio_chat.service.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel's properties or metadata",
+      "canonical_id": "twilio_chat.service.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific channel's configuration",
+      "canonical_id": "twilio_chat.service.channels.create"
+    }
+  ]
+}

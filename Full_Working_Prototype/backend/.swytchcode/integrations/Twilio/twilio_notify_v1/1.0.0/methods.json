@@ -1,0 +1,79 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new binding for a service identity",
+      "canonical_id": "twilio_notify.service.bindings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new credential with optional details",
+      "canonical_id": "twilio_notify.credential.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new messaging service",
+      "canonical_id": "twilio_notify.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a binding for a specific service",
+      "canonical_id": "twilio_notify.service.bindings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a credential using its unique identifier",
+      "canonical_id": "twilio_notify.credential.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a service by its unique identifier",
+      "canonical_id": "twilio_notify.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch service details by service ID",
+      "canonical_id": "twilio_notify.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available services with optional filtering and pagination",
+      "canonical_id": "twilio_notify.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List bindings for a given service",
+      "canonical_id": "twilio_notify.service.bindings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List credentials with pagination",
+      "canonical_id": "twilio_notify.credential.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific binding for a service",
+      "canonical_id": "twilio_notify.service.bindings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve credential details using its SID",
+      "canonical_id": "twilio_notify.credential.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a notification for a specific service",
+      "canonical_id": "twilio_notify.service.notifications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a credential using its SID",
+      "canonical_id": "twilio_notify.credential.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a messaging service's configuration",
+      "canonical_id": "twilio_notify.service.create.1"
+    }
+  ]
+}
