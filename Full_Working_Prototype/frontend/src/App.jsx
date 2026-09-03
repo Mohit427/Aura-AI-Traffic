@@ -16,10 +16,6 @@ function Panel({ title, children, className = '' }) {
   );
 }
 
-// Adapts the engine's real ev_schedule shape into what EVConflictPanel
-// expects. distance_m and speed_kmh aren't in the engine's output (it only
-// receives TTI/velocity as inputs, doesn't echo them back) — shown as '—'
-// rather than fabricated, until the engine's JSON is extended to include them.
 function buildEvData(evSchedule) {
   if (!evSchedule) return null;
 
@@ -81,20 +77,25 @@ export default function App() {
   }
 
   const phases = [
-    { label: 'North-South', duration: engineData.phase_durations?.north_south_green ?? 0, color: 'var(--accent-cyan)' },
-    { label: 'East-West', duration: engineData.phase_durations?.east_west_green ?? 0, color: 'var(--signal-green)' },
-    { label: 'Pedestrian', duration: engineData.phase_durations?.pedestrian_crossing_green ?? 0, color: 'var(--accent-amber)' },
+    { label: 'North-South', duration: engineData.phase_durations?.north_south_green ?? 0, color: 'var(--cat-blue)' },
+    { label: 'East-West', duration: engineData.phase_durations?.east_west_green ?? 0, color: 'var(--cat-aqua)' },
+    { label: 'Pedestrian', duration: engineData.phase_durations?.pedestrian_crossing_green ?? 0, color: 'var(--cat-violet)' },
   ];
 
   return (
-    <DashboardShell>
-      <Panel title="LIVE VIEW" className="panel-live">
-        <div className="placeholder">Camera feed will render here</div>
-      </Panel>
-      <Panel title="VULNERABLE USER INDEX">
-        <VUIGauge score={engineData.vui_score} priorityMode={engineData.priority_mode} />
-      </Panel>
-      <Panel title="SIGNAL PHASE TIMELINE" className="panel-wide">
+    <DashboardShell priorityMode={engineData.priority_mode}>
+      <div className="panel-hero">
+        <Panel title="Live view" className="panel-live">
+          <div className="placeholder placeholder-camera">
+            <span className="placeholder-camera__crosshair" aria-hidden="true" />
+            Camera feed will render here
+          </div>
+        </Panel>
+        <div className="hero-vui">
+          <VUIGauge score={engineData.vui_score} priorityMode={engineData.priority_mode} />
+        </div>
+      </div>
+      <Panel title="Signal phase timeline" className="panel-wide">
         <SignalTimeline phases={phases} />
       </Panel>
       <div className="panel-wide">

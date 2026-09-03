@@ -55,24 +55,32 @@ export default function AdvisorPanel({ engineData }) {
     };
   }, [engineData]);
 
-  const alertClass =
+  const alertTone =
     engineData?.priority_mode === 'emergency_vehicle'
-      ? 'advisor-panel--alert-red'
+      ? 'critical'
       : engineData?.priority_mode === 'vulnerable_user'
-        ? 'advisor-panel--alert-amber'
-      : '';
+        ? 'warning'
+        : 'neutral';
 
   return (
-    <section className={`advisor-panel ${alertClass}`}>
-      <h2 className="advisor-panel__title">ADVISOR EXPLANATION</h2>
-      <div className="advisor-panel__body">
-        {loading && <p className="advisor-panel__status">Generating explanation…</p>}
-        {error && <p className="advisor-panel__status advisor-panel__status--error">{error}</p>}
-        {!loading && !error && (
-          <p className="advisor-panel__explanation">
-            {explanation || 'Waiting for advisor response…'}
-          </p>
-        )}
+    <section className={`advisor-panel advisor-panel--${alertTone}`}>
+      <div className="advisor-panel__rail" aria-hidden="true" />
+      <div className="advisor-panel__content">
+        <h2 className="advisor-panel__title">Advisor explanation</h2>
+        <div className="advisor-panel__body">
+          {loading && <p className="advisor-panel__status">Generating explanation…</p>}
+          {error && (
+            <p className="advisor-panel__status advisor-panel__status--error">
+              <span className="advisor-panel__status-dot" aria-hidden="true" />
+              {error}
+            </p>
+          )}
+          {!loading && !error && (
+            <p className="advisor-panel__explanation">
+              {explanation || 'Waiting for advisor response…'}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );
