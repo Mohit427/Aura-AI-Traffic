@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from contextlib import asynccontextmanager
 import subprocess
 import json
@@ -192,8 +192,9 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     )
     recent_sumo = sumo_result.scalars().all()
 
+    cutoff = datetime.now(timezone.utc) - timedelta(minutes=10)
     vision_result = await db.execute(
-        select(VisionLog).order_by(VisionLog.timestamp.desc()).limit(10)
+        select(VisionLog).where(VisionLog.timestamp >= cutoff).order_by(VisionLog.timestamp.desc())
     )
     recent_vision = vision_result.scalars().all()
 
