@@ -30,7 +30,7 @@ def run_continuous(video_path, intersection_id="vadapalani_junction", zone="cros
             "intersection_id": intersection_id,
             "zone": zone,
             "counts": counts,
-            "platoon_detected": counts["person"] + counts["bicycle"] >= 10,
+            "platoon_detected": counts["person"] + counts["bicycle"] >= 3,
             "tracked_objects": [],
             "ev_detected": []
         }
