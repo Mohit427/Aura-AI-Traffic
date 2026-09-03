@@ -39,6 +39,7 @@ class EngineDecision(Base):
     phase_durations: Mapped[dict] = mapped_column(JSON)
     priority_mode: Mapped[str] = mapped_column(String)
     vui_score: Mapped[int] = mapped_column(Integer)
+    ev_schedule: Mapped[dict] = mapped_column(JSON, nullable=True)
 
 class EvEvent(Base):
     __tablename__ = "ev_events"

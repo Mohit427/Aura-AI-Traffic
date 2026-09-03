@@ -16,6 +16,31 @@ function Panel({ title, children, className = '' }) {
   );
 }
 
+// Adapts the engine's real ev_schedule shape into what EVConflictPanel
+// expects. distance_m and speed_kmh aren't in the engine's output (it only
+// receives TTI/velocity as inputs, doesn't echo them back) — shown as '—'
+// rather than fabricated, until the engine's JSON is extended to include them.
+function buildEvData(evSchedule) {
+  if (!evSchedule) return null;
+
+  const formatAxis = (axis) => (axis ? axis.replace('_', '-') : '—');
+
+  return {
+    ev1: {
+      lane: formatAxis(evSchedule.ev_1_axis),
+      distance_m: '—',
+      speed_kmh: '—',
+      tti_sec: evSchedule.ev_1_green_flush_duration ?? '—',
+    },
+    ev2: {
+      lane: formatAxis(evSchedule.ev_2_axis),
+      distance_m: '—',
+      speed_kmh: '—',
+      tti_sec: '—',
+    },
+  };
+}
+
 export default function App() {
   const [engineData, setEngineData] = useState(null);
 
@@ -25,18 +50,15 @@ export default function App() {
     async function loadDecision() {
       try {
         const data = await fetchLatestDecision();
-        if (isMounted) {
-          // Temporarily inject missing ev_data if priority_mode is active
-          if (data.priority_mode === 'emergency_vehicle' && !data.ev_data) {
-            data.ev_data = {
-              ev1: { lane: "North-South", distance_m: 45, speed_kmh: 42, tti_sec: 3.85 },
-              ev2: { lane: "East-West", distance_m: 180, speed_kmh: 15, tti_sec: 43.2 }
-            };
-            data.ev_stage = 1;
-            data.downstream_green_wave = true;
-          }
-          setEngineData(data);
+        if (!isMounted) return;
+
+        if (data.priority_mode === 'emergency_vehicle' && data.ev_schedule) {
+          data.ev_data = buildEvData(data.ev_schedule);
+          data.ev_stage = 1;
+          data.downstream_green_wave = true;
         }
+
+        setEngineData(data);
       } catch (error) {
         console.error('Failed to load latest decision:', error);
       }
@@ -44,7 +66,6 @@ export default function App() {
 
     loadDecision();
     const intervalId = setInterval(loadDecision, 2000);
-
     return () => {
       isMounted = false;
       clearInterval(intervalId);

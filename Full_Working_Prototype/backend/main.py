@@ -260,7 +260,8 @@ async def latest_decision(db: AsyncSession = Depends(get_db)):
         "intersection_id": latest.intersection_id,
         "phase_durations": latest.phase_durations,
         "priority_mode": latest.priority_mode,
-        "vui_score": latest.vui_score
+        "vui_score": latest.vui_score,
+        "ev_schedule": latest.ev_schedule
     }
     
 
@@ -289,6 +290,17 @@ async def simulate_ev(payload: dict, db: AsyncSession = Depends(get_db)):
         return {"error": "engine failed", "stderr": result.stderr}
 
     engine_output = json.loads(result.stdout)
+
+    log = EngineDecision(
+        timestamp=datetime.now(timezone.utc),
+        intersection_id="vadapalani_junction",
+        phase_durations=engine_output.get("phase_durations", {}),
+        priority_mode=engine_output["priority_mode"],
+        vui_score=engine_output["vui_score"],
+        ev_schedule=engine_output.get("ev_schedule"),
+    )
+    db.add(log)
+    await db.commit()
 
     webhook_result = None
     if engine_output.get("priority_mode") == "emergency_vehicle":
