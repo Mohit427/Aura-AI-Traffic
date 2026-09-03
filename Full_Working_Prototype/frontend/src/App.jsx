@@ -95,9 +95,11 @@ export default function App() {
           <VUIGauge score={engineData.vui_score} priorityMode={engineData.priority_mode} />
         </div>
       </div>
-      <Panel title="Signal phase timeline" className="panel-wide">
-        <SignalTimeline phases={phases} />
-      </Panel>
+      {engineData.priority_mode !== 'emergency_vehicle' && (
+  <Panel title="Signal phase timeline" className="panel-wide">
+    <SignalTimeline phases={phases} />
+  </Panel>
+)}
       <div className="panel-wide">
         <EVConflictPanel engineData={engineData} />
       </div>

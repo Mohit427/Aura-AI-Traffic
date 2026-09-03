@@ -193,12 +193,15 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     recent_sumo = sumo_result.scalars().all()
 
     vision_result = await db.execute(
-        select(VisionLog).order_by(VisionLog.timestamp.desc()).limit(1)
+        select(VisionLog).order_by(VisionLog.timestamp.desc()).limit(10)
     )
     latest_vision = vision_result.scalar_one_or_none()
 
     if not recent_sumo or not latest_vision:
         return {"error": "Need at least one vision reading and one SUMO reading before running a decision cycle"}
+        
+    pedestrian = max((v.counts.get("person", 0) for v in recent_vision), default=0)
+    latest_vision = recent_vision[0]
 
     edge_counts = {"north_approach": 0, "south_approach": 0, "east_approach": 0, "west_approach": 0}
     for state in recent_sumo:
@@ -212,7 +215,7 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     south = edge_counts["south_approach"]
     east = edge_counts["east_approach"]
     west = edge_counts["west_approach"]
-    pedestrian = latest_vision.counts.get("person", 0)
+    #pedestrian = latest_vision.counts.get("person", 0)
 
     latest_sumo = recent_sumo[0]
 

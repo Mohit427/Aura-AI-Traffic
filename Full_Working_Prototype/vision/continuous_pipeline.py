@@ -42,4 +42,4 @@ def run_continuous(video_path, intersection_id="vadapalani_junction", zone="cros
             print(f"Frame {frame_num}: backend not reachable")
 
 if __name__ == "__main__":
-    run_continuous("demo_footage.f398.mp4")
+    run_continuous("platoon_footage.mp4", zone="crosswalk_north")
