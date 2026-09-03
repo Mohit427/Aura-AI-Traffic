@@ -195,11 +195,11 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     vision_result = await db.execute(
         select(VisionLog).order_by(VisionLog.timestamp.desc()).limit(10)
     )
-    latest_vision = vision_result.scalar_one_or_none()
+    recent_vision = vision_result.scalars().all()
 
-    if not recent_sumo or not latest_vision:
+    if not recent_sumo or not recent_vision:
         return {"error": "Need at least one vision reading and one SUMO reading before running a decision cycle"}
-        
+
     pedestrian = max((v.counts.get("person", 0) for v in recent_vision), default=0)
     latest_vision = recent_vision[0]
 
@@ -215,7 +215,6 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
     south = edge_counts["south_approach"]
     east = edge_counts["east_approach"]
     west = edge_counts["west_approach"]
-    #pedestrian = latest_vision.counts.get("person", 0)
 
     latest_sumo = recent_sumo[0]
 
@@ -266,7 +265,7 @@ async def latest_decision(db: AsyncSession = Depends(get_db)):
         "vui_score": latest.vui_score,
         "ev_schedule": latest.ev_schedule
     }
-    
+
 
 N8N_WEBHOOK_URL = os.environ.get("N8N_WEBHOOK_URL", "http://localhost:5678/webhook/downstream-green-wave")
 
