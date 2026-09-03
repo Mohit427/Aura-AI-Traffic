@@ -8,9 +8,16 @@ import subprocess
 import json
 import requests
 import os
+import asyncio
+from dotenv import load_dotenv
 from database import engine, Base, get_db
 from models import VisionLog, TomTomLog, SumoStateLog, EngineDecision, EvEvent
+import google.generativeai as genai
 
+
+load_dotenv()
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+gemini_model = genai.GenerativeModel("gemini-flash-latest")
 
 ENGINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "engine", "engine_linux")
 
@@ -120,13 +127,25 @@ async def advisor_explain(payload: dict):
     context = payload.get("context", {})
     priority_mode = engine_output.get("priority_mode", "normal")
 
-    # Placeholder logic — replace with real Swytchcode agent call once wired
-    if priority_mode == "vulnerable_user":
-        explanation = f"Prioritizing pedestrian/cyclist crossing — VUI score is {engine_output.get('vui_score', 'N/A')}."
-    elif priority_mode == "emergency_vehicle":
-        explanation = "Emergency vehicle detected — signal sequence overridden for safe passage."
-    else:
-        explanation = "Standard vehicle-flow optimization in effect."
+    prompt = f"""You are AURA, an AI traffic control advisor for Vadapalani Junction, Chennai.
+Explain this signal decision in one plain-language sentence for a city planner.
+Engine output: {json.dumps(engine_output)}
+Context: {json.dumps(context)}"""
+
+    try:
+        response = await asyncio.wait_for(
+            asyncio.to_thread(gemini_model.generate_content, prompt),
+            timeout=15.0
+        )
+        explanation = response.text.strip()
+    except (Exception, asyncio.TimeoutError) as e:
+        print(f"GEMINI ERROR: {e}")
+        if priority_mode == "vulnerable_user":
+            explanation = f"Prioritizing pedestrian/cyclist crossing — VUI score is {engine_output.get('vui_score', 'N/A')}."
+        elif priority_mode == "emergency_vehicle":
+            explanation = "Emergency vehicle detected — signal sequence overridden for safe passage."
+        else:
+            explanation = "Standard vehicle-flow optimization in effect."
 
     return {"explanation": explanation, "priority_mode": priority_mode}
 
