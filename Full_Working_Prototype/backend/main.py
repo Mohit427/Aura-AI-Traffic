@@ -12,12 +12,14 @@ import asyncio
 from dotenv import load_dotenv
 from database import engine, Base, get_db
 from models import VisionLog, TomTomLog, SumoStateLog, EngineDecision, EvEvent
+from tavily import TavilyClient
 import google.generativeai as genai
 
 
 load_dotenv()
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 gemini_model = genai.GenerativeModel("gemini-flash-latest")
+tavily_client = TavilyClient(api_key=os.environ.get("TAVILY_API_KEY"))
 
 ENGINE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "engine", "engine_linux")
 
@@ -152,11 +154,28 @@ Context: {json.dumps(context)}"""
 
 @app.post("/api/search/context")
 async def search_context(payload: dict):
-    location = payload.get("location", "Unknown location")
-    # Placeholder — replace with real Tavily API call
-    return {"events": [
-        {"title": f"No live incidents found near {location}", "type": "none", "relevance": "low"}
-    ]}
+    location = payload.get("location", "Vadapalani Junction, Chennai")
+
+    try:
+        result = await asyncio.wait_for(
+            asyncio.to_thread(
+                tavily_client.search,
+                query=f"traffic incidents road closures events near {location} today",
+                max_results=3
+            ),
+            timeout=10.0
+        )
+        events = [
+            {"title": r.get("title", "Untitled"), "type": "web_result", "relevance": "high"}
+            for r in result.get("results", [])
+        ]
+        if not events:
+            events = [{"title": f"No live incidents found near {location}", "type": "none", "relevance": "low"}]
+    except (Exception, asyncio.TimeoutError) as e:
+        print(f"TAVILY ERROR: {e}")
+        events = [{"title": f"No live incidents found near {location}", "type": "none", "relevance": "low"}]
+
+    return {"events": events}
 
 
 # ── Orchestration: calls the C++ engine ─────────────────────
