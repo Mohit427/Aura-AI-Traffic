@@ -18,9 +18,7 @@ function Panel({ title, children, className = '' }) {
 
 function buildEvData(evSchedule) {
   if (!evSchedule) return null;
-
   const formatAxis = (axis) => (axis ? axis.replace('_', '-') : '—');
-
   return {
     ev1: {
       lane: formatAxis(evSchedule.ev_1_axis),
@@ -37,29 +35,31 @@ function buildEvData(evSchedule) {
   };
 }
 
+function clipForMode(priorityMode) {
+  if (priorityMode === 'emergency_vehicle') return '/demo-clips/ambulance_footage.mp4';
+  if (priorityMode === 'vulnerable_user') return '/demo-clips/platoon_footage.mp4';
+  return '/demo-clips/normal_footage.mp4';
+}
+
 export default function App() {
   const [engineData, setEngineData] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
-
     async function loadDecision() {
       try {
         const data = await fetchLatestDecision();
         if (!isMounted) return;
-
         if (data.priority_mode === 'emergency_vehicle' && data.ev_schedule) {
           data.ev_data = buildEvData(data.ev_schedule);
           data.ev_stage = 1;
           data.downstream_green_wave = true;
         }
-
         setEngineData(data);
       } catch (error) {
         console.error('Failed to load latest decision:', error);
       }
     }
-
     loadDecision();
     const intervalId = setInterval(loadDecision, 2000);
     return () => {
@@ -86,20 +86,26 @@ export default function App() {
     <DashboardShell priorityMode={engineData.priority_mode}>
       <div className="panel-hero">
         <Panel title="Live view" className="panel-live">
-          <div className="placeholder placeholder-camera">
-            <span className="placeholder-camera__crosshair" aria-hidden="true" />
-            Camera feed will render here
-          </div>
+          <video
+            key={engineData.priority_mode}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="live-view-video"
+          >
+            <source src={clipForMode(engineData.priority_mode)} type="video/mp4" />
+          </video>
         </Panel>
         <div className="hero-vui">
           <VUIGauge score={engineData.vui_score} priorityMode={engineData.priority_mode} />
         </div>
       </div>
       {engineData.priority_mode !== 'emergency_vehicle' && (
-  <Panel title="Signal phase timeline" className="panel-wide">
-    <SignalTimeline phases={phases} />
-  </Panel>
-)}
+        <Panel title="Signal phase timeline" className="panel-wide">
+          <SignalTimeline phases={phases} />
+        </Panel>
+      )}
       <div className="panel-wide">
         <EVConflictPanel engineData={engineData} />
       </div>
