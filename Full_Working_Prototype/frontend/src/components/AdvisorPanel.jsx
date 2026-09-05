@@ -5,6 +5,7 @@ const API_BASE_URL = 'https://aura-backend-v27b.onrender.com';
 
 export default function AdvisorPanel({ engineData }) {
   const [explanation, setExplanation] = useState('');
+  const [context, setContext] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -19,23 +20,32 @@ export default function AdvisorPanel({ engineData }) {
       setError(null);
 
       try {
-        const response = await fetch(`${API_BASE_URL}/api/advisor/explain`, {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ engine_output: engineData }),
-        });
+        const [explainResponse, contextResponse] = await Promise.all([
+          fetch(`${API_BASE_URL}/api/advisor/explain`, {
+            method: 'POST',
+            headers: {
+              Authorization: `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ engine_output: engineData }),
+          }),
+          fetch(`${API_BASE_URL}/api/search/context`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ location: 'Vadapalani Junction, Chennai' }),
+          }),
+        ]);
 
-        if (!response.ok) {
-          throw new Error(`Advisor request failed: ${response.status} ${response.statusText}`);
+        if (!explainResponse.ok) {
+          throw new Error(`Advisor request failed: ${explainResponse.status} ${explainResponse.statusText}`);
         }
 
-        const data = await response.json();
+        const explainData = await explainResponse.json();
+        const contextData = contextResponse.ok ? await contextResponse.json() : { events: [] };
 
         if (isMounted) {
-          setExplanation(typeof data.explanation === 'string' ? data.explanation : JSON.stringify(data));
+          setExplanation(typeof explainData.explanation === 'string' ? explainData.explanation : JSON.stringify(explainData));
+          setContext(contextData.events || []);
         }
       } catch (err) {
         if (isMounted) {
@@ -53,7 +63,7 @@ export default function AdvisorPanel({ engineData }) {
     return () => {
       isMounted = false;
     };
-  }, [engineData]);
+  }, [engineData?.timestamp]);
 
   const alertTone =
     engineData?.priority_mode === 'emergency_vehicle'
@@ -81,6 +91,16 @@ export default function AdvisorPanel({ engineData }) {
             </p>
           )}
         </div>
+        {!loading && context.length > 0 && (
+          <div className="advisor-panel__context">
+            <span className="advisor-panel__context-label">Live context — Tavily</span>
+            <ul className="advisor-panel__context-list">
+              {context.map((event, i) => (
+                <li key={i} className="advisor-panel__context-item">{event.title}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </section>
   );
