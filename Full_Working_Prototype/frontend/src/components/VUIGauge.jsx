@@ -4,15 +4,13 @@ const STATUS = {
   normal: { color: 'var(--status-good)', label: 'Normal operation', tone: 'good' },
   vulnerable_user: { color: 'var(--status-warning)', label: 'Vulnerable user priority', tone: 'warning' },
   emergency_vehicle: { color: 'var(--status-critical)', label: 'Emergency preemption', tone: 'critical' },
+  transit_priority: { color: '#3FC1C9', label: 'Transit signal priority', tone: 'good' },
 };
 
 function calculateFillPercent(score, priorityMode) {
-  if (priorityMode === 'emergency_vehicle') {
-    return 92;
-  }
-  if (priorityMode === 'vulnerable_user') {
-    return Math.min(65 + score * 2, 90);
-  }
+  if (priorityMode === 'emergency_vehicle') return 92;
+  if (priorityMode === 'transit_priority') return 60;
+  if (priorityMode === 'vulnerable_user') return Math.min(65 + score * 2, 90);
   return Math.min(10 + score * 2, 25);
 }
 

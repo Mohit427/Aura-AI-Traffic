@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-09-05T10:12:21.632078+05:30 by Eclipse SUMO GUI 1.27.1
+<!-- generated on 2026-09-05T12:05:17.632988+05:30 by Eclipse SUMO sumo 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/osm.net.xml.gz"/>
-        <route-files value="/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/osm.passenger.trips.xml,/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/ ev_conflict.rou.xml"/>
-        <additional-files value="/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/osm.poly.xml.gz"/>
+        <net-file value="osm.net.xml.gz"/>
+        <route-files value="osm.passenger.trips.xml, ev_conflict.rou.xml"/>
+        <additional-files value="osm.poly.xml.gz"/>
     </input>
 
     <output>
-        <tripinfo-output value="/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/tripinfos.xml"/>
-        <statistic-output value="/home/mohit/Desktop/Hackathons/Decode_SIH_2026/Aura-AI-Traffic/Full_Working_Prototype/sumo_simulation/stats.xml"/>
+        <tripinfo-output value="tripinfos.xml"/>
+        <statistic-output value="stats.xml"/>
     </output>
 
     <processing>
@@ -30,8 +30,13 @@
         <no-step-log value="true"/>
     </report>
 
+    <traci_server>
+        <remote-port value="41425"/>
+    </traci_server>
+
 </sumoConfiguration>
 -->
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
-</tripinfos>
+    <tripinfo id="live_car_0" depart="1.00" departLane="1313198082_1" departPos="5.10" departSpeed="0.00" departDelay="0.00" arrival="26.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="28.68" duration="25.00" routeLength="517.31" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="6.80" rerouteNo="0" devices="tripinfo_live_car_0" vType="DEFAULT_VEHTYPE" speedFactor="1.06" vaporized=""/>
+    <tripinfo id="EV-1" depart="10.00" departLane="1313198082_2" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="28.00" arrivalLane="1313198082.274_2" arrivalPos="247.73" arrivalSpeed="29.31" duration="18.00" routeLength="515.81" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="0.35" rerouteNo="0" devices="tripinfo_EV-1" vType="ambulance_type" speedFactor="1.50" vaporized=""/>

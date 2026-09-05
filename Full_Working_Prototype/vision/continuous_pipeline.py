@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 import requests
 import json
+import sys
 from datetime import datetime, timezone
 
 model = YOLO("yolov8n.pt")
@@ -42,4 +43,11 @@ def run_continuous(video_path, intersection_id="vadapalani_junction", zone="cros
             print(f"Frame {frame_num}: backend not reachable")
 
 if __name__ == "__main__":
-    run_continuous("demo_footage.f398.mp4", zone="crosswalk_north")
+    scenario = sys.argv[1] if len(sys.argv) > 1 else "normal"
+
+    if scenario == "normal":
+        run_continuous("demo_footage_f398.mp4", zone="north_approach")
+    elif scenario == "platoon":
+        run_continuous("platoon_footage.mp4", zone="crosswalk_north")
+    else:
+        print(f"Unknown scenario '{scenario}'. Use 'normal' or 'platoon'.")
