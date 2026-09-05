@@ -65,3 +65,28 @@
   background: var(--status-critical);
   flex-shrink: 0;
 }
+
+.advisor-panel__context {
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border, rgba(255,255,255,0.08));
+}
+
+.advisor-panel__context-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #888);
+  text-transform: uppercase;
+}
+
+.advisor-panel__context-list {
+  margin: 0.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.advisor-panel__context-item {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #aaa);
+  padding: 0.2rem 0;
+}

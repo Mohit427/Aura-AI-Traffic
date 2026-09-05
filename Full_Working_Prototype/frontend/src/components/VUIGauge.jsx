@@ -6,14 +6,25 @@ const STATUS = {
   emergency_vehicle: { color: 'var(--status-critical)', label: 'Emergency preemption', tone: 'critical' },
 };
 
+function calculateFillPercent(score, priorityMode) {
+  if (priorityMode === 'emergency_vehicle') {
+    return 92;
+  }
+  if (priorityMode === 'vulnerable_user') {
+    return Math.min(65 + score * 2, 90);
+  }
+  return Math.min(10 + score * 2, 25);
+}
+
 export default function VUIGauge({ score = 0, priorityMode = 'normal' }) {
   const radius = 92;
   const circumference = 2 * Math.PI * radius;
   const clamped = Math.max(0, Math.min(100, score));
-  const offset = circumference - (clamped / 100) * circumference;
+  const fillPercent = calculateFillPercent(clamped, priorityMode);
+  const offset = circumference - (fillPercent / 100) * circumference;
   const status = STATUS[priorityMode] ?? STATUS.normal;
   const elevated = priorityMode !== 'normal';
-
+  
   return (
     <div className={`vui-gauge vui-gauge--${status.tone}`}>
       <div className="vui-gauge__halo" aria-hidden="true" />
