@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-09-04T14:35:26.664726+05:30 by Eclipse SUMO sumo 1.27.1
+<!-- generated on 2026-09-05T05:02:58.117935+05:30 by Eclipse SUMO sumo 1.27.1
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
@@ -31,7 +31,7 @@
     </report>
 
     <traci_server>
-        <remote-port value="41903"/>
+        <remote-port value="35911"/>
     </traci_server>
 
 </sumoConfiguration>
@@ -39,4 +39,5 @@
 
 <tripinfos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/tripinfo_file.xsd">
     <tripinfo id="EV-1" depart="10.00" departLane="1313198082_1" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="28.00" arrivalLane="1313198082.274_1" arrivalPos="247.73" arrivalSpeed="29.87" duration="18.00" routeLength="515.81" waitingTime="0.00" waitingCount="0" stopTime="0.00" timeLoss="0.39" rerouteNo="0" devices="tripinfo_EV-1" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
+    <tripinfo id="EV-2" depart="10.00" departLane="1123278059#1_0" departPos="6.60" departSpeed="30.00" departDelay="0.00" arrival="53.00" arrivalLane="1092250361#0_0" arrivalPos="43.21" arrivalSpeed="27.38" duration="43.00" routeLength="457.63" waitingTime="16.00" waitingCount="1" stopTime="0.00" timeLoss="27.41" rerouteNo="0" devices="tripinfo_EV-2" vType="ambulance_type" speedFactor="1.50" vaporized=""/>
 </tripinfos>

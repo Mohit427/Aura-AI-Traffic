@@ -15,6 +15,7 @@ runs/
 
 # Demo footage / media
 *.mp4
+!Full_Working_Prototype/frontend/public/demo-clips/*.mp4
 *.avi
 *.webm
 *.mov
