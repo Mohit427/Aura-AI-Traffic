@@ -1,0 +1,232 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://content.twilio.com
+METHODS:
+  twilio_content.content.list:
+    SUMMARY: Retrieve a list of Contents belonging to the account used to make the request
+    DESC: Retrieve a list of Contents belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Content
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortByDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortByContentName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - ContentName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Content:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Language:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - ContentType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - ChannelEligibility:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.content.listResponse200)
+        RETURNVAR: twilio_content_content_list
+        STATUS: 200
+    CANONICAL_ID: twilio_content.content.list
+  twilio_content.contentandapproval.list:
+    SUMMARY: Retrieve a list of Contents with approval statuses belonging to the account used to make the request
+    DESC: Retrieve a list of Contents with approval statuses belonging to the account used to make the request
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ContentAndApprovals
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortByDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortByContentName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - ContentName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Content:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Language:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - ContentType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - ChannelEligibility:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.contentandapproval.listResponse200)
+        RETURNVAR: twilio_content_contentandapproval_list
+        STATUS: 200
+    CANONICAL_ID: twilio_content.contentandapproval.list
+STRUCTS:
+  content.v1.content:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A string name used to describe the Content resource. Not visible to the end recipient.
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in.
+    - name: variables
+      type: OBJECT
+      REQUIRED: false
+      comment: "Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}."
+    - name: types
+      type: OBJECT
+      REQUIRED: false
+      comment: The [Content types](https://www.twilio.com/docs/content/content-types-overview) (e.g. twilio/text) for this Content resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the resource, relative to `https://content.twilio.com`.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: A list of links related to the Content resource, such as approval_fetch and approval_create
+  content.v1.content_and_approvals:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the Content resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/usage/api/account) that created Content resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A string name used to describe the Content resource. Not visible to the end recipient.
+    - name: language
+      type: STRING
+      REQUIRED: false
+      comment: Two-letter (ISO 639-1) language code (e.g., en) identifying the language the Content resource is in.
+    - name: variables
+      type: OBJECT
+      REQUIRED: false
+      comment: "Defines the default placeholder values for variables included in the Content resource. e.g. {\"1\": \"Customer_Name\"}."
+    - name: types
+      type: OBJECT
+      REQUIRED: false
+      comment: The [Content types](https://www.twilio.com/docs/content/content-types-overview) (e.g. twilio/text) for this Content resource.
+    - name: approval_requests
+      type: OBJECT
+      REQUIRED: false
+      comment: The submitted information and approval request status of the Content resource.
+  api.content.listResponse200:
+    - name: contents
+      type: "[]STRUCT(content.v1.content)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.contentandapproval.listResponse200:
+    - name: contents
+      type: "[]STRUCT(content.v1.content_and_approvals)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

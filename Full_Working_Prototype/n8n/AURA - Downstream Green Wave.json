@@ -1,0 +1,66 @@
+{
+  "name": "AURA - Downstream Green Wave",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "downstream-green-wave",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "b91c970a-55ab-424f-939e-1a57e38d5457",
+      "name": "Webhook",
+      "webhookId": "a80f49a6-945d-4ec3-bb4d-3c916bb3fd2e"
+    },
+    {
+      "parameters": {
+        "jsCode": "const evData = $input.first().json;\nconsole.log(`GREEN WAVE TRIGGERED: EV-2 axis (${evData.ev_2_axis}) — downstream signal pre-clearing`);\nreturn [{ json: { status: \"downstream_signal_cleared\", received: evData } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7945e2a5-d0a5-4ec7-9f83-37e9e1d0a649",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "a5914208-1356-42c1-a066-faac0730371c",
+  "meta": {
+    "instanceId": "0aa5b28580c204ce333873478239bfd1efa98e4081bf63f48589580c9caf6094"
+  },
+  "id": "qcVtPZan9ySAcu1v",
+  "tags": []
+}

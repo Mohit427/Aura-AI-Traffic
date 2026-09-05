@@ -1,0 +1,354 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://knowledge.twilio.com
+METHODS:
+  twilio_knowledge.knowledge.list:
+    SUMMARY: List all knowledge
+    DESC: List all knowledge
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Tags:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.knowledge.listResponse200)
+        RETURNVAR: twilio_knowledge_knowledge_list
+        STATUS: 200
+    CANONICAL_ID: twilio_knowledge.knowledge.list
+  twilio_knowledge.knowledge.create:
+    SUMMARY: Create knowledge
+    DESC: Create knowledge
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Knowledge
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(knowledge.v1.service.create_knowledge_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(knowledge.v1.service.create_knowledge_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(knowledge.v1.service.knowledge)
+        RETURNVAR: twilio_knowledge_knowledge_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_knowledge.knowledge.create
+  twilio_knowledge.knowledge.delete:
+    SUMMARY: Delete knowledge
+    DESC: Delete knowledge
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_knowledge.knowledge.delete
+  twilio_knowledge.knowledge.get:
+    SUMMARY: Get knowledge
+    DESC: Get knowledge
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(knowledge.v1.service.knowledge)
+        RETURNVAR: twilio_knowledge_knowledge_get
+        STATUS: 200
+    CANONICAL_ID: twilio_knowledge.knowledge.get
+  twilio_knowledge.knowledge.update:
+    SUMMARY: Update knowledge
+    DESC: Update knowledge
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(knowledge.v1.service.update_knowledge_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(knowledge.v1.service.update_knowledge_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(knowledge.v1.service.knowledge)
+        RETURNVAR: twilio_knowledge_knowledge_update
+        STATUS: 200
+    CANONICAL_ID: twilio_knowledge.knowledge.update
+  twilio_knowledge.knowledge.status.get:
+    SUMMARY: Get knowledge status
+    DESC: Get knowledge status
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}/Status
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(knowledge.v1.service.knowledge_status)
+        RETURNVAR: twilio_knowledge_knowledge_status_get
+        STATUS: 200
+    CANONICAL_ID: twilio_knowledge.knowledge.status.get
+  twilio_knowledge.knowledge.chunks.get:
+    SUMMARY: List knowledge chunks
+    DESC: List knowledge chunks
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}/Chunks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.knowledge.chunks.getResponse200)
+        RETURNVAR: twilio_knowledge_knowledge_chunks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_knowledge.knowledge.chunks.get
+STRUCTS:
+  knowledge.v1.service.knowledge:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The type of knowledge source.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The description of knowledge.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the knowledge source.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of knowledge source ('Web', 'Database', 'Text', 'File')
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the knowledge resource.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  knowledge.v1.service.knowledge_status:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: last_status
+      type: STRING
+      REQUIRED: false
+      comment: The last status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  knowledge.v1.service.create_knowledge_request:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the tool.
+    - name: policy
+      type: STRUCT(knowledge.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the knowledge source.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of the knowledge source.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source. It's required for 'Database' type but disallowed for other types.
+  knowledge.v1.service.create_policy_request:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the policy.
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The Policy ID.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the policy.
+    - name: policy_details
+      type: ANY
+      REQUIRED: true
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The description of the policy.
+  knowledge.v1.service.update_knowledge_request:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the knowledge source.
+    - name: policy
+      type: STRUCT(knowledge.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the knowledge source.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source. It's only applicable to 'Database' type.
+  knowledge.v1.service.knowledge_chunk:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: content
+      type: STRING
+      REQUIRED: false
+      comment: The chunk content.
+    - name: metadata
+      type: OBJECT
+      REQUIRED: false
+      comment: The metadata of the chunk.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Chunk was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Chunk was updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  api.knowledge.listResponse200:
+    - name: knowledge
+      type: "[]ANY"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.knowledge.chunks.getResponse200:
+    - name: chunks
+      type: "[]STRUCT(knowledge.v1.service.knowledge_chunk)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

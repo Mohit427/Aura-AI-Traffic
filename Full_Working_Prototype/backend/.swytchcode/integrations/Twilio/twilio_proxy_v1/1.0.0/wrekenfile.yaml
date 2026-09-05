@@ -1,0 +1,1240 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://proxy.twilio.com
+METHODS:
+  twilio_proxy.service.interactions.get:
+    SUMMARY: Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
+    DESC: Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session.interaction)
+        RETURNVAR: twilio_proxy_service_interactions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.interactions.get
+  twilio_proxy.service.interactions.delete:
+    SUMMARY: Delete a specific Interaction.
+    DESC: Delete a specific Interaction.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_proxy.service.interactions.delete
+  twilio_proxy.service.interactions.get.1:
+    SUMMARY: Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
+    DESC: Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Interactions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.interactions.getResponse200)
+        RETURNVAR: twilio_proxy_service_interactions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.interactions.get.1
+  twilio_proxy.service.messageInteractions.create:
+    SUMMARY: Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty.
+    DESC: Create a new message Interaction to send directly from your system to one [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will always be empty.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MediaUrl:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session.participant.message_interaction)
+        RETURNVAR: twilio_proxy_service_messageInteractions_create
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.messageInteractions.create
+  twilio_proxy.service.messageInteractions.get:
+    SUMMARY: Perform operation ListMessageInteraction
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.messageInteractions.getResponse200)
+        RETURNVAR: twilio_proxy_service_messageInteractions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.messageInteractions.get
+  twilio_proxy.service.messageInteractions.get.1:
+    SUMMARY: Perform operation FetchMessageInteraction
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{ParticipantSid}/MessageInteractions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session.participant.message_interaction)
+        RETURNVAR: twilio_proxy_service_messageInteractions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.messageInteractions.get.1
+  twilio_proxy.service.participants.get:
+    SUMMARY: Fetch a specific Participant.
+    DESC: Fetch a specific Participant.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session.participant)
+        RETURNVAR: twilio_proxy_service_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.participants.get
+  twilio_proxy.service.participants.delete:
+    SUMMARY: Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot be re-added. Participants are only permanently deleted when the [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
+    DESC: Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot be re-added. Participants are only permanently deleted when the [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_proxy.service.participants.delete
+  twilio_proxy.service.participants.get.1:
+    SUMMARY: Retrieve a list of all Participants in a Session.
+    DESC: Retrieve a list of all Participants in a Session.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.participants.getResponse200)
+        RETURNVAR: twilio_proxy_service_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.participants.get.1
+  twilio_proxy.service.participants.create:
+    SUMMARY: Add a new Participant to the Session
+    DESC: Add a new Participant to the Session
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{SessionSid}/Participants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - SessionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identifier:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ProxyIdentifier:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ProxyIdentifierSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session.participant)
+        RETURNVAR: twilio_proxy_service_participants_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_proxy.service.participants.create
+  twilio_proxy.service.phoneNumbers.create:
+    SUMMARY: Add a Phone Number to a Service's Proxy Number Pool.
+    DESC: Add a Phone Number to a Service's Proxy Number Pool.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IsReserved:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.phone_number)
+        RETURNVAR: twilio_proxy_service_phoneNumbers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_proxy.service.phoneNumbers.create
+  twilio_proxy.service.phoneNumbers.get:
+    SUMMARY: Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be returned per page.
+    DESC: Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be returned per page.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.phoneNumbers.getResponse200)
+        RETURNVAR: twilio_proxy_service_phoneNumbers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.phoneNumbers.get
+  twilio_proxy.service.phoneNumbers.delete:
+    SUMMARY: Delete a specific Phone Number from a Service.
+    DESC: Delete a specific Phone Number from a Service.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_proxy.service.phoneNumbers.delete
+  twilio_proxy.service.phoneNumbers.get.1:
+    SUMMARY: Fetch a specific Phone Number.
+    DESC: Fetch a specific Phone Number.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.phone_number)
+        RETURNVAR: twilio_proxy_service_phoneNumbers_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.phoneNumbers.get.1
+  twilio_proxy.service.phoneNumbers.create.1:
+    SUMMARY: Update a specific Proxy Number.
+    DESC: Update a specific Proxy Number.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - IsReserved:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.phone_number)
+        RETURNVAR: twilio_proxy_service_phoneNumbers_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.phoneNumbers.create.1
+  twilio_proxy.service.get:
+    SUMMARY: Fetch a specific Service.
+    DESC: Fetch a specific Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service)
+        RETURNVAR: twilio_proxy_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.get
+  twilio_proxy.service.delete:
+    SUMMARY: Delete a specific Service.
+    DESC: Delete a specific Service.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_proxy.service.delete
+  twilio_proxy.service.create:
+    SUMMARY: Update a specific Service.
+    DESC: Update a specific Service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - GeoMatchLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NumberSelectionBehavior:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - InterceptCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OutOfSessionCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChatInstanceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service)
+        RETURNVAR: twilio_proxy_service_create
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.create
+  twilio_proxy.service.list:
+    SUMMARY: Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
+    DESC: Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_proxy_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.list
+  twilio_proxy.service.create.1:
+    SUMMARY: Create a new Service for Twilio Proxy
+    DESC: Create a new Service for Twilio Proxy
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - DefaultTtl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - GeoMatchLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NumberSelectionBehavior:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - InterceptCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OutOfSessionCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ChatInstanceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service)
+        RETURNVAR: twilio_proxy_service_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_proxy.service.create.1
+  twilio_proxy.service.sessions.get:
+    SUMMARY: Fetch a specific Session.
+    DESC: Fetch a specific Session.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session)
+        RETURNVAR: twilio_proxy_service_sessions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.sessions.get
+  twilio_proxy.service.sessions.delete:
+    SUMMARY: Delete a specific Session.
+    DESC: Delete a specific Session.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_proxy.service.sessions.delete
+  twilio_proxy.service.sessions.create:
+    SUMMARY: Update a specific Session.
+    DESC: Update a specific Session.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - DateExpiry:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session)
+        RETURNVAR: twilio_proxy_service_sessions_create
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.sessions.create
+  twilio_proxy.service.sessions.get.1:
+    SUMMARY: Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
+    DESC: Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.sessions.getResponse200)
+        RETURNVAR: twilio_proxy_service_sessions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_proxy.service.sessions.get.1
+  twilio_proxy.service.sessions.create.1:
+    SUMMARY: Create a new Session
+    DESC: Create a new Session
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Sessions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateExpiry:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Mode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Participants:
+          TYPE: "[]ANY"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(proxy.v1.service.session)
+        RETURNVAR: twilio_proxy_service_sessions_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_proxy.service.sessions.create.1
+STRUCTS:
+  proxy.v1.service.session.interaction:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Interaction resource.
+    - name: session_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Interaction resource.
+    - name: data
+      type: STRING
+      REQUIRED: false
+      comment: "A JSON string that includes the message body of message interactions (e.g. `{\"body\": \"hello\"}`) or the call duration (when available) of a call (e.g. `{\"duration\": \"5\"}`)."
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: inbound_participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the inbound [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
+    - name: inbound_resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the inbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource).
+    - name: inbound_resource_status
+      type: STRING
+      REQUIRED: false
+    - name: inbound_resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The inbound resource type. Can be [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource).
+    - name: inbound_resource_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the Twilio inbound resource
+    - name: outbound_participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the outbound [Participant](https://www.twilio.com/docs/proxy/api/participant)).
+    - name: outbound_resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the outbound resource; either the [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource).
+    - name: outbound_resource_status
+      type: STRING
+      REQUIRED: false
+    - name: outbound_resource_type
+      type: STRING
+      REQUIRED: false
+      comment: "The outbound resource type. Can be: [Call](https://www.twilio.com/docs/voice/api/call-resource) or [Message](https://www.twilio.com/docs/sms/api/message-resource)."
+    - name: outbound_resource_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the Twilio outbound resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the Interaction was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Interaction resource.
+  proxy.v1.service.session.participant.message_interaction:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the MessageInteraction resource.
+    - name: session_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the MessageInteraction resource.
+    - name: data
+      type: STRING
+      REQUIRED: false
+      comment: "A JSON string that includes the message body sent to the participant. (e.g. `{\"body\": \"hello\"}`)"
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
+    - name: inbound_participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: Always empty for created Message Interactions.
+    - name: inbound_resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: Always empty for created Message Interactions.
+    - name: inbound_resource_status
+      type: STRING
+      REQUIRED: false
+    - name: inbound_resource_type
+      type: STRING
+      REQUIRED: false
+      comment: Always empty for created Message Interactions.
+    - name: inbound_resource_url
+      type: STRING
+      REQUIRED: false
+      comment: Always empty for created Message Interactions.
+    - name: outbound_participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the outbound [Participant](https://www.twilio.com/docs/proxy/api/participant) resource.
+    - name: outbound_resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the outbound [Message](https://www.twilio.com/docs/sms/api/message-resource) resource.
+    - name: outbound_resource_status
+      type: STRING
+      REQUIRED: false
+    - name: outbound_resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The outbound resource type. This value is always `Message`.
+    - name: outbound_resource_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the Twilio message resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the MessageInteraction resource.
+  proxy.v1.service.session.participant:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Participant resource.
+    - name: session_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent [Session](https://www.twilio.com/docs/proxy/api/session) resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the resource's parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Participant resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the participant. This value must be 255 characters or fewer. Supports UTF-8 characters. **This value should not have PII.**
+    - name: identifier
+      type: STRING
+      REQUIRED: false
+      comment: The phone number or channel identifier of the Participant. This value must be 191 characters or fewer. Supports UTF-8 characters.
+    - name: proxy_identifier
+      type: STRING
+      REQUIRED: false
+      comment: The phone number or short code (masked number) of the participant's partner. The participant will call or message the partner participant at this number.
+    - name: proxy_identifier_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Proxy Identifier assigned to the Participant.
+    - name: date_deleted
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Participant was removed from the session.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Participant resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs to resources related the participant.
+  proxy.v1.service.phone_number:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the PhoneNumber resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the PhoneNumber resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the PhoneNumber resource's parent [Service](https://www.twilio.com/docs/proxy/api/service) resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The ISO Country Code for the phone number.
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: The capabilities of the phone number.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the PhoneNumber resource.
+    - name: is_reserved
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the phone number should be reserved and not be assigned to a participant using proxy pool logic. See [Reserved Phone Numbers](https://www.twilio.com/docs/proxy/reserved-phone-numbers) for more information.
+    - name: in_use
+      type: INT
+      REQUIRED: false
+      comment: The number of open session assigned to the number. See the [How many Phone Numbers do I need?](https://www.twilio.com/docs/proxy/phone-numbers-needed) guide for more information.
+  proxy.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. Supports UTF-8 characters. **This value should not have PII.**
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: chat_instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Chat Service Instance managed by Proxy Service. The Chat Service enables Proxy to forward SMS and channel messages to this chat instance. This is a one-to-one relationship.
+    - name: callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call when the interaction status changes.
+    - name: default_ttl
+      type: INT
+      REQUIRED: false
+      comment: The default `ttl` value for Sessions created in the Service. The TTL (time to live) is measured in seconds after the Session's last create or last Interaction. The default value of `0` indicates an unlimited Session length. You can override a Session's default TTL value by setting its `ttl` value.
+    - name: number_selection_behavior
+      type: STRING
+      REQUIRED: false
+    - name: geo_match_level
+      type: STRING
+      REQUIRED: false
+    - name: intercept_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call on each interaction. If we receive a 403 status, we block the interaction; otherwise the interaction continues.
+    - name: out_of_session_callback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call when an inbound call or SMS action occurs on a closed or non-existent Session. If your server (or a Twilio [function](https://www.twilio.com/en-us/serverless/functions)) responds with valid [TwiML](https://www.twilio.com/docs/voice/twiml), we will process it. This means it is possible, for example, to play a message for a call, send an automated text message response, or redirect a call to another Phone Number. See [Out-of-Session Callback Response Guide](https://www.twilio.com/docs/proxy/out-session-callback-response-guide) for more information.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of resources related to the Service.
+  proxy.v1.service.session:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Session resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/proxy/api/service) the session is associated with.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Session resource.
+    - name: date_started
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session started.
+    - name: date_ended
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session ended.
+    - name: date_last_interaction
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session last had an interaction.
+    - name: date_expiry
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date when the Session should expire. If this is value is present, it overrides the `ttl` value.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. This value must be 191 characters or fewer in length and be unique. Supports UTF-8 characters. **This value should not have PII.**
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: closed_reason
+      type: STRING
+      REQUIRED: false
+      comment: The reason the Session ended.
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: The time, in seconds, when the session will expire. The time is measured from the last Session create or the Session's last Interaction.
+    - name: mode
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Session resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of resources related to the Session.
+  api.service.interactions.getResponse200:
+    - name: interactions
+      type: "[]STRUCT(proxy.v1.service.session.interaction)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.messageInteractions.getResponse200:
+    - name: interactions
+      type: "[]STRUCT(proxy.v1.service.session.participant.message_interaction)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(proxy.v1.service.session.participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.phoneNumbers.getResponse200:
+    - name: phone_numbers
+      type: "[]STRUCT(proxy.v1.service.phone_number)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(proxy.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.sessions.getResponse200:
+    - name: sessions
+      type: "[]STRUCT(proxy.v1.service.session)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

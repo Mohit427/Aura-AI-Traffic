@@ -1,7 +1,7 @@
 import './SignalTimeline.css';
 
 export default function SignalTimeline({ phases }) {
-  const total = phases.reduce((sum, p) => sum + p.duration, 0);
+  const total = phases.reduce((sum, p) => sum + p.duration, 0)||1;
 
   return (
     <div className="timeline">

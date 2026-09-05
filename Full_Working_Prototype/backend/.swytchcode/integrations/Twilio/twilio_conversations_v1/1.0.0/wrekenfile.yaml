@@ -1,0 +1,5311 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://conversations.twilio.com
+METHODS:
+  twilio_conversations.configuration.list:
+    SUMMARY: Fetch the global configuration of conversations on your account
+    DESC: Fetch the global configuration of conversations on your account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Configuration
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration)
+        RETURNVAR: twilio_conversations_configuration_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.list
+  twilio_conversations.configuration.create:
+    SUMMARY: Update the global configuration of conversations on your account
+    DESC: Update the global configuration of conversations on your account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Configuration
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DefaultChatServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultMessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultInactiveTimer:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultClosedTimer:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration)
+        RETURNVAR: twilio_conversations_configuration_create
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.create
+  twilio_conversations.configuration.addresses.list:
+    SUMMARY: Retrieve a list of address configurations for an account
+    DESC: Retrieve a list of address configurations for an account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Configuration/Addresses
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.configuration.addresses.listResponse200)
+        RETURNVAR: twilio_conversations_configuration_addresses_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.addresses.list
+  twilio_conversations.configuration.addresses.create:
+    SUMMARY: Create a new address configuration
+    DESC: Create a new address configuration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Configuration/Addresses
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Address:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.ConversationServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookFilters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.StudioFlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.StudioRetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - AddressCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration_address)
+        RETURNVAR: twilio_conversations_configuration_addresses_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.configuration.addresses.create
+  twilio_conversations.configuration.addresses.get:
+    SUMMARY: "Fetch an address configuration "
+    DESC: "Fetch an address configuration "
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Configuration/Addresses/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration_address)
+        RETURNVAR: twilio_conversations_configuration_addresses_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.addresses.get
+  twilio_conversations.configuration.addresses.create.1:
+    SUMMARY: Update an existing address configuration
+    DESC: Update an existing address configuration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Configuration/Addresses/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.ConversationServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.WebhookFilters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.StudioFlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AutoCreation.StudioRetryCount:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration_address)
+        RETURNVAR: twilio_conversations_configuration_addresses_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.addresses.create.1
+  twilio_conversations.configuration.addresses.delete:
+    SUMMARY: Remove an existing address configuration
+    DESC: Remove an existing address configuration
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Configuration/Addresses/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.configuration.addresses.delete
+  twilio_conversations.configuration.webhooks.list:
+    SUMMARY: Perform operation FetchConfigurationWebhook
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Configuration/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration.configuration_webhook)
+        RETURNVAR: twilio_conversations_configuration_webhooks_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.webhooks.list
+  twilio_conversations.configuration.webhooks.create:
+    SUMMARY: Perform operation UpdateConfigurationWebhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Configuration/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - PreWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PostWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Target:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.configuration.configuration_webhook)
+        RETURNVAR: twilio_conversations_configuration_webhooks_create
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.configuration.webhooks.create
+  twilio_conversations.conversation.create:
+    SUMMARY: Create a new conversation in your account's default service
+    DESC: Create a new conversation in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation)
+        RETURNVAR: twilio_conversations_conversation_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.conversation.create
+  twilio_conversations.conversation.list:
+    SUMMARY: Retrieve a list of conversations in your account's default service
+    DESC: Retrieve a list of conversations in your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - StartDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.listResponse200)
+        RETURNVAR: twilio_conversations_conversation_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.list
+  twilio_conversations.conversation.create.1:
+    SUMMARY: Update an existing conversation in your account's default service
+    DESC: Update an existing conversation in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation)
+        RETURNVAR: twilio_conversations_conversation_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.create.1
+  twilio_conversations.conversation.delete:
+    SUMMARY: Remove a conversation from your account's default service
+    DESC: Remove a conversation from your account's default service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.conversation.delete
+  twilio_conversations.conversation.get:
+    SUMMARY: Fetch a conversation from your account's default service
+    DESC: Fetch a conversation from your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation)
+        RETURNVAR: twilio_conversations_conversation_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.get
+  twilio_conversations.conversation.messages.create:
+    SUMMARY: Add a new message to the conversation
+    DESC: Add a new message to the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Author:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MediaSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContentSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContentVariables:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Subject:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_message)
+        RETURNVAR: twilio_conversations_conversation_messages_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.conversation.messages.create
+  twilio_conversations.conversation.messages.get:
+    SUMMARY: Retrieve a list of all messages in the conversation
+    DESC: Retrieve a list of all messages in the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.messages.getResponse200)
+        RETURNVAR: twilio_conversations_conversation_messages_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.messages.get
+  twilio_conversations.conversation.messages.create.1:
+    SUMMARY: Update an existing message in the conversation
+    DESC: Update an existing message in the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Author:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Subject:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_message)
+        RETURNVAR: twilio_conversations_conversation_messages_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.messages.create.1
+  twilio_conversations.conversation.messages.delete:
+    SUMMARY: Remove a message from the conversation
+    DESC: Remove a message from the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.conversation.messages.delete
+  twilio_conversations.conversation.messages.get.1:
+    SUMMARY: Fetch a message from the conversation
+    DESC: Fetch a message from the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_message)
+        RETURNVAR: twilio_conversations_conversation_messages_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.messages.get.1
+  twilio_conversations.conversation.receipts.get:
+    SUMMARY: Fetch the delivery and read receipts of the conversation message
+    DESC: Fetch the delivery and read receipts of the conversation message
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessageSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_message.conversation_message_receipt)
+        RETURNVAR: twilio_conversations_conversation_receipts_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.receipts.get
+  twilio_conversations.conversation.receipts.get.1:
+    SUMMARY: Retrieve a list of all delivery and read receipts of the conversation message
+    DESC: Retrieve a list of all delivery and read receipts of the conversation message
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessageSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.receipts.getResponse200)
+        RETURNVAR: twilio_conversations_conversation_receipts_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.receipts.get.1
+  twilio_conversations.conversation.participants.create:
+    SUMMARY: Add a new participant to the conversation
+    DESC: Add a new participant to the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProxyAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProjectedAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_participant)
+        RETURNVAR: twilio_conversations_conversation_participants_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.conversation.participants.create
+  twilio_conversations.conversation.participants.get:
+    SUMMARY: Retrieve a list of all participants of the conversation
+    DESC: Retrieve a list of all participants of the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.participants.getResponse200)
+        RETURNVAR: twilio_conversations_conversation_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.participants.get
+  twilio_conversations.conversation.participants.create.1:
+    SUMMARY: Update an existing participant in the conversation
+    DESC: Update an existing participant in the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProxyAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProjectedAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastReadMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LastReadTimestamp:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_participant)
+        RETURNVAR: twilio_conversations_conversation_participants_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.participants.create.1
+  twilio_conversations.conversation.participants.delete:
+    SUMMARY: Remove a participant from the conversation
+    DESC: Remove a participant from the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.conversation.participants.delete
+  twilio_conversations.conversation.participants.get.1:
+    SUMMARY: Fetch a participant of the conversation
+    DESC: Fetch a participant of the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_participant)
+        RETURNVAR: twilio_conversations_conversation_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.participants.get.1
+  twilio_conversations.conversation.webhooks.get:
+    SUMMARY: Retrieve a list of all webhooks scoped to the conversation
+    DESC: Retrieve a list of all webhooks scoped to the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.webhooks.getResponse200)
+        RETURNVAR: twilio_conversations_conversation_webhooks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.webhooks.get
+  twilio_conversations.conversation.webhooks.create:
+    SUMMARY: Create a new webhook scoped to the conversation
+    DESC: Create a new webhook scoped to the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Target:
+          TYPE: STRING
+          LOCATION: body
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.ReplayAfter:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_conversation_webhooks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.conversation.webhooks.create
+  twilio_conversations.conversation.webhooks.get.1:
+    SUMMARY: Fetch the configuration of a conversation-scoped webhook
+    DESC: Fetch the configuration of a conversation-scoped webhook
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_conversation_webhooks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.webhooks.get.1
+  twilio_conversations.conversation.webhooks.create.1:
+    SUMMARY: Update an existing conversation-scoped webhook
+    DESC: Update an existing conversation-scoped webhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation.conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_conversation_webhooks_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.conversation.webhooks.create.1
+  twilio_conversations.conversation.webhooks.delete:
+    SUMMARY: Remove an existing webhook scoped to the conversation
+    DESC: Remove an existing webhook scoped to the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.conversation.webhooks.delete
+  twilio_conversations.conversationwithparticipant.create:
+    SUMMARY: Create a new conversation with the list of participants in your account's default service
+    DESC: Create a new conversation with the list of participants in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ConversationWithParticipants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Participant:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.conversation_with_participants)
+        RETURNVAR: twilio_conversations_conversationwithparticipant_create_201
+        STATUS: 201
+      - RETURNTYPE: STRUCT(conversations.v1.conversation_with_participants)
+        RETURNVAR: twilio_conversations_conversationwithparticipant_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_conversations.conversationwithparticipant.create
+  twilio_conversations.credential.create:
+    SUMMARY: Add a new push notification credential to your account
+    DESC: Add a new push notification credential to your account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.credential)
+        RETURNVAR: twilio_conversations_credential_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.credential.create
+  twilio_conversations.credential.list:
+    SUMMARY: Retrieve a list of all push notification credentials on your account
+    DESC: Retrieve a list of all push notification credentials on your account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.listResponse200)
+        RETURNVAR: twilio_conversations_credential_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.credential.list
+  twilio_conversations.credential.create.1:
+    SUMMARY: Update an existing push notification credential on your account
+    DESC: Update an existing push notification credential on your account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.credential)
+        RETURNVAR: twilio_conversations_credential_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.credential.create.1
+  twilio_conversations.credential.delete:
+    SUMMARY: Remove a push notification credential from your account
+    DESC: Remove a push notification credential from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.credential.delete
+  twilio_conversations.credential.get:
+    SUMMARY: Fetch a push notification credential from your account
+    DESC: Fetch a push notification credential from your account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.credential)
+        RETURNVAR: twilio_conversations_credential_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.credential.get
+  twilio_conversations.participantconversation.list:
+    SUMMARY: Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.
+    DESC: Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ParticipantConversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.participantconversation.listResponse200)
+        RETURNVAR: twilio_conversations_participantconversation_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.participantconversation.list
+  twilio_conversations.role.create:
+    SUMMARY: Create a new user role in your account's default service
+    DESC: Create a new user role in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Roles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.role)
+        RETURNVAR: twilio_conversations_role_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.role.create
+  twilio_conversations.role.list:
+    SUMMARY: Retrieve a list of all user roles in your account's default service
+    DESC: Retrieve a list of all user roles in your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Roles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.role.listResponse200)
+        RETURNVAR: twilio_conversations_role_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.role.list
+  twilio_conversations.role.create.1:
+    SUMMARY: Update an existing user role in your account's default service
+    DESC: Update an existing user role in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Roles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.role)
+        RETURNVAR: twilio_conversations_role_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.role.create.1
+  twilio_conversations.role.delete:
+    SUMMARY: Remove a user role from your account's default service
+    DESC: Remove a user role from your account's default service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.role.delete
+  twilio_conversations.role.get:
+    SUMMARY: Fetch a user role from your account's default service
+    DESC: Fetch a user role from your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.role)
+        RETURNVAR: twilio_conversations_role_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.role.get
+  twilio_conversations.service.create:
+    SUMMARY: Create a new conversation service on your account
+    DESC: Create a new conversation service on your account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service)
+        RETURNVAR: twilio_conversations_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.create
+  twilio_conversations.service.list:
+    SUMMARY: Retrieve a list of all conversation services on your account
+    DESC: Retrieve a list of all conversation services on your account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_conversations_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.list
+  twilio_conversations.service.delete:
+    SUMMARY: Remove a conversation service with all its nested resources from your account
+    DESC: Remove a conversation service with all its nested resources from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.service.delete
+  twilio_conversations.service.get:
+    SUMMARY: Fetch a conversation service from your account
+    DESC: Fetch a conversation service from your account
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service)
+        RETURNVAR: twilio_conversations_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.get
+  twilio_conversations.service.bindings.delete:
+    SUMMARY: Remove a push notification binding from the conversation service
+    DESC: Remove a push notification binding from the conversation service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.service.bindings.delete
+  twilio_conversations.service.bindings.get:
+    SUMMARY: Fetch a push notification binding from the conversation service
+    DESC: Fetch a push notification binding from the conversation service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Bindings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_binding)
+        RETURNVAR: twilio_conversations_service_bindings_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.bindings.get
+  twilio_conversations.service.bindings.get.1:
+    SUMMARY: Retrieve a list of all push notification bindings in the conversation service
+    DESC: Retrieve a list of all push notification bindings in the conversation service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Bindings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - BindingType:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.bindings.getResponse200)
+        RETURNVAR: twilio_conversations_service_bindings_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.bindings.get.1
+  twilio_conversations.service.configuration.get:
+    SUMMARY: Fetch the configuration of a conversation service
+    DESC: Fetch the configuration of a conversation service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration)
+        RETURNVAR: twilio_conversations_service_configuration_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.configuration.get
+  twilio_conversations.service.configuration.create:
+    SUMMARY: Update configuration settings of a conversation service
+    DESC: Update configuration settings of a conversation service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - DefaultConversationCreatorRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultConversationRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultChatServiceRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration)
+        RETURNVAR: twilio_conversations_service_configuration_create
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.configuration.create
+  twilio_conversations.service.conversations.create:
+    SUMMARY: Create a new conversation in your service
+    DESC: Create a new conversation in your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation)
+        RETURNVAR: twilio_conversations_service_conversations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.conversations.create
+  twilio_conversations.service.conversations.get:
+    SUMMARY: Retrieve a list of conversations in your service
+    DESC: Retrieve a list of conversations in your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - StartDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.conversations.getResponse200)
+        RETURNVAR: twilio_conversations_service_conversations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.get
+  twilio_conversations.service.conversations.create.1:
+    SUMMARY: Update an existing conversation in your service
+    DESC: Update an existing conversation in your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation)
+        RETURNVAR: twilio_conversations_service_conversations_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.create.1
+  twilio_conversations.service.conversations.delete:
+    SUMMARY: Remove a conversation from your service
+    DESC: Remove a conversation from your service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.service.conversations.delete
+  twilio_conversations.service.conversations.get.1:
+    SUMMARY: Fetch a conversation from your service
+    DESC: Fetch a conversation from your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation)
+        RETURNVAR: twilio_conversations_service_conversations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.get.1
+  twilio_conversations.service.messages.create:
+    SUMMARY: Add a new message to the conversation in a specific service
+    DESC: Add a new message to the conversation in a specific service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Author:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MediaSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContentSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContentVariables:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Subject:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_message)
+        RETURNVAR: twilio_conversations_service_messages_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.messages.create
+  twilio_conversations.service.messages.get:
+    SUMMARY: Retrieve a list of all messages in the conversation
+    DESC: Retrieve a list of all messages in the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.messages.getResponse200)
+        RETURNVAR: twilio_conversations_service_messages_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.messages.get
+  twilio_conversations.service.messages.create.1:
+    SUMMARY: Update an existing message in the conversation
+    DESC: Update an existing message in the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Author:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Subject:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_message)
+        RETURNVAR: twilio_conversations_service_messages_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.messages.create.1
+  twilio_conversations.service.messages.delete:
+    SUMMARY: Remove a message from the conversation
+    DESC: Remove a message from the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.service.messages.delete
+  twilio_conversations.service.messages.get.1:
+    SUMMARY: Fetch a message from the conversation
+    DESC: Fetch a message from the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_message)
+        RETURNVAR: twilio_conversations_service_messages_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.messages.get.1
+  twilio_conversations.service.receipts.get:
+    SUMMARY: Fetch the delivery and read receipts of the conversation message
+    DESC: Fetch the delivery and read receipts of the conversation message
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessageSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_message.service_conversation_message_receipt)
+        RETURNVAR: twilio_conversations_service_receipts_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.receipts.get
+  twilio_conversations.service.receipts.get.1:
+    SUMMARY: Retrieve a list of all delivery and read receipts of the conversation message
+    DESC: Retrieve a list of all delivery and read receipts of the conversation message
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Messages/{MessageSid}/Receipts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessageSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.receipts.getResponse200)
+        RETURNVAR: twilio_conversations_service_receipts_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.receipts.get.1
+  twilio_conversations.service.participants.create:
+    SUMMARY: Add a new participant to the conversation in a specific service
+    DESC: Add a new participant to the conversation in a specific service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProxyAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProjectedAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_participant)
+        RETURNVAR: twilio_conversations_service_participants_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.participants.create
+  twilio_conversations.service.participants.get:
+    SUMMARY: Retrieve a list of all participants of the conversation
+    DESC: Retrieve a list of all participants of the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.participants.getResponse200)
+        RETURNVAR: twilio_conversations_service_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.participants.get
+  twilio_conversations.service.participants.create.1:
+    SUMMARY: Update an existing participant in the conversation
+    DESC: Update an existing participant in the conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProxyAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingBinding.ProjectedAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastReadMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LastReadTimestamp:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_participant)
+        RETURNVAR: twilio_conversations_service_participants_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.participants.create.1
+  twilio_conversations.service.participants.delete:
+    SUMMARY: Remove a participant from the conversation
+    DESC: Remove a participant from the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.service.participants.delete
+  twilio_conversations.service.participants.get.1:
+    SUMMARY: Fetch a participant of the conversation
+    DESC: Fetch a participant of the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_participant)
+        RETURNVAR: twilio_conversations_service_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.participants.get.1
+  twilio_conversations.service.webhooks.create:
+    SUMMARY: Create a new webhook scoped to the conversation in a specific service
+    DESC: Create a new webhook scoped to the conversation in a specific service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Target:
+          TYPE: STRING
+          LOCATION: body
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.ReplayAfter:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_service_webhooks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.webhooks.create
+  twilio_conversations.service.webhooks.get:
+    SUMMARY: Retrieve a list of all webhooks scoped to the conversation
+    DESC: Retrieve a list of all webhooks scoped to the conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.webhooks.getResponse200)
+        RETURNVAR: twilio_conversations_service_webhooks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.webhooks.get
+  twilio_conversations.service.webhooks.create.1:
+    SUMMARY: Update an existing conversation-scoped webhook
+    DESC: Update an existing conversation-scoped webhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.Triggers:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Configuration.FlowSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_service_webhooks_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.webhooks.create.1
+  twilio_conversations.service.webhooks.delete:
+    SUMMARY: Remove an existing webhook scoped to the conversation
+    DESC: Remove an existing webhook scoped to the conversation
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.service.webhooks.delete
+  twilio_conversations.service.webhooks.get.1:
+    SUMMARY: Fetch the configuration of a conversation-scoped webhook
+    DESC: Fetch the configuration of a conversation-scoped webhook
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Conversations/{ConversationSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation.service_conversation_scoped_webhook)
+        RETURNVAR: twilio_conversations_service_webhooks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.webhooks.get.1
+  twilio_conversations.service.conversationWithParticipants.create:
+    SUMMARY: Create a new conversation with the list of participants in your account's default service
+    DESC: Create a new conversation with the list of participants in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/ConversationWithParticipants
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateCreated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - DateUpdated:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Inactive:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Timers.Closed:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Bindings.Email.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Participant:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation_with_participants)
+        RETURNVAR: twilio_conversations_service_conversationWithParticipants_create_201
+        STATUS: 201
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_conversation_with_participants)
+        RETURNVAR: twilio_conversations_service_conversationWithParticipants_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_conversations.service.conversationWithParticipants.create
+  twilio_conversations.service.notifications.create:
+    SUMMARY: Update push notification service settings
+    DESC: Update push notification service settings
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration/Notifications
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - LogEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.BadgeCountEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AddedToConversation.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AddedToConversation.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddedToConversation.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RemovedFromConversation.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RemovedFromConversation.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RemovedFromConversation.Sound:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.WithMedia.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - NewMessage.WithMedia.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration.service_notification)
+        RETURNVAR: twilio_conversations_service_notifications_create
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.notifications.create
+  twilio_conversations.service.notifications.get:
+    SUMMARY: Fetch push notification service settings
+    DESC: Fetch push notification service settings
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration/Notifications
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration.service_notification)
+        RETURNVAR: twilio_conversations_service_notifications_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.notifications.get
+  twilio_conversations.service.participantConversations.get:
+    SUMMARY: Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.
+    DESC: Retrieve a list of all Conversations that this Participant belongs to by identity or by address. Only one parameter should be specified.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/ParticipantConversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Address:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.participantConversations.getResponse200)
+        RETURNVAR: twilio_conversations_service_participantConversations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.participantConversations.get
+  twilio_conversations.service.roles.create:
+    SUMMARY: Create a new user role in your service
+    DESC: Create a new user role in your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Roles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_role)
+        RETURNVAR: twilio_conversations_service_roles_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.roles.create
+  twilio_conversations.service.roles.get:
+    SUMMARY: Retrieve a list of all user roles in your service
+    DESC: Retrieve a list of all user roles in your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Roles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.roles.getResponse200)
+        RETURNVAR: twilio_conversations_service_roles_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.roles.get
+  twilio_conversations.service.roles.create.1:
+    SUMMARY: Update an existing user role in your service
+    DESC: Update an existing user role in your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Roles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_role)
+        RETURNVAR: twilio_conversations_service_roles_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.roles.create.1
+  twilio_conversations.service.roles.delete:
+    SUMMARY: Remove a user role from your service
+    DESC: Remove a user role from your service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.service.roles.delete
+  twilio_conversations.service.roles.get.1:
+    SUMMARY: Fetch a user role from your service
+    DESC: Fetch a user role from your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_role)
+        RETURNVAR: twilio_conversations_service_roles_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.roles.get.1
+  twilio_conversations.service.users.create:
+    SUMMARY: Add a new conversation user to your service
+    DESC: Add a new conversation user to your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_user)
+        RETURNVAR: twilio_conversations_service_users_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.service.users.create
+  twilio_conversations.service.users.get:
+    SUMMARY: Retrieve a list of all conversation users in your service
+    DESC: Retrieve a list of all conversation users in your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.users.getResponse200)
+        RETURNVAR: twilio_conversations_service_users_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.users.get
+  twilio_conversations.service.users.create.1:
+    SUMMARY: Update an existing conversation user in your service
+    DESC: Update an existing conversation user in your service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_user)
+        RETURNVAR: twilio_conversations_service_users_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.users.create.1
+  twilio_conversations.service.users.delete:
+    SUMMARY: Remove a conversation user from your service
+    DESC: Remove a conversation user from your service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.service.users.delete
+  twilio_conversations.service.users.get.1:
+    SUMMARY: Fetch a conversation user from your service
+    DESC: Fetch a conversation user from your service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_user)
+        RETURNVAR: twilio_conversations_service_users_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.users.get.1
+  twilio_conversations.service.conversations.create.2:
+    SUMMARY: Update a specific User Conversation.
+    DESC: Update a specific User Conversation.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - NotificationLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastReadTimestamp:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - LastReadMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_user.service_user_conversation)
+        RETURNVAR: twilio_conversations_service_conversations_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.create.2
+  twilio_conversations.service.conversations.delete.1:
+    SUMMARY: Delete a specific User Conversation.
+    DESC: Delete a specific User Conversation.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.service.conversations.delete.1
+  twilio_conversations.service.conversations.get.2:
+    SUMMARY: Fetch a specific User Conversation.
+    DESC: Fetch a specific User Conversation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_user.service_user_conversation)
+        RETURNVAR: twilio_conversations_service_conversations_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.get.2
+  twilio_conversations.service.conversations.get.3:
+    SUMMARY: Retrieve a list of all User Conversations for the User.
+    DESC: Retrieve a list of all User Conversations for the User.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Users/{UserSid}/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.conversations.getResponse200)
+        RETURNVAR: twilio_conversations_service_conversations_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.conversations.get.3
+  twilio_conversations.service.webhooks.create.2:
+    SUMMARY: Update a specific Webhook.
+    DESC: Update a specific Webhook.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PreWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PostWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Filters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration.service_webhook_configuration)
+        RETURNVAR: twilio_conversations_service_webhooks_create_2
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.webhooks.create.2
+  twilio_conversations.service.webhooks.get.2:
+    SUMMARY: Fetch a specific service webhook configuration.
+    DESC: Fetch a specific service webhook configuration.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ChatServiceSid}/Configuration/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ChatServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.service.service_configuration.service_webhook_configuration)
+        RETURNVAR: twilio_conversations_service_webhooks_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.service.webhooks.get.2
+  twilio_conversations.user.create:
+    SUMMARY: Add a new conversation user to your account's default service
+    DESC: Add a new conversation user to your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Users
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.user)
+        RETURNVAR: twilio_conversations_user_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_conversations.user.create
+  twilio_conversations.user.list:
+    SUMMARY: Retrieve a list of all conversation users in your account's default service
+    DESC: Retrieve a list of all conversation users in your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Users
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.user.listResponse200)
+        RETURNVAR: twilio_conversations_user_list
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.list
+  twilio_conversations.user.create.1:
+    SUMMARY: Update an existing conversation user in your account's default service
+    DESC: Update an existing conversation user in your account's default service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Users/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.user)
+        RETURNVAR: twilio_conversations_user_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.create.1
+  twilio_conversations.user.delete:
+    SUMMARY: Remove a conversation user from your account's default service
+    DESC: Remove a conversation user from your account's default service
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Webhook-Enabled:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    CANONICAL_ID: twilio_conversations.user.delete
+  twilio_conversations.user.get:
+    SUMMARY: Fetch a conversation user from your account's default service
+    DESC: Fetch a conversation user from your account's default service
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.user)
+        RETURNVAR: twilio_conversations_user_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.get
+  twilio_conversations.user.conversations.create:
+    SUMMARY: Update a specific User Conversation.
+    DESC: Update a specific User Conversation.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - NotificationLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastReadTimestamp:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - LastReadMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.user.user_conversation)
+        RETURNVAR: twilio_conversations_user_conversations_create
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.conversations.create
+  twilio_conversations.user.conversations.delete:
+    SUMMARY: Delete a specific User Conversation.
+    DESC: Delete a specific User Conversation.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_conversations.user.conversations.delete
+  twilio_conversations.user.conversations.get:
+    SUMMARY: Fetch a specific User Conversation.
+    DESC: Fetch a specific User Conversation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Users/{UserSid}/Conversations/{ConversationSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(conversations.v1.user.user_conversation)
+        RETURNVAR: twilio_conversations_user_conversations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.conversations.get
+  twilio_conversations.user.conversations.get.1:
+    SUMMARY: Retrieve a list of all User Conversations for the User.
+    DESC: Retrieve a list of all User Conversations for the User.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Users/{UserSid}/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.user.conversations.getResponse200)
+        RETURNVAR: twilio_conversations_user_conversations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_conversations.user.conversations.get.1
+STRUCTS:
+  conversations.v1.configuration:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this configuration.
+    - name: default_chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the default [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) used when creating a conversation.
+    - name: default_messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the default [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) used when creating a conversation.
+    - name: default_inactive_timer
+      type: STRING
+      REQUIRED: false
+      comment: Default ISO8601 duration when conversation will be switched to `inactive` state. Minimum value for this timer is 1 minute.
+    - name: default_closed_timer
+      type: STRING
+      REQUIRED: false
+      comment: Default ISO8601 duration when conversation will be switched to `closed` state. Minimum value for this timer is 10 minutes.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this global configuration.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute API resource URLs to access the webhook and default service configurations.
+  conversations.v1.configuration_address:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) the address belongs to
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of Address, value can be `whatsapp` or `sms`.
+    - name: address
+      type: STRING
+      REQUIRED: false
+      comment: The unique address to be configured. The address can be a whatsapp address or phone number
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this configuration, limited to 256 characters. Optional.
+    - name: auto_creation
+      type: ANY
+      REQUIRED: false
+      comment: Auto Creation configuration for the address.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this address configuration.
+    - name: address_country
+      type: STRING
+      REQUIRED: false
+      comment: An ISO 3166-1 alpha-2n country code which the address belongs to. This is currently only applicable to short code addresses.
+  conversations.v1.configuration.configuration_webhook:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: method
+      type: STRING
+      REQUIRED: false
+    - name: filters
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "The list of webhook event triggers that are enabled for this Service: `onMessageAdded`, `onMessageUpdated`, `onMessageRemoved`, `onMessageAdd`, `onMessageUpdate`, `onMessageRemove`, `onConversationUpdated`, `onConversationRemoved`, `onConversationAdd`, `onConversationAdded`, `onConversationRemove`, `onConversationUpdate`, `onConversationStateUpdated`, `onParticipantAdded`, `onParticipantUpdated`, `onParticipantRemoved`, `onParticipantAdd`, `onParticipantRemove`, `onParticipantUpdate`, `onDeliveryUpdated`, `onUserAdded`, `onUserUpdate`, `onUserUpdated`"
+    - name: pre_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute url the pre-event webhook request should be sent to.
+    - name: post_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute url the post-event webhook request should be sent to.
+    - name: target
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource API resource URL for this webhook.
+  conversations.v1.conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: state
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource), [messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource) and [webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource) of this conversation.
+    - name: bindings
+      type: ANY
+      REQUIRED: false
+  conversations.v1.conversation.conversation_message:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this message.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: index
+      type: INT
+      REQUIRED: false
+      comment: The index of the message within the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).  Indices may skip numbers, but will always be in order of when the message was received.
+    - name: author
+      type: STRING
+      REQUIRED: false
+      comment: The channel specific identifier of the message's author. Defaults to `system`.
+    - name: body
+      type: STRING
+      REQUIRED: false
+      comment: The content of the message, can be up to 1,600 characters long.
+    - name: media
+      type: "[]ANY"
+      REQUIRED: false
+      comment: "An array of objects that describe the Message's media, if the message contains media. Each object contains these fields: `content_type` with the MIME type of the media, `filename` with the name of the media, `sid` with the SID of the Media resource, and `size` with the media object's file size in bytes. If the Message has no media, this value is `null`."
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of messages's author participant. Null in case of `system` sent message.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated. `null` if the message has not been edited.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource API URL for this message.
+    - name: delivery
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the summary of delivery statuses for the message to non-chat participants.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains an absolute API resource URL to access the delivery & read receipts of this message.
+    - name: content_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template.
+  conversations.v1.conversation.conversation_message.conversation_message_receipt:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: message_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to
+    - name: channel_message_sid
+      type: STRING
+      REQUIRED: false
+      comment: "A messaging channel-specific identifier for the message delivered to participant e.g. `SMxx` for SMS, `WAxx` for Whatsapp etc. "
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the participant the delivery receipt belongs to.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+      comment: "The message [delivery error code](https://www.twilio.com/docs/sms/api/message-resource#delivery-related-errors) for a `failed` status, "
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated. `null` if the delivery receipt has not been updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this delivery receipt.
+  conversations.v1.conversation.conversation_participant:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: messaging_binding
+      type: ANY
+      REQUIRED: false
+      comment: Information about how this participant exchanges messages with the conversation. A JSON parameter consisting of type and address fields of the participant.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this participant.
+    - name: last_read_message_index
+      type: INT
+      REQUIRED: false
+      comment: Index of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+    - name: last_read_timestamp
+      type: STRING
+      REQUIRED: false
+      comment: Timestamp of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+  conversations.v1.conversation.conversation_scoped_webhook:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.
+    - name: target
+      type: STRING
+      REQUIRED: false
+      comment: "The target of this webhook: `webhook`, `studio`, `trigger`"
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this webhook.
+    - name: configuration
+      type: ANY
+      REQUIRED: false
+      comment: The configuration of this webhook. Is defined based on target.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+  conversations.v1.conversation_with_participants:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: state
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource), [messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource) and [webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource) of this conversation.
+    - name: bindings
+      type: ANY
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this conversation.
+  conversations.v1.credential:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this credential.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this credential, limited to 64 characters. Optional.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: sandbox
+      type: STRING
+      REQUIRED: false
+      comment: "[APN only] Whether to send the credential to sandbox APNs. Can be `true` to send to sandbox APNs or `false` to send to production."
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this credential.
+  conversations.v1.participant_conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource).
+    - name: participant_user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource).
+    - name: participant_identity
+      type: STRING
+      REQUIRED: false
+      comment: A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
+    - name: participant_messaging_binding
+      type: ANY
+      REQUIRED: false
+      comment: Information about how this participant exchanges messages with the conversation. A JSON parameter consisting of type and address fields of the participant.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) this Participant belongs to.
+    - name: conversation_unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the Conversation resource.
+    - name: conversation_friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: conversation_attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: conversation_date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was created, given in ISO 8601 format.
+    - name: conversation_date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was last updated, given in ISO 8601 format.
+    - name: conversation_created_by
+      type: STRING
+      REQUIRED: false
+      comment: Identity of the creator of this Conversation.
+    - name: conversation_state
+      type: STRING
+      REQUIRED: false
+    - name: conversation_timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) and [conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) of this conversation.
+  conversations.v1.role:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Role resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Role resource.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Role resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: permissions
+      type: "[]STRING"
+      REQUIRED: false
+      comment: An array of the permissions the role has been granted.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this user role.
+  conversations.v1.service:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this service.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this service, limited to 256 characters. Optional.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this service.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute API resource URLs to access conversations, users, roles, bindings and configuration of this service.
+  conversations.v1.service.service_binding:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this binding.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Binding resource is associated with.
+    - name: credential_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Credential](https://www.twilio.com/docs/conversations/api/credential-resource) for the binding. See [push notification configuration](https://www.twilio.com/docs/chat/push-notification-configuration) for more info.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: endpoint
+      type: STRING
+      REQUIRED: false
+      comment: The unique endpoint identifier for the Binding. The format of this value depends on the `binding_type`.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource) within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). See [access tokens](https://www.twilio.com/docs/conversations/create-tokens) for more info.
+    - name: binding_type
+      type: STRING
+      REQUIRED: false
+    - name: message_types
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The [Conversation message types](https://www.twilio.com/docs/chat/push-notification-configuration#push-types) the binding is subscribed to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this binding.
+  conversations.v1.service.service_configuration:
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service configuration resource.
+    - name: default_conversation_creator_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The conversation-level role assigned to a conversation creator when they join a new conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+    - name: default_conversation_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The conversation-level role assigned to users when they are added to a conversation. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+    - name: default_chat_service_role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The service-level role assigned to users when they are added to the service. See [Conversation Role](https://www.twilio.com/docs/conversations/api/role-resource) for more info about roles.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this service configuration.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains an absolute API resource URL to access the push notifications configuration of this service.
+    - name: reachability_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the [Reachability Indicator](https://www.twilio.com/docs/conversations/reachability) is enabled for this Conversations Service. The default is `false`.
+  conversations.v1.service.service_conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: state
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource), [messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource) and [webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource) of this conversation.
+    - name: bindings
+      type: ANY
+      REQUIRED: false
+  conversations.v1.service.service_conversation.service_conversation_message:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this message.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: index
+      type: INT
+      REQUIRED: false
+      comment: The index of the message within the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource).
+    - name: author
+      type: STRING
+      REQUIRED: false
+      comment: The channel specific identifier of the message's author. Defaults to `system`.
+    - name: body
+      type: STRING
+      REQUIRED: false
+      comment: The content of the message, can be up to 1,600 characters long.
+    - name: media
+      type: "[]ANY"
+      REQUIRED: false
+      comment: "An array of objects that describe the Message's media, if the message contains media. Each object contains these fields: `content_type` with the MIME type of the media, `filename` with the name of the media, `sid` with the SID of the Media resource, and `size` with the media object's file size in bytes. If the Message has no media, this value is `null`."
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: A string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of messages's author participant. Null in case of `system` sent message.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated. `null` if the message has not been edited.
+    - name: delivery
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the summary of delivery statuses for the message to non-chat participants.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this message.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains an absolute API resource URL to access the delivery & read receipts of this message.
+    - name: content_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the multi-channel [Rich Content](https://www.twilio.com/docs/content) template.
+  conversations.v1.service.service_conversation.service_conversation_message.service_conversation_message_receipt:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Message resource is associated with.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this message.
+    - name: message_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the message within a [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) the delivery receipt belongs to
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: channel_message_sid
+      type: STRING
+      REQUIRED: false
+      comment: "A messaging channel-specific identifier for the message delivered to participant e.g. `SMxx` for SMS, `WAxx` for Whatsapp etc. "
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the participant the delivery receipt belongs to.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+      comment: "The message [delivery error code](https://www.twilio.com/docs/sms/api/message-resource#delivery-related-errors) for a `failed` status, "
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated. `null` if the delivery receipt has not been updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this delivery receipt.
+  conversations.v1.service.service_conversation.service_conversation_participant:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this participant.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this participant.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the [Conversation SDK](https://www.twilio.com/docs/conversations/sdk-overview) to communicate. Limited to 256 characters.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set `{}` will be returned.
+    - name: messaging_binding
+      type: ANY
+      REQUIRED: false
+      comment: Information about how this participant exchanges messages with the conversation. A JSON parameter consisting of type and address fields of the participant.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of a conversation-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) to assign to the participant.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date on which this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date on which this resource was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this participant.
+    - name: last_read_message_index
+      type: INT
+      REQUIRED: false
+      comment: Index of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+    - name: last_read_timestamp
+      type: STRING
+      REQUIRED: false
+      comment: Timestamp of last “read” message in the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for the Participant.
+  conversations.v1.service.service_conversation.service_conversation_scoped_webhook:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Participant resource is associated with.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this webhook.
+    - name: target
+      type: STRING
+      REQUIRED: false
+      comment: "The target of this webhook: `webhook`, `studio`, `trigger`"
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this webhook.
+    - name: configuration
+      type: ANY
+      REQUIRED: false
+      comment: The configuration of this webhook. Is defined based on target.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+  conversations.v1.service.service_conversation_with_participants:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) this conversation belongs to.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used to address the resource in place of the resource's `sid` in the URL.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: state
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was last updated.
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participants](https://www.twilio.com/docs/conversations/api/conversation-participant-resource), [messages](https://www.twilio.com/docs/conversations/api/conversation-message-resource) and [webhooks](https://www.twilio.com/docs/conversations/api/conversation-scoped-webhook-resource) of this conversation.
+    - name: bindings
+      type: ANY
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this conversation.
+  conversations.v1.service.service_configuration.service_notification:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this configuration.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Configuration applies to.
+    - name: new_message
+      type: ANY
+      REQUIRED: false
+      comment: The Push Notification configuration for New Messages.
+    - name: added_to_conversation
+      type: ANY
+      REQUIRED: false
+      comment: The Push Notification configuration for being added to a Conversation.
+    - name: removed_from_conversation
+      type: ANY
+      REQUIRED: false
+      comment: The Push Notification configuration for being removed from a Conversation.
+    - name: log_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Weather the notification logging is enabled.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this configuration.
+  conversations.v1.service.service_participant_conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource).
+    - name: participant_user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource).
+    - name: participant_identity
+      type: STRING
+      REQUIRED: false
+      comment: A unique string identifier for the conversation participant as [Conversation User](https://www.twilio.com/docs/conversations/api/user-resource). This parameter is non-null if (and only if) the participant is using the Conversations SDK to communicate. Limited to 256 characters.
+    - name: participant_messaging_binding
+      type: ANY
+      REQUIRED: false
+      comment: Information about how this participant exchanges messages with the conversation. A JSON parameter consisting of type and address fields of the participant.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) this Participant belongs to.
+    - name: conversation_unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the Conversation resource.
+    - name: conversation_friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: conversation_attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: conversation_date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was created, given in ISO 8601 format.
+    - name: conversation_date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was last updated, given in ISO 8601 format.
+    - name: conversation_created_by
+      type: STRING
+      REQUIRED: false
+      comment: Identity of the creator of this Conversation.
+    - name: conversation_state
+      type: STRING
+      REQUIRED: false
+    - name: conversation_timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) and [conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) of this conversation.
+  conversations.v1.service.service_role:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Role resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Role resource.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the Role resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: permissions
+      type: "[]STRING"
+      REQUIRED: false
+      comment: An array of the permissions the role has been granted.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this user role.
+  conversations.v1.service.service_user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the User resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User resource.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is associated with.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) assigned to the user.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
+    - name: is_online
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User is actively connected to this Conversations Service and online. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, if the User has never been online for this Conversations Service, even if the Service's `reachability_enabled` is `true`.
+    - name: is_notifiable
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User has a potentially valid Push Notification registration (APN or GCM) for this Conversations Service. If at least one registration exists, `true`; otherwise `false`. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, and if the User has never had a notification registration, even if the Service's `reachability_enabled` is `true`.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this user.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  conversations.v1.service.service_user.service_user_conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this User Conversation.
+    - name: unread_messages_count
+      type: INT
+      REQUIRED: false
+      comment: The number of unread Messages in the Conversation for the Participant.
+    - name: last_read_message_index
+      type: INT
+      REQUIRED: false
+      comment: The index of the last Message in the Conversation that the Participant has read.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) the user conversation belongs to.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the [User resource](https://www.twilio.com/docs/conversations/api/user-resource).
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: conversation_state
+      type: STRING
+      REQUIRED: false
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was last updated, given in ISO 8601 format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: Identity of the creator of this Conversation.
+    - name: notification_level
+      type: STRING
+      REQUIRED: false
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the Conversation resource. It can be used to address the resource in place of the resource's `conversation_sid` in the URL.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) and [conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) of this conversation.
+  conversations.v1.service.service_configuration.service_webhook_configuration:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this service.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: pre_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute url the pre-event webhook request should be sent to.
+    - name: post_webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute url the post-event webhook request should be sent to.
+    - name: filters
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The list of events that your configured webhook targets will receive. Events not configured here will not fire. Possible values are `onParticipantAdd`, `onParticipantAdded`, `onDeliveryUpdated`, `onConversationUpdated`, `onConversationRemove`, `onParticipantRemove`, `onConversationUpdate`, `onMessageAdd`, `onMessageRemoved`, `onParticipantUpdated`, `onConversationAdded`, `onMessageAdded`, `onConversationAdd`, `onConversationRemoved`, `onParticipantUpdate`, `onMessageRemove`, `onMessageUpdated`, `onParticipantRemoved`, `onMessageUpdate` or `onConversationStateUpdated`.
+    - name: method
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this webhook.
+  conversations.v1.user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the User resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the User resource.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) the User resource is associated with.
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of a service-level [Role](https://www.twilio.com/docs/conversations/api/role-resource) assigned to the user.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The application-defined string that uniquely identifies the resource's User within the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource). This value is often a username or an email address, and is case-sensitive.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: The JSON Object string that stores application-specific data. If attributes have not been set, `{}` is returned.
+    - name: is_online
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User is actively connected to this Conversations Service and online. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, if the User has never been online for this Conversations Service, even if the Service's `reachability_enabled` is `true`.
+    - name: is_notifiable
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the User has a potentially valid Push Notification registration (APN or GCM) for this Conversations Service. If at least one registration exists, `true`; otherwise `false`. This value is only returned by Fetch actions that return a single resource and `null` is always returned by a Read action. This value is `null` if the Service's `reachability_enabled` is `false`, and if the User has never had a notification registration, even if the Service's `reachability_enabled` is `true`.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: An absolute API resource URL for this user.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  conversations.v1.user.user_conversation:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Account](https://www.twilio.com/docs/iam/api/account) responsible for this conversation.
+    - name: chat_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation Service](https://www.twilio.com/docs/conversations/api/service-resource) this conversation belongs to.
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [Conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) for this User Conversation.
+    - name: unread_messages_count
+      type: INT
+      REQUIRED: false
+      comment: The number of unread Messages in the Conversation for the Participant.
+    - name: last_read_message_index
+      type: INT
+      REQUIRED: false
+      comment: The index of the last Message in the Conversation that the Participant has read.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) the user conversation belongs to.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the [User resource](https://www.twilio.com/docs/conversations/api/user-resource).
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The human-readable name of this conversation, limited to 256 characters. Optional.
+    - name: conversation_state
+      type: STRING
+      REQUIRED: false
+    - name: timers
+      type: ANY
+      REQUIRED: false
+      comment: Timer date values representing state update for this conversation.
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+      comment: An optional string metadata field you can use to store any data you wish. The string value must contain structurally valid JSON if specified.  **Note** that if the attributes are not set "{}" will be returned.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this conversation was last updated, given in ISO 8601 format.
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+      comment: Identity of the creator of this Conversation.
+    - name: notification_level
+      type: STRING
+      REQUIRED: false
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the Conversation resource. It can be used to address the resource in place of the resource's `conversation_sid` in the URL.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains absolute URLs to access the [participant](https://www.twilio.com/docs/conversations/api/conversation-participant-resource) and [conversation](https://www.twilio.com/docs/conversations/api/conversation-resource) of this conversation.
+  api.configuration.addresses.listResponse200:
+    - name: address_configurations
+      type: "[]STRUCT(conversations.v1.configuration_address)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conversation.listResponse200:
+    - name: conversations
+      type: "[]STRUCT(conversations.v1.conversation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conversation.messages.getResponse200:
+    - name: messages
+      type: "[]STRUCT(conversations.v1.conversation.conversation_message)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conversation.receipts.getResponse200:
+    - name: delivery_receipts
+      type: "[]STRUCT(conversations.v1.conversation.conversation_message.conversation_message_receipt)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conversation.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(conversations.v1.conversation.conversation_participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.conversation.webhooks.getResponse200:
+    - name: webhooks
+      type: "[]STRUCT(conversations.v1.conversation.conversation_scoped_webhook)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.credential.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(conversations.v1.credential)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.participantconversation.listResponse200:
+    - name: conversations
+      type: "[]STRUCT(conversations.v1.participant_conversation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.role.listResponse200:
+    - name: roles
+      type: "[]STRUCT(conversations.v1.role)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(conversations.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.bindings.getResponse200:
+    - name: bindings
+      type: "[]STRUCT(conversations.v1.service.service_binding)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.conversations.getResponse200:
+    - name: conversations
+      type: "[]STRUCT(conversations.v1.service.service_conversation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.messages.getResponse200:
+    - name: messages
+      type: "[]STRUCT(conversations.v1.service.service_conversation.service_conversation_message)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.receipts.getResponse200:
+    - name: delivery_receipts
+      type: "[]STRUCT(conversations.v1.service.service_conversation.service_conversation_message.service_conversation_message_receipt)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(conversations.v1.service.service_conversation.service_conversation_participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.webhooks.getResponse200:
+    - name: webhooks
+      type: "[]STRUCT(conversations.v1.service.service_conversation.service_conversation_scoped_webhook)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.participantConversations.getResponse200:
+    - name: conversations
+      type: "[]STRUCT(conversations.v1.service.service_participant_conversation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.roles.getResponse200:
+    - name: roles
+      type: "[]STRUCT(conversations.v1.service.service_role)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.users.getResponse200:
+    - name: users
+      type: "[]STRUCT(conversations.v1.service.service_user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.user.listResponse200:
+    - name: users
+      type: "[]STRUCT(conversations.v1.user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.user.conversations.getResponse200:
+    - name: conversations
+      type: "[]STRUCT(conversations.v1.user.user_conversation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

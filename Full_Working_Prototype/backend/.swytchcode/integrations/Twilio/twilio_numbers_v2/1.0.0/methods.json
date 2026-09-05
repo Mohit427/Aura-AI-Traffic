@@ -1,0 +1,249 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Check eligibility for multiple numbers to host",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a bulk hosted number eligibility check",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an item to a compliance bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.itemAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Cancel a hosted phone number order",
+      "canonical_id": "twilio_numbers.hostednumber.orders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Cancel an authorization document request",
+      "canonical_id": "twilio_numbers.hostednumber.authorizationDocuments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Clone a regulatory compliance bundle and its items to another account",
+      "canonical_id": "twilio_numbers.regulatorycompliance.clones.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a copy of a regulatory compliance bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.copies.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new end user with specified details",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUsers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new evaluation for a bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.evaluations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new regulatory compliance bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.bundles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create an authorization document for hosting phone numbers",
+      "canonical_id": "twilio_numbers.hostednumber.authorizationDocuments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific Bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.bundles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific supporting document",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocuments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific supporting document type instance by its ID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocumentTypes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all end-user types",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUserTypes.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all regulations",
+      "canonical_id": "twilio_numbers.regulatorycompliance.regulations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all supporting document types",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocumentTypes.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of hosted number orders for your account",
+      "canonical_id": "twilio_numbers.hostednumber.orders.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific assigned item instance for a bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.itemAssignments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific authorization document by its SID",
+      "canonical_id": "twilio_numbers.hostednumber.authorizationDocuments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific bulk hosted number order",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific end user instance",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUsers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific end-user type by its SID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUserTypes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific evaluation instance for a bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.evaluations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific hosted phone number order",
+      "canonical_id": "twilio_numbers.hostednumber.orders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific regulation instance by its ID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.regulations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific regulatory compliance bundle by its SID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.bundles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific short code application by its ID",
+      "canonical_id": "twilio_numbers.shortcode.applications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific supporting document instance by its ID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocuments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all bundles for an account",
+      "canonical_id": "twilio_numbers.regulatorycompliance.bundles.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all end users for an account",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUsers.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all evaluations for a specific bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.evaluations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all supporting documents for an account",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocuments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Host a phone number's capability on Twilio",
+      "canonical_id": "twilio_numbers.hostednumber.orders.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Host multiple phone numbers on Twilio's platform",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all assigned items for a regulatory compliance bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.itemAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all bundle copies for a specific bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.copies.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List authorization documents for the account",
+      "canonical_id": "twilio_numbers.hostednumber.authorizationDocuments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List dependent hosted number orders for an authorization document",
+      "canonical_id": "twilio_numbers.hostednumber.dependentHostedNumberOrders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a new short code application for an account",
+      "canonical_id": "twilio_numbers.shortcode.applications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific end user by their ID",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUsers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an assignment item instance from a bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.itemAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Replace bundle items with items from another bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.replaceItems.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of all short code applications",
+      "canonical_id": "twilio_numbers.shortcode.applications.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a hosted phone number order's status and verification details",
+      "canonical_id": "twilio_numbers.hostednumber.orders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a regulatory compliance bundle",
+      "canonical_id": "twilio_numbers.regulatorycompliance.bundles.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a supporting document's details",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocuments.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing end user's details",
+      "canonical_id": "twilio_numbers.regulatorycompliance.endUsers.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a new supporting document for regulatory compliance",
+      "canonical_id": "twilio_numbers.regulatorycompliance.supportingDocuments.create"
+    }
+  ]
+}

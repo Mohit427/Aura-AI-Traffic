@@ -1,0 +1,34 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new alarm",
+      "canonical_id": "twilio_alarms.alarm.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete alarm by its unique identifier",
+      "canonical_id": "twilio_alarms.alarm.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Enable or disable an alarm by its ID",
+      "canonical_id": "twilio_alarms.alarm.status.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of alarms with pagination and sorting options",
+      "canonical_id": "twilio_alarms.alarm.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific alarm by its ID",
+      "canonical_id": "twilio_alarms.alarm.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an alarm by its ID",
+      "canonical_id": "twilio_alarms.alarm.update"
+    }
+  ]
+}

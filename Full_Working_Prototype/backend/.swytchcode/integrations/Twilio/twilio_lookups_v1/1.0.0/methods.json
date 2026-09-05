@@ -1,0 +1,14 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get detailed information about a phone number",
+      "canonical_id": "twilio_lookups.phonenumber.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get information about a phone number",
+      "canonical_id": "twilio_lookups.phonenumber.get"
+    }
+  ]
+}

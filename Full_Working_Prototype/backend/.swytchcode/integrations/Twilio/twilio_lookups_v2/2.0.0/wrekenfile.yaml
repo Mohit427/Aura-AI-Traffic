@@ -1,0 +1,941 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://lookups.twilio.com
+METHODS:
+  twilio_lookups.phonenumber.get:
+    SUMMARY: "Full API documentation: https://www.twilio.com/docs/lookup/v2-api"
+    DESC: The Lookup API allows you to query information on a phone number so that you can make a trusted interaction with your user
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+      - Fields:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AddressLine1:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AddressLine2:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - City:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - State:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AddressCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - NationalId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateOfBirth:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - LastVerifiedDate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VerificationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PartnerSubId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(LookupResponse)
+        RETURNVAR: twilio_lookups_phonenumber_get
+        STATUS: 200
+    CANONICAL_ID: twilio_lookups.phonenumber.get
+  twilio_lookups.batch.query.create:
+    SUMMARY: In Request Bulk
+    DESC: |-
+      Discussions made regarding how to help the customer to correlation request and response objects:
+      - Respecting the natural order (requests vs. response)
+      - Using phone numbers as unique key
+      - Adding a correlation_id key
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/batch/query
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.batch.query.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.batch.query.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.batch.query.createResponse200)
+        RETURNVAR: twilio_lookups_batch_query_create
+        STATUS: 200
+    CANONICAL_ID: twilio_lookups.batch.query.create
+  twilio_lookups.ratelimit.list:
+    SUMMARY: Get account rate limits
+    DESC: |-
+      Retrieve the list of rate limits for all fields (if any)
+      It returns also the twilio rate limits.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RateLimits
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Fields:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.ratelimit.listResponse200)
+        RETURNVAR: twilio_lookups_ratelimit_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchLookupAccountRateLimits_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+    CANONICAL_ID: twilio_lookups.ratelimit.list
+  twilio_lookups.ratelimit.bucket.get:
+    SUMMARY: Get rate limit
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/RateLimits/Fields/{Field}/Bucket/{Bucket}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - Bucket:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(RateLimitResponse)
+        RETURNVAR: twilio_lookups_ratelimit_bucket_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchLookupRateLimit_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(FetchLookupRateLimit_Error404)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+    CANONICAL_ID: twilio_lookups.ratelimit.bucket.get
+  twilio_lookups.ratelimit.bucket.delete:
+    SUMMARY: Delete rate limit
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/RateLimits/Fields/{Field}/Bucket/{Bucket}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - Bucket:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteLookupRateLimit_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+    CANONICAL_ID: twilio_lookups.ratelimit.bucket.delete
+  twilio_lookups.ratelimit.bucket.update:
+    SUMMARY: Upsert rate limit
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/RateLimits/Fields/{Field}/Bucket/{Bucket}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(RateLimitRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - Bucket:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(RateLimitRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(RateLimitResponse)
+        RETURNVAR: twilio_lookups_ratelimit_bucket_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(UpdateLookupRateLimit_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+    CANONICAL_ID: twilio_lookups.ratelimit.bucket.update
+  twilio_lookups.phonenumber.overrides.get:
+    SUMMARY: Get Overrides for a Phone Number for a specific field.
+    DESC: Retrieve an Override for a specific package and phone number.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(OverridesResponse)
+        RETURNVAR: twilio_lookups_phonenumber_overrides_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchLookupPhoneNumberOverrides_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(FetchLookupPhoneNumberOverrides_Error404)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+    CANONICAL_ID: twilio_lookups.phonenumber.overrides.get
+  twilio_lookups.phonenumber.overrides.create:
+    SUMMARY: Create Override for a Phone Number for a specific field
+    DESC: Create an Override for a specific package and phone number.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(OverridesRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(OverridesRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(OverridesResponse)
+        RETURNVAR: twilio_lookups_phonenumber_overrides_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateLookupPhoneNumberOverrides_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+    CANONICAL_ID: twilio_lookups.phonenumber.overrides.create
+  twilio_lookups.phonenumber.overrides.update:
+    SUMMARY: Update Override for a Phone Number for a specific field
+    DESC: Update an Override for a specific package and phone number.
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(OverridesRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(OverridesRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(OverridesResponse)
+        RETURNVAR: twilio_lookups_phonenumber_overrides_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(UpdateLookupPhoneNumberOverrides_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(UpdateLookupPhoneNumberOverrides_Error404)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+    CANONICAL_ID: twilio_lookups.phonenumber.overrides.update
+  twilio_lookups.phonenumber.overrides.delete:
+    SUMMARY: Delete an Override for a Phone Number for a specific field
+    DESC: Delete an Override for a specific package and phone number.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/PhoneNumbers/{PhoneNumber}/Overrides/{Field}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Field:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteLookupPhoneNumberOverrides_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+    CANONICAL_ID: twilio_lookups.phonenumber.overrides.delete
+STRUCTS:
+  LookupBatchRequest:
+    - name: correlation_id
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier used to match request with response
+    - name: phone_number
+      type: STRING
+      REQUIRED: true
+    - name: fields
+      type: "[]STRING"
+      REQUIRED: false
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+    - name: identity_match
+      type: STRUCT(IdentityMatchParameters)
+      REQUIRED: false
+    - name: reassigned_number
+      type: STRUCT(ReassignedNumberParameters)
+      REQUIRED: false
+    - name: sms_pumping_risk
+      type: STRUCT(RiskParameters)
+      REQUIRED: false
+  IdentityMatchParameters:
+    - name: first_name
+      type: STRING
+      REQUIRED: false
+    - name: last_name
+      type: STRING
+      REQUIRED: false
+    - name: address_line1
+      type: STRING
+      REQUIRED: false
+    - name: address_line2
+      type: STRING
+      REQUIRED: false
+    - name: city
+      type: STRING
+      REQUIRED: false
+    - name: state
+      type: STRING
+      REQUIRED: false
+    - name: postal_code
+      type: STRING
+      REQUIRED: false
+    - name: address_country_code
+      type: STRING
+      REQUIRED: false
+    - name: national_id
+      type: STRING
+      REQUIRED: false
+    - name: date_of_birth
+      type: STRING
+      REQUIRED: false
+  ReassignedNumberParameters:
+    - name: last_verified_date
+      type: STRING
+      REQUIRED: false
+  RiskParameters:
+    - name: partner_sub_id
+      type: STRING
+      REQUIRED: false
+  LookupBatchResponse:
+    - name: correlation_id
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier used to match request with response
+    - name: twilio_error_code
+      type: INT
+      REQUIRED: false
+      comment: Twilio error code in case that the request to downstream fails
+    - name: calling_country_code
+      type: STRING
+      REQUIRED: false
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+    - name: national_format
+      type: STRING
+      REQUIRED: false
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+    - name: validation_errors
+      type: "[]STRING"
+      REQUIRED: false
+    - name: caller_name
+      type: STRUCT(CallerNameInfo)
+      REQUIRED: false
+    - name: sim_swap
+      type: STRUCT(SimSwapInfo)
+      REQUIRED: false
+    - name: call_forwarding
+      type: STRUCT(CallForwardingInfo)
+      REQUIRED: false
+    - name: line_type_intelligence
+      type: STRUCT(LineTypeIntelligenceInfo)
+      REQUIRED: false
+    - name: line_status
+      type: STRUCT(LineStatusInfo)
+      REQUIRED: false
+    - name: identity_match
+      type: STRUCT(IdentityMatchInfo)
+      REQUIRED: false
+    - name: reassigned_number
+      type: STRUCT(ReassignedNumberInfo)
+      REQUIRED: false
+    - name: sms_pumping_risk
+      type: STRUCT(SmsPumpingRiskInfo)
+      REQUIRED: false
+    - name: phone_number_quality_score
+      type: ANY
+      REQUIRED: false
+    - name: pre_fill
+      type: ANY
+      REQUIRED: false
+  CallerNameInfo:
+    - name: caller_name
+      type: STRING
+      REQUIRED: false
+    - name: caller_type
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  SimSwapInfo:
+    - name: last_sim_swap
+      type: STRUCT(LastSimSwapInfo)
+      REQUIRED: false
+    - name: carrier_name
+      type: STRING
+      REQUIRED: false
+    - name: mobile_country_code
+      type: STRING
+      REQUIRED: false
+    - name: mobile_network_code
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  CallForwardingInfo:
+    - name: call_forwarding_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  LineTypeIntelligenceInfo:
+    - name: mobile_country_code
+      type: STRING
+      REQUIRED: false
+    - name: mobile_network_code
+      type: STRING
+      REQUIRED: false
+    - name: carrier_name
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  LineStatusInfo:
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  IdentityMatchInfo:
+    - name: first_name_match
+      type: STRING
+      REQUIRED: false
+    - name: last_name_match
+      type: STRING
+      REQUIRED: false
+    - name: address_lines_match
+      type: STRING
+      REQUIRED: false
+    - name: city_match
+      type: STRING
+      REQUIRED: false
+    - name: state_match
+      type: STRING
+      REQUIRED: false
+    - name: postal_code_match
+      type: STRING
+      REQUIRED: false
+    - name: address_country_match
+      type: STRING
+      REQUIRED: false
+    - name: national_id_match
+      type: STRING
+      REQUIRED: false
+    - name: date_of_birth_match
+      type: STRING
+      REQUIRED: false
+    - name: summary_score
+      type: INT
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+    - name: error_message
+      type: STRING
+      REQUIRED: false
+  ReassignedNumberInfo:
+    - name: last_verified_date
+      type: STRING
+      REQUIRED: false
+    - name: is_number_reassigned
+      type: STRING
+      REQUIRED: false
+    - name: error_code
+      type: STRING
+      REQUIRED: false
+  SmsPumpingRiskInfo:
+    - name: carrier_risk_category
+      type: STRING
+      REQUIRED: false
+    - name: number_blocked
+      type: BOOL
+      REQUIRED: false
+    - name: number_blocked_date
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: number_blocked_last_3_months
+      type: BOOL
+      REQUIRED: false
+    - name: sms_pumping_risk_score
+      type: INT
+      REQUIRED: false
+    - name: error_code
+      type: INT
+      REQUIRED: false
+  LookupResponse:
+    - name: calling_country_code
+      type: STRING
+      REQUIRED: false
+      comment: International dialing prefix of the phone number defined in the E.164 standard.
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+      comment: The phone number's [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    - name: national_format
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in [national format](https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers).
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean which indicates if the phone number is in a valid range that can be freely assigned by a carrier to a user.
+    - name: validation_errors
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "Contains reasons why a phone number is invalid. Possible values: TOO_SHORT, TOO_LONG, INVALID_BUT_POSSIBLE, INVALID_COUNTRY_CODE, INVALID_LENGTH, NOT_A_NUMBER."
+    - name: caller_name
+      type: STRUCT(CallerNameInfo)
+      REQUIRED: false
+      comment: An object that contains caller name information based on [CNAM](https://support.twilio.com/hc/en-us/articles/360051670533-Getting-Started-with-CNAM-Caller-ID).
+    - name: sim_swap
+      type: STRUCT(SimSwapInfo)
+      REQUIRED: false
+      comment: An object that contains information on the last date the subscriber identity module (SIM) was changed for a mobile phone number.
+    - name: call_forwarding
+      type: STRUCT(CallForwardingInfo)
+      REQUIRED: false
+      comment: An object that contains information on the unconditional call forwarding status of mobile phone number.
+    - name: line_type_intelligence
+      type: STRUCT(LineTypeIntelligenceInfo)
+      REQUIRED: false
+      comment: An object that contains line type information including the carrier name, mobile country code, and mobile network code.
+    - name: line_status
+      type: STRUCT(LineStatusInfo)
+      REQUIRED: false
+      comment: An object that contains line status information for a mobile phone number.
+    - name: identity_match
+      type: STRUCT(IdentityMatchInfo)
+      REQUIRED: false
+      comment: An object that contains identity match information. The result of comparing user-provided information including name, address, date of birth, national ID, against authoritative phone-based data sources
+    - name: reassigned_number
+      type: STRUCT(ReassignedNumberInfo)
+      REQUIRED: false
+      comment: An object that contains reassigned number information. Reassigned Numbers will return a phone number's reassignment status given a phone number and date
+    - name: sms_pumping_risk
+      type: STRUCT(SmsPumpingRiskInfo)
+      REQUIRED: false
+      comment: An object that contains information on if a phone number has been currently or previously blocked by Verify Fraud Guard for receiving malicious SMS pumping traffic as well as other signals associated with risky carriers and low conversion rates.
+    - name: phone_number_quality_score
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains information of a mobile phone number quality score. Quality score will return a risk score about the phone number.
+    - name: pre_fill
+      type: ANY
+      REQUIRED: false
+      comment: "An object that contains pre fill information. pre_fill will return PII information associated with the phone number like first name, last name, address line, country code, state and postal code. "
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  RateLimitResponse:
+    - name: field
+      type: STRING
+      REQUIRED: false
+      comment: Limit of requests for the bucket
+    - name: limit
+      type: INT
+      REQUIRED: false
+      comment: Limit of requests for the bucket
+    - name: bucket
+      type: STRING
+      REQUIRED: false
+      comment: Name of the bucket
+    - name: owner
+      type: STRING
+      REQUIRED: false
+      comment: Owner of the rule
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: Time to live of the rule
+  RateLimitRequest:
+    - name: limit
+      type: INT
+      REQUIRED: false
+      comment: Limit of requests for the bucket
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: Time to live of the rule
+  OverridesRequest:
+    - name: line_type
+      type: STRING
+      REQUIRED: false
+      comment: The new line type to override the original line type
+    - name: reason
+      type: STRING
+      REQUIRED: false
+      comment: The reason for the override
+  OverridesResponse:
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number for which the override was created
+    - name: original_line_type
+      type: STRING
+      REQUIRED: false
+      comment: The original line type
+    - name: overridden_line_type
+      type: STRING
+      REQUIRED: false
+      comment: The new line type after the override
+    - name: override_reason
+      type: STRING
+      REQUIRED: false
+      comment: The reason for the override
+    - name: override_timestamp
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: overridden_by_account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Account SID for the user who made the override
+  api.batch.query.createRequest:
+    - name: phone_numbers
+      type: "[]STRUCT(LookupBatchRequest)"
+      REQUIRED: false
+  api.batch.query.createResponse200:
+    - name: phone_numbers
+      type: "[]STRUCT(LookupBatchResponse)"
+      REQUIRED: false
+  api.ratelimit.listResponse200:
+    - name: rate_limits
+      type: "[]STRUCT(RateLimitResponse)"
+      REQUIRED: false
+  FetchLookupAccountRateLimits_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  FetchLookupRateLimit_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  FetchLookupRateLimit_Error404:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteLookupRateLimit_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateLookupRateLimit_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  FetchLookupPhoneNumberOverrides_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  FetchLookupPhoneNumberOverrides_Error404:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateLookupPhoneNumberOverrides_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateLookupPhoneNumberOverrides_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateLookupPhoneNumberOverrides_Error404:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteLookupPhoneNumberOverrides_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code

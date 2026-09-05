@@ -1,0 +1,49 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the certificate for a specific domain",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new sender for messaging channels",
+      "canonical_id": "twilio_messaging.channel.senders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a sender for WhatsApp messages",
+      "canonical_id": "twilio_messaging.channel.senders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of sender channels",
+      "canonical_id": "twilio_messaging.channel.senders.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get sender details by ID",
+      "canonical_id": "twilio_messaging.channel.senders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the certificate for a specific domain",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a typing indicator for WhatsApp messages",
+      "canonical_id": "twilio_messaging.indicator.typing.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update sender profile, webhook, and configuration",
+      "canonical_id": "twilio_messaging.channel.senders.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a typing indicator to a recipient",
+      "canonical_id": "twilio_messaging.indicator.typing.create"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  bearer_token: BEARER <TOKEN>
+  w_base_url: https://iam.twilio.com
+METHODS: {}
+STRUCTS: {}

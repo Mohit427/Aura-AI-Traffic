@@ -1,0 +1,182 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://flex-api.twilio.com
+METHODS:
+  twilio_flex.instance.users.get:
+    SUMMARY: Fetch flex user for the given flex user sid
+    DESC: Fetch flex user for the given flex user sid
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Instances/{InstanceSid}/Users/{FlexUserSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstanceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FlexUserSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v2.flex_user)
+        RETURNVAR: twilio_flex_instance_users_get
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.instance.users.get
+  twilio_flex.instance.users.create:
+    SUMMARY: Update flex user for the given flex user sid
+    DESC: Update flex user for the given flex user sid
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Instances/{InstanceSid}/Users/{FlexUserSid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstanceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FlexUserSid:
+          TYPE: STRING
+          LOCATION: path
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UserSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Locale:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v2.flex_user)
+        RETURNVAR: twilio_flex_instance_users_create
+        STATUS: 200
+    CANONICAL_ID: twilio_flex.instance.users.create
+  twilio_flex.webchat.create:
+    SUMMARY: Perform operation CreateWebChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/WebChats
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Ui-Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - AddressSid:
+          TYPE: STRING
+          LOCATION: body
+      - ChatFriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CustomerFriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreEngagementData:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(flex.v2.web_channel)
+        RETURNVAR: twilio_flex_webchat_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_flex.webchat.create
+STRUCTS:
+  flex.v2.flex_user:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID of the account that created the resource.
+    - name: instance_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID created by Twilio to identify a Flex instance.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Twilio Unified User.
+    - name: flex_user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Flex User.
+    - name: worker_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the worker.
+    - name: workspace_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the workspace.
+    - name: flex_team_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Flex Team.
+    - name: username
+      type: STRING
+      REQUIRED: false
+      comment: Username of the User.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the User.
+    - name: locale
+      type: STRING
+      REQUIRED: false
+      comment: The locale preference of the user.
+    - name: roles
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The roles of the user.
+    - name: created_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this user was created, given in ISO 8601 format.
+    - name: updated_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this user was updated, given in ISO 8601 format.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: The current version of the user.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  flex.v2.web_channel:
+    - name: conversation_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string representing the [Conversation resource](https://www.twilio.com/docs/conversations/api/conversation-resource) created.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The unique string representing the User created and should be authorized to participate in the Conversation. For more details, see [User Identity & Access Tokens](https://www.twilio.com/docs/conversations/identity).

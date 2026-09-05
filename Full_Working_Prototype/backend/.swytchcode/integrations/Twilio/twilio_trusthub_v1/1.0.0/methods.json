@@ -1,0 +1,269 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Assign a channel endpoint to a customer profile",
+      "canonical_id": "twilio_trusthub.customerprofile.channelEndpointAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign a channel endpoint to a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.channelEndpointAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an item to a customer profile",
+      "canonical_id": "twilio_trusthub.customerprofile.entityAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an item to a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.entityAssignments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new customer evaluation",
+      "canonical_id": "twilio_trusthub.customerprofile.evaluations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new customer profile",
+      "canonical_id": "twilio_trusthub.customerprofile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new end user with specified details",
+      "canonical_id": "twilio_trusthub.enduser.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new evaluation for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.evaluations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new trust product with specified details",
+      "canonical_id": "twilio_trusthub.trustproduct.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a channel endpoint assignment for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.channelEndpointAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a customer channel endpoint assignment",
+      "canonical_id": "twilio_trusthub.customerprofile.channelEndpointAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a customer profile entity assignment",
+      "canonical_id": "twilio_trusthub.customerprofile.entityAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific evaluation instance",
+      "canonical_id": "twilio_trusthub.trustproduct.evaluations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a customer's channel endpoint assignment",
+      "canonical_id": "twilio_trusthub.customerprofile.channelEndpointAssignments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all end users",
+      "canonical_id": "twilio_trusthub.enduser.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all end-user types",
+      "canonical_id": "twilio_trusthub.endusertype.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all supporting document types",
+      "canonical_id": "twilio_trusthub.supportingdocumenttype.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of trust products for an account",
+      "canonical_id": "twilio_trusthub.trustproduct.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific assigned item instance",
+      "canonical_id": "twilio_trusthub.trustproduct.entityAssignments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific assigned item instance",
+      "canonical_id": "twilio_trusthub.customerprofile.entityAssignments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific channel endpoint assignment for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.channelEndpointAssignments.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific customer evaluation instance",
+      "canonical_id": "twilio_trusthub.customerprofile.evaluations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific customer profile by its ID",
+      "canonical_id": "twilio_trusthub.customerprofile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific end user by their ID",
+      "canonical_id": "twilio_trusthub.enduser.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific end-user type instance by its SID",
+      "canonical_id": "twilio_trusthub.endusertype.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific policy instance by its SID",
+      "canonical_id": "twilio_trusthub.policy.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific supporting document by its ID",
+      "canonical_id": "twilio_trusthub.supportingdocument.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific supporting document type",
+      "canonical_id": "twilio_trusthub.supportingdocumenttype.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Trust Product instance by its SID",
+      "canonical_id": "twilio_trusthub.trustproduct.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all assigned items for a customer profile",
+      "canonical_id": "twilio_trusthub.customerprofile.entityAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all customer profiles for an account",
+      "canonical_id": "twilio_trusthub.customerprofile.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all supporting documents for an account",
+      "canonical_id": "twilio_trusthub.supportingdocument.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get customer profile evaluations",
+      "canonical_id": "twilio_trusthub.customerprofile.evaluations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get entity assignments for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.entityAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get evaluations for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.evaluations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Initialize a tollfree verification inquiry",
+      "canonical_id": "twilio_trusthub.complianceinquiry.tollfree.initialize"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all policies",
+      "canonical_id": "twilio_trusthub.policy.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List channel endpoint assignments for a customer profile",
+      "canonical_id": "twilio_trusthub.customerprofile.channelEndpointAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List channel endpoint assignments for a trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.channelEndpointAssignments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a customer profile by its ID",
+      "canonical_id": "twilio_trusthub.customerprofile.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific end user",
+      "canonical_id": "twilio_trusthub.enduser.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific supporting document by its ID",
+      "canonical_id": "twilio_trusthub.supportingdocument.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific trust product",
+      "canonical_id": "twilio_trusthub.trustproduct.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a trust product entity assignment",
+      "canonical_id": "twilio_trusthub.trustproduct.entityAssignments.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Resume or re-open a customer's compliance inquiry",
+      "canonical_id": "twilio_trusthub.complianceinquiry.customers.initialize.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Resume or re-open a regulatory compliance inquiry for editing",
+      "canonical_id": "twilio_trusthub.complianceinquiry.gB.initialize.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new compliance inquiry for your account",
+      "canonical_id": "twilio_trusthub.complianceinquiry.customers.initialize"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Start a new compliance registration inquiry",
+      "canonical_id": "twilio_trusthub.complianceinquiry.gB.initialize"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a customer profile by its ID",
+      "canonical_id": "twilio_trusthub.customerprofile.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a supporting document by its ID",
+      "canonical_id": "twilio_trusthub.supportingdocument.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Trust Product in an account",
+      "canonical_id": "twilio_trusthub.trustproduct.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing End User's details",
+      "canonical_id": "twilio_trusthub.enduser.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a new supporting document",
+      "canonical_id": "twilio_trusthub.supportingdocument.create"
+    }
+  ]
+}

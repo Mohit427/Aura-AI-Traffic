@@ -1,0 +1,1026 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://trunking.twilio.com
+METHODS:
+  twilio_trunking.trunk.credentialLists.get:
+    SUMMARY: Perform operation FetchCredentialList
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/CredentialLists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.credential_list)
+        RETURNVAR: twilio_trunking_trunk_credentialLists_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.credentialLists.get
+  twilio_trunking.trunk.credentialLists.delete:
+    SUMMARY: Perform operation DeleteCredentialList
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Trunks/{TrunkSid}/CredentialLists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trunking.trunk.credentialLists.delete
+  twilio_trunking.trunk.credentialLists.create:
+    SUMMARY: Perform operation CreateCredentialList
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/CredentialLists
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - CredentialListSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.credential_list)
+        RETURNVAR: twilio_trunking_trunk_credentialLists_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trunking.trunk.credentialLists.create
+  twilio_trunking.trunk.credentialLists.get.1:
+    SUMMARY: Perform operation ListCredentialList
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/CredentialLists
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trunk.credentialLists.getResponse200)
+        RETURNVAR: twilio_trunking_trunk_credentialLists_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.credentialLists.get.1
+  twilio_trunking.trunk.ipAccessControlLists.get:
+    SUMMARY: Perform operation FetchIpAccessControlList
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/IpAccessControlLists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.ip_access_control_list)
+        RETURNVAR: twilio_trunking_trunk_ipAccessControlLists_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.ipAccessControlLists.get
+  twilio_trunking.trunk.ipAccessControlLists.delete:
+    SUMMARY: Remove an associated IP Access Control List from a Trunk
+    DESC: Remove an associated IP Access Control List from a Trunk
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Trunks/{TrunkSid}/IpAccessControlLists/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trunking.trunk.ipAccessControlLists.delete
+  twilio_trunking.trunk.ipAccessControlLists.create:
+    SUMMARY: Associate an IP Access Control List with a Trunk
+    DESC: Associate an IP Access Control List with a Trunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/IpAccessControlLists
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - IpAccessControlListSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.ip_access_control_list)
+        RETURNVAR: twilio_trunking_trunk_ipAccessControlLists_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trunking.trunk.ipAccessControlLists.create
+  twilio_trunking.trunk.ipAccessControlLists.get.1:
+    SUMMARY: List all IP Access Control Lists for a Trunk
+    DESC: List all IP Access Control Lists for a Trunk
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/IpAccessControlLists
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trunk.ipAccessControlLists.getResponse200)
+        RETURNVAR: twilio_trunking_trunk_ipAccessControlLists_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.ipAccessControlLists.get.1
+  twilio_trunking.trunk.originationUrls.get:
+    SUMMARY: Perform operation FetchOriginationUrl
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/OriginationUrls/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.origination_url)
+        RETURNVAR: twilio_trunking_trunk_originationUrls_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.originationUrls.get
+  twilio_trunking.trunk.originationUrls.delete:
+    SUMMARY: Perform operation DeleteOriginationUrl
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Trunks/{TrunkSid}/OriginationUrls/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trunking.trunk.originationUrls.delete
+  twilio_trunking.trunk.originationUrls.create:
+    SUMMARY: Perform operation UpdateOriginationUrl
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/OriginationUrls/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Weight:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SipUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.origination_url)
+        RETURNVAR: twilio_trunking_trunk_originationUrls_create
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.originationUrls.create
+  twilio_trunking.trunk.originationUrls.create.1:
+    SUMMARY: Perform operation CreateOriginationUrl
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/OriginationUrls
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Weight:
+          TYPE: INT
+          LOCATION: body
+      - Priority:
+          TYPE: INT
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - SipUrl:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.origination_url)
+        RETURNVAR: twilio_trunking_trunk_originationUrls_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trunking.trunk.originationUrls.create.1
+  twilio_trunking.trunk.originationUrls.get.1:
+    SUMMARY: Perform operation ListOriginationUrl
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/OriginationUrls
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trunk.originationUrls.getResponse200)
+        RETURNVAR: twilio_trunking_trunk_originationUrls_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.originationUrls.get.1
+  twilio_trunking.trunk.phoneNumbers.get:
+    SUMMARY: Perform operation FetchPhoneNumber
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.phone_number)
+        RETURNVAR: twilio_trunking_trunk_phoneNumbers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.phoneNumbers.get
+  twilio_trunking.trunk.phoneNumbers.delete:
+    SUMMARY: Perform operation DeletePhoneNumber
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Trunks/{TrunkSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trunking.trunk.phoneNumbers.delete
+  twilio_trunking.trunk.phoneNumbers.create:
+    SUMMARY: Perform operation CreatePhoneNumber
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/PhoneNumbers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumberSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.phone_number)
+        RETURNVAR: twilio_trunking_trunk_phoneNumbers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trunking.trunk.phoneNumbers.create
+  twilio_trunking.trunk.phoneNumbers.get.1:
+    SUMMARY: Perform operation ListPhoneNumber
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/PhoneNumbers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trunk.phoneNumbers.getResponse200)
+        RETURNVAR: twilio_trunking_trunk_phoneNumbers_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.phoneNumbers.get.1
+  twilio_trunking.trunk.recording.get:
+    SUMMARY: Perform operation FetchRecording
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{TrunkSid}/Recording
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.recording)
+        RETURNVAR: twilio_trunking_trunk_recording_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.recording.get
+  twilio_trunking.trunk.recording.create:
+    SUMMARY: Perform operation UpdateRecording
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{TrunkSid}/Recording
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrunkSid:
+          TYPE: STRING
+          LOCATION: path
+      - Mode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Trim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk.recording)
+        RETURNVAR: twilio_trunking_trunk_recording_create
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.recording.create
+  twilio_trunking.trunk.get:
+    SUMMARY: Perform operation FetchTrunk
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk)
+        RETURNVAR: twilio_trunking_trunk_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.get
+  twilio_trunking.trunk.delete:
+    SUMMARY: Perform operation DeleteTrunk
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Trunks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trunking.trunk.delete
+  twilio_trunking.trunk.create:
+    SUMMARY: Perform operation UpdateTrunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DomainName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DisasterRecoveryUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DisasterRecoveryMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TransferMode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secure:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CnamLookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TransferCallerId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk)
+        RETURNVAR: twilio_trunking_trunk_create
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.create
+  twilio_trunking.trunk.create.1:
+    SUMMARY: Perform operation CreateTrunk
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Trunks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DomainName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DisasterRecoveryUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DisasterRecoveryMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TransferMode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secure:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CnamLookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TransferCallerId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trunking.v1.trunk)
+        RETURNVAR: twilio_trunking_trunk_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trunking.trunk.create.1
+  twilio_trunking.trunk.list:
+    SUMMARY: Perform operation ListTrunk
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Trunks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trunk.listResponse200)
+        RETURNVAR: twilio_trunking_trunk_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trunking.trunk.list
+STRUCTS:
+  trunking.v1.trunk.credential_list:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CredentialList resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the CredentialList resource.
+    - name: trunk_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Trunk the credential list in associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  trunking.v1.trunk.ip_access_control_list:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IpAccessControlList resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the IpAccessControlList resource.
+    - name: trunk_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Trunk the resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  trunking.v1.trunk.origination_url:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the OriginationUrl resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the OriginationUrl resource.
+    - name: trunk_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Trunk that owns the Origination URL.
+    - name: weight
+      type: INT
+      REQUIRED: false
+      comment: The value that determines the relative share of the load the URI should receive compared to other URIs with the same priority. Can be an integer from 1 to 65535, inclusive, and the default is 10. URLs with higher values receive more load than those with lower ones with the same priority.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the URL is enabled. The default is `true`.
+    - name: sip_url
+      type: STRING
+      REQUIRED: false
+      comment: The SIP address you want Twilio to route your Origination calls to. This must be a `sip:` schema.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: priority
+      type: INT
+      REQUIRED: false
+      comment: The relative importance of the URI. Can be an integer from 0 to 65535, inclusive, and the default is 10. The lowest number represents the most important URI.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  trunking.v1.trunk.phone_number:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the PhoneNumber resource.
+    - name: address_requirements
+      type: STRING
+      REQUIRED: false
+    - name: api_version
+      type: STRING
+      REQUIRED: false
+      comment: The API version used to start a new TwiML session.
+    - name: beta
+      type: BOOL
+      REQUIRED: false
+      comment: "Whether the phone number is new to the Twilio platform. Can be: `true` or `false`."
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: "The set of Boolean properties that indicate whether a phone number can receive calls or messages.  Capabilities are  `Voice`, `SMS`, and `MMS` and each capability can be: `true` or `false`."
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the PhoneNumber resource.
+    - name: sms_application_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the application that handles SMS messages sent to the phone number. If an `sms_application_sid` is present, we ignore all `sms_*_url` values and use those of the application.
+    - name: sms_fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `sms_fallback_url`. Can be: `GET` or `POST`."
+    - name: sms_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call using the `sms_fallback_method` when an error occurs while retrieving or executing the TwiML from `sms_url`.
+    - name: sms_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `sms_url`. Can be: `GET` or `POST`."
+    - name: sms_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `sms_method` when the phone number receives an incoming SMS message.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `status_callback_method` to send status information to your application.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `status_callback`. Can be: `GET` or `POST`."
+    - name: trunk_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Trunk that handles calls to the phone number. If a `trunk_sid` is present, we ignore all of the voice URLs and voice applications and use those set on the Trunk. Setting a `trunk_sid` will automatically delete your `voice_application_sid` and vice versa.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: voice_application_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the application that handles calls to the phone number. If a `voice_application_sid` is present, we ignore all of the voice URLs and use those set on the application. Setting a `voice_application_sid` will automatically delete your `trunk_sid` and vice versa.
+    - name: voice_caller_id_lookup
+      type: BOOL
+      REQUIRED: false
+      comment: "Whether we look up the caller's caller-ID name from the CNAM database ($0.01 per look up). Can be: `true` or `false`."
+    - name: voice_fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method that we use to call `voice_fallback_url`. Can be: `GET` or `POST`."
+    - name: voice_fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call using the `voice_fallback_method` when an error occurs retrieving or executing the TwiML requested by `url`.
+    - name: voice_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `voice_url`. Can be: `GET` or `POST`."
+    - name: voice_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `voice_method` when the phone number receives a call. The `voice_url` is not be used if a `voice_application_sid` or a `trunk_sid` is set.
+  trunking.v1.trunk.recording:
+    - name: mode
+      type: STRING
+      REQUIRED: false
+    - name: trim
+      type: STRING
+      REQUIRED: false
+  trunking.v1.trunk:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Trunk resource.
+    - name: domain_name
+      type: STRING
+      REQUIRED: false
+      comment: The unique address you reserve on Twilio to which you route your SIP traffic. Domain names can contain letters, digits, and `-` and must end with `pstn.twilio.com`. See [Termination Settings](https://www.twilio.com/docs/sip-trunking#termination) for more information.
+    - name: disaster_recovery_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call the `disaster_recovery_url`. Can be: `GET` or `POST`."
+    - name: disaster_recovery_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `disaster_recovery_method` if an error occurs while sending SIP traffic towards the configured Origination URL. We retrieve TwiML from this URL and execute the instructions like any other normal TwiML call. See [Disaster Recovery](https://www.twilio.com/docs/sip-trunking#disaster-recovery) for more information.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: secure
+      type: BOOL
+      REQUIRED: false
+      comment: Whether Secure Trunking is enabled for the trunk. If enabled, all calls going through the trunk will be secure using SRTP for media and TLS for signaling. If disabled, then RTP will be used for media. See [Secure Trunking](https://www.twilio.com/docs/sip-trunking#securetrunking) for more information.
+    - name: recording
+      type: ANY
+      REQUIRED: false
+      comment: "The recording settings for the trunk. Can be: `do-not-record`, `record-from-ringing`, `record-from-answer`. If set to `record-from-ringing` or `record-from-answer`, all calls going through the trunk will be recorded. The only way to change recording parameters is on a sub-resource of a Trunk after it has been created. e.g.`/Trunks/[Trunk_SID]/Recording -XPOST -d'Mode=record-from-answer'`. See [Recording](https://www.twilio.com/docs/sip-trunking#recording) for more information."
+    - name: transfer_mode
+      type: STRING
+      REQUIRED: false
+    - name: transfer_caller_id
+      type: STRING
+      REQUIRED: false
+    - name: cnam_lookup_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether Caller ID Name (CNAM) lookup is enabled for the trunk. If enabled, all inbound calls to the SIP Trunk from the United States and Canada automatically perform a CNAM Lookup and display Caller ID data on your phone. See [CNAM Lookups](https://www.twilio.com/docs/sip-trunking#CNAM) for more information.
+    - name: auth_type
+      type: STRING
+      REQUIRED: false
+      comment: "The types of authentication mapped to the domain. Can be: `IP_ACL` and `CREDENTIAL_LIST`. If both are mapped, the values are returned in a comma delimited list. If empty, the domain will not receive any traffic."
+    - name: symmetric_rtp_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether Symmetric RTP is enabled for the trunk. When Symmetric RTP is disabled, Twilio will send RTP to the destination negotiated in the SDP. Disabling Symmetric RTP is considered to be more secure and therefore recommended. See [Symmetric RTP](https://www.twilio.com/docs/sip-trunking#symmetric-rtp) for more information.
+    - name: auth_type_set
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Reserved.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Trunk resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  api.trunk.credentialLists.getResponse200:
+    - name: credential_lists
+      type: "[]STRUCT(trunking.v1.trunk.credential_list)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trunk.ipAccessControlLists.getResponse200:
+    - name: ip_access_control_lists
+      type: "[]STRUCT(trunking.v1.trunk.ip_access_control_list)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trunk.originationUrls.getResponse200:
+    - name: origination_urls
+      type: "[]STRUCT(trunking.v1.trunk.origination_url)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trunk.phoneNumbers.getResponse200:
+    - name: phone_numbers
+      type: "[]STRUCT(trunking.v1.trunk.phone_number)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trunk.listResponse200:
+    - name: trunks
+      type: "[]STRUCT(trunking.v1.trunk)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

@@ -1,0 +1,1599 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://supersim.twilio.com
+METHODS:
+  twilio_supersim.sim.billingPeriods.get:
+    SUMMARY: Retrieve a list of Billing Periods for a Super SIM.
+    DESC: Retrieve a list of Billing Periods for a Super SIM.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{SimSid}/BillingPeriods
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SimSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.billingPeriods.getResponse200)
+        RETURNVAR: twilio_supersim_sim_billingPeriods_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.sim.billingPeriods.get
+  twilio_supersim.esimprofile.create:
+    SUMMARY: Order an eSIM Profile.
+    DESC: Order an eSIM Profile.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ESimProfiles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - GenerateMatchingId:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Eid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.esim_profile)
+        RETURNVAR: twilio_supersim_esimprofile_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.esimprofile.create
+  twilio_supersim.esimprofile.list:
+    SUMMARY: Retrieve a list of eSIM Profiles.
+    DESC: Retrieve a list of eSIM Profiles.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ESimProfiles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Eid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SimSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.esimprofile.listResponse200)
+        RETURNVAR: twilio_supersim_esimprofile_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.esimprofile.list
+  twilio_supersim.esimprofile.get:
+    SUMMARY: Fetch an eSIM Profile.
+    DESC: Fetch an eSIM Profile.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/ESimProfiles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.esim_profile)
+        RETURNVAR: twilio_supersim_esimprofile_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.esimprofile.get
+  twilio_supersim.fleet.create:
+    SUMMARY: Create a Fleet
+    DESC: Create a Fleet
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Fleets
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfile:
+          TYPE: STRING
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DataEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - IpCommandsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IpCommandsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsCommandsEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SmsCommandsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsCommandsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.fleet)
+        RETURNVAR: twilio_supersim_fleet_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.fleet.create
+  twilio_supersim.fleet.list:
+    SUMMARY: Retrieve a list of Fleets from your account.
+    DESC: Retrieve a list of Fleets from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Fleets
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfile:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.fleet.listResponse200)
+        RETURNVAR: twilio_supersim_fleet_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.fleet.list
+  twilio_supersim.fleet.get:
+    SUMMARY: Fetch a Fleet instance from your account.
+    DESC: Fetch a Fleet instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Fleets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.fleet)
+        RETURNVAR: twilio_supersim_fleet_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.fleet.get
+  twilio_supersim.fleet.create.1:
+    SUMMARY: Updates the given properties of a Super SIM Fleet instance from your account.
+    DESC: Updates the given properties of a Super SIM Fleet instance from your account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Fleets/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NetworkAccessProfile:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IpCommandsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IpCommandsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsCommandsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsCommandsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.fleet)
+        RETURNVAR: twilio_supersim_fleet_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.fleet.create.1
+  twilio_supersim.ipcommand.create:
+    SUMMARY: Send an IP Command to a Super SIM.
+    DESC: Send an IP Command to a Super SIM.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/IpCommands
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          LOCATION: body
+      - Payload:
+          TYPE: STRING
+          LOCATION: body
+      - DevicePort:
+          TYPE: INT
+          LOCATION: body
+      - PayloadType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.ip_command)
+        RETURNVAR: twilio_supersim_ipcommand_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.ipcommand.create
+  twilio_supersim.ipcommand.list:
+    SUMMARY: Retrieve a list of IP Commands from your account.
+    DESC: Retrieve a list of IP Commands from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/IpCommands
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SimIccid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.ipcommand.listResponse200)
+        RETURNVAR: twilio_supersim_ipcommand_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.ipcommand.list
+  twilio_supersim.ipcommand.get:
+    SUMMARY: Fetch IP Command instance from your account.
+    DESC: Fetch IP Command instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/IpCommands/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.ip_command)
+        RETURNVAR: twilio_supersim_ipcommand_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.ipcommand.get
+  twilio_supersim.network.get:
+    SUMMARY: Fetch a Network resource.
+    DESC: Fetch a Network resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Networks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network)
+        RETURNVAR: twilio_supersim_network_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.network.get
+  twilio_supersim.network.list:
+    SUMMARY: Retrieve a list of Network resources.
+    DESC: Retrieve a list of Network resources.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Networks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Mcc:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Mnc:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.network.listResponse200)
+        RETURNVAR: twilio_supersim_network_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.network.list
+  twilio_supersim.networkaccessprofile.create:
+    SUMMARY: Create a new Network Access Profile
+    DESC: Create a new Network Access Profile
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/NetworkAccessProfiles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Networks:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network_access_profile)
+        RETURNVAR: twilio_supersim_networkaccessprofile_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.create
+  twilio_supersim.networkaccessprofile.list:
+    SUMMARY: Retrieve a list of Network Access Profiles from your account.
+    DESC: Retrieve a list of Network Access Profiles from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/NetworkAccessProfiles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.networkaccessprofile.listResponse200)
+        RETURNVAR: twilio_supersim_networkaccessprofile_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.list
+  twilio_supersim.networkaccessprofile.get:
+    SUMMARY: Fetch a Network Access Profile instance from your account.
+    DESC: Fetch a Network Access Profile instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/NetworkAccessProfiles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network_access_profile)
+        RETURNVAR: twilio_supersim_networkaccessprofile_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.get
+  twilio_supersim.networkaccessprofile.create.1:
+    SUMMARY: Updates the given properties of a Network Access Profile in your account.
+    DESC: Updates the given properties of a Network Access Profile in your account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/NetworkAccessProfiles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network_access_profile)
+        RETURNVAR: twilio_supersim_networkaccessprofile_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.create.1
+  twilio_supersim.networkaccessprofile.networks.get:
+    SUMMARY: Retrieve a list of Network Access Profile resource's Network resource.
+    DESC: Retrieve a list of Network Access Profile resource's Network resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.networkaccessprofile.networks.getResponse200)
+        RETURNVAR: twilio_supersim_networkaccessprofile_networks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.networks.get
+  twilio_supersim.networkaccessprofile.networks.create:
+    SUMMARY: Add a Network resource to the Network Access Profile resource.
+    DESC: Add a Network resource to the Network Access Profile resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Network:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network_access_profile.network_access_profile_network)
+        RETURNVAR: twilio_supersim_networkaccessprofile_networks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.networks.create
+  twilio_supersim.networkaccessprofile.networks.delete:
+    SUMMARY: Remove a Network resource from the Network Access Profile resource's.
+    DESC: Remove a Network resource from the Network Access Profile resource's.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.networks.delete
+  twilio_supersim.networkaccessprofile.networks.get.1:
+    SUMMARY: Fetch a Network Access Profile resource's Network resource.
+    DESC: Fetch a Network Access Profile resource's Network resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/NetworkAccessProfiles/{NetworkAccessProfileSid}/Networks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NetworkAccessProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.network_access_profile.network_access_profile_network)
+        RETURNVAR: twilio_supersim_networkaccessprofile_networks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.networkaccessprofile.networks.get.1
+  twilio_supersim.settingsupdate.list:
+    SUMMARY: Retrieve a list of Settings Updates.
+    DESC: Retrieve a list of Settings Updates.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SettingsUpdates
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.settingsupdate.listResponse200)
+        RETURNVAR: twilio_supersim_settingsupdate_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.settingsupdate.list
+  twilio_supersim.sim.create:
+    SUMMARY: Register a Super SIM to your Account
+    DESC: Register a Super SIM to your Account
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sims
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Iccid:
+          TYPE: STRING
+          LOCATION: body
+      - RegistrationCode:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.sim)
+        RETURNVAR: twilio_supersim_sim_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.sim.create
+  twilio_supersim.sim.list:
+    SUMMARY: Retrieve a list of Super SIMs from your account.
+    DESC: Retrieve a list of Super SIMs from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Fleet:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Iccid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.listResponse200)
+        RETURNVAR: twilio_supersim_sim_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.sim.list
+  twilio_supersim.sim.get:
+    SUMMARY: Fetch a Super SIM instance from your account.
+    DESC: Fetch a Super SIM instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.sim)
+        RETURNVAR: twilio_supersim_sim_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.sim.get
+  twilio_supersim.sim.create.1:
+    SUMMARY: Updates the given properties of a Super SIM instance from your account.
+    DESC: Updates the given properties of a Super SIM instance from your account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sims/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Fleet:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.sim)
+        RETURNVAR: twilio_supersim_sim_create_1
+        STATUS: 200
+      - RETURNTYPE: STRUCT(supersim.v1.sim)
+        RETURNVAR: twilio_supersim_sim_create_1_202
+        STATUS: 202
+    CANONICAL_ID: twilio_supersim.sim.create.1
+  twilio_supersim.sim.ipAddresses.get:
+    SUMMARY: Retrieve a list of IP Addresses for the given Super SIM.
+    DESC: Retrieve a list of IP Addresses for the given Super SIM.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sims/{SimSid}/IpAddresses
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SimSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sim.ipAddresses.getResponse200)
+        RETURNVAR: twilio_supersim_sim_ipAddresses_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.sim.ipAddresses.get
+  twilio_supersim.smscommand.create:
+    SUMMARY: Send SMS Command to a Sim.
+    DESC: Send SMS Command to a Sim.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SmsCommands
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          LOCATION: body
+      - Payload:
+          TYPE: STRING
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.sms_command)
+        RETURNVAR: twilio_supersim_smscommand_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_supersim.smscommand.create
+  twilio_supersim.smscommand.list:
+    SUMMARY: Retrieve a list of SMS Commands from your account.
+    DESC: Retrieve a list of SMS Commands from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SmsCommands
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.smscommand.listResponse200)
+        RETURNVAR: twilio_supersim_smscommand_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.smscommand.list
+  twilio_supersim.smscommand.get:
+    SUMMARY: Fetch SMS Command instance from your account.
+    DESC: Fetch SMS Command instance from your account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SmsCommands/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(supersim.v1.sms_command)
+        RETURNVAR: twilio_supersim_smscommand_get
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.smscommand.get
+  twilio_supersim.usagerecord.list:
+    SUMMARY: List UsageRecords
+    DESC: List UsageRecords
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/UsageRecords
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Fleet:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Network:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IsoCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Group:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Granularity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - StartTime:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndTime:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.usagerecord.listResponse200)
+        RETURNVAR: twilio_supersim_usagerecord_list
+        STATUS: 200
+    CANONICAL_ID: twilio_supersim.usagerecord.list
+STRUCTS:
+  supersim.v1.sim.billing_period:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Billing Period.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) the Super SIM belongs to.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Super SIM the Billing Period belongs to.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The start time of the Billing Period specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The end time of the Billing Period specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: period_type
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  supersim.v1.esim_profile:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the eSIM Profile resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) to which the eSIM Profile resource belongs.
+    - name: iccid
+      type: STRING
+      REQUIRED: false
+      comment: The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with the Sim resource.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Sim](https://www.twilio.com/docs/iot/supersim/api/sim-resource) resource that this eSIM Profile controls.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: eid
+      type: STRING
+      REQUIRED: false
+      comment: Identifier of the eUICC that can claim the eSIM Profile.
+    - name: smdp_plus_address
+      type: STRING
+      REQUIRED: false
+      comment: Address of the SM-DP+ server from which the Profile will be downloaded. The URL will appear once the eSIM Profile reaches the status `available`.
+    - name: matching_id
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier of the eSIM profile that can be used to identify and download the eSIM profile from the SM-DP+ server. Populated if `generate_matching_id` is set to `true` when creating the eSIM profile reservation.
+    - name: activation_code
+      type: STRING
+      REQUIRED: false
+      comment: Combined machine-readable activation code for acquiring an eSIM Profile with the Activation Code download method. Can be used in a QR code to download an eSIM profile.
+    - name: error_code
+      type: STRING
+      REQUIRED: false
+      comment: Code indicating the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state.
+    - name: error_message
+      type: STRING
+      REQUIRED: false
+      comment: Error message describing the failure if the download of the SIM Profile failed and the eSIM Profile is in `failed` state.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the eSIM Profile resource.
+  supersim.v1.fleet:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Fleet resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Fleet resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Fleet resource.
+    - name: data_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Defines whether SIMs in the Fleet are capable of using 2G/3G/4G/LTE/CAT-M data connectivity. Defaults to `true`.
+    - name: data_limit
+      type: INT
+      REQUIRED: false
+      comment: The total data usage (download and upload combined) in Megabytes that each Super SIM assigned to the Fleet can consume during a billing period (normally one month). Value must be between 1MB (1) and 2TB (2,000,000). Defaults to 250MB.
+    - name: data_metering
+      type: STRING
+      REQUIRED: false
+    - name: sms_commands_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands. Defaults to `false`.
+    - name: sms_commands_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+    - name: sms_commands_method
+      type: STRING
+      REQUIRED: false
+      comment: A string representing the HTTP method to use when making a request to `sms_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+    - name: network_access_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Network Access Profile that controls which cellular networks the Fleet's SIMs can connect to.
+    - name: ip_commands_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that will receive a webhook when a Super SIM in the Fleet is used to send an IP Command from your device to a special IP address. Your server should respond with an HTTP status code in the 200 range; any response body will be ignored.
+    - name: ip_commands_method
+      type: STRING
+      REQUIRED: false
+      comment: A string representing the HTTP method to use when making a request to `ip_commands_url`. Can be one of `POST` or `GET`. Defaults to `POST`.
+  supersim.v1.ip_command:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the IP Command resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the IP Command resource.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) that this IP Command was sent to or from.
+    - name: sim_iccid
+      type: STRING
+      REQUIRED: false
+      comment: The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the [Super SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) that this IP Command was sent to or from.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: direction
+      type: STRING
+      REQUIRED: false
+    - name: device_ip
+      type: STRING
+      REQUIRED: false
+      comment: The IP address of the device that the IP Command was sent to or received from. For an IP Command sent to a Super SIM, `device_ip` starts out as `null`, and once the IP Command is “sent”, the `device_ip` will be filled out. An IP Command sent from a Super SIM have its `device_ip` always set.
+    - name: device_port
+      type: INT
+      REQUIRED: false
+      comment: For an IP Command sent to a Super SIM, it would be the destination port of the IP message. For an IP Command sent from a Super SIM, it would be the source port of the IP message.
+    - name: payload_type
+      type: STRING
+      REQUIRED: false
+    - name: payload
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The payload that is carried in the IP/UDP message. The payload can be encoded in either text or binary format. For text payload, UTF-8 encoding must be used.
+
+        For an IP Command sent to a Super SIM, the payload is appended to the IP/UDP message “as is”. The payload should not exceed 1300 bytes.
+
+        For an IP Command sent from a Super SIM, the payload from the received IP/UDP message is extracted and sent in binary encoding. For an IP Command sent from a Super SIM, the payload should not exceed 1300 bytes. If it is larger than 1300 bytes, there might be fragmentation on the upstream and the message may appear truncated.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the IP Command resource.
+  supersim.v1.network:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Network resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable identifier of this resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Network resource.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resource.
+    - name: identifiers
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Array of objects identifying the [MCC-MNCs](https://en.wikipedia.org/wiki/Mobile_country_code) that are included in the Network resource.
+  supersim.v1.network_access_profile:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Network Access Profile resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Network Access Profile belongs to.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Network Access Profile resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  supersim.v1.network_access_profile.network_access_profile_network:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Network resource.
+    - name: network_access_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Network resource's Network Access Profile resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable identifier of the Network this resource refers to.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the Network resource.
+    - name: identifiers
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Array of objects identifying the [MCC-MNCs](https://en.wikipedia.org/wiki/Mobile_country_code) that are included in the Network resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Network resource.
+  supersim.v1.settings_update:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of this Settings Update.
+    - name: iccid
+      type: STRING
+      REQUIRED: false
+      comment: The [ICCID](https://en.wikipedia.org/wiki/SIM_card#ICCID) associated with the SIM.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Super SIM to which this Settings Update was applied.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: packages
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Array containing the different Settings Packages that will be applied to the SIM after the update completes. Each object within the array indicates the name and the version of the Settings Package that will be on the SIM if the update is successful.
+    - name: date_completed
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format, when the update successfully completed and the new settings were applied to the SIM.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Settings Update was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Settings Update was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  supersim.v1.sim:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Sim resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used in place of the resource's `sid` in the URL to address the resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Super SIM belongs to.
+    - name: iccid
+      type: STRING
+      REQUIRED: false
+      comment: The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) associated with the SIM.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: fleet_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID of the Fleet configured for this SIM.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Sim Resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  supersim.v1.sim.sim_ip_address:
+    - name: ip_address
+      type: STRING
+      REQUIRED: false
+      comment: IP address assigned to the given Super SIM
+    - name: ip_address_version
+      type: STRING
+      REQUIRED: false
+  supersim.v1.sms_command:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the SMS Command resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the SMS Command resource.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [SIM](https://www.twilio.com/docs/iot/supersim/api/sim-resource) that this SMS Command was sent to or from.
+    - name: payload
+      type: STRING
+      REQUIRED: false
+      comment: The message body of the SMS Command sent to or from the SIM. For text mode messages, this can be up to 160 characters.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: direction
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the SMS Command resource.
+  supersim.v1.usage_record:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that incurred the usage.
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+      comment: SID of a Sim resource to which the UsageRecord belongs. Value will only be present when either a value for the `Sim` query parameter is provided or when UsageRecords are grouped by `sim`. Otherwise, the value will be `null`.
+    - name: network_sid
+      type: STRING
+      REQUIRED: false
+      comment: SID of the Network resource the usage occurred on. Value will only be present when either a value for the `Network` query parameter is provided or when UsageRecords are grouped by `network`. Otherwise, the value will be `null`.
+    - name: fleet_sid
+      type: STRING
+      REQUIRED: false
+      comment: SID of the Fleet resource the usage occurred on. Value will only be present when either a value for the `Fleet` query parameter is provided or when UsageRecords are grouped by `fleet`. Otherwise, the value will be `null`.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: Alpha-2 ISO Country Code that the usage occurred in. Value will only be present when either a value for the `IsoCountry` query parameter is provided or when UsageRecords are grouped by `isoCountry`. Otherwise, the value will be `null`.
+    - name: period
+      type: ANY
+      REQUIRED: false
+      comment: The time period for which the usage is reported. The period is represented as a pair of `start_time` and `end_time` timestamps specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: data_upload
+      type: INT
+      REQUIRED: false
+      comment: Total data uploaded in bytes, aggregated by the query parameters.
+    - name: data_download
+      type: INT
+      REQUIRED: false
+      comment: Total data downloaded in bytes, aggregated by the query parameters.
+    - name: data_total
+      type: INT
+      REQUIRED: false
+      comment: Total of data_upload and data_download.
+    - name: data_total_billed
+      type: FLOAT
+      REQUIRED: false
+      comment: Total amount in the `billed_unit` that was charged for the data uploaded or downloaded. Will return 0 for usage prior to February 1, 2022. Value may be 0 despite `data_total` being greater than 0 if the data usage is still being processed by Twilio's billing system. Refer to [Data Usage Processing](https://www.twilio.com/docs/iot/supersim/api/usage-record-resource#data-usage-processing) for more details.
+    - name: billed_unit
+      type: STRING
+      REQUIRED: false
+      comment: The currency in which the billed amounts are measured, specified in the 3 letter ISO 4127 format (e.g. `USD`, `EUR`, `JPY`). This can be null when data_toal_billed is 0 and we do not yet have billing information for the corresponding data usage. Refer to [Data Usage Processing](https://www.twilio.com/docs/iot/supersim/api/usage-record-resource#data-usage-processing) for more details.
+  api.sim.billingPeriods.getResponse200:
+    - name: billing_periods
+      type: "[]STRUCT(supersim.v1.sim.billing_period)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.esimprofile.listResponse200:
+    - name: esim_profiles
+      type: "[]STRUCT(supersim.v1.esim_profile)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.fleet.listResponse200:
+    - name: fleets
+      type: "[]STRUCT(supersim.v1.fleet)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.ipcommand.listResponse200:
+    - name: ip_commands
+      type: "[]STRUCT(supersim.v1.ip_command)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.network.listResponse200:
+    - name: networks
+      type: "[]STRUCT(supersim.v1.network)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.networkaccessprofile.listResponse200:
+    - name: network_access_profiles
+      type: "[]STRUCT(supersim.v1.network_access_profile)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.networkaccessprofile.networks.getResponse200:
+    - name: networks
+      type: "[]STRUCT(supersim.v1.network_access_profile.network_access_profile_network)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.settingsupdate.listResponse200:
+    - name: settings_updates
+      type: "[]STRUCT(supersim.v1.settings_update)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sim.listResponse200:
+    - name: sims
+      type: "[]STRUCT(supersim.v1.sim)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sim.ipAddresses.getResponse200:
+    - name: ip_addresses
+      type: "[]STRUCT(supersim.v1.sim.sim_ip_address)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.smscommand.listResponse200:
+    - name: sms_commands
+      type: "[]STRUCT(supersim.v1.sms_command)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.usagerecord.listResponse200:
+    - name: usage_records
+      type: "[]STRUCT(supersim.v1.usage_record)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

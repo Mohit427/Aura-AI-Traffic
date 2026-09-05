@@ -1,0 +1,1169 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://numbers.twilio.com
+METHODS:
+  twilio_numbers.hostednumber.bulk.create:
+    SUMMARY: Create a bulk eligibility check for a set of numbers that you want to host in Twilio.
+    DESC: Create a bulk eligibility check for a set of numbers that you want to host in Twilio.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/HostedNumber/Eligibility/Bulk
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.hostednumber.bulk.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.hostednumber.bulk.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.bulk_eligibility)
+        RETURNVAR: twilio_numbers_hostednumber_bulk_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_numbers.hostednumber.bulk.create
+  twilio_numbers.hostednumber.bulk.get:
+    SUMMARY: Fetch an eligibility bulk check that you requested to host in Twilio.
+    DESC: Fetch an eligibility bulk check that you requested to host in Twilio.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/HostedNumber/Eligibility/Bulk/{RequestId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RequestId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.bulk_eligibility)
+        RETURNVAR: twilio_numbers_hostednumber_bulk_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.bulk.get
+  twilio_numbers.hostednumber.eligibility.create:
+    SUMMARY: Create an eligibility check for a number that you want to host in Twilio.
+    DESC: Create an eligibility check for a number that you want to host in Twilio.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/HostedNumber/Eligibility
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.hostednumber.eligibility.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.hostednumber.eligibility.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.eligibility)
+        RETURNVAR: twilio_numbers_hostednumber_eligibility_create
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.hostednumber.eligibility.create
+  twilio_numbers.porting.portIn.create:
+    SUMMARY: Allows to create a new port in request
+    DESC: Allows to create a new port in request
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Porting/PortIn
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(numbers.v1.porting_port_in_create)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(numbers.v1.porting_port_in_create)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_port_in)
+        RETURNVAR: twilio_numbers_porting_portIn_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_numbers.porting.portIn.create
+  twilio_numbers.porting.portIn.delete:
+    SUMMARY: Allows to cancel a port in request by SID
+    DESC: Allows to cancel a port in request by SID
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Porting/PortIn/{PortInRequestSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PortInRequestSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.porting.portIn.delete
+  twilio_numbers.porting.portIn.get:
+    SUMMARY: Fetch a port in request by SID
+    DESC: Fetch a port in request by SID
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Porting/PortIn/{PortInRequestSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PortInRequestSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_port_in)
+        RETURNVAR: twilio_numbers_porting_portIn_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.porting.portIn.get
+  twilio_numbers.porting.portInRequests.list:
+    SUMMARY: Fetch all PortInRequests for a user
+    DESC: Retrieve a list of all PortInRequests for a user
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Porting/PortIn/PortInRequests
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Token:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Size:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 20
+      - PortInRequestSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PortInRequestStatus:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CreatedBefore:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - CreatedAfter:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.porting.portInRequests.listResponse200)
+        RETURNVAR: twilio_numbers_porting_portInRequests_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.porting.portInRequests.list
+  twilio_numbers.porting.phoneNumber.delete:
+    SUMMARY: Allows to cancel a port in request phone number by SID
+    DESC: Allows to cancel a port in request phone number by SID
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Porting/PortIn/{PortInRequestSid}/PhoneNumber/{PhoneNumberSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PortInRequestSid:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumberSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.porting.phoneNumber.delete
+  twilio_numbers.porting.phoneNumber.get:
+    SUMMARY: Fetch a phone number by port in request SID and phone number SID
+    DESC: Fetch a phone number by port in request SID and phone number SID
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Porting/PortIn/{PortInRequestSid}/PhoneNumber/{PhoneNumberSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PortInRequestSid:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumberSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_port_in_phone_number)
+        RETURNVAR: twilio_numbers_porting_phoneNumber_get
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.porting.phoneNumber.get
+  twilio_numbers.porting.phoneNumber.get.1:
+    SUMMARY: Check if a single phone number can be ported to Twilio
+    DESC: Check if a single phone number can be ported to Twilio
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Porting/Portability/PhoneNumber/{PhoneNumber}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+      - TargetAccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - AddressSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_portability)
+        RETURNVAR: twilio_numbers_porting_phoneNumber_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.porting.phoneNumber.get.1
+  twilio_numbers.porting.webhook.create:
+    SUMMARY: Create a Webhook Configuration
+    DESC: Create a Webhook Configuration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Porting/Configuration/Webhook
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.porting.webhook.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.porting.webhook.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_webhook_configuration)
+        RETURNVAR: twilio_numbers_porting_webhook_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.porting.webhook.create
+  twilio_numbers.porting.webhook.list:
+    SUMMARY: Allows to fetch the webhook configuration
+    DESC: Allows to fetch the webhook configuration
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Porting/Configuration/Webhook
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.porting_webhook_configuration_fetch)
+        RETURNVAR: twilio_numbers_porting_webhook_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.porting.webhook.list
+  twilio_numbers.porting.webhook.delete:
+    SUMMARY: Allows the client to delete a webhook configuration.
+    DESC: Allows the client to delete a webhook configuration.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Porting/Configuration/Webhook/{WebhookType}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - WebhookType:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_numbers.porting.webhook.delete
+  twilio_numbers.signingrequest.configuration.create:
+    SUMMARY: Synchronous operation to insert or update a configuration for the customer.
+    DESC: Synchronous operation to insert or update a configuration for the customer.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SigningRequest/Configuration
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.signingrequest.configuration.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.signingrequest.configuration.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.signing_request_configuration)
+        RETURNVAR: twilio_numbers_signingrequest_configuration_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_numbers.signingrequest.configuration.create
+  twilio_numbers.signingrequest.configuration.list:
+    SUMMARY: Synchronous operation to retrieve configurations for the customer.
+    DESC: Synchronous operation to retrieve configurations for the customer.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SigningRequest/Configuration
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Country:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Product:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.signingrequest.configuration.listResponse200)
+        RETURNVAR: twilio_numbers_signingrequest_configuration_list
+        STATUS: 200
+    CANONICAL_ID: twilio_numbers.signingrequest.configuration.list
+  twilio_numbers.senderidregistration.create:
+    SUMMARY: Create Sender ID Registration
+    DESC: Creates a new sender ID registration and initializes an embedded Persona inquiry session. Returns registration details and embedded session credentials for rendering the Compliance Embeddable UI.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SenderIdRegistrations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(numbers.v1.create_embedded_registration_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(numbers.v1.create_embedded_registration_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.create_embedded_registration_response)
+        RETURNVAR: twilio_numbers_senderidregistration_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateSenderIdRegistration_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(CreateSenderIdRegistration_Error500)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+    CANONICAL_ID: twilio_numbers.senderidregistration.create
+  twilio_numbers.senderidregistration.embeddedSessions.create:
+    SUMMARY: Create Embedded Session
+    DESC: Creates a new embedded Persona inquiry session for an existing registration in DRAFT or TWILIO_REJECTED status. Use this to resume an incomplete registration or resubmit a rejected one.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SenderIdRegistrations/{BundleSid}/EmbeddedSessions
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(numbers.v1.create_embedded_session_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BundleSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(numbers.v1.create_embedded_session_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(numbers.v1.create_embedded_session_response)
+        RETURNVAR: twilio_numbers_senderidregistration_embeddedSessions_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateSenderIdRegistrationEmbeddedSession_Error400)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(CreateSenderIdRegistrationEmbeddedSession_Error404)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(CreateSenderIdRegistrationEmbeddedSession_Error409)
+        STATUS: 409
+        WHEN: Conflict - Registration not in editable state (HTTP 409)
+      - TYPE: STRUCT(CreateSenderIdRegistrationEmbeddedSession_Error500)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+    CANONICAL_ID: twilio_numbers.senderidregistration.embeddedSessions.create
+STRUCTS:
+  numbers.v1.bulk_eligibility:
+    - name: request_id
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the bulk eligibility check that you want to know about.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: This is the url of the request that you're trying to reach out to locate the resource.
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: "The result set that contains the eligibility check response for each requested number, each result has at least the following attributes:  phone_number: The requested phone number ,hosting_account_sid: The account sid where the phone number will be hosted, country: Phone number’s country, eligibility_status: Indicates the eligibility status of the PN (Eligible/Ineligible), eligibility_sub_status: Indicates the sub status of the eligibility , ineligibility_reason: Reason for number's ineligibility (if applicable), next_step: Suggested next step in the hosting process based on the eligibility status."
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: This is the string that you assigned as a friendly name for describing the eligibility check request.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: "This is the status of the bulk eligibility check request. (Example: COMPLETE, IN_PROGRESS)"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_completed
+      type: TIMESTAMP
+      REQUIRED: false
+  numbers.v1.eligibility:
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: "The result set that contains the eligibility check response for the requested number, each result has at least the following attributes:  phone_number: The requested phone number ,hosting_account_sid: The account sid where the phone number will be hosted, date_last_checked: Datetime (ISO 8601) when the PN was last checked for eligibility, country: Phone number’s country, eligibility_status: Indicates the eligibility status of the PN (Eligible/Ineligible), eligibility_sub_status: Indicates the sub status of the eligibility , ineligibility_reason: Reason for number's ineligibility (if applicable), next_step: Suggested next step in the hosting process based on the eligibility status."
+  numbers.v1.porting_port_in:
+    - name: port_in_request_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Port In request. This is a unique identifier of the port in request.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this Port In request
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: Account Sid or subaccount where the phone number(s) will be Ported
+    - name: notification_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Additional emails to send a copy of the signed LOA to.
+    - name: target_port_in_date
+      type: DATE
+      REQUIRED: false
+      comment: "Target date to port the number. We cannot guarantee that this date will be honored by the other carriers, please work with Ops to get a confirmation of the firm order commitment (FOC) date. Expected format is ISO Local Date, example: ‘2011-12-03`. This date must be at least 7 days in the future for US ports and 10 days in the future for Japanese ports. If a start and end range is provided, the date will be converted to its UTC equivalent with the ranges as reference and stored in UTC. We can't guarantee the exact date and time, as this depends on the losing carrier."
+    - name: target_port_in_time_range_start
+      type: STRING
+      REQUIRED: false
+      comment: "The earliest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'. We can't guarantee the exact date and time, as this depends on the losing carrier. The time will be stored and returned as UTC standard timezone."
+    - name: target_port_in_time_range_end
+      type: STRING
+      REQUIRED: false
+      comment: "The latest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'. We can't guarantee the exact date and time, as this depends on the losing carrier. The time will be stored and returned as UTC standard timezone."
+    - name: port_in_request_status
+      type: STRING
+      REQUIRED: false
+      comment: "The status of the port in request. The possible values are: In progress, Completed, Expired, In review, Waiting for Signature, Action Required, and Canceled."
+    - name: order_cancellation_reason
+      type: STRING
+      REQUIRED: false
+      comment: If the order is cancelled this field will provide further context on the cause of the cancellation.
+    - name: losing_carrier_information
+      type: STRUCT(numbers.v1.porting_losing_carrier_information)
+      REQUIRED: false
+      comment: Details regarding the customer’s information with the losing carrier. These values will be used to generate the letter of authorization and should match the losing carrier’s data as closely as possible to ensure the port is accepted.
+    - name: phone_numbers
+      type: "[]STRUCT(numbers.v1.porting_port_in_phone_number_result)"
+      REQUIRED: false
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The bundle sid is an optional identifier to reference a group of regulatory documents for a port request.
+    - name: portability_advance_carrier
+      type: STRING
+      REQUIRED: false
+      comment: A field only required for Japan port in requests. It is a unique identifier for the donor carrier service the line is being ported from.
+    - name: auto_cancel_approval_numbers
+      type: STRING
+      REQUIRED: false
+      comment: Japan specific field, indicates the number of phone numbers to automatically approve for cancellation.
+    - name: documents
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of document SIDs for all phone numbers included in the port in request. At least one document SID referring to a document of the type Utility Bill is required.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: support_ticket_id
+      type: INT
+      REQUIRED: false
+      comment: Unique ID of the request's support ticket
+    - name: signature_request_url
+      type: STRING
+      REQUIRED: false
+  numbers.v1.porting_losing_carrier_information:
+    - name: customer_name
+      type: STRING
+      REQUIRED: true
+      comment: Customer name as it is registered with the losing carrier. This can be an individual or a business name depending on the customer type selected.
+    - name: account_number
+      type: STRING
+      REQUIRED: false
+      comment: The account number of the customer for the losing carrier. Only require for mobile phone numbers.
+    - name: account_telephone_number
+      type: STRING
+      REQUIRED: false
+      comment: The account phone number of the customer for the losing carrier.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: If you already have an Address SID that represents the address needed for the LOA, you can provide an Address SID instead of providing the address object in the request body. This will copy the address into the port in request. If changes are made to the Address SID after port in request creation, those changes will not be reflected in the port in request.
+    - name: address
+      type: STRUCT(numbers.v1.porting_address)
+      REQUIRED: false
+      comment: The customer’s billing address with the losing carrier. It must match the address they have registered with the losing carrier.
+    - name: authorized_representative
+      type: STRING
+      REQUIRED: true
+      comment: The first and last name of the person listed with the losing carrier who is authorized to make changes on the account.
+    - name: authorized_representative_email
+      type: STRING
+      REQUIRED: true
+      comment: Email address of the person (owner of the number) who will sign the letter of authorization for the port in request. This email address should belong to the person named in as the authorized representative.
+    - name: customer_type
+      type: STRING
+      REQUIRED: false
+      comment: "The type of customer account in the losing carrier. This should either be: 'Individual' or 'Business'."
+    - name: authorized_representative_katakana
+      type: STRING
+      REQUIRED: false
+    - name: sub_municipality
+      type: STRING
+      REQUIRED: false
+    - name: building
+      type: STRING
+      REQUIRED: false
+    - name: katakana_name
+      type: STRING
+      REQUIRED: false
+  numbers.v1.porting_address:
+    - name: street
+      type: STRING
+      REQUIRED: true
+      comment: "The street address, ex: 101 Spear St"
+    - name: street_2
+      type: STRING
+      REQUIRED: false
+      comment: "The building information, ex : 5th floor."
+    - name: city
+      type: STRING
+      REQUIRED: true
+      comment: "The city name, ex: San Francisco."
+    - name: state
+      type: STRING
+      REQUIRED: true
+      comment: "The state name, ex: CA or California. Note this should match the losing carrier’s information exactly. So if they spell out the entire state’s name instead of abbreviating it, please do so."
+    - name: zip
+      type: STRING
+      REQUIRED: true
+      comment: "The zip code, ex: 94105."
+    - name: country
+      type: STRING
+      REQUIRED: true
+      comment: "The country, ex: USA."
+  numbers.v1.porting_port_in_phone_number_result:
+    - name: not_portability_reason
+      type: STRING
+      REQUIRED: false
+      comment: The not portability reason code description. This field may be null if the number is portable or if the portability for a number has not yet been evaluated.
+    - name: not_portability_reason_code
+      type: INT
+      REQUIRED: false
+      comment: The not portability reason code. This field may be null if the number is portable or if the portability for a number has not yet been evaluated.
+    - name: number_type
+      type: STRING
+      REQUIRED: false
+      comment: "The number type of the phone number. This can be: toll-free, local, mobile or unknown. This field may be null if the number is not portable or if the portability for a number has not yet been evaluated."
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: Phone number to be ported. This will be in the E164 Format.
+    - name: port_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The timestamp the phone number will be ported. This will only be set once a port date has been confirmed. Not all carriers can guarantee a specific time on the port date. Twilio will try its best to get the port completed by this time on the port date. Please subscribe to webhooks for confirmation on when a port has actually been completed.
+    - name: port_in_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Phone number. This is a unique identifier of the phone number.
+    - name: port_in_phone_number_status
+      type: STRING
+      REQUIRED: false
+      comment: The status of the port in phone number.
+    - name: portable
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the number is portable by Twilio or not. This field may be null if the number portability has not yet been evaluated. If a number is not portable reference the `not_portability_reason_code` and `not_portability_reason` fields for more details
+    - name: rejection_reason
+      type: STRING
+      REQUIRED: false
+      comment: The description of the rejection reason provided by the losing carrier. This field may be null if the number has not been rejected by the losing carrier.
+    - name: rejection_reason_code
+      type: STRING
+      REQUIRED: false
+      comment: The code for the rejection reason provided by the losing carrier. This field may be null if the number has not been rejected by the losing carrier.
+    - name: status_last_time_updated_timestamp
+      type: STRING
+      REQUIRED: false
+      comment: Timestamp indicating when the Port In Phone Number resource was last modified.
+    - name: external_porting_vendor_phone_number_id
+      type: STRING
+      REQUIRED: false
+  numbers.v1.porting_port_in_phone_number:
+    - name: port_in_request_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier for the port in request that this phone number is associated with.
+    - name: phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier for this phone number associated with this port in request.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: URL reference for this resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: Account Sid or subaccount where the phone number(s) will be Ported.
+    - name: phone_number_type
+      type: STRING
+      REQUIRED: false
+      comment: "The number type of the phone number. This can be: toll-free, local, mobile or unknown. This field may be null if the number is not portable or if the portability for a number has not yet been evaluated."
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The timestamp for when this port in phone number was created.
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The ISO country code that this number is associated with. This field may be null if the number is not portable or if the portability for a number has not yet been evaluated.
+    - name: missing_required_fields
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if the phone number is missing required fields such as a PIN or account number. This field may be null if the number is not portable or if the portability for a number has not yet been evaluated.
+    - name: last_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp indicating when the Port In Phone Number resource was last modified.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: Phone number to be ported. This will be in the E164 Format.
+    - name: portable
+      type: BOOL
+      REQUIRED: false
+      comment: If the number is portable by Twilio or not. This field may be null if the number portability has not yet been evaluated. If a number is not portable reference the `not_portability_reason_code` and `not_portability_reason` fields for more details
+    - name: not_portability_reason
+      type: STRING
+      REQUIRED: false
+      comment: The not portability reason code description. This field may be null if the number is portable or if the portability for a number has not yet been evaluated.
+    - name: not_portability_reason_code
+      type: INT
+      REQUIRED: false
+      comment: The not portability reason code. This field may be null if the number is portable or if the portability for a number has not yet been evaluated.
+    - name: port_in_phone_number_status
+      type: STRING
+      REQUIRED: false
+      comment: The status of the port in phone number.
+    - name: port_out_pin
+      type: INT
+      REQUIRED: false
+      comment: The pin required by the losing carrier to do the port out.
+    - name: rejection_reason
+      type: STRING
+      REQUIRED: false
+      comment: The description of the rejection reason provided by the losing carrier. This field may be null if the number has not been rejected by the losing carrier.
+    - name: rejection_reason_code
+      type: INT
+      REQUIRED: false
+      comment: The code for the rejection reason provided by the losing carrier. This field may be null if the number has not been rejected by the losing carrier.
+    - name: port_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The timestamp the phone number will be ported. This will only be set once a port date has been confirmed. Not all carriers can guarantee a specific time on the port date. Twilio will try its best to get the port completed by this time on the port date. Please subscribe to webhooks for confirmation on when a port has actually been completed.
+  numbers.v1.porting_portability:
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number which portability is to be checked. Phone numbers are in E.164 format (e.g. +16175551212).
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: Account Sid that the phone number belongs to in Twilio. This is only returned for phone numbers that already exist in Twilio’s inventory and belong to your account or sub account.
+    - name: portable
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean flag indicates if the phone number can be ported into Twilio through the Porting API or not.
+    - name: pin_and_account_number_required
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if the port in process will require a personal identification number (PIN) and an account number for this phone number. If this is true you will be required to submit both a PIN and account number from the losing carrier for this number when opening a port in request. These fields will be required in order to complete the port in process to Twilio.
+    - name: not_portable_reason
+      type: STRING
+      REQUIRED: false
+      comment: Reason why the phone number cannot be ported into Twilio, `null` otherwise.
+    - name: not_portable_reason_code
+      type: INT
+      REQUIRED: false
+      comment: The Portability Reason Code for the phone number if it cannot be ported into Twilio, `null` otherwise.
+    - name: number_type
+      type: STRING
+      REQUIRED: false
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: Country the phone number belongs to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: This is the url of the request that you're trying to reach out to locate the resource.
+  numbers.v1.porting_webhook_configuration:
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the webhook configuration request
+    - name: port_in_target_url
+      type: STRING
+      REQUIRED: false
+      comment: The complete webhook url that will be called when a notification event for port in request or port in phone number happens
+    - name: port_out_target_url
+      type: STRING
+      REQUIRED: false
+      comment: The complete webhook url that will be called when a notification event for a port out phone number happens.
+    - name: notifications_of
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list to filter what notification events to receive for this account and its sub accounts. If it is an empty list, then it means that there are no filters for the notifications events to send in each webhook and all events will get sent.
+  numbers.v1.porting_webhook_configuration_fetch:
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the webhook configuration request
+    - name: port_in_target_url
+      type: STRING
+      REQUIRED: false
+      comment: The complete webhook url that will be called when a notification event for port in request or port in phone number happens
+    - name: port_out_target_url
+      type: STRING
+      REQUIRED: false
+      comment: The complete webhook url that will be called when a notification event for a port out phone number happens.
+    - name: notifications_of
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list to filter what notification events to receive for this account and its sub accounts. If it is an empty list, then it means that there are no filters for the notifications events to send in each webhook and all events will get sent.
+    - name: port_in_target_date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Creation date for the port in webhook configuration
+    - name: port_out_target_date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Creation date for the port out webhook configuration
+  numbers.v1.signing_request_configuration:
+    - name: logo_sid
+      type: STRING
+      REQUIRED: false
+      comment: "The SID of the document  that includes the logo that will appear in the LOA. To upload documents follow the following guide: https://www.twilio.com/docs/phone-numbers/regulatory/getting-started/create-new-bundle-public-rest-apis#supporting-document-create "
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: This is the string that you assigned as a friendly name for describing the creation of the configuration.
+    - name: product
+      type: STRING
+      REQUIRED: false
+      comment: The product or service for which is requesting the signature.
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The country ISO code to apply the configuration.
+    - name: email_subject
+      type: STRING
+      REQUIRED: false
+      comment: "Subject of the email that the end client will receive ex: “Twilio Hosting Request”, maximum length of 255 characters."
+    - name: email_message
+      type: STRING
+      REQUIRED: false
+      comment: "Content of the email that the end client will receive ex: “This is a Hosting request from Twilio, please check the document and sign it”, maximum length of 5,000 characters."
+    - name: url_redirection
+      type: STRING
+      REQUIRED: false
+      comment: Url the end client will be redirected after signing a document.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  numbers.v1.port_in_request_list:
+    - name: port_in_request_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Port-in request
+    - name: port_in_request_status
+      type: STRING
+      REQUIRED: false
+      comment: Status of the Port In Request
+    - name: status_last_updated_timestamp
+      type: STRING
+      REQUIRED: false
+      comment: The last updated timestamp of the request
+    - name: phone_numbers_requested
+      type: INT
+      REQUIRED: false
+      comment: Amount of phone numbers requested
+    - name: phone_numbers_ported
+      type: INT
+      REQUIRED: false
+      comment: Amount of phone numbers ported
+    - name: suggested_action
+      type: STRING
+      REQUIRED: false
+      comment: Suggested action on this ticket
+  numbers.v1.port_in_request_list_meta:
+    - name: previous_token
+      type: STRING
+      REQUIRED: false
+    - name: next_token
+      type: STRING
+      REQUIRED: false
+  numbers.v1.porting_port_in_create:
+    - name: account_sid
+      type: STRING
+      REQUIRED: true
+      comment: Account Sid or subaccount where the phone number(s) will be Ported
+    - name: documents
+      type: "[]STRING"
+      REQUIRED: true
+      comment: List of document SIDs for all phone numbers included in the port in request. At least one document SID referring to a document of the type Utility Bill is required.
+    - name: phone_numbers
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of phone numbers to be ported. Maximum of 1,000 phone numbers per request.
+    - name: losing_carrier_information
+      type: STRUCT(numbers.v1.porting_losing_carrier_information)
+      REQUIRED: true
+      comment: Details regarding the customer's information with the losing carrier. These values will be used to generate the letter of authorization and should match the losing carrier's data as closely as possible to ensure the port is accepted.
+    - name: notification_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Additional emails to send a copy of the signed LOA to.
+    - name: target_port_in_date
+      type: DATE
+      REQUIRED: false
+      comment: "Target date to port the number. We cannot guarantee that this date will be honored by the other carriers, please work with Ops to get a confirmation of the firm order commitment (FOC) date. Expected format is ISO Local Date, example: ‘2011-12-03`. This date must be at least 7 days in the future for US ports and 10 days in the future for Japanese ports. We can't guarantee the exact date and time, as this depends on the losing carrier"
+    - name: target_port_in_time_range_start
+      type: STRING
+      REQUIRED: false
+      comment: "The earliest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'. We can't guarantee the exact date and time, as this depends on the losing carrier"
+    - name: target_port_in_time_range_end
+      type: STRING
+      REQUIRED: false
+      comment: "The latest time that the port should occur on the target port in date. Expected format is ISO Offset Time, example: ‘10:15:00-08:00'. We can't guarantee the exact date and time, as this depends on the losing carrier"
+    - name: bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: The bundle sid is an optional identifier to reference a group of regulatory documents for a port request.
+    - name: portability_advance_carrier
+      type: STRING
+      REQUIRED: false
+      comment: A field only required for Japan port in requests. It is a unique identifier for the donor carrier service the line is being ported from.
+    - name: auto_cancel_approval_numbers
+      type: STRING
+      REQUIRED: false
+      comment: Japan specific field, indicates the number of phone numbers to automatically approve for cancellation.
+  numbers.v1.create_embedded_registration_request:
+    - name: regulationId
+      type: STRING
+      REQUIRED: true
+      comment: The regulation for this registration.
+    - name: regulationVersion
+      type: INT
+      REQUIRED: true
+      comment: The regulation version.
+    - name: friendlyName
+      type: STRING
+      REQUIRED: true
+      comment: Human-readable name for the registration.
+    - name: statusNotificationEmail
+      type: STRING
+      REQUIRED: false
+      comment: Email address for registration status notifications.
+    - name: statusCallbackUrl
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: comments
+      type: STRING
+      REQUIRED: false
+      comment: Additional comments about the registration.
+    - name: themeSetId
+      type: STRING
+      REQUIRED: false
+      comment: Theme ID for the Compliance Embeddable UI.
+    - name: data
+      type: map[STRING]ANY
+      REQUIRED: true
+      comment: Registration data organized by section (alphanumericSender, business, useCase, authorizedRepresentative, officer, businessAddress).
+  numbers.v1.create_embedded_registration_response:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Registration identifier (BU-prefixed).
+    - name: regulationId
+      type: STRING
+      REQUIRED: true
+      comment: The regulation ID for this registration.
+    - name: regulationVersion
+      type: INT
+      REQUIRED: true
+      comment: The regulation version.
+    - name: friendlyName
+      type: STRING
+      REQUIRED: true
+      comment: The friendly name provided in the request.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: Registration status. Always DRAFT on creation.
+    - name: statusNotificationEmail
+      type: STRING
+      REQUIRED: false
+      comment: Email address for status notifications.
+    - name: statusCallbackUrl
+      type: STRING
+      REQUIRED: false
+      comment: Callback URL for status webhooks.
+    - name: comments
+      type: STRING
+      REQUIRED: false
+      comment: Additional comments.
+    - name: embeddedSession
+      type: STRUCT(numbers.v1.embedded_session)
+      REQUIRED: true
+    - name: data
+      type: map[STRING]ANY
+      REQUIRED: true
+      comment: Registration data echoed from the request.
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of creation.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of last update.
+  numbers.v1.embedded_session:
+    - name: sessionId
+      type: STRING
+      REQUIRED: true
+      comment: Session ID for the compliance embeddable.
+    - name: sessionToken
+      type: STRING
+      REQUIRED: true
+      comment: Ephemeral session token for the compliance embeddable.
+  numbers.v1.create_embedded_session_request:
+    - name: themeSetId
+      type: STRING
+      REQUIRED: false
+      comment: Theme ID for the Compliance Embeddable UI. Overrides the theme set during registration creation.
+  numbers.v1.create_embedded_session_response:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Registration identifier (BU-prefixed).
+    - name: sessionId
+      type: STRING
+      REQUIRED: true
+      comment: Session ID for the compliance embeddable.
+    - name: sessionToken
+      type: STRING
+      REQUIRED: true
+      comment: Ephemeral session token for the compliance embeddable.
+  api.porting.portInRequests.listResponse200:
+    - name: port_in_requests
+      type: "[]STRUCT(numbers.v1.port_in_request_list)"
+      REQUIRED: false
+    - name: meta
+      type: STRUCT(numbers.v1.port_in_request_list_meta)
+      REQUIRED: false
+  api.signingrequest.configuration.listResponse200:
+    - name: configurations
+      type: "[]STRUCT(numbers.v1.signing_request_configuration)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  CreateSenderIdRegistration_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateSenderIdRegistration_Error500:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateSenderIdRegistrationEmbeddedSession_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateSenderIdRegistrationEmbeddedSession_Error404:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateSenderIdRegistrationEmbeddedSession_Error409:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateSenderIdRegistrationEmbeddedSession_Error500:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code

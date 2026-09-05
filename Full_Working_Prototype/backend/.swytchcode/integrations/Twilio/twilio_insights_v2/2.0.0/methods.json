@@ -1,0 +1,34 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create an account-level report with specified filters and time range",
+      "canonical_id": "sample_reference_twilio.voice.reports.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create inbound phone number reports",
+      "canonical_id": "sample_reference_twilio.voice.inbound.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create outbound phone number reports",
+      "canonical_id": "sample_reference_twilio.voice.outbound.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get inbound phone number reports by report ID",
+      "canonical_id": "sample_reference_twilio.voice.inbound.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get outbound phone numbers report by ID",
+      "canonical_id": "sample_reference_twilio.voice.outbound.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice insights account level report by report ID",
+      "canonical_id": "sample_reference_twilio.voice.reports.get"
+    }
+  ]
+}

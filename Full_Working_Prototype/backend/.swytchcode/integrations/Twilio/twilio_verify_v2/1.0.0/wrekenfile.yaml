@@ -1,0 +1,3324 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://verify.twilio.com
+METHODS:
+  twilio_verify.service.accessTokens.create:
+    SUMMARY: Create a new enrollment Access Token for the Entity
+    DESC: Create a new enrollment Access Token for the Entity
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/AccessTokens
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - FactorType:
+          TYPE: STRING
+          LOCATION: body
+      - FactorFriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.access_token)
+        RETURNVAR: twilio_verify_service_accessTokens_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(verify.v2.service.access_token)
+        RETURNVAR: twilio_verify_service_accessTokens_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.accessTokens.create
+  twilio_verify.service.accessTokens.get:
+    SUMMARY: Fetch an Access Token for the Entity
+    DESC: Fetch an Access Token for the Entity
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/AccessTokens/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.access_token)
+        RETURNVAR: twilio_verify_service_accessTokens_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.accessTokens.get
+  twilio_verify.service.buckets.create:
+    SUMMARY: Create a new Bucket for a Rate Limit
+    DESC: Create a new Bucket for a Rate Limit
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - RateLimitSid:
+          TYPE: STRING
+          LOCATION: path
+      - Max:
+          TYPE: INT
+          LOCATION: body
+      - Interval:
+          TYPE: INT
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit.bucket)
+        RETURNVAR: twilio_verify_service_buckets_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.buckets.create
+  twilio_verify.service.buckets.get:
+    SUMMARY: Retrieve a list of all Buckets for a Rate Limit.
+    DESC: Retrieve a list of all Buckets for a Rate Limit.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - RateLimitSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.buckets.getResponse200)
+        RETURNVAR: twilio_verify_service_buckets_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.buckets.get
+  twilio_verify.service.buckets.create.1:
+    SUMMARY: Update a specific Bucket.
+    DESC: Update a specific Bucket.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - RateLimitSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Max:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Interval:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit.bucket)
+        RETURNVAR: twilio_verify_service_buckets_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.buckets.create.1
+  twilio_verify.service.buckets.get.1:
+    SUMMARY: Fetch a specific Bucket.
+    DESC: Fetch a specific Bucket.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - RateLimitSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit.bucket)
+        RETURNVAR: twilio_verify_service_buckets_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.buckets.get.1
+  twilio_verify.service.buckets.delete:
+    SUMMARY: Delete a specific Bucket.
+    DESC: Delete a specific Bucket.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{RateLimitSid}/Buckets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - RateLimitSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.buckets.delete
+  twilio_verify.service.challenges.create:
+    SUMMARY: Create a new Challenge for the Factor
+    DESC: Create a new Challenge for the Factor
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Challenges
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - FactorSid:
+          TYPE: STRING
+          LOCATION: body
+      - ExpirationDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: body
+      - Details.Message:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Details.Fields:
+          TYPE: "[]ANY"
+          REQUIRED: false
+          LOCATION: body
+      - HiddenDetails:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - AuthPayload:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.challenge)
+        RETURNVAR: twilio_verify_service_challenges_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.challenges.create
+  twilio_verify.service.challenges.get:
+    SUMMARY: Retrieve a list of all Challenges for a Factor.
+    DESC: Retrieve a list of all Challenges for a Factor.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Challenges
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - FactorSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.challenges.getResponse200)
+        RETURNVAR: twilio_verify_service_challenges_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.challenges.get
+  twilio_verify.service.challenges.get.1:
+    SUMMARY: Fetch a specific Challenge.
+    DESC: Fetch a specific Challenge.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Challenges/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.challenge)
+        RETURNVAR: twilio_verify_service_challenges_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.challenges.get.1
+  twilio_verify.service.challenges.create.1:
+    SUMMARY: Verify a specific Challenge.
+    DESC: Verify a specific Challenge.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Challenges/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - AuthPayload:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Metadata:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.challenge)
+        RETURNVAR: twilio_verify_service_challenges_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.challenges.create.1
+  twilio_verify.service.entities.create:
+    SUMMARY: Create a new Entity for the Service
+    DESC: Create a new Entity for the Service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity)
+        RETURNVAR: twilio_verify_service_entities_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.entities.create
+  twilio_verify.service.entities.get:
+    SUMMARY: Retrieve a list of all Entities for a Service.
+    DESC: Retrieve a list of all Entities for a Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.entities.getResponse200)
+        RETURNVAR: twilio_verify_service_entities_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.entities.get
+  twilio_verify.service.entities.delete:
+    SUMMARY: Delete a specific Entity.
+    DESC: Delete a specific Entity.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.entities.delete
+  twilio_verify.service.entities.get.1:
+    SUMMARY: Fetch a specific Entity.
+    DESC: Fetch a specific Entity.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity)
+        RETURNVAR: twilio_verify_service_entities_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.entities.get.1
+  twilio_verify.service.factors.delete:
+    SUMMARY: Delete a specific Factor.
+    DESC: Delete a specific Factor.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.factors.delete
+  twilio_verify.service.factors.get:
+    SUMMARY: Fetch a specific Factor.
+    DESC: Fetch a specific Factor.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.factor)
+        RETURNVAR: twilio_verify_service_factors_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.factors.get
+  twilio_verify.service.factors.create:
+    SUMMARY: Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
+    DESC: Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Factors/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - AuthPayload:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.NotificationToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.SdkVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.TimeStep:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.Skew:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.Alg:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.NotificationPlatform:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.factor)
+        RETURNVAR: twilio_verify_service_factors_create
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.factors.create
+  twilio_verify.service.factors.get.1:
+    SUMMARY: Retrieve a list of all Factors for an Entity.
+    DESC: Retrieve a list of all Factors for an Entity.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Factors
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.factors.getResponse200)
+        RETURNVAR: twilio_verify_service_factors_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.factors.get.1
+  twilio_verify.service.factors.create.1:
+    SUMMARY: Create a new Factor for the Entity
+    DESC: Create a new Factor for the Entity
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Factors
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - FactorType:
+          TYPE: STRING
+          LOCATION: body
+      - Binding.Alg:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Binding.PublicKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.AppId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.NotificationPlatform:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.NotificationToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.SdkVersion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Binding.Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Config.TimeStep:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.Skew:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Config.Alg:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Metadata:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.new_factor)
+        RETURNVAR: twilio_verify_service_factors_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.factors.create.1
+  twilio_verify.form.get:
+    SUMMARY: Fetch the forms for a specific Form Type.
+    DESC: Fetch the forms for a specific Form Type.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Forms/{FormType}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FormType:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.form)
+        RETURNVAR: twilio_verify_form_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.form.get
+  twilio_verify.service.messagingConfigurations.create:
+    SUMMARY: Create a new MessagingConfiguration for a service.
+    DESC: Create a new MessagingConfiguration for a service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/MessagingConfigurations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Country:
+          TYPE: STRING
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.messaging_configuration)
+        RETURNVAR: twilio_verify_service_messagingConfigurations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.messagingConfigurations.create
+  twilio_verify.service.messagingConfigurations.get:
+    SUMMARY: Retrieve a list of all Messaging Configurations for a Service.
+    DESC: Retrieve a list of all Messaging Configurations for a Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/MessagingConfigurations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.messagingConfigurations.getResponse200)
+        RETURNVAR: twilio_verify_service_messagingConfigurations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.messagingConfigurations.get
+  twilio_verify.service.messagingConfigurations.create.1:
+    SUMMARY: Update a specific MessagingConfiguration
+    DESC: Update a specific MessagingConfiguration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Country:
+          TYPE: STRING
+          LOCATION: path
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.messaging_configuration)
+        RETURNVAR: twilio_verify_service_messagingConfigurations_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.messagingConfigurations.create.1
+  twilio_verify.service.messagingConfigurations.get.1:
+    SUMMARY: Fetch a specific MessagingConfiguration.
+    DESC: Fetch a specific MessagingConfiguration.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Country:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.messaging_configuration)
+        RETURNVAR: twilio_verify_service_messagingConfigurations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.messagingConfigurations.get.1
+  twilio_verify.service.messagingConfigurations.delete:
+    SUMMARY: Delete a specific MessagingConfiguration.
+    DESC: Delete a specific MessagingConfiguration.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/MessagingConfigurations/{Country}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Country:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.messagingConfigurations.delete
+  twilio_verify.service.notifications.create:
+    SUMMARY: Create a new Notification for the corresponding Challenge
+    DESC: Create a new Notification for the corresponding Challenge
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Entities/{Identity}/Challenges/{ChallengeSid}/Notifications
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: path
+      - ChallengeSid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttl:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.entity.challenge.notification)
+        RETURNVAR: twilio_verify_service_notifications_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.notifications.create
+  twilio_verify.service.rateLimits.create:
+    SUMMARY: Create a new Rate Limit for a Service
+    DESC: Create a new Rate Limit for a Service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit)
+        RETURNVAR: twilio_verify_service_rateLimits_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.rateLimits.create
+  twilio_verify.service.rateLimits.get:
+    SUMMARY: Retrieve a list of all Rate Limits for a service.
+    DESC: Retrieve a list of all Rate Limits for a service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.rateLimits.getResponse200)
+        RETURNVAR: twilio_verify_service_rateLimits_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.rateLimits.get
+  twilio_verify.service.rateLimits.create.1:
+    SUMMARY: Update a specific Rate Limit.
+    DESC: Update a specific Rate Limit.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit)
+        RETURNVAR: twilio_verify_service_rateLimits_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.rateLimits.create.1
+  twilio_verify.service.rateLimits.get.1:
+    SUMMARY: Fetch a specific Rate Limit.
+    DESC: Fetch a specific Rate Limit.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.rate_limit)
+        RETURNVAR: twilio_verify_service_rateLimits_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.rateLimits.get.1
+  twilio_verify.service.rateLimits.delete:
+    SUMMARY: Delete a specific Rate Limit.
+    DESC: Delete a specific Rate Limit.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/RateLimits/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.rateLimits.delete
+  twilio_verify.safelist.numbers.create:
+    SUMMARY: Add a new phone number to SafeList.
+    DESC: Add a new phone number to SafeList.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/SafeList/Numbers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.safelist)
+        RETURNVAR: twilio_verify_safelist_numbers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.safelist.numbers.create
+  twilio_verify.safelist.numbers.get:
+    SUMMARY: Check if a phone number exists in SafeList.
+    DESC: Check if a phone number exists in SafeList.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/SafeList/Numbers/{PhoneNumber}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.safelist)
+        RETURNVAR: twilio_verify_safelist_numbers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.safelist.numbers.get
+  twilio_verify.safelist.numbers.delete:
+    SUMMARY: Remove a phone number from SafeList.
+    DESC: Remove a phone number from SafeList.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/SafeList/Numbers/{PhoneNumber}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.safelist.numbers.delete
+  twilio_verify.service.create:
+    SUMMARY: Create a new Verification Service.
+    DESC: Create a new Verification Service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SkipSmsToLandlines:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DtmfInputRequired:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TtsName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Psd2Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DoNotShareWarningEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CustomCodeEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Push.IncludeDate:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Push.ApnCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Push.FcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Totp.Issuer:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Totp.TimeStep:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Totp.CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Totp.Skew:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DefaultTemplateSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Whatsapp.MsgServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Whatsapp.From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Id:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Origins:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.AuthenticatorAttachment:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.DiscoverableCredentials:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.UserVerification:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerifyEventSubscriptionEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service)
+        RETURNVAR: twilio_verify_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.create
+  twilio_verify.service.list:
+    SUMMARY: Retrieve a list of all Verification Services for an account.
+    DESC: Retrieve a list of all Verification Services for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_verify_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.list
+  twilio_verify.service.get:
+    SUMMARY: Fetch specific Verification Service Instance.
+    DESC: Fetch specific Verification Service Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service)
+        RETURNVAR: twilio_verify_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.get
+  twilio_verify.service.delete:
+    SUMMARY: Delete a specific Verification Service Instance.
+    DESC: Delete a specific Verification Service Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.delete
+  twilio_verify.service.create.1:
+    SUMMARY: Update a specific Verification Service.
+    DESC: Update a specific Verification Service.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LookupEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SkipSmsToLandlines:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DtmfInputRequired:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TtsName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Psd2Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DoNotShareWarningEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CustomCodeEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Push.IncludeDate:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Push.ApnCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Push.FcmCredentialSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Totp.Issuer:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Totp.TimeStep:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Totp.CodeLength:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Totp.Skew:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DefaultTemplateSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Whatsapp.MsgServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Whatsapp.From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Id:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Name:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.RelyingParty.Origins:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.AuthenticatorAttachment:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.DiscoverableCredentials:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Passkeys.UserVerification:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerifyEventSubscriptionEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service)
+        RETURNVAR: twilio_verify_service_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.create.1
+  twilio_verify.service.verifications.create:
+    SUMMARY: Create a new Verification using a Service
+    DESC: Create a new Verification using a Service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Verifications
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - To:
+          TYPE: STRING
+          LOCATION: body
+      - Channel:
+          TYPE: STRING
+          LOCATION: body
+      - CustomFriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CustomMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SendDigits:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Locale:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CustomCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Amount:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Payee:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RateLimits:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - ChannelConfiguration:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - AppHash:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TemplateSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TemplateCustomSubstitutions:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DeviceIp:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EnableSnaClientToken:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - RiskCheck:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Tags:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.verification)
+        RETURNVAR: twilio_verify_service_verifications_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateVerification_Error429)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+    CANONICAL_ID: twilio_verify.service.verifications.create
+  twilio_verify.service.verifications.create.1:
+    SUMMARY: Update a Verification status
+    DESC: Update a Verification status
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Verifications/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.verification)
+        RETURNVAR: twilio_verify_service_verifications_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.verifications.create.1
+  twilio_verify.service.verifications.get:
+    SUMMARY: Fetch a specific Verification
+    DESC: Fetch a specific Verification
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Verifications/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.verification)
+        RETURNVAR: twilio_verify_service_verifications_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.verifications.get
+  twilio_verify.attempt.list:
+    SUMMARY: List all the verification attempts for a given Account.
+    DESC: List all the verification attempts for a given Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Attempts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - ChannelData.To:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Country:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Channel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VerifyServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - VerificationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.attempt.listResponse200)
+        RETURNVAR: twilio_verify_attempt_list
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.attempt.list
+  twilio_verify.attempt.get:
+    SUMMARY: Fetch a specific verification attempt.
+    DESC: Fetch a specific verification attempt.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Attempts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.verification_attempt)
+        RETURNVAR: twilio_verify_attempt_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.attempt.get
+  twilio_verify.attempt.summary.list:
+    SUMMARY: Get a summary of how many attempts were made and how many were converted.
+    DESC: Get a summary of how many attempts were made and how many were converted.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Attempts/Summary
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - VerifyServiceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - Country:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Channel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DestinationPrefix:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.verification_attempts_summary)
+        RETURNVAR: twilio_verify_attempt_summary_list
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.attempt.summary.list
+  twilio_verify.service.verificationCheck.create:
+    SUMMARY: challenge a specific Verification Check.
+    DESC: challenge a specific Verification Check.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/VerificationCheck
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Code:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - To:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Amount:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Payee:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SnaClientToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.verification_check)
+        RETURNVAR: twilio_verify_service_verificationCheck_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(verify.v2.service.verification_check)
+        RETURNVAR: twilio_verify_service_verificationCheck_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.verificationCheck.create
+  twilio_verify.template.list:
+    SUMMARY: List all the available templates for a given Account.
+    DESC: List all the available templates for a given Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Templates
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.template.listResponse200)
+        RETURNVAR: twilio_verify_template_list
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.template.list
+  twilio_verify.service.webhooks.create:
+    SUMMARY: Create a new Webhook for the Service
+    DESC: Create a new Webhook for the Service
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Webhooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - EventTypes:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.webhook)
+        RETURNVAR: twilio_verify_service_webhooks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.webhooks.create
+  twilio_verify.service.webhooks.get:
+    SUMMARY: Retrieve a list of all Webhooks for a Service.
+    DESC: Retrieve a list of all Webhooks for a Service.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Webhooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.webhooks.getResponse200)
+        RETURNVAR: twilio_verify_service_webhooks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.webhooks.get
+  twilio_verify.service.webhooks.create.1:
+    SUMMARY: Perform operation UpdateWebhook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Webhooks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EventTypes:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - WebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.webhook)
+        RETURNVAR: twilio_verify_service_webhooks_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.webhooks.create.1
+  twilio_verify.service.webhooks.delete:
+    SUMMARY: Delete a specific Webhook.
+    DESC: Delete a specific Webhook.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Services/{ServiceSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_verify.service.webhooks.delete
+  twilio_verify.service.webhooks.get.1:
+    SUMMARY: Fetch a specific Webhook.
+    DESC: Fetch a specific Webhook.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Services/{ServiceSid}/Webhooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(verify.v2.service.webhook)
+        RETURNVAR: twilio_verify_service_webhooks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.webhooks.get.1
+  twilio_verify.service.verifyFactor.create:
+    SUMMARY: Verify a Passkeys Factor
+    DESC: Verify a Passkeys Factor
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Passkeys/VerifyFactor
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.service.verifyFactor.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.service.verifyFactor.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.verifyFactor.createResponse200)
+        RETURNVAR: twilio_verify_service_verifyFactor_create
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.verifyFactor.create
+  twilio_verify.service.factors.create.2:
+    SUMMARY: Create a new Passkeys Factor for the Entity
+    DESC: Create a new Passkeys Factor for the Entity
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Passkeys/Factors
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.service.factors.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.service.factors.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.factors.createResponse201)
+        RETURNVAR: twilio_verify_service_factors_create_2_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.factors.create.2
+  twilio_verify.service.challenges.create.2:
+    SUMMARY: Create a Passkeys Challenge
+    DESC: Create a Passkeys Challenge
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Passkeys/Challenges
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.service.challenges.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.service.challenges.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.challenges.createResponse201)
+        RETURNVAR: twilio_verify_service_challenges_create_2_201
+        STATUS: 201
+    CANONICAL_ID: twilio_verify.service.challenges.create.2
+  twilio_verify.service.approveChallenge.create:
+    SUMMARY: Approve a Passkeys Challenge
+    DESC: Approve a Passkeys challenge
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Services/{ServiceSid}/Passkeys/ApproveChallenge
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.service.approveChallenge.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.service.approveChallenge.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.approveChallenge.createResponse200)
+        RETURNVAR: twilio_verify_service_approveChallenge_create
+        STATUS: 200
+    CANONICAL_ID: twilio_verify.service.approveChallenge.create
+STRUCTS:
+  verify.v2.service.access_token:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Access Token.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Verify Service.
+    - name: entity_identity
+      type: STRING
+      REQUIRED: false
+      comment: The unique external identifier for the Entity of the Service.
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+    - name: factor_friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this factor, up to 64 characters. For a push factor, this can be the device's name.
+    - name: token
+      type: STRING
+      REQUIRED: false
+      comment: The access token generated for enrollment, this is an encrypted json web token.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: "How long, in seconds, the access token is valid. Max: 5 minutes"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this access token was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  verify.v2.service.rate_limit.bucket:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Bucket.
+    - name: rate_limit_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Twilio-provided string that uniquely identifies the Rate Limit resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Rate Limit resource.
+    - name: max
+      type: INT
+      REQUIRED: false
+      comment: Maximum number of requests permitted in during the interval.
+    - name: interval
+      type: INT
+      REQUIRED: false
+      comment: Number of seconds that the rate limit will be enforced over.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  verify.v2.service.entity.challenge:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Challenge.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Challenge. This identifier should be immutable, not PII, length between 8 and 64 characters, and generated by your external system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated alphanumeric characters.
+    - name: factor_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Factor.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_responded
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was responded, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: expiration_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. The default value is five (5) minutes after Challenge creation. The max value is sixty (60) minutes after creation.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: responded_reason
+      type: STRING
+      REQUIRED: false
+    - name: details
+      type: ANY
+      REQUIRED: false
+      comment: Details provided to give context about the Challenge. Intended to be shown to the end user.
+    - name: hidden_details
+      type: ANY
+      REQUIRED: false
+      comment: "Details provided to give context about the Challenge. Intended to be hidden from the end user. It must be a stringified JSON with only strings values eg. `{\"ip\": \"172.168.1.234\"}`"
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: "Custom metadata associated with the challenge. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{\"os\": \"Android\"}`. Can be up to 1024 characters in length."
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Challenge.
+  verify.v2.service.entity:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The unique external identifier for the Entity of the Service. This identifier should be immutable, not PII, length between 8 and 64 characters, and generated by your external system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated alphanumeric characters.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Entity was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Entity was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Entity.
+  verify.v2.service.entity.factor:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Factor.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Factor. This identifier should be immutable, not PII, length between 8 and 64 characters, and generated by your external system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated alphanumeric characters.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 64 characters. For a push factor, this can be the device's name.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains configurations specific to a `factor_type`.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: "Custom metadata associated with the factor. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{\"os\": \"Android\"}`. Can be up to 1024 characters in length."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  verify.v2.form:
+    - name: form_type
+      type: STRING
+      REQUIRED: false
+    - name: forms
+      type: ANY
+      REQUIRED: false
+      comment: Object that contains the available forms for this type. This available forms are given in the standard [JSON Schema](https://json-schema.org/) format
+    - name: form_meta
+      type: ANY
+      REQUIRED: false
+      comment: Additional information for the available forms for this type. E.g. The separator string used for `binding` in a Factor push.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL to access the forms for this type.
+  verify.v2.service.messaging_configuration:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) that the resource is associated with.
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO-3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code of the country this configuration will be applied to. If this is a global configuration, Country will take the value `all`.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) to be used to send SMS to the country of this configuration.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  verify.v2.service.entity.new_factor:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Factor.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Factor. This identifier should be immutable, not PII, length between 8 and 64 characters, and generated by your external system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated alphanumeric characters.
+    - name: binding
+      type: ANY
+      REQUIRED: false
+      comment: |-
+        Contains the `factor_type` specific secret and metadata.
+        For push, this is `binding.public_key` and `binding.alg`.
+        For totp, this is `binding.secret` and `binding.uri`. The `binding.uri` property is generated following the [google authenticator key URI format](https://github.com/google/google-authenticator/wiki/Key-Uri-Format), and `Factor.friendly_name` is used for the “accountname” value and `Service.friendly_name` or `Service.totp.issuer` is used for the `issuer` value.
+
+        The Binding property is ONLY returned upon Factor creation.
+    - name: options
+      type: ANY
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The friendly name of this Factor. This can be any string up to 64 characters, meant for humans to distinguish between Factors.
+        For `factor_type` `push`, this could be a device name.
+        For `factor_type` `totp`, this value is used as the “account name” in constructing the `binding.uri` property.
+        At the same time, we recommend avoiding providing PII.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains configurations specific to a `factor_type`.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: "Custom metadata associated with the factor. This is added by the Device/SDK directly to allow for the inclusion of device information. It must be a stringified JSON with only strings values eg. `{\"os\": \"Android\"}`. Can be up to 1024 characters in length."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  verify.v2.service.entity.challenge.notification:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Notification.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Challenge. This identifier should be immutable, not PII, length between 8 and 64 characters, and generated by your external system, such as your user's UUID, GUID, or SID. It can only contain dash (-) separated alphanumeric characters.
+    - name: challenge_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Challenge.
+    - name: priority
+      type: STRING
+      REQUIRED: false
+      comment: The priority of the notification. For `push` Challenges it's always `high` which sends the notification immediately, and can wake up a sleeping device.
+    - name: ttl
+      type: INT
+      REQUIRED: false
+      comment: "How long, in seconds, the notification is valid. Max: 5 minutes"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Notification was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  verify.v2.service.rate_limit:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Rate Limit.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Rate Limit resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this Rate Limit, assigned by the developer, to be optionally used in addition to SID. **This value should not contain PII.**
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of this Rate Limit
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  verify.v2.safelist:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the SafeList resource.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in SafeList.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the SafeList resource.
+  verify.v2.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that appears in the body of your verification messages. It can be up to 30 characters long and can include letters, numbers, spaces, dashes, underscores. Phone numbers, special characters or links are NOT allowed. It cannot contain more than 4 (consecutive or non-consecutive) digits. **This value should not contain PII.**
+    - name: code_length
+      type: INT
+      REQUIRED: false
+      comment: The length of the verification code to generate.
+    - name: lookup_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to perform a lookup with each verification started and return info about the phone number.
+    - name: psd2_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to pass PSD2 transaction parameters when starting a verification.
+    - name: skip_sms_to_landlines
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to skip sending SMS verifications to landlines. Requires `lookup_enabled`.
+    - name: dtmf_input_required
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to ask the user to press a number before delivering the verify code in a phone call.
+    - name: tts_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of an alternative text-to-speech service to use in phone calls. Applies only to TTS languages.
+    - name: do_not_share_warning_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: "Whether to add a security warning at the end of an SMS verification body. Disabled by default and applies only to SMS. Example SMS body: `Your AppName verification code is: 1234. Don’t share this code with anyone; our employees will never ask for the code`"
+    - name: custom_code_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to allow sending verifications with a custom code instead of a randomly generated one.
+    - name: push
+      type: ANY
+      REQUIRED: false
+      comment: Configurations for the Push factors (channel) created under this Service.
+    - name: totp
+      type: ANY
+      REQUIRED: false
+      comment: Configurations for the TOTP factors (channel) created under this Service.
+    - name: default_template_sid
+      type: STRING
+      REQUIRED: false
+    - name: whatsapp
+      type: ANY
+      REQUIRED: false
+    - name: passkeys
+      type: ANY
+      REQUIRED: false
+    - name: verify_event_subscription_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to allow verifications from the service to reach the stream-events sinks if configured
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  verify.v2.service.verification:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Verification resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Verification resource.
+    - name: to
+      type: STRING
+      REQUIRED: false
+      comment: The phone number or [email](https://www.twilio.com/docs/verify/email) being verified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+    - name: channel
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: "The status of the verification. Can be: `pending`, `approved`, `canceled`, `max_attempts_reached`, `deleted`, `failed` or `expired`."
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Use "status" instead. Legacy property indicating whether the verification was successful.
+    - name: lookup
+      type: ANY
+      REQUIRED: false
+      comment: Information about the phone number being verified.
+    - name: amount
+      type: STRING
+      REQUIRED: false
+      comment: The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+    - name: payee
+      type: STRING
+      REQUIRED: false
+      comment: The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+    - name: send_code_attempts
+      type: "[]ANY"
+      REQUIRED: false
+      comment: An array of verification attempt objects containing the channel attempted and the channel-specific transaction SID.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: sna
+      type: ANY
+      REQUIRED: false
+      comment: The set of fields used for a silent network auth (`sna`) verification. Contains a single field with the URL to be invoked to verify the phone number.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Verification resource.
+  verify.v2.verification_attempt:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID that uniquely identifies the verification attempt resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Verification resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) used to generate the attempt.
+    - name: verification_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Verification](https://www.twilio.com/docs/verify/api/verification) that generated the attempt.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Attempt was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Attempt was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: conversion_status
+      type: STRING
+      REQUIRED: false
+    - name: channel
+      type: STRING
+      REQUIRED: false
+    - name: price
+      type: ANY
+      REQUIRED: false
+      comment: An object containing the charge for this verification attempt related to the channel costs and the currency used. The costs related to the succeeded verifications are not included. May not be immediately available. More information on pricing is available [here](https://www.twilio.com/en-us/verify/pricing).
+    - name: channel_data
+      type: ANY
+      REQUIRED: false
+      comment: An object containing the channel specific information for an attempt.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  verify.v2.verification_attempts_summary:
+    - name: total_attempts
+      type: INT
+      REQUIRED: false
+      comment: Total of attempts made according to the provided filters
+    - name: total_converted
+      type: INT
+      REQUIRED: false
+      comment: Total of  attempts made that were confirmed by the end user, according to the provided filters.
+    - name: total_unconverted
+      type: INT
+      REQUIRED: false
+      comment: Total of attempts made that were not confirmed by the end user, according to the provided filters.
+    - name: conversion_rate_percentage
+      type: STRING
+      REQUIRED: false
+      comment: "Percentage of the confirmed messages over the total, defined by (total_converted/total_attempts)*100. "
+    - name: url
+      type: STRING
+      REQUIRED: false
+  verify.v2.service.verification_check:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the VerificationCheck resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/verify/api/service) the resource is associated with.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the VerificationCheck resource.
+    - name: to
+      type: STRING
+      REQUIRED: false
+      comment: The phone number or [email](https://www.twilio.com/docs/verify/email) being verified. Phone numbers must be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164).
+    - name: channel
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: "The status of the verification. Can be: `pending`, `approved`, `canceled`, `max_attempts_reached`, `deleted`, `failed` or `expired`."
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Use "status" instead. Legacy property indicating whether the verification was successful.
+    - name: amount
+      type: STRING
+      REQUIRED: false
+      comment: The amount of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+    - name: payee
+      type: STRING
+      REQUIRED: false
+      comment: The payee of the associated PSD2 compliant transaction. Requires the PSD2 Service flag enabled.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the Verification Check resource was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date and time in GMT when the Verification Check resource was last updated.
+    - name: sna_attempts_error_codes
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of error codes as a result of attempting a verification using the `sna` channel. The error codes are chronologically ordered, from the first attempt to the latest attempt. This will be an empty list if no errors occured or `null` if the last channel used wasn't `sna`.
+  verify.v2.verification_template:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies a Verification Template.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A descriptive string that you create to describe a Template. It can be up to 32 characters long.
+    - name: channels
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "A list of channels that support the Template. Can include: sms, voice."
+    - name: translations
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains the different translations of the template. Every translation is identified by the language short name and contains its respective information as the approval status, text and created/modified date.
+  verify.v2.service.webhook:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Webhook resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the webhook. **This value should not contain PII.**
+    - name: event_types
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "The array of events that this Webhook is subscribed to. Possible event types: `*, factor.deleted, factor.created, factor.verified, challenge.approved, challenge.denied`"
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: version
+      type: STRING
+      REQUIRED: false
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL associated with this Webhook.
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Webhook resource.
+  api.service.buckets.getResponse200:
+    - name: buckets
+      type: "[]STRUCT(verify.v2.service.rate_limit.bucket)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.challenges.createRequest:
+    - name: FactorSid
+      type: STRING
+      REQUIRED: true
+      comment: The unique SID identifier of the Factor.
+    - name: ExpirationDate
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. The default value is five (5) minutes after Challenge creation. The max value is sixty (60) minutes after creation.
+    - name: Details.Message
+      type: STRING
+      REQUIRED: false
+      comment: Shown to the user when the push notification arrives. Required when `factor_type` is `push`. Can be up to 256 characters in length
+    - name: Details.Fields
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of objects that describe the Fields included in the Challenge. Each object contains the label and value of the field, the label can be up to 36 characters in length and the value can be up to 128 characters in length. Used when `factor_type` is `push`. There can be up to 20 details fields.
+    - name: HiddenDetails
+      type: ANY
+      REQUIRED: false
+      comment: "Details provided to give context about the Challenge. Not shown to the end user. It must be a stringified JSON with only strings values eg. `{\"ip\": \"172.168.1.234\"}`. Can be up to 1024 characters in length"
+    - name: AuthPayload
+      type: STRING
+      REQUIRED: false
+      comment: Optional payload used to verify the Challenge upon creation. Only used with a Factor of type `totp` to carry the TOTP code that needs to be verified. For `TOTP` this value must be between 3 and 8 characters long.
+  api.service.challenges.getResponse200:
+    - name: challenges
+      type: "[]STRUCT(verify.v2.service.entity.challenge)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.entities.getResponse200:
+    - name: entities
+      type: "[]STRUCT(verify.v2.service.entity)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.factors.createRequest:
+    - name: AuthPayload
+      type: STRING
+      REQUIRED: false
+      comment: The optional payload needed to verify the Factor for the first time. E.g. for a TOTP, the numeric code.
+    - name: FriendlyName
+      type: STRING
+      REQUIRED: false
+      comment: The new friendly name of this Factor. It can be up to 64 characters.
+    - name: Config.NotificationToken
+      type: STRING
+      REQUIRED: false
+      comment: For APN, the device token. For FCM, the registration token. It is used to send the push notifications. Required when `factor_type` is `push`. If specified, this value must be between 32 and 255 characters long.
+    - name: Config.SdkVersion
+      type: STRING
+      REQUIRED: false
+      comment: The Verify Push SDK version used to configure the factor
+    - name: Config.TimeStep
+      type: INT
+      REQUIRED: false
+      comment: Defines how often, in seconds, are TOTP codes generated. i.e, a new TOTP code is generated every time_step seconds. Must be between 20 and 60 seconds, inclusive
+    - name: Config.Skew
+      type: INT
+      REQUIRED: false
+      comment: The number of time-steps, past and future, that are valid for validation of TOTP codes. Must be between 0 and 2, inclusive
+    - name: Config.CodeLength
+      type: INT
+      REQUIRED: false
+      comment: Number of digits for generated TOTP codes. Must be between 3 and 8, inclusive
+    - name: Config.Alg
+      type: STRING
+      REQUIRED: false
+    - name: Config.NotificationPlatform
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The transport technology used to generate the Notification Token. Can be `apn`, `fcm` or `none`.
+
+        Required when `factor_type` is `push`.
+  api.service.factors.getResponse200:
+    - name: factors
+      type: "[]STRUCT(verify.v2.service.entity.factor)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.messagingConfigurations.getResponse200:
+    - name: messaging_configurations
+      type: "[]STRUCT(verify.v2.service.messaging_configuration)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.rateLimits.getResponse200:
+    - name: rate_limits
+      type: "[]STRUCT(verify.v2.service.rate_limit)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(verify.v2.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  CreateVerification_Error429:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  api.attempt.listResponse200:
+    - name: attempts
+      type: "[]STRUCT(verify.v2.verification_attempt)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.template.listResponse200:
+    - name: templates
+      type: "[]STRUCT(verify.v2.verification_template)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.webhooks.getResponse200:
+    - name: webhooks
+      type: "[]STRUCT(verify.v2.service.webhook)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.verifyFactor.createRequest:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: A [base64url](https://base64.guru/standards/base64url) encoded representation of `rawId`.
+    - name: rawId
+      type: STRING
+      REQUIRED: false
+      comment: The globally unique identifier for this `PublicKeyCredential`.
+    - name: authenticatorAttachment
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        A string that indicates the mechanism by which the WebAuthn implementation is attached to the authenticator at the time the associated
+        `navigator.credentials.create()` or `navigator.credentials.get()` call completes.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The valid credential types supported by the API.
+        The values of this enumeration are used for versioning the `AuthenticatorAssertion` and `AuthenticatorAttestation` structures according to the type of the authenticator.
+    - name: response
+      type: OBJECT
+      REQUIRED: true
+      comment: The result of a WebAuthn credential registration via `navigator.credentials.create()`, as specified in [AuthenticatorAttestationResponse](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse).
+  api.service.verifyFactor.createResponse200:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Factor.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Factor.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 64 characters.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The Status of this Factor. One of `unverified` or `verified`.
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+      comment: The Type of this Factor. Currently `push` and `totp` are supported.
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains configurations specific to a `factor_type`.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: Custom metadata associated with the factor.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  api.service.factors.createResponse201:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Factor.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Factor.
+    - name: binding
+      type: ANY
+      REQUIRED: false
+      comment: Contains the `factor_type` specific secret and metadata. The Binding property is ONLY returned upon Factor creation.
+    - name: options
+      type: ANY
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Factor was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The friendly name of this Factor. This can be any string up to 64 characters, meant for humans to distinguish between Factors.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The Status of this Factor. One of `unverified` or `verified`.
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+      comment: The Type of this Factor. Currently `push` and `totp` are supported.
+    - name: config
+      type: ANY
+      REQUIRED: false
+      comment: An object that contains configurations specific to a `factor_type`.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: Custom metadata associated with the factor.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  api.service.challenges.createResponse201:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Challenge.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Challenge.
+    - name: factor_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Factor.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_responded
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was responded, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: expiration_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The Status of this Challenge. One of `pending`, `expired`, `approved` or `denied`.
+    - name: responded_reason
+      type: STRING
+      REQUIRED: false
+      comment: Reason for the Challenge to be in certain `status`. One of `none`, `not_needed` or `not_requested`.
+    - name: details
+      type: ANY
+      REQUIRED: false
+      comment: Details provided to give context about the Challenge.
+    - name: hidden_details
+      type: ANY
+      REQUIRED: false
+      comment: Details provided to give context about the Challenge.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: Custom metadata associated with the challenge.
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+      comment: The Factor Type of this Challenge. Currently `push` and `totp` are supported.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Challenge.
+    - name: options
+      type: OBJECT
+      REQUIRED: false
+      comment: An object that contains challenge options. Currently only used for `passkeys`.
+  api.service.approveChallenge.createRequest:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: A [base64url](https://base64.guru/standards/base64url) encoded representation of `rawId`.
+    - name: rawId
+      type: STRING
+      REQUIRED: true
+      comment: The globally unique identifier for this `PublicKeyCredential`.
+    - name: authenticatorAttachment
+      type: STRING
+      REQUIRED: true
+      comment: A string that indicates the mechanism by which the WebAuthn implementation is attached to the authenticator at the time the associated `navigator.credentials.create()` or `navigator.credentials.get()` call completes.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The valid credential types supported by the API. The values of this enumeration are used for versioning the `AuthenticatorAssertion` and `AuthenticatorAttestation` structures according to the type of the authenticator.
+    - name: response
+      type: OBJECT
+      REQUIRED: true
+      comment: The result of a WebAuthn authentication via a `navigator.credentials.get()` request, as specified in [AuthenticatorAttestationResponse](https://developer.mozilla.org/en-US/docs/Web/API/AuthenticatorAttestationResponse).
+  api.service.approveChallenge.createResponse200:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Challenge.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Service.
+    - name: entity_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Entity.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: Customer unique identity for the Entity owner of the Challenge.
+    - name: factor_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Factor.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was created, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was updated, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_responded
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Challenge was responded, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: expiration_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date-time when this Challenge expires, given in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The Status of this Challenge. One of `pending`, `expired`, `approved` or `denied`.
+    - name: responded_reason
+      type: STRING
+      REQUIRED: false
+      comment: Reason for the Challenge to be in certain `status`. One of `none`, `not_needed` or `not_requested`.
+    - name: details
+      type: ANY
+      REQUIRED: false
+      comment: Details provided to give context about the Challenge.
+    - name: hidden_details
+      type: ANY
+      REQUIRED: false
+      comment: Details provided to give context about the Challenge.
+    - name: metadata
+      type: ANY
+      REQUIRED: false
+      comment: Custom metadata associated with the challenge.
+    - name: factor_type
+      type: STRING
+      REQUIRED: false
+      comment: The Factor Type of this Challenge. Currently `push` and `totp` are supported.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Challenge.
+    - name: options
+      type: OBJECT
+      REQUIRED: false
+      comment: An object that contains challenge options. Currently only used for `passkeys`.

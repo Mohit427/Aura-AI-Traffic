@@ -1,0 +1,3121 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://messaging.twilio.com
+METHODS:
+  twilio_messaging.service.alphaSenders.create:
+    SUMMARY: Perform operation CreateAlphaSender
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/AlphaSenders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - AlphaSender:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.alpha_sender)
+        RETURNVAR: twilio_messaging_service_alphaSenders_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.alphaSenders.create
+  twilio_messaging.service.alphaSenders.get:
+    SUMMARY: Perform operation ListAlphaSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/AlphaSenders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.alphaSenders.getResponse200)
+        RETURNVAR: twilio_messaging_service_alphaSenders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.alphaSenders.get
+  twilio_messaging.service.alphaSenders.get.1:
+    SUMMARY: Perform operation FetchAlphaSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/AlphaSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.alpha_sender)
+        RETURNVAR: twilio_messaging_service_alphaSenders_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.alphaSenders.get.1
+  twilio_messaging.service.alphaSenders.delete:
+    SUMMARY: Perform operation DeleteAlphaSender
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/AlphaSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.alphaSenders.delete
+  twilio_messaging.a2p.smsOtp.create:
+    SUMMARY: Perform operation CreateBrandRegistrationOtp
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/a2p/BrandRegistrations/{BrandRegistrationSid}/SmsOtp
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BrandRegistrationSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations.brand_registration_otp)
+        RETURNVAR: twilio_messaging_a2p_smsOtp_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.a2p.smsOtp.create
+  twilio_messaging.a2p.brandRegistrations.get:
+    SUMMARY: Perform operation FetchBrandRegistrations
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/a2p/BrandRegistrations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations)
+        RETURNVAR: twilio_messaging_a2p_brandRegistrations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.a2p.brandRegistrations.get
+  twilio_messaging.a2p.brandRegistrations.create:
+    SUMMARY: Perform operation UpdateBrandRegistrations
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/a2p/BrandRegistrations/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations)
+        RETURNVAR: twilio_messaging_a2p_brandRegistrations_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_messaging.a2p.brandRegistrations.create
+  twilio_messaging.a2p.brandRegistrations.list:
+    SUMMARY: Perform operation ListBrandRegistrations
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/a2p/BrandRegistrations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.a2p.brandRegistrations.listResponse200)
+        RETURNVAR: twilio_messaging_a2p_brandRegistrations_list
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.a2p.brandRegistrations.list
+  twilio_messaging.a2p.brandRegistrations.create.1:
+    SUMMARY: Perform operation CreateBrandRegistrations
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/a2p/BrandRegistrations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileBundleSid:
+          TYPE: STRING
+          LOCATION: body
+      - A2PProfileBundleSid:
+          TYPE: STRING
+          LOCATION: body
+      - BrandType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Mock:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SkipAutomaticSecVet:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations)
+        RETURNVAR: twilio_messaging_a2p_brandRegistrations_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.a2p.brandRegistrations.create.1
+  twilio_messaging.a2p.vettings.create:
+    SUMMARY: Perform operation CreateBrandVetting
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/a2p/BrandRegistrations/{BrandSid}/Vettings
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BrandSid:
+          TYPE: STRING
+          LOCATION: path
+      - VettingProvider:
+          TYPE: STRING
+          LOCATION: body
+      - VettingId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations.brand_vetting)
+        RETURNVAR: twilio_messaging_a2p_vettings_create_201
+        STATUS: 201
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations.brand_vetting)
+        RETURNVAR: twilio_messaging_a2p_vettings_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_messaging.a2p.vettings.create
+  twilio_messaging.a2p.vettings.get:
+    SUMMARY: Perform operation ListBrandVetting
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/a2p/BrandRegistrations/{BrandSid}/Vettings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BrandSid:
+          TYPE: STRING
+          LOCATION: path
+      - VettingProvider:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.a2p.vettings.getResponse200)
+        RETURNVAR: twilio_messaging_a2p_vettings_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.a2p.vettings.get
+  twilio_messaging.a2p.vettings.get.1:
+    SUMMARY: Perform operation FetchBrandVetting
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/a2p/BrandRegistrations/{BrandSid}/Vettings/{BrandVettingSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BrandSid:
+          TYPE: STRING
+          LOCATION: path
+      - BrandVettingSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.brand_registrations.brand_vetting)
+        RETURNVAR: twilio_messaging_a2p_vettings_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.a2p.vettings.get.1
+  twilio_messaging.service.channelSenders.get:
+    SUMMARY: Perform operation ListChannelSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/ChannelSenders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.channelSenders.getResponse200)
+        RETURNVAR: twilio_messaging_service_channelSenders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.channelSenders.get
+  twilio_messaging.service.channelSenders.create:
+    SUMMARY: Perform operation CreateChannelSender
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/ChannelSenders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.channel_sender)
+        RETURNVAR: twilio_messaging_service_channelSenders_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.channelSenders.create
+  twilio_messaging.service.channelSenders.get.1:
+    SUMMARY: Perform operation FetchChannelSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/ChannelSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.channel_sender)
+        RETURNVAR: twilio_messaging_service_channelSenders_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.channelSenders.get.1
+  twilio_messaging.service.channelSenders.delete:
+    SUMMARY: Perform operation DeleteChannelSender
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/ChannelSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.channelSenders.delete
+  twilio_messaging.deactivation.list:
+    SUMMARY: Fetch a list of all United States numbers that have been deactivated on a specific date.
+    DESC: Fetch a list of all United States numbers that have been deactivated on a specific date.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Deactivations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Date:
+          TYPE: DATE
+          REQUIRED: false
+          LOCATION: query
+    CANONICAL_ID: twilio_messaging.deactivation.list
+  twilio_messaging.service.destinationAlphaSenders.create:
+    SUMMARY: Perform operation CreateDestinationAlphaSender
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/DestinationAlphaSenders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - AlphaSender:
+          TYPE: STRING
+          LOCATION: body
+      - IsoCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.destination_alpha_sender)
+        RETURNVAR: twilio_messaging_service_destinationAlphaSenders_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.destinationAlphaSenders.create
+  twilio_messaging.service.destinationAlphaSenders.get:
+    SUMMARY: Perform operation ListDestinationAlphaSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/DestinationAlphaSenders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - IsoCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.destinationAlphaSenders.getResponse200)
+        RETURNVAR: twilio_messaging_service_destinationAlphaSenders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.destinationAlphaSenders.get
+  twilio_messaging.service.destinationAlphaSenders.get.1:
+    SUMMARY: Perform operation FetchDestinationAlphaSender
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/DestinationAlphaSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.destination_alpha_sender)
+        RETURNVAR: twilio_messaging_service_destinationAlphaSenders_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.destinationAlphaSenders.get.1
+  twilio_messaging.service.destinationAlphaSenders.delete:
+    SUMMARY: Perform operation DeleteDestinationAlphaSender
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/DestinationAlphaSenders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.destinationAlphaSenders.delete
+  twilio_messaging.linkshortening.certificate.create:
+    SUMMARY: Perform operation UpdateDomainCertV4
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/Certificate
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+      - TlsCert:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_cert_v4)
+        RETURNVAR: twilio_messaging_linkshortening_certificate_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(messaging.v1.domain_cert_v4)
+        RETURNVAR: twilio_messaging_linkshortening_certificate_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.linkshortening.certificate.create
+  twilio_messaging.linkshortening.certificate.get:
+    SUMMARY: Perform operation FetchDomainCertV4
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/Certificate
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_cert_v4)
+        RETURNVAR: twilio_messaging_linkshortening_certificate_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.linkshortening.certificate.get
+  twilio_messaging.linkshortening.certificate.delete:
+    SUMMARY: Perform operation DeleteDomainCertV4
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/Certificate
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.linkshortening.certificate.delete
+  twilio_messaging.linkshortening.config.create:
+    SUMMARY: Perform operation UpdateDomainConfig
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/Config
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+      - FallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContinueOnFailure:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DisableHttps:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_config)
+        RETURNVAR: twilio_messaging_linkshortening_config_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(messaging.v1.domain_config)
+        RETURNVAR: twilio_messaging_linkshortening_config_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.linkshortening.config.create
+  twilio_messaging.linkshortening.config.get:
+    SUMMARY: Perform operation FetchDomainConfig
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/Config
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_config)
+        RETURNVAR: twilio_messaging_linkshortening_config_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.linkshortening.config.get
+  twilio_messaging.linkshortening.domainConfig.get:
+    SUMMARY: Perform operation FetchDomainConfigMessagingService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LinkShortening/MessagingService/{MessagingServiceSid}/DomainConfig
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_config_messaging_service)
+        RETURNVAR: twilio_messaging_linkshortening_domainConfig_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.linkshortening.domainConfig.get
+  twilio_messaging.linkshortening.validateDns.get:
+    SUMMARY: Perform operation FetchDomainDnsValidation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/ValidateDns
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.domain_dns_validation)
+        RETURNVAR: twilio_messaging_linkshortening_validateDns_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.linkshortening.validateDns.get
+  twilio_messaging.service.preregisteredUsa2p.create:
+    SUMMARY: Perform operation CreateExternalCampaign
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/PreregisteredUsa2p
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CampaignId:
+          TYPE: STRING
+          LOCATION: body
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: body
+      - CnpMigration:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.external_campaign)
+        RETURNVAR: twilio_messaging_service_preregisteredUsa2p_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.preregisteredUsa2p.create
+  twilio_messaging.linkshortening.messagingServices.create:
+    SUMMARY: Perform operation CreateLinkshorteningMessagingService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.linkshortening_messaging_service)
+        RETURNVAR: twilio_messaging_linkshortening_messagingServices_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.linkshortening.messagingServices.create
+  twilio_messaging.linkshortening.messagingServices.delete:
+    SUMMARY: Perform operation DeleteLinkshorteningMessagingService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/MessagingServices/{MessagingServiceSid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.linkshortening.messagingServices.delete
+  twilio_messaging.linkshortening.domain.get:
+    SUMMARY: Perform operation FetchLinkshorteningMessagingServiceDomainAssociation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/LinkShortening/MessagingServices/{MessagingServiceSid}/Domain
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.linkshortening_messaging_service_domain_association)
+        RETURNVAR: twilio_messaging_linkshortening_domain_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.linkshortening.domain.get
+  twilio_messaging.service.phoneNumbers.create:
+    SUMMARY: Perform operation CreatePhoneNumber
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PhoneNumberSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.phone_number)
+        RETURNVAR: twilio_messaging_service_phoneNumbers_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(messaging.v1.service.phone_number)
+        RETURNVAR: twilio_messaging_service_phoneNumbers_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.phoneNumbers.create
+  twilio_messaging.service.phoneNumbers.get:
+    SUMMARY: Perform operation ListPhoneNumber
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.phoneNumbers.getResponse200)
+        RETURNVAR: twilio_messaging_service_phoneNumbers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.phoneNumbers.get
+  twilio_messaging.service.phoneNumbers.delete:
+    SUMMARY: Perform operation DeletePhoneNumber
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.phoneNumbers.delete
+  twilio_messaging.service.phoneNumbers.get.1:
+    SUMMARY: Perform operation FetchPhoneNumber
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/PhoneNumbers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.phone_number)
+        RETURNVAR: twilio_messaging_service_phoneNumbers_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.phoneNumbers.get.1
+  twilio_messaging.linkshortening.requestManagedCert.create:
+    SUMMARY: Perform operation UpdateRequestManagedCert
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/LinkShortening/Domains/{DomainSid}/RequestManagedCert
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - DomainSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.request_managed_cert)
+        RETURNVAR: twilio_messaging_linkshortening_requestManagedCert_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(messaging.v1.request_managed_cert)
+        RETURNVAR: twilio_messaging_linkshortening_requestManagedCert_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.linkshortening.requestManagedCert.create
+  twilio_messaging.service.create:
+    SUMMARY: Perform operation CreateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - InboundRequestUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - InboundMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StickySender:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MmsConverter:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SmartEncoding:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ScanMessageContent:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackToLongCode:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AreaCodeGeomatch:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ValidityPeriod:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - SynchronousValidation:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Usecase:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UseInboundWebhookOnNumber:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service)
+        RETURNVAR: twilio_messaging_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.create
+  twilio_messaging.service.list:
+    SUMMARY: Perform operation ListService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_messaging_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.list
+  twilio_messaging.service.create.1:
+    SUMMARY: Perform operation UpdateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - InboundRequestUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - InboundMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StickySender:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MmsConverter:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - SmartEncoding:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ScanMessageContent:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FallbackToLongCode:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AreaCodeGeomatch:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ValidityPeriod:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - SynchronousValidation:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Usecase:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UseInboundWebhookOnNumber:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service)
+        RETURNVAR: twilio_messaging_service_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.create.1
+  twilio_messaging.service.get:
+    SUMMARY: Perform operation FetchService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service)
+        RETURNVAR: twilio_messaging_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.get
+  twilio_messaging.service.delete:
+    SUMMARY: Perform operation DeleteService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.delete
+  twilio_messaging.service.shortCodes.create:
+    SUMMARY: Perform operation CreateShortCode
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/ShortCodes
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ShortCodeSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.short_code)
+        RETURNVAR: twilio_messaging_service_shortCodes_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(messaging.v1.service.short_code)
+        RETURNVAR: twilio_messaging_service_shortCodes_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.shortCodes.create
+  twilio_messaging.service.shortCodes.get:
+    SUMMARY: Perform operation ListShortCode
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/ShortCodes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.shortCodes.getResponse200)
+        RETURNVAR: twilio_messaging_service_shortCodes_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.shortCodes.get
+  twilio_messaging.service.shortCodes.delete:
+    SUMMARY: Perform operation DeleteShortCode
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/ShortCodes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.shortCodes.delete
+  twilio_messaging.service.shortCodes.get.1:
+    SUMMARY: Perform operation FetchShortCode
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/ShortCodes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.short_code)
+        RETURNVAR: twilio_messaging_service_shortCodes_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.shortCodes.get.1
+  twilio_messaging.tollfree.verifications.get:
+    SUMMARY: Retrieve a tollfree verification
+    DESC: Retrieve a tollfree verification
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Tollfree/Verifications/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.tollfree_verification)
+        RETURNVAR: twilio_messaging_tollfree_verifications_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.tollfree.verifications.get
+  twilio_messaging.tollfree.verifications.create:
+    SUMMARY: Edit a tollfree verification
+    DESC: Edit a tollfree verification
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Tollfree/Verifications/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - BusinessName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessWebsite:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NotificationEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UseCaseCategories:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - UseCaseSummary:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ProductionMessageSample:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInImageUrls:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - OptInType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessageVolume:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress2:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStateProvinceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessPostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AdditionalInformation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactFirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactLastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactPhone:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EditReason:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationAuthority:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationPhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DoingBusinessAs:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInConfirmationMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - HelpMessageSample:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivacyPolicyUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TermsAndConditionsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AgeGatedContent:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - OptInKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - VettingProvider:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VettingId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.tollfree_verification)
+        RETURNVAR: twilio_messaging_tollfree_verifications_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_messaging.tollfree.verifications.create
+  twilio_messaging.tollfree.verifications.delete:
+    SUMMARY: Delete a tollfree verification
+    DESC: Delete a tollfree verification
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Tollfree/Verifications/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.tollfree.verifications.delete
+  twilio_messaging.tollfree.verifications.list:
+    SUMMARY: List tollfree verifications
+    DESC: List tollfree verifications
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Tollfree/Verifications
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TollfreePhoneNumberSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ExternalReferenceId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncludeSubAccounts:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - TrustProductSid:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.tollfree.verifications.listResponse200)
+        RETURNVAR: twilio_messaging_tollfree_verifications_list
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.tollfree.verifications.list
+  twilio_messaging.tollfree.verifications.create.1:
+    SUMMARY: Create a tollfree verification
+    DESC: Create a tollfree verification
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Tollfree/Verifications
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - BusinessName:
+          TYPE: STRING
+          LOCATION: body
+      - BusinessWebsite:
+          TYPE: STRING
+          LOCATION: body
+      - NotificationEmail:
+          TYPE: STRING
+          LOCATION: body
+      - UseCaseCategories:
+          TYPE: ANY
+          LOCATION: body
+      - UseCaseSummary:
+          TYPE: STRING
+          LOCATION: body
+      - ProductionMessageSample:
+          TYPE: STRING
+          LOCATION: body
+      - OptInImageUrls:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - OptInType:
+          TYPE: STRING
+          LOCATION: body
+      - MessageVolume:
+          TYPE: STRING
+          LOCATION: body
+      - TollfreePhoneNumberSid:
+          TYPE: STRING
+          LOCATION: body
+      - CustomerProfileSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress2:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStateProvinceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessPostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AdditionalInformation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactFirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactLastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactPhone:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ExternalReferenceId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationAuthority:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationPhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DoingBusinessAs:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInConfirmationMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - HelpMessageSample:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivacyPolicyUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TermsAndConditionsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AgeGatedContent:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - OptInKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - VettingProvider:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VettingId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.tollfree_verification)
+        RETURNVAR: twilio_messaging_tollfree_verifications_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.tollfree.verifications.create.1
+  twilio_messaging.service.usa2p.create:
+    SUMMARY: Perform operation CreateUsAppToPerson
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Api-Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - BrandRegistrationSid:
+          TYPE: STRING
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          LOCATION: body
+      - MessageFlow:
+          TYPE: STRING
+          LOCATION: body
+      - MessageSamples:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - UsAppToPersonUsecase:
+          TYPE: STRING
+          LOCATION: body
+      - HasEmbeddedLinks:
+          TYPE: BOOL
+          LOCATION: body
+      - HasEmbeddedPhone:
+          TYPE: BOOL
+          LOCATION: body
+      - OptInMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptOutMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - HelpMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - OptOutKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - HelpKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - SubscriberOptIn:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - AgeGated:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DirectLending:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - PrivacyPolicyUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TermsAndConditionsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.us_app_to_person_response)
+        RETURNVAR: twilio_messaging_service_usa2p_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_messaging.service.usa2p.create
+  twilio_messaging.service.usa2p.get:
+    SUMMARY: Perform operation ListUsAppToPerson
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - X-Twilio-Api-Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.usa2p.getResponse200)
+        RETURNVAR: twilio_messaging_service_usa2p_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.usa2p.get
+  twilio_messaging.service.usa2p.delete:
+    SUMMARY: Perform operation DeleteUsAppToPerson
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_messaging.service.usa2p.delete
+  twilio_messaging.service.usa2p.get.1:
+    SUMMARY: Perform operation FetchUsAppToPerson
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Api-Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.us_app_to_person_response)
+        RETURNVAR: twilio_messaging_service_usa2p_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.usa2p.get.1
+  twilio_messaging.service.usa2p.create.1:
+    SUMMARY: Perform operation UpdateUsAppToPerson
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - X-Twilio-Api-Version:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - HasEmbeddedLinks:
+          TYPE: BOOL
+          LOCATION: body
+      - HasEmbeddedPhone:
+          TYPE: BOOL
+          LOCATION: body
+      - MessageSamples:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - MessageFlow:
+          TYPE: STRING
+          LOCATION: body
+      - Description:
+          TYPE: STRING
+          LOCATION: body
+      - AgeGated:
+          TYPE: BOOL
+          LOCATION: body
+      - DirectLending:
+          TYPE: BOOL
+          LOCATION: body
+      - PrivacyPolicyUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TermsAndConditionsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.us_app_to_person_response)
+        RETURNVAR: twilio_messaging_service_usa2p_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.usa2p.create.1
+  twilio_messaging.service.usecases.get:
+    SUMMARY: Perform operation FetchUsAppToPersonUsecase
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{MessagingServiceSid}/Compliance/Usa2p/Usecases
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - MessagingServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - BrandRegistrationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.service.us_app_to_person_usecase)
+        RETURNVAR: twilio_messaging_service_usecases_get
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.usecases.get
+  twilio_messaging.service.usecases.list:
+    SUMMARY: Perform operation FetchUsecase
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/Usecases
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(messaging.v1.usecase)
+        RETURNVAR: twilio_messaging_service_usecases_list
+        STATUS: 200
+    CANONICAL_ID: twilio_messaging.service.usecases.list
+STRUCTS:
+  messaging.v1.service.alpha_sender:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AlphaSender resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AlphaSender resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: alpha_sender
+      type: STRING
+      REQUIRED: false
+      comment: The Alphanumeric Sender ID string.
+    - name: capabilities
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of values that describe whether the number can receive calls or messages. Can be: `SMS`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the AlphaSender resource.
+  messaging.v1.brand_registrations.brand_registration_otp:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Brand Registration resource.
+    - name: brand_registration_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify Brand Registration of Sole Proprietor Brand
+  messaging.v1.brand_registrations:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify Brand Registration.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Brand Registration resource.
+    - name: customer_profile_bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: A2P Messaging Profile Bundle BundleSid.
+    - name: a2p_profile_bundle_sid
+      type: STRING
+      REQUIRED: false
+      comment: A2P Messaging Profile Bundle BundleSid.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: brand_type
+      type: STRING
+      REQUIRED: false
+      comment: "Type of brand. One of: \"STANDARD\", \"SOLE_PROPRIETOR\". SOLE_PROPRIETOR is for the low volume, SOLE_PROPRIETOR campaign use case. There can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR brand. STANDARD is for all other campaign use cases. Multiple campaign use cases can be created per STANDARD brand."
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: tcr_id
+      type: STRING
+      REQUIRED: false
+      comment: Campaign Registry (TCR) Brand ID. Assigned only after successful brand registration.
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: DEPRECATED. A reason why brand registration has failed. Only applicable when status is FAILED.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of errors that occurred during the brand registration process.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Brand Registration resource.
+    - name: brand_score
+      type: INT
+      REQUIRED: false
+      comment: The secondary vetting score if it was done. Otherwise, it will be the brand score if it's returned from TCR. It may be null if no score is available.
+    - name: brand_feedback
+      type: "[]STRING"
+      REQUIRED: false
+      comment: DEPRECATED. Feedback on how to improve brand score
+    - name: identity_status
+      type: STRING
+      REQUIRED: false
+    - name: russell_3000
+      type: BOOL
+      REQUIRED: false
+      comment: Publicly traded company identified in the Russell 3000 Index
+    - name: government_entity
+      type: BOOL
+      REQUIRED: false
+      comment: Identified as a government entity
+    - name: tax_exempt_status
+      type: STRING
+      REQUIRED: false
+      comment: Nonprofit organization tax-exempt status per section 501 of the U.S. tax code.
+    - name: skip_automatic_sec_vet
+      type: BOOL
+      REQUIRED: false
+      comment: A flag to disable automatic secondary vetting for brands which it would otherwise be done.
+    - name: mock
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  messaging.v1.brand_registrations.brand_vetting:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the vetting record.
+    - name: brand_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify Brand Registration.
+    - name: brand_vetting_sid
+      type: STRING
+      REQUIRED: false
+      comment: The Twilio SID of the third-party vetting record.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: vetting_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of the vetting from the third-party provider.
+    - name: vetting_class
+      type: STRING
+      REQUIRED: false
+      comment: The type of vetting that has been conducted. One of “STANDARD” (Aegis) or “POLITICAL” (Campaign Verify).
+    - name: vetting_status
+      type: STRING
+      REQUIRED: false
+      comment: The status of the import vetting attempt. One of “PENDING,” “SUCCESS,” or “FAILED”.
+    - name: vetting_provider
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Brand Vetting resource.
+  messaging.v1.service.channel_sender:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ChannelSender resource.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/messaging/services) the resource is associated with.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the ChannelSender resource.
+    - name: sender
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the sender e.g whatsapp:+123456XXXX.
+    - name: sender_type
+      type: STRING
+      REQUIRED: false
+      comment: A string value that identifies the sender type e.g WhatsApp, Messenger.
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+      comment: The 2-character [ISO Country Code](https://www.iso.org/iso-3166-country-codes.html) of the number.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the ChannelSender resource.
+  messaging.v1.service.destination_alpha_sender:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AlphaSender resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the AlphaSender resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: alpha_sender
+      type: STRING
+      REQUIRED: false
+      comment: The Alphanumeric Sender ID string.
+    - name: capabilities
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of values that describe whether the number can receive calls or messages. Can be: `SMS`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the AlphaSender resource.
+    - name: iso_country_code
+      type: STRING
+      REQUIRED: false
+      comment: The Two Character ISO Country Code the Alphanumeric Sender ID will be used for. For Default Alpha Senders that work across countries, this value will be an empty string
+  messaging.v1.domain_cert_v4:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain was last updated.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that the private certificate associated with this domain expires. You will need to update the certificate before that date to ensure your shortened links will continue to work.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain was registered to the Twilio platform to create a new Domain object.
+    - name: domain_name
+      type: STRING
+      REQUIRED: false
+      comment: Full url path for this domain.
+    - name: certificate_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify this Certificate resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: cert_in_validation
+      type: ANY
+      REQUIRED: false
+      comment: Optional JSON field describing the status and upload date of a new certificate in the process of validation
+  messaging.v1.domain_dns_validation:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: is_valid
+      type: BOOL
+      REQUIRED: false
+    - name: reason
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  messaging.v1.domain_config:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: config_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain config (prefix ZK).
+    - name: fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping.
+    - name: callback_url
+      type: STRING
+      REQUIRED: false
+      comment: URL to receive click events to your webhook whenever the recipients click on the shortened links.
+    - name: continue_on_failure
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean field to set customer delivery preference when there is a failure in linkShortening service
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date this Domain Config was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain Config was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: disable_https
+      type: BOOL
+      REQUIRED: false
+      comment: Customer's choice to send links with/without "https://" attached to shortened url. If true, messages will not be sent with https:// at the beginning of the url. If false, messages will be sent with https:// at the beginning of the url. False is the default behavior if it is not specified.
+  messaging.v1.domain_config_messaging_service:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: config_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain config (prefix ZK).
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the messaging service
+    - name: fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: Any requests we receive to this domain that do not match an existing shortened message will be redirected to the fallback url. These will likely be either expired messages, random misdirected traffic, or intentional scraping.
+    - name: callback_url
+      type: STRING
+      REQUIRED: false
+      comment: URL to receive click events to your webhook whenever the recipients click on the shortened links.
+    - name: continue_on_failure
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean field to set customer delivery preference when there is a failure in linkShortening service
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date this Domain Config was created.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain Config was last updated.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  messaging.v1.external_campaign:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Campaign belongs to.
+    - name: campaign_id
+      type: STRING
+      REQUIRED: false
+      comment: ID of the preregistered campaign.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  messaging.v1.linkshortening_messaging_service:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string identifies the domain resource
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the messaging service
+    - name: url
+      type: STRING
+      REQUIRED: false
+  messaging.v1.linkshortening_messaging_service_domain_association:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the messaging service
+    - name: url
+      type: STRING
+      REQUIRED: false
+  messaging.v1.service.phone_number:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the PhoneNumber resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the PhoneNumber resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number in [E.164](https://www.twilio.com/docs/glossary/what-e164) format, which consists of a + followed by the country code and subscriber number.
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+      comment: The 2-character [ISO Country Code](https://www.iso.org/iso-3166-country-codes.html) of the number.
+    - name: capabilities
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of values that describe whether the number can receive calls or messages. Can be: `Voice`, `SMS`, and `MMS`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the PhoneNumber resource.
+  messaging.v1.request_managed_cert:
+    - name: domain_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Domain resource.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain was last updated.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that this Domain was registered to the Twilio platform to create a new Domain object.
+    - name: date_expires
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Date that the private certificate associated with this domain expires. This is the expiration date of your existing cert.
+    - name: domain_name
+      type: STRING
+      REQUIRED: false
+      comment: Full url path for this domain.
+    - name: certificate_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify this Certificate resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: managed
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean flag indicating if the certificate is managed by Twilio.
+    - name: requesting
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean flag indicating if a managed certificate needs to be fulfilled by Twilio.
+  messaging.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: inbound_request_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using `inbound_method` when a message is received by any phone number or short code in the Service. When this property is `null`, receiving inbound messages is disabled. All messages sent to the Twilio phone number or short code will not be logged and received on the Account. If the `use_inbound_webhook_on_number` field is enabled then the webhook url defined on the phone number will override the `inbound_request_url` defined for the Messaging Service.
+    - name: inbound_method
+      type: STRING
+      REQUIRED: false
+      comment: The HTTP method we use to call `inbound_request_url`. Can be `GET` or `POST`.
+    - name: fallback_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL that we call using `fallback_method` if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. If the `use_inbound_webhook_on_number` field is enabled then the webhook url defined on the phone number will override the `fallback_url` defined for the Messaging Service.
+    - name: fallback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method we use to call `fallback_url`. Can be: `GET` or `POST`."
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to [pass status updates](https://www.twilio.com/docs/sms/api/message-resource#message-status-values) about message delivery.
+    - name: sticky_sender
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to enable [Sticky Sender](https://www.twilio.com/docs/messaging/services#sticky-sender) on the Service instance.
+    - name: mms_converter
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to enable the [MMS Converter](https://www.twilio.com/docs/messaging/services#mms-converter) for messages sent through the Service instance.
+    - name: smart_encoding
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to enable [Smart Encoding](https://www.twilio.com/docs/messaging/services#smart-encoding) for messages sent through the Service instance.
+    - name: scan_message_content
+      type: STRING
+      REQUIRED: false
+    - name: fallback_to_long_code
+      type: BOOL
+      REQUIRED: false
+      comment: "[OBSOLETE] Former feature used to fallback to long code sender after certain short code message failures."
+    - name: area_code_geomatch
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to enable [Area Code Geomatch](https://www.twilio.com/docs/messaging/services#area-code-geomatch) on the Service Instance.
+    - name: synchronous_validation
+      type: BOOL
+      REQUIRED: false
+      comment: Reserved.
+    - name: validity_period
+      type: INT
+      REQUIRED: false
+      comment: How long, in seconds, messages sent from the Service are valid. Can be an integer from `1` to `36,000`. Default value is `36,000`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of related resources.
+    - name: usecase
+      type: STRING
+      REQUIRED: false
+      comment: A string that describes the scenario in which the Messaging Service will be used. Possible values are `notifications`, `marketing`, `verification`, `discussion`, `poll`, `undeclared`.
+    - name: us_app_to_person_registered
+      type: BOOL
+      REQUIRED: false
+      comment: Whether US A2P campaign is registered for this Service.
+    - name: use_inbound_webhook_on_number
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean value that indicates either the webhook url configured on the phone number will be used or `inbound_request_url`/`fallback_url` url will be called when a message is received from the phone number. If this field is enabled then the webhook url defined on the phone number will override the `inbound_request_url`/`fallback_url` defined for the Messaging Service.
+  messaging.v1.service.short_code:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the ShortCode resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ShortCode resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Service](https://www.twilio.com/docs/chat/rest/service-resource) the resource is associated with.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: short_code
+      type: STRING
+      REQUIRED: false
+      comment: The [E.164](https://www.twilio.com/docs/glossary/what-e164) format of the short code.
+    - name: country_code
+      type: STRING
+      REQUIRED: false
+      comment: The 2-character [ISO Country Code](https://www.iso.org/iso-3166-country-codes.html) of the number.
+    - name: capabilities
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of values that describe whether the number can receive calls or messages. Can be: `SMS` and `MMS`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the ShortCode resource.
+  messaging.v1.tollfree_verification:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify Tollfree Verification.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tollfree Verification resource.
+    - name: customer_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: Customer's Profile Bundle BundleSid.
+    - name: trust_product_sid
+      type: STRING
+      REQUIRED: false
+      comment: Tollfree TrustProduct Bundle BundleSid.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: regulated_item_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Regulated Item.
+    - name: business_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the business or organization using the Tollfree number.
+    - name: business_street_address
+      type: STRING
+      REQUIRED: false
+      comment: The address of the business or organization using the Tollfree number.
+    - name: business_street_address2
+      type: STRING
+      REQUIRED: false
+      comment: The address of the business or organization using the Tollfree number.
+    - name: business_city
+      type: STRING
+      REQUIRED: false
+      comment: The city of the business or organization using the Tollfree number.
+    - name: business_state_province_region
+      type: STRING
+      REQUIRED: false
+      comment: The state/province/region of the business or organization using the Tollfree number.
+    - name: business_postal_code
+      type: STRING
+      REQUIRED: false
+      comment: The postal code of the business or organization using the Tollfree number.
+    - name: business_country
+      type: STRING
+      REQUIRED: false
+      comment: The country of the business or organization using the Tollfree number.
+    - name: business_website
+      type: STRING
+      REQUIRED: false
+      comment: The website of the business or organization using the Tollfree number.
+    - name: business_contact_first_name
+      type: STRING
+      REQUIRED: false
+      comment: The first name of the contact for the business or organization using the Tollfree number.
+    - name: business_contact_last_name
+      type: STRING
+      REQUIRED: false
+      comment: The last name of the contact for the business or organization using the Tollfree number.
+    - name: business_contact_email
+      type: STRING
+      REQUIRED: false
+      comment: The email address of the contact for the business or organization using the Tollfree number.
+    - name: business_contact_phone
+      type: STRING
+      REQUIRED: false
+      comment: The E.164 formatted phone number of the contact for the business or organization using the Tollfree number.
+    - name: notification_email
+      type: STRING
+      REQUIRED: false
+      comment: The email address to receive the notification about the verification result. .
+    - name: use_case_categories
+      type: ANY
+      REQUIRED: false
+    - name: use_case_summary
+      type: STRING
+      REQUIRED: false
+      comment: Use this to further explain how messaging is used by the business or organization.
+    - name: production_message_sample
+      type: STRING
+      REQUIRED: false
+      comment: An example of message content, i.e. a sample message.
+    - name: opt_in_image_urls
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Link to an image that shows the opt-in workflow. Multiple images allowed and must be a publicly hosted URL.
+    - name: opt_in_type
+      type: STRING
+      REQUIRED: false
+    - name: message_volume
+      type: STRING
+      REQUIRED: false
+      comment: Estimate monthly volume of messages from the Tollfree Number.
+    - name: additional_information
+      type: STRING
+      REQUIRED: false
+      comment: Additional information to be provided for verification.
+    - name: tollfree_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Phone Number associated with the Tollfree Verification.
+    - name: tollfree_phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The E.164 formatted toll-free phone number associated with the verification.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Tollfree Verification resource.
+    - name: rejection_reason
+      type: STRING
+      REQUIRED: false
+      comment: The rejection reason given when a Tollfree Verification has been rejected.
+    - name: error_code
+      type: INT
+      REQUIRED: false
+      comment: The error code given when a Tollfree Verification has been rejected.
+    - name: edit_expiration
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time when the ability to edit a rejected verification expires.
+    - name: edit_allowed
+      type: BOOL
+      REQUIRED: false
+      comment: If a rejected verification is allowed to be edited/resubmitted. Some rejection reasons allow editing and some do not.
+    - name: business_registration_number
+      type: STRING
+      REQUIRED: false
+      comment: A legally recognized business registration number
+    - name: business_registration_authority
+      type: STRING
+      REQUIRED: false
+    - name: business_registration_country
+      type: STRING
+      REQUIRED: false
+      comment: Country business is registered in
+    - name: business_type
+      type: STRING
+      REQUIRED: false
+    - name: business_registration_phone_number
+      type: STRING
+      REQUIRED: false
+      comment: The E.164 formatted number associated with the business.
+    - name: doing_business_as
+      type: STRING
+      REQUIRED: false
+      comment: Trade name, sub entity, or downstream business name of business being submitted for verification
+    - name: opt_in_confirmation_message
+      type: STRING
+      REQUIRED: false
+      comment: The confirmation message sent to users when they opt in to receive messages.
+    - name: help_message_sample
+      type: STRING
+      REQUIRED: false
+      comment: A sample help message provided to users.
+    - name: privacy_policy_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL to the privacy policy for the business or organization.
+    - name: terms_and_conditions_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the terms and conditions for the business or organization.
+    - name: age_gated_content
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if the content is age gated.
+    - name: opt_in_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of keywords that users can send to opt in or out of messages.
+    - name: rejection_reasons
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of rejection reasons and codes describing why a Tollfree Verification has been rejected.
+    - name: resource_links
+      type: ANY
+      REQUIRED: false
+      comment: The URLs of the documents associated with the Tollfree Verification resource.
+    - name: external_reference_id
+      type: STRING
+      REQUIRED: false
+      comment: An optional external reference ID supplied by customer and echoed back on status retrieval.
+    - name: vetting_id
+      type: STRING
+      REQUIRED: false
+    - name: vetting_provider
+      type: STRING
+      REQUIRED: false
+    - name: vetting_id_expiration
+      type: TIMESTAMP
+      REQUIRED: false
+  messaging.v1.service.us_app_to_person_response:
+    - name: variant_messaging.v1.service.us_app_to_person
+      type: STRUCT(messaging.v1.service.us_app_to_person)
+      REQUIRED: false
+    - name: variant_messaging.v1.service.us_app_to_person_v2
+      type: STRUCT(messaging.v1.service.us_app_to_person_v2)
+      REQUIRED: false
+  messaging.v1.service.us_app_to_person:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Campaign belongs to.
+    - name: brand_registration_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify the A2P brand.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: "A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters."
+    - name: message_samples
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars."
+    - name: us_app_to_person_usecase
+      type: STRING
+      REQUIRED: false
+      comment: "A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, SOLE_PROPRIETOR...]. SOLE_PROPRIETOR campaign use cases can only be created by SOLE_PROPRIETOR Brands, and there can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR Brand."
+    - name: has_embedded_links
+      type: BOOL
+      REQUIRED: false
+      comment: Indicate that this SMS campaign will send messages that contain links.
+    - name: has_embedded_phone
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates that this SMS campaign will send messages that contain phone numbers.
+    - name: subscriber_opt_in
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign has Subscriber Optin or not.
+    - name: age_gated
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign is age gated or not.
+    - name: direct_lending
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign allows direct lending or not.
+    - name: campaign_status
+      type: STRING
+      REQUIRED: false
+      comment: "Campaign status. Examples: IN_PROGRESS, VERIFIED, FAILED."
+    - name: campaign_id
+      type: STRING
+      REQUIRED: false
+      comment: The Campaign Registry (TCR) Campaign ID.
+    - name: is_externally_registered
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates whether the campaign was registered externally or not.
+    - name: rate_limits
+      type: ANY
+      REQUIRED: false
+      comment: Rate limit and/or classification set by each carrier, Ex. AT&T or T-Mobile.
+    - name: message_flow
+      type: STRING
+      REQUIRED: false
+      comment: Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+    - name: opt_in_message
+      type: STRING
+      REQUIRED: false
+      comment: If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum.
+    - name: opt_out_message
+      type: STRING
+      REQUIRED: false
+      comment: Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
+    - name: help_message
+      type: STRING
+      REQUIRED: false
+      comment: When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
+    - name: opt_in_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum.
+    - name: opt_out_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+    - name: help_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the US App to Person resource.
+    - name: mock
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign is a mock or not. Mock campaigns will be automatically created if using a mock brand. Mock campaigns should only be used for testing purposes.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements.
+  messaging.v1.service.us_app_to_person_v2:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies a US A2P Compliance resource `QE2c6890da8086d771620e9b13fadeba0b`.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that the Campaign belongs to.
+    - name: brand_registration_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string to identify the A2P brand.
+    - name: messaging_service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Messaging Service](https://www.twilio.com/docs/messaging/api/service-resource) that the resource is associated with.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: "A short description of what this SMS campaign does. Min length: 40 characters. Max length: 4096 characters."
+    - name: message_samples
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of sample message strings, min two and max five. Min length for each sample: 20 chars. Max length for each sample: 1024 chars."
+    - name: us_app_to_person_usecase
+      type: STRING
+      REQUIRED: false
+      comment: "A2P Campaign Use Case. Examples: [ 2FA, EMERGENCY, MARKETING, SOLE_PROPRIETOR...]. SOLE_PROPRIETOR campaign use cases can only be created by SOLE_PROPRIETOR Brands, and there can only be one SOLE_PROPRIETOR campaign created per SOLE_PROPRIETOR Brand."
+    - name: has_embedded_links
+      type: BOOL
+      REQUIRED: false
+      comment: Indicate that this SMS campaign will send messages that contain links.
+    - name: has_embedded_phone
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates that this SMS campaign will send messages that contain phone numbers.
+    - name: subscriber_opt_in
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign has Subscriber Optin or not.
+    - name: age_gated
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign is age gated or not.
+    - name: direct_lending
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign allows direct lending or not.
+    - name: campaign_status
+      type: STRING
+      REQUIRED: false
+      comment: "Campaign status. Examples: IN_PROGRESS, VERIFIED, FAILED."
+    - name: campaign_id
+      type: STRING
+      REQUIRED: false
+      comment: The Campaign Registry (TCR) Campaign ID.
+    - name: is_externally_registered
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates whether the campaign was registered externally or not.
+    - name: rate_limits
+      type: ANY
+      REQUIRED: false
+      comment: Rate limit and/or classification set by each carrier, Ex. AT&T or T-Mobile.
+    - name: message_flow
+      type: STRING
+      REQUIRED: false
+      comment: Details around how a consumer opts-in to their campaign, therefore giving consent to receive their messages. If multiple opt-in methods can be used for the same campaign, they must all be listed. 40 character minimum. 2048 character maximum.
+    - name: opt_in_message
+      type: STRING
+      REQUIRED: false
+      comment: If end users can text in a keyword to start receiving messages from this campaign, the auto-reply messages sent to the end users must be provided. The opt-in response should include the Brand name, confirmation of opt-in enrollment to a recurring message campaign, how to get help, and clear description of how to opt-out. This field is required if end users can text in a keyword to start receiving messages from this campaign. 20 character minimum. 320 character maximum.
+    - name: opt_out_message
+      type: STRING
+      REQUIRED: false
+      comment: Upon receiving the opt-out keywords from the end users, Twilio customers are expected to send back an auto-generated response, which must provide acknowledgment of the opt-out request and confirmation that no further messages will be sent. It is also recommended that these opt-out messages include the brand name. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
+    - name: help_message
+      type: STRING
+      REQUIRED: false
+      comment: When customers receive the help keywords from their end users, Twilio customers are expected to send back an auto-generated response; this may include the brand name and additional support contact information. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). 20 character minimum. 320 character maximum.
+    - name: opt_in_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: If end users can text in a keyword to start receiving messages from this campaign, those keywords must be provided. This field is required if end users can text in a keyword to start receiving messages from this campaign. Values must be alphanumeric. 255 character maximum.
+    - name: opt_out_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: End users should be able to text in a keyword to stop receiving messages from this campaign. Those keywords must be provided. This field is required if managing opt out keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+    - name: help_keywords
+      type: "[]STRING"
+      REQUIRED: false
+      comment: End users should be able to text in a keyword to receive help. Those keywords must be provided as part of the campaign registration request. This field is required if managing help keywords yourself (i.e. not using Twilio's Default or Advanced Opt Out features). Values must be alphanumeric. 255 character maximum.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the US App to Person resource.
+    - name: mock
+      type: BOOL
+      REQUIRED: false
+      comment: A boolean that specifies whether campaign is a mock or not. Mock campaigns will be automatically created if using a mock brand. Mock campaigns should only be used for testing purposes.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Details indicating why a campaign registration failed. These errors can indicate one or more fields that were incorrect or did not meet review requirements.
+    - name: privacy_policy_url
+      type: STRING
+      REQUIRED: true
+      comment: The URL of the privacy policy for the campaign.
+    - name: terms_and_conditions_url
+      type: STRING
+      REQUIRED: true
+      comment: The URL of the terms and conditions for the campaign.
+  messaging.v1.service.us_app_to_person_usecase:
+    - name: us_app_to_person_usecases
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Human readable name, code, description and post_approval_required (indicates whether or not post approval is required for this Use Case) of A2P Campaign Use Cases.
+  messaging.v1.usecase:
+    - name: usecases
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Human readable use case details (usecase, description and purpose) of Messaging Service Use Cases.
+  api.service.alphaSenders.getResponse200:
+    - name: alpha_senders
+      type: "[]STRUCT(messaging.v1.service.alpha_sender)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.a2p.brandRegistrations.listResponse200:
+    - name: data
+      type: "[]STRUCT(messaging.v1.brand_registrations)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.a2p.vettings.getResponse200:
+    - name: data
+      type: "[]STRUCT(messaging.v1.brand_registrations.brand_vetting)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.channelSenders.getResponse200:
+    - name: senders
+      type: "[]STRUCT(messaging.v1.service.channel_sender)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.destinationAlphaSenders.getResponse200:
+    - name: alpha_senders
+      type: "[]STRUCT(messaging.v1.service.destination_alpha_sender)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.phoneNumbers.getResponse200:
+    - name: phone_numbers
+      type: "[]STRUCT(messaging.v1.service.phone_number)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(messaging.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.shortCodes.getResponse200:
+    - name: short_codes
+      type: "[]STRUCT(messaging.v1.service.short_code)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.tollfree.verifications.listResponse200:
+    - name: verifications
+      type: "[]STRUCT(messaging.v1.tollfree_verification)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.usa2p.getResponse200:
+    - name: compliance
+      type: "[]STRUCT(messaging.v1.service.us_app_to_person_response)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

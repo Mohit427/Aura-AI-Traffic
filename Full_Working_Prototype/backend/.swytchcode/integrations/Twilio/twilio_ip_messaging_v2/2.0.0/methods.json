@@ -1,0 +1,474 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a member to a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.members.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a user to a service",
+      "canonical_id": "twilio_ip_messaging.service.users.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new channel for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new credential with provided details",
+      "canonical_id": "twilio_ip_messaging.credential.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new role for a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service with a friendly name",
+      "canonical_id": "twilio_ip_messaging.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a credential using its unique identifier",
+      "canonical_id": "twilio_ip_messaging.credential.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from a channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a service by its unique identifier",
+      "canonical_id": "twilio_ip_messaging.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific user within a service",
+      "canonical_id": "twilio_ip_messaging.service.users.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch credential by SID",
+      "canonical_id": "twilio_ip_messaging.credential.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific invite for a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.invites.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific member from a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.members.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific role within a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Invite a member to a channel",
+      "canonical_id": "twilio_ip_messaging.service.invites.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all channels for a user in a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available credentials with pagination",
+      "canonical_id": "twilio_ip_messaging.credential.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available services with pagination",
+      "canonical_id": "twilio_ip_messaging.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List channels for a given service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List invites for a specific service and channel",
+      "canonical_id": "twilio_ip_messaging.service.invites.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List members in a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.members.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List messages for a specific channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List roles for a specific service",
+      "canonical_id": "twilio_ip_messaging.service.roles.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List users within a specific service",
+      "canonical_id": "twilio_ip_messaging.service.users.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a member from a channel",
+      "canonical_id": "twilio_ip_messaging.service.members.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a role from a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user from a service",
+      "canonical_id": "twilio_ip_messaging.service.users.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an invite from a channel",
+      "canonical_id": "twilio_ip_messaging.service.invites.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific message from a channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve service details by its unique identifier",
+      "canonical_id": "twilio_ip_messaging.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a credential using its SID",
+      "canonical_id": "twilio_ip_messaging.credential.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a member in a channel",
+      "canonical_id": "twilio_ip_messaging.service.members.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a message in a specific channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a role's permissions within a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a service's configuration and settings",
+      "canonical_id": "twilio_ip_messaging.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's role, attributes, or friendly name within a service",
+      "canonical_id": "twilio_ip_messaging.service.users.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a member to a channel in a service",
+      "canonical_id": "twilio_ip_messaging.service.members.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new channel for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new credential with provided details",
+      "canonical_id": "twilio_ip_messaging.credential.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new role for a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service with a friendly name",
+      "canonical_id": "twilio_ip_messaging.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a user for a service",
+      "canonical_id": "twilio_ip_messaging.service.users.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a webhook for a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.webhooks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a binding for a specific service",
+      "canonical_id": "twilio_ip_messaging.service.bindings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a channel webhook for a specific service and channel",
+      "canonical_id": "twilio_ip_messaging.service.webhooks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a communication channel for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a credential by its SID",
+      "canonical_id": "twilio_ip_messaging.credential.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from a channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a role from a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific service by its SID",
+      "canonical_id": "twilio_ip_messaging.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific channel for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific channel webhook for a service",
+      "canonical_id": "twilio_ip_messaging.service.webhooks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific invite for a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.invites.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific member within a channel in a service",
+      "canonical_id": "twilio_ip_messaging.service.members.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific message within a channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific role within a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific user binding for a service",
+      "canonical_id": "twilio_ip_messaging.service.bindings.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific user within a service",
+      "canonical_id": "twilio_ip_messaging.service.users.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Invite a user to a channel in a service",
+      "canonical_id": "twilio_ip_messaging.service.invites.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all invites for a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.invites.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available services with pagination",
+      "canonical_id": "twilio_ip_messaging.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List bindings for a given service",
+      "canonical_id": "twilio_ip_messaging.service.bindings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List channels for a given service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List channels for a user in a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List credentials with pagination",
+      "canonical_id": "twilio_ip_messaging.credential.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List members in a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.members.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List messages for a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List roles for a given service",
+      "canonical_id": "twilio_ip_messaging.service.roles.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List user bindings for a specific service and user",
+      "canonical_id": "twilio_ip_messaging.service.bindings.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List users for a specific service",
+      "canonical_id": "twilio_ip_messaging.service.users.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List webhooks for a specific channel in a service",
+      "canonical_id": "twilio_ip_messaging.service.webhooks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a member from a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.members.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user from a service",
+      "canonical_id": "twilio_ip_messaging.service.users.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user's binding from a service",
+      "canonical_id": "twilio_ip_messaging.service.bindings.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user's channel from a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an invite for a specific channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.invites.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific binding for a service",
+      "canonical_id": "twilio_ip_messaging.service.bindings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific user's channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve credential details using its SID",
+      "canonical_id": "twilio_ip_messaging.credential.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve service details using its ID",
+      "canonical_id": "twilio_ip_messaging.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a channel within a service",
+      "canonical_id": "twilio_ip_messaging.service.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel webhook configuration",
+      "canonical_id": "twilio_ip_messaging.service.webhooks.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a channel's properties in a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a member in a chat channel",
+      "canonical_id": "twilio_ip_messaging.service.members.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a message in a channel",
+      "canonical_id": "twilio_ip_messaging.service.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a role's permissions for a service",
+      "canonical_id": "twilio_ip_messaging.service.roles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user within a service",
+      "canonical_id": "twilio_ip_messaging.service.users.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's channel settings for a service",
+      "canonical_id": "twilio_ip_messaging.service.channels.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update credential details using its SID",
+      "canonical_id": "twilio_ip_messaging.credential.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update service configuration by SID",
+      "canonical_id": "twilio_ip_messaging.service.create"
+    }
+  ]
+}

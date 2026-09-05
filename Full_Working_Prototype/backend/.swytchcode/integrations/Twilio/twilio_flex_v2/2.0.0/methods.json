@@ -1,0 +1,19 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new web chat channel",
+      "canonical_id": "twilio_flex.webchat.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific Flex user for an instance",
+      "canonical_id": "twilio_flex.instance.users.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a Flex user's details within an instance",
+      "canonical_id": "twilio_flex.instance.users.create"
+    }
+  ]
+}

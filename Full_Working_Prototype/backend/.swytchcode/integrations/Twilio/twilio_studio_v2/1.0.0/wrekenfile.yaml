@@ -1,0 +1,890 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://studio.twilio.com
+METHODS:
+  twilio_studio.flow.executions.get:
+    SUMMARY: Retrieve a list of all Executions for the Flow.
+    DESC: Retrieve a list of all Executions for the Flow.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedFrom:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedTo:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.flow.executions.getResponse200)
+        RETURNVAR: twilio_studio_flow_executions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.executions.get
+  twilio_studio.flow.executions.create:
+    SUMMARY: Triggers a new Execution for the Flow
+    DESC: Triggers a new Execution for the Flow
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - To:
+          TYPE: STRING
+          LOCATION: body
+      - From:
+          TYPE: STRING
+          LOCATION: body
+      - Parameters:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution)
+        RETURNVAR: twilio_studio_flow_executions_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_studio.flow.executions.create
+  twilio_studio.flow.executions.get.1:
+    SUMMARY: Retrieve an Execution
+    DESC: Retrieve an Execution
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution)
+        RETURNVAR: twilio_studio_flow_executions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.executions.get.1
+  twilio_studio.flow.executions.delete:
+    SUMMARY: Delete the Execution and all Steps relating to it.
+    DESC: Delete the Execution and all Steps relating to it.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_studio.flow.executions.delete
+  twilio_studio.flow.executions.create.1:
+    SUMMARY: Update the status of an Execution to `ended`.
+    DESC: Update the status of an Execution to `ended`.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution)
+        RETURNVAR: twilio_studio_flow_executions_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.executions.create.1
+  twilio_studio.flow.context.get:
+    SUMMARY: Retrieve the most recent context for an Execution.
+    DESC: Retrieve the most recent context for an Execution.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Context
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - ExecutionSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution.execution_context)
+        RETURNVAR: twilio_studio_flow_context_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.context.get
+  twilio_studio.flow.steps.get:
+    SUMMARY: Retrieve a list of all Steps for an Execution.
+    DESC: Retrieve a list of all Steps for an Execution.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - ExecutionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.flow.steps.getResponse200)
+        RETURNVAR: twilio_studio_flow_steps_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.steps.get
+  twilio_studio.flow.steps.get.1:
+    SUMMARY: Retrieve a Step.
+    DESC: Retrieve a Step.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - ExecutionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution.execution_step)
+        RETURNVAR: twilio_studio_flow_steps_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.steps.get.1
+  twilio_studio.flow.context.get.1:
+    SUMMARY: Retrieve the context for an Execution Step.
+    DESC: Retrieve the context for an Execution Step.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{FlowSid}/Executions/{ExecutionSid}/Steps/{StepSid}/Context
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FlowSid:
+          TYPE: STRING
+          LOCATION: path
+      - ExecutionSid:
+          TYPE: STRING
+          LOCATION: path
+      - StepSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.execution.execution_step.execution_step_context)
+        RETURNVAR: twilio_studio_flow_context_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.context.get.1
+  twilio_studio.flow.create:
+    SUMMARY: Create a Flow.
+    DESC: Create a Flow.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+      - Definition:
+          TYPE: ANY
+          LOCATION: body
+      - CommitMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow)
+        RETURNVAR: twilio_studio_flow_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_studio.flow.create
+  twilio_studio.flow.list:
+    SUMMARY: Retrieve a list of all Flows.
+    DESC: Retrieve a list of all Flows.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.flow.listResponse200)
+        RETURNVAR: twilio_studio_flow_list
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.list
+  twilio_studio.flow.create.1:
+    SUMMARY: Update a Flow.
+    DESC: Update a Flow.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Definition:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - CommitMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow)
+        RETURNVAR: twilio_studio_flow_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.create.1
+  twilio_studio.flow.get:
+    SUMMARY: Retrieve a specific Flow.
+    DESC: Retrieve a specific Flow.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow)
+        RETURNVAR: twilio_studio_flow_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.get
+  twilio_studio.flow.delete:
+    SUMMARY: Delete a specific Flow.
+    DESC: Delete a specific Flow.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Flows/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_studio.flow.delete
+  twilio_studio.flow.revisions.get:
+    SUMMARY: Retrieve a list of all Flows revisions.
+    DESC: Retrieve a list of all Flows revisions.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{Sid}/Revisions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.flow.revisions.getResponse200)
+        RETURNVAR: twilio_studio_flow_revisions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.revisions.get
+  twilio_studio.flow.revisions.get.1:
+    SUMMARY: Retrieve a specific Flow revision.
+    DESC: Retrieve a specific Flow revision.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{Sid}/Revisions/{Revision}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Revision:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.flow_revision)
+        RETURNVAR: twilio_studio_flow_revisions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.revisions.get.1
+  twilio_studio.flow.validate:
+    SUMMARY: Validate flow JSON definition
+    DESC: Validate flow JSON definition
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows/Validate
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+      - Definition:
+          TYPE: ANY
+          LOCATION: body
+      - CommitMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow_validate)
+        RETURNVAR: twilio_studio_flow_validate
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.validate
+  twilio_studio.flow.testUsers.get:
+    SUMMARY: Fetch flow test users
+    DESC: Fetch flow test users
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Flows/{Sid}/TestUsers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.test_user)
+        RETURNVAR: twilio_studio_flow_testUsers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.testUsers.get
+  twilio_studio.flow.testUsers.create:
+    SUMMARY: Update flow test users
+    DESC: Update flow test users
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Flows/{Sid}/TestUsers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - TestUsers:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(studio.v2.flow.test_user)
+        RETURNVAR: twilio_studio_flow_testUsers_create
+        STATUS: 200
+    CANONICAL_ID: twilio_studio.flow.testUsers.create
+STRUCTS:
+  studio.v2.flow.execution:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Execution resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Execution resource.
+    - name: flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flow.
+    - name: contact_channel_address
+      type: STRING
+      REQUIRED: false
+      comment: The phone number, SIP address or Client identifier that triggered the Execution. Phone numbers are in E.164 format (e.g. +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+    - name: contact_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Contact.
+    - name: flow_version
+      type: INT
+      REQUIRED: false
+      comment: The Flow version number at the time of Execution creation.
+    - name: context
+      type: ANY
+      REQUIRED: false
+      comment: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: initiated_by
+      type: STRING
+      REQUIRED: false
+      comment: The SID or identifier that triggered this Execution. For example, a Call SID if triggered by an incoming call, a Message SID if triggered by an incoming message, a Request SID if triggered by a REST API request, and so on.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of nested resources.
+  studio.v2.flow.execution.execution_context:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionContext resource.
+    - name: context
+      type: ANY
+      REQUIRED: false
+      comment: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    - name: flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flow.
+    - name: execution_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the context's Execution resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  studio.v2.flow.execution.execution_step:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the ExecutionStep resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionStep resource.
+    - name: flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flow.
+    - name: execution_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Step's Execution resource.
+    - name: parent_step_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the parent Step.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The event that caused the Flow to transition to the Step.
+    - name: context
+      type: ANY
+      REQUIRED: false
+      comment: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    - name: transitioned_from
+      type: STRING
+      REQUIRED: false
+      comment: The Widget that preceded the Widget for the Step.
+    - name: transitioned_to
+      type: STRING
+      REQUIRED: false
+      comment: The Widget that will follow the Widget for the Step.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The type of the widget that was executed.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  studio.v2.flow.execution.execution_step.execution_step_context:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the ExecutionStepContext resource.
+    - name: context
+      type: ANY
+      REQUIRED: false
+      comment: The current state of the Flow's Execution. As a flow executes, we save its state in this context. We save data that your widgets can access as variables in configuration fields or in text areas as variable substitution.
+    - name: execution_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the context's Execution resource.
+    - name: flow_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Flow.
+    - name: step_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Step that the context is associated with.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  studio.v2.flow:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flow resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flow resource.
+    - name: author_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the User that created or last updated the Flow.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Flow.
+    - name: definition
+      type: ANY
+      REQUIRED: false
+      comment: JSON representation of flow definition.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: revision
+      type: INT
+      REQUIRED: false
+      comment: The latest revision number of the Flow's definition.
+    - name: commit_message
+      type: STRING
+      REQUIRED: false
+      comment: Description of change made in the revision.
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean if the flow definition is valid.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of error in the flow definition.
+    - name: warnings
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of warnings in the flow definition.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: webhook_url
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Flow's nested resources.
+  studio.v2.flow.flow_revision:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Flow resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Flow resource.
+    - name: author_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the User that created or last updated the Flow.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Flow.
+    - name: definition
+      type: ANY
+      REQUIRED: false
+      comment: JSON representation of flow definition.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: revision
+      type: INT
+      REQUIRED: false
+      comment: The latest revision number of the Flow's definition.
+    - name: commit_message
+      type: STRING
+      REQUIRED: false
+      comment: Description of change made in the revision.
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean if the flow definition is valid.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: List of error in the flow definition.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  studio.v2.flow_validate:
+    - name: valid
+      type: BOOL
+      REQUIRED: false
+      comment: Boolean if the flow definition is valid.
+  studio.v2.flow.test_user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: Unique identifier of the flow.
+    - name: test_users
+      type: "[]STRING"
+      REQUIRED: false
+      comment: List of test user identities that can test draft versions of the flow.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  api.flow.executions.getResponse200:
+    - name: executions
+      type: "[]STRUCT(studio.v2.flow.execution)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.flow.steps.getResponse200:
+    - name: steps
+      type: "[]STRUCT(studio.v2.flow.execution.execution_step)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.flow.listResponse200:
+    - name: flows
+      type: "[]STRUCT(studio.v2.flow)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.flow.revisions.getResponse200:
+    - name: revisions
+      type: "[]STRUCT(studio.v2.flow.flow_revision)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

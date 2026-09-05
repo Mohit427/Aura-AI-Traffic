@@ -1,0 +1,54 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a new signing key for your account",
+      "canonical_id": "twilio_iam.key.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific key by its SID",
+      "canonical_id": "twilio_iam.key.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific key by its SID",
+      "canonical_id": "twilio_iam.key.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all permissions assigned to a specific role",
+      "canonical_id": "twilio_iam.role.permissions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Issue access, identity, and refresh tokens using an OAuth grant",
+      "canonical_id": "twilio_iam.token.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all keys for an account",
+      "canonical_id": "twilio_iam.key.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a new OAuth app for an account",
+      "canonical_id": "twilio_iam.account.oAuthApps.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an OAuth app for an account",
+      "canonical_id": "twilio_iam.account.oAuthApps.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Key's details",
+      "canonical_id": "twilio_iam.key.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing OAuth app",
+      "canonical_id": "twilio_iam.account.oAuthApps.update"
+    }
+  ]
+}

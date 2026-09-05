@@ -1,0 +1,519 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new conversation user to your account",
+      "canonical_id": "twilio_conversations.user.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a new push notification credential",
+      "canonical_id": "twilio_conversations.credential.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a new user role to your chat service",
+      "canonical_id": "twilio_conversations.service.roles.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a conversation",
+      "canonical_id": "twilio_conversations.service.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a conversation",
+      "canonical_id": "twilio_conversations.conversation.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a user to a conversation service",
+      "canonical_id": "twilio_conversations.service.users.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a webhook to a conversation",
+      "canonical_id": "twilio_conversations.conversation.webhooks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a conversation webhook for a chat service",
+      "canonical_id": "twilio_conversations.service.webhooks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a conversation with specified participants",
+      "canonical_id": "twilio_conversations.service.conversationWithParticipants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new address configuration",
+      "canonical_id": "twilio_conversations.configuration.addresses.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new conversation",
+      "canonical_id": "twilio_conversations.conversation.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new conversation for a chat service",
+      "canonical_id": "twilio_conversations.service.conversations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new conversation service",
+      "canonical_id": "twilio_conversations.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new conversation with specified participants",
+      "canonical_id": "twilio_conversations.conversationwithparticipant.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new user role with specified permissions",
+      "canonical_id": "twilio_conversations.role.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation from a chat service",
+      "canonical_id": "twilio_conversations.service.conversations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation from your account",
+      "canonical_id": "twilio_conversations.conversation.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation service and its resources",
+      "canonical_id": "twilio_conversations.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation user from your account",
+      "canonical_id": "twilio_conversations.user.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation webhook by its ID",
+      "canonical_id": "twilio_conversations.service.webhooks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation webhook by its ID",
+      "canonical_id": "twilio_conversations.conversation.webhooks.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from a conversation",
+      "canonical_id": "twilio_conversations.conversation.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a message from a conversation",
+      "canonical_id": "twilio_conversations.service.messages.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a push notification binding from a chat service",
+      "canonical_id": "twilio_conversations.service.bindings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a push notification credential by its SID",
+      "canonical_id": "twilio_conversations.credential.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a user role from your account",
+      "canonical_id": "twilio_conversations.role.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an address configuration by its ID",
+      "canonical_id": "twilio_conversations.configuration.addresses.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a conversation from your chat service",
+      "canonical_id": "twilio_conversations.service.conversations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a conversation service by its SID",
+      "canonical_id": "twilio_conversations.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a conversation user by service and user ID",
+      "canonical_id": "twilio_conversations.service.users.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a conversation user by their SID",
+      "canonical_id": "twilio_conversations.user.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a conversation webhook's configuration",
+      "canonical_id": "twilio_conversations.service.webhooks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of conversations with optional filters",
+      "canonical_id": "twilio_conversations.conversation.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a participant's conversations by identity or address",
+      "canonical_id": "twilio_conversations.participantconversation.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a push notification binding for a conversation service",
+      "canonical_id": "twilio_conversations.service.bindings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a push notification credential by its SID",
+      "canonical_id": "twilio_conversations.credential.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific chat service webhook configuration",
+      "canonical_id": "twilio_conversations.service.webhooks.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific conversation by its ID",
+      "canonical_id": "twilio_conversations.conversation.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific message from a conversation",
+      "canonical_id": "twilio_conversations.conversation.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant from a conversation",
+      "canonical_id": "twilio_conversations.conversation.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant from a conversation",
+      "canonical_id": "twilio_conversations.service.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific user conversation by IDs",
+      "canonical_id": "twilio_conversations.service.conversations.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific user role within a chat service",
+      "canonical_id": "twilio_conversations.service.roles.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific user's conversation",
+      "canonical_id": "twilio_conversations.user.conversations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a user role by its ID",
+      "canonical_id": "twilio_conversations.role.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account address configurations",
+      "canonical_id": "twilio_conversations.configuration.addresses.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all conversation users in your account",
+      "canonical_id": "twilio_conversations.user.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all conversations for a user",
+      "canonical_id": "twilio_conversations.user.conversations.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all conversations for a user in a chat service",
+      "canonical_id": "twilio_conversations.service.conversations.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all messages for a specific conversation",
+      "canonical_id": "twilio_conversations.service.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all messages within a specific conversation",
+      "canonical_id": "twilio_conversations.conversation.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all participants in a conversation",
+      "canonical_id": "twilio_conversations.conversation.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all push notification bindings for a chat service",
+      "canonical_id": "twilio_conversations.service.bindings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all user roles for a chat service",
+      "canonical_id": "twilio_conversations.service.roles.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all users for a chat service",
+      "canonical_id": "twilio_conversations.service.users.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all webhooks for a conversation",
+      "canonical_id": "twilio_conversations.conversation.webhooks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an address configuration by its ID",
+      "canonical_id": "twilio_conversations.configuration.addresses.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversation service configuration",
+      "canonical_id": "twilio_conversations.service.configuration.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get conversation webhook configuration by ID",
+      "canonical_id": "twilio_conversations.conversation.webhooks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get delivery and read receipts for a conversation message",
+      "canonical_id": "twilio_conversations.service.receipts.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get delivery and read receipts for a conversation message",
+      "canonical_id": "twilio_conversations.conversation.receipts.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get delivery and read receipts for a conversation message",
+      "canonical_id": "twilio_conversations.conversation.receipts.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get delivery and read receipts for a specific message",
+      "canonical_id": "twilio_conversations.service.receipts.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get global conversation configuration for your account",
+      "canonical_id": "twilio_conversations.configuration.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get push notification settings for a chat service",
+      "canonical_id": "twilio_conversations.service.notifications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all conversation services on your account",
+      "canonical_id": "twilio_conversations.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all participants in a conversation",
+      "canonical_id": "twilio_conversations.service.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all push notification credentials",
+      "canonical_id": "twilio_conversations.credential.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all user roles in your account",
+      "canonical_id": "twilio_conversations.role.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List conversation webhooks",
+      "canonical_id": "twilio_conversations.service.webhooks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List conversations a participant is in by identity or address",
+      "canonical_id": "twilio_conversations.service.participantConversations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List conversations for a chat service",
+      "canonical_id": "twilio_conversations.service.conversations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a conversation user from your service",
+      "canonical_id": "twilio_conversations.service.users.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a participant from a conversation",
+      "canonical_id": "twilio_conversations.conversation.participants.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a participant from a conversation",
+      "canonical_id": "twilio_conversations.service.participants.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user from a conversation",
+      "canonical_id": "twilio_conversations.user.conversations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user from a conversation",
+      "canonical_id": "twilio_conversations.service.conversations.delete.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a user role from your chat service",
+      "canonical_id": "twilio_conversations.service.roles.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific message from a conversation",
+      "canonical_id": "twilio_conversations.service.messages.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve webhook configuration settings",
+      "canonical_id": "twilio_conversations.configuration.webhooks.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a conversation",
+      "canonical_id": "twilio_conversations.conversation.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to a conversation in a chat service",
+      "canonical_id": "twilio_conversations.service.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation by its SID",
+      "canonical_id": "twilio_conversations.conversation.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation in your service",
+      "canonical_id": "twilio_conversations.service.conversations.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation participant's details",
+      "canonical_id": "twilio_conversations.service.participants.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation user by their ID",
+      "canonical_id": "twilio_conversations.user.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation user in your service",
+      "canonical_id": "twilio_conversations.service.users.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation webhook's configuration",
+      "canonical_id": "twilio_conversations.conversation.webhooks.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation webhook's configuration",
+      "canonical_id": "twilio_conversations.service.webhooks.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a message within a conversation",
+      "canonical_id": "twilio_conversations.conversation.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a message within a conversation",
+      "canonical_id": "twilio_conversations.service.messages.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a participant in a conversation",
+      "canonical_id": "twilio_conversations.conversation.participants.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a push notification credential",
+      "canonical_id": "twilio_conversations.credential.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific chat service webhook configuration",
+      "canonical_id": "twilio_conversations.service.webhooks.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's conversation settings",
+      "canonical_id": "twilio_conversations.service.conversations.create.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's conversation settings",
+      "canonical_id": "twilio_conversations.user.conversations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's role and permissions",
+      "canonical_id": "twilio_conversations.role.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a user's role within a chat service",
+      "canonical_id": "twilio_conversations.service.roles.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an address configuration by its SID",
+      "canonical_id": "twilio_conversations.configuration.addresses.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update chat service push notification settings",
+      "canonical_id": "twilio_conversations.service.notifications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update conversation service configuration settings",
+      "canonical_id": "twilio_conversations.service.configuration.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update global conversation configuration",
+      "canonical_id": "twilio_conversations.configuration.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update webhook configuration with specified details",
+      "canonical_id": "twilio_conversations.configuration.webhooks.create"
+    }
+  ]
+}

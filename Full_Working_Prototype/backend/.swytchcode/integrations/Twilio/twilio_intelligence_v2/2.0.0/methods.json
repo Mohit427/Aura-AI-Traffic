@@ -1,0 +1,149 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Attach an operator to a service",
+      "canonical_id": "twilio_intelligence.service.operators.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a custom operator for an account",
+      "canonical_id": "twilio_intelligence.operator.custom.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service for an account",
+      "canonical_id": "twilio_intelligence.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new transcript for a service",
+      "canonical_id": "twilio_intelligence.transcript.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific service by its SID",
+      "canonical_id": "twilio_intelligence.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific transcript",
+      "canonical_id": "twilio_intelligence.transcript.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Detach an operator from a service",
+      "canonical_id": "twilio_intelligence.service.operators.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all operator types for an account",
+      "canonical_id": "twilio_intelligence.operatortype.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific operator by its ID",
+      "canonical_id": "twilio_intelligence.operator.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific operator type by its SID",
+      "canonical_id": "twilio_intelligence.operatortype.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific transcript by its ID",
+      "canonical_id": "twilio_intelligence.transcript.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all custom operators for an account",
+      "canonical_id": "twilio_intelligence.operator.custom.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all operators for an account",
+      "canonical_id": "twilio_intelligence.operator.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get encrypted operator results for a transcript",
+      "canonical_id": "twilio_intelligence.transcript.encrypted.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get media download URLs for a transcript",
+      "canonical_id": "twilio_intelligence.transcript.media.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get operator result for a transcript",
+      "canonical_id": "twilio_intelligence.transcript.operatorResults.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get operator results for a transcript",
+      "canonical_id": "twilio_intelligence.transcript.operatorResults.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get public key encrypted sentences for a transcript",
+      "canonical_id": "twilio_intelligence.transcript.encrypted.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get transcripts for a given service",
+      "canonical_id": "twilio_intelligence.transcript.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all pre-built operators for an account",
+      "canonical_id": "twilio_intelligence.operator.preBuilt.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all services for an account",
+      "canonical_id": "twilio_intelligence.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List operators for a given service",
+      "canonical_id": "twilio_intelligence.service.operators.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific custom operator",
+      "canonical_id": "twilio_intelligence.operator.custom.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific custom operator by its SID",
+      "canonical_id": "twilio_intelligence.operator.custom.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific pre-built operator by its SID",
+      "canonical_id": "twilio_intelligence.operator.preBuilt.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific service by its ID",
+      "canonical_id": "twilio_intelligence.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve all sentences for a specific transcript",
+      "canonical_id": "twilio_intelligence.transcript.sentences.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific custom operator's details",
+      "canonical_id": "twilio_intelligence.operator.custom.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific Service's configuration",
+      "canonical_id": "twilio_intelligence.service.create.1"
+    }
+  ]
+}

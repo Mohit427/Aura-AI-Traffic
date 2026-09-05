@@ -1,0 +1,59 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create a WhatsApp content approval request",
+      "canonical_id": "twilio_content.content.whatsapp.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create new content resource",
+      "canonical_id": "twilio_content.content.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete content by its ID",
+      "canonical_id": "twilio_content.content.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a content resource by its unique Sid",
+      "canonical_id": "twilio_content.content.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of content approvals for your account",
+      "canonical_id": "twilio_content.contentandapproval.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of legacy contents for your account",
+      "canonical_id": "twilio_content.legacycontent.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get approval status for a content resource",
+      "canonical_id": "twilio_content.content.approvalRequests.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of contents for your account",
+      "canonical_id": "twilio_content.content.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a content resource by its ID",
+      "canonical_id": "twilio_content.content.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get content and approval statuses for your account",
+      "canonical_id": "twilio_content.contentandapproval.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get contents for the account",
+      "canonical_id": "twilio_content.content.list"
+    }
+  ]
+}

@@ -1,0 +1,758 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  bearer_token: BEARER <TOKEN>
+  w_base_url: https://iam.twilio.com
+METHODS:
+  twilio_iam.key.list:
+    SUMMARY: Retrieve a list of all Keys for a account.
+    DESC: Retrieve a list of all Keys for a account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Keys
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AccountSid:
+          TYPE: STRING
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.key.listResponse200)
+        RETURNVAR: twilio_iam_key_list
+        STATUS: 200
+    CANONICAL_ID: twilio_iam.key.list
+  twilio_iam.key.create:
+    SUMMARY: Create a new Signing Key for the account making the request.
+    DESC: Create a new Signing Key for the account making the request.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Keys
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AccountSid:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - KeyType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Policy:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(iam.v1.new_key)
+        RETURNVAR: twilio_iam_key_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_iam.key.create
+  twilio_iam.key.get:
+    SUMMARY: Fetch a specific Key.
+    DESC: Fetch a specific Key.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Keys/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(iam.v1.key)
+        RETURNVAR: twilio_iam_key_get
+        STATUS: 200
+    CANONICAL_ID: twilio_iam.key.get
+  twilio_iam.key.create.1:
+    SUMMARY: Update a specific Key.
+    DESC: Update a specific Key.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Keys/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Policy:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(iam.v1.key)
+        RETURNVAR: twilio_iam_key_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_iam.key.create.1
+  twilio_iam.key.delete:
+    SUMMARY: Delete a specific Key.
+    DESC: Delete a specific Key.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Keys/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_iam.key.delete
+  twilio_iam.role.permissions.get:
+    SUMMARY: List resolved permissions for a role
+    DESC: List resolved permissions for a role
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Roles/{RoleSid}/Permissions
+      HEADERS: {}
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoleSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.role.permissions.getResponse200)
+        RETURNVAR: twilio_iam_role_permissions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_iam.role.permissions.get
+  twilio_iam.token.create:
+    SUMMARY: Issues a new Access token (optionally identity_token & refresh_token) in exchange of Oauth grant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/token
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - grant_type:
+          TYPE: STRING
+          LOCATION: body
+      - client_id:
+          TYPE: STRING
+          LOCATION: body
+      - client_secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - code:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - redirect_uri:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - audience:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - refresh_token:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - scope:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(oauth.v1.token)
+        RETURNVAR: twilio_iam_token_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_iam.token.create
+  twilio_iam.account.oAuthApps.update:
+    SUMMARY: Updates an existing OAuth app for the given OauthAppSid
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Account/OAuthApps/{sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(iam.v1.account.VendorOauthAppUpdateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(iam.v1.account.VendorOauthAppUpdateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(iam.v1.account.VendorOauthAppCreateUpdateResponse)
+        RETURNVAR: twilio_iam_account_oAuthApps_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(UpdateOauthAppAccount_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(UpdateOauthAppAccount_Error401)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(UpdateOauthAppAccount_Error403)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(UpdateOauthAppAccount_Error404)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(UpdateOauthAppAccount_Error500)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+    CANONICAL_ID: twilio_iam.account.oAuthApps.update
+  twilio_iam.account.oAuthApps.delete:
+    SUMMARY: Deletes an oauth app for the given AccountSid
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Account/OAuthApps/{sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - sid:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteOauthAppAccount_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(DeleteOauthAppAccount_Error401)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(DeleteOauthAppAccount_Error403)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(DeleteOauthAppAccount_Error500)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+    CANONICAL_ID: twilio_iam.account.oAuthApps.delete
+  twilio_iam.account.oAuthApps.create:
+    SUMMARY: Creates an oauth app for the given AccountSid
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Account/OAuthApps
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(iam.v1.account.VendorOauthAppCreateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(iam.v1.account.VendorOauthAppCreateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(iam.v1.account.VendorOauthAppCreateUpdateResponse)
+        RETURNVAR: twilio_iam_account_oAuthApps_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateOauthAppAccount_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(CreateOauthAppAccount_Error401)
+        STATUS: 401
+        WHEN: Unauthorized (HTTP 401)
+      - TYPE: STRUCT(CreateOauthAppAccount_Error403)
+        STATUS: 403
+        WHEN: Forbidden (HTTP 403)
+      - TYPE: STRUCT(CreateOauthAppAccount_Error500)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+    CANONICAL_ID: twilio_iam.account.oAuthApps.create
+STRUCTS:
+  iam.v1.get_keys:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Key resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: flags
+      type: "[]STRING"
+      REQUIRED: false
+  iam.v1.key:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Key resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the resource was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: policy
+      type: OBJECT
+      REQUIRED: false
+      comment: |-
+        The \`Policy\` object is a collection that specifies the allowed Twilio permissions for the restricted key.
+        For more information on the permissions available with restricted API keys, refer to the [Twilio documentation](https://www.twilio.com/docs/iam/api-keys/restricted-api-keys#permissions-available-with-restricted-api-keys).
+  iam.v1.new_key:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that that we created to identify the NewKey resource. You will use this as the basic-auth `user` when authenticating to the API.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: date_created
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the API Key was created specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: STRING
+      REQUIRED: false
+      comment: The date and time in GMT that the new API Key was last updated specified in [RFC 2822](https://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: secret
+      type: STRING
+      REQUIRED: false
+      comment: The secret your application uses to sign Access Tokens and to authenticate to the REST API (you will use this as the basic-auth `password`).  **Note that for security reasons, this field is ONLY returned when the API Key is first created.**
+    - name: policy
+      type: OBJECT
+      REQUIRED: false
+      comment: Collection of allow assertions.
+  iam.v1.role_permission:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Permission resource.
+    - name: namespace
+      type: STRING
+      REQUIRED: false
+      comment: The namespace of the permission (e.g., twilio).
+    - name: product
+      type: STRING
+      REQUIRED: false
+      comment: The product the permission belongs to (e.g., iam).
+    - name: resource
+      type: STRING
+      REQUIRED: false
+      comment: The resource the permission applies to (e.g., roles).
+    - name: action
+      type: STRING
+      REQUIRED: false
+      comment: The action granted by the permission (e.g., read).
+    - name: externalDescription
+      type: STRING
+      REQUIRED: false
+      comment: The external description of the permission.
+  oauth.v1.token:
+    - name: access_token
+      type: STRING
+      REQUIRED: false
+      comment: Token which carries the necessary information to access a Twilio resource directly.
+    - name: refresh_token
+      type: STRING
+      REQUIRED: false
+      comment: Token which carries the information necessary to get a new access token.
+    - name: id_token
+      type: STRING
+      REQUIRED: false
+      comment: Token which carries the information necessary of user profile.
+    - name: token_type
+      type: STRING
+      REQUIRED: false
+      comment: Token type
+    - name: expires_in
+      type: INT
+      REQUIRED: false
+  iam.v1.account.VendorOauthAppCreateRequest:
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: owner_sid
+      type: STRING
+      REQUIRED: false
+    - name: description
+      type: STRING
+      REQUIRED: false
+    - name: client_sid
+      type: STRING
+      REQUIRED: false
+    - name: policy
+      type: OBJECT
+      REQUIRED: false
+    - name: access_token_ttl
+      type: INT
+      REQUIRED: false
+  iam.v1.account.VendorOauthAppCreateUpdateResponse:
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: description
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+    - name: secret
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: policy
+      type: OBJECT
+      REQUIRED: false
+    - name: access_token_ttl
+      type: INT
+      REQUIRED: false
+  iam.v1.account.VendorOauthAppUpdateRequest:
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: description
+      type: STRING
+      REQUIRED: false
+    - name: policy
+      type: OBJECT
+      REQUIRED: false
+    - name: access_token_ttl
+      type: INT
+      REQUIRED: false
+  api.key.listResponse200:
+    - name: keys
+      type: "[]STRUCT(iam.v1.get_keys)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.role.permissions.getResponse200:
+    - name: permissions
+      type: "[]STRUCT(iam.v1.role_permission)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  UpdateOauthAppAccount_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateOauthAppAccount_Error401:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateOauthAppAccount_Error403:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateOauthAppAccount_Error404:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  UpdateOauthAppAccount_Error500:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteOauthAppAccount_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteOauthAppAccount_Error401:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteOauthAppAccount_Error403:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  DeleteOauthAppAccount_Error500:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateOauthAppAccount_Error400:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateOauthAppAccount_Error401:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateOauthAppAccount_Error403:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  CreateOauthAppAccount_Error500:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code

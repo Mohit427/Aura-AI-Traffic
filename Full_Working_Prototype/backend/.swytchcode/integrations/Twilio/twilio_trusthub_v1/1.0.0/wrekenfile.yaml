@@ -1,0 +1,2365 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://trusthub.twilio.com
+METHODS:
+  twilio_trusthub.complianceinquiry.customers.initialize:
+    SUMMARY: Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    DESC: Create a new Compliance Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ComplianceInquiries/Customers/Initialize
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - NotificationEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ThemeSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrimaryProfileSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.compliance_inquiry)
+        RETURNVAR: twilio_trusthub_complianceinquiry_customers_initialize_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.complianceinquiry.customers.initialize
+  twilio_trusthub.complianceinquiry.customers.initialize.1:
+    SUMMARY: Resume a specific Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing.
+    DESC: Resume a specific Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ComplianceInquiries/Customers/{CustomerId}/Initialize
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerId:
+          TYPE: STRING
+          LOCATION: path
+      - PrimaryProfileSid:
+          TYPE: STRING
+          LOCATION: body
+      - ThemeSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.compliance_inquiry)
+        RETURNVAR: twilio_trusthub_complianceinquiry_customers_initialize_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.complianceinquiry.customers.initialize.1
+  twilio_trusthub.complianceinquiry.gB.initialize:
+    SUMMARY: Create a new Compliance Registration Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    DESC: Create a new Compliance Registration Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ComplianceInquiries/Registration/RegulatoryCompliance/GB/Initialize
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - EndUserType:
+          TYPE: STRING
+          LOCATION: body
+      - PhoneNumberType:
+          TYPE: STRING
+          LOCATION: body
+      - BusinessIdentityType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationAuthority:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessLegalName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - NotificationEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AcceptedNotificationReceipt:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessWebsiteUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorizedRepresentative1FirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorizedRepresentative1LastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorizedRepresentative1Phone:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorizedRepresentative1Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AuthorizedRepresentative1DateOfBirth:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressStreet:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressStreetSecondary:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressCity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressSubdivision:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressPostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressStreet:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressStreetSecondary:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressCity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressSubdivision:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressPostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EmergencyAddressCountryCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UseAddressAsEmergencyAddress:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FileName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - File:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DateOfBirth:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IndividualEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IndividualPhone:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IsIsvEmbed:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - IsvRegisteringForSelfOrTenant:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ThemeSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.compliance_registration)
+        RETURNVAR: twilio_trusthub_complianceinquiry_gB_initialize_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.complianceinquiry.gB.initialize
+  twilio_trusthub.complianceinquiry.gB.initialize.1:
+    SUMMARY: Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing.
+    DESC: Resume a specific Regulatory Compliance Inquiry that has expired, or re-open a rejected Compliance Inquiry for editing.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ComplianceInquiries/Registration/{RegistrationId}/RegulatoryCompliance/GB/Initialize
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RegistrationId:
+          TYPE: STRING
+          LOCATION: path
+      - IsIsvEmbed:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ThemeSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.compliance_registration)
+        RETURNVAR: twilio_trusthub_complianceinquiry_gB_initialize_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.complianceinquiry.gB.initialize.1
+  twilio_trusthub.complianceinquiry.tollfree.initialize:
+    SUMMARY: Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    DESC: Create a new Compliance Tollfree Verification Inquiry for the authenticated account. This is necessary to start a new embedded session.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/ComplianceInquiries/Tollfree/Initialize
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TollfreePhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - NotificationEmail:
+          TYPE: STRING
+          LOCATION: body
+      - CustomerProfileSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessWebsite:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UseCaseCategories:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - UseCaseSummary:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ProductionMessageSample:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInImageUrls:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - OptInType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessageVolume:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStreetAddress2:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessStateProvinceRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessPostalCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AdditionalInformation:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactFirstName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactLastName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactEmail:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessContactPhone:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ThemeSetId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SkipMessagingUseCase:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationAuthority:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessRegistrationCountry:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - BusinessType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DoingBusinessAs:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInConfirmationMessage:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - HelpMessageSample:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivacyPolicyUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - TermsAndConditionsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AgeGatedContent:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ExternalReferenceId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - OptInKeywords:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - VettingId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VettingProvider:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.compliance_tollfree_inquiry)
+        RETURNVAR: twilio_trusthub_complianceinquiry_tollfree_initialize_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.complianceinquiry.tollfree.initialize
+  twilio_trusthub.customerprofile.create:
+    SUMMARY: Create a new Customer-Profile.
+    DESC: Create a new Customer-Profile.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CustomerProfiles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - PolicySid:
+          TYPE: STRING
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile)
+        RETURNVAR: twilio_trusthub_customerprofile_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.customerprofile.create
+  twilio_trusthub.customerprofile.list:
+    SUMMARY: Retrieve a list of all Customer-Profiles for an account.
+    DESC: Retrieve a list of all Customer-Profiles for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PolicySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.customerprofile.listResponse200)
+        RETURNVAR: twilio_trusthub_customerprofile_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.list
+  twilio_trusthub.customerprofile.get:
+    SUMMARY: Fetch a specific Customer-Profile instance.
+    DESC: Fetch a specific Customer-Profile instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile)
+        RETURNVAR: twilio_trusthub_customerprofile_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.get
+  twilio_trusthub.customerprofile.create.1:
+    SUMMARY: Updates a Customer-Profile in an account.
+    DESC: Updates a Customer-Profile in an account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CustomerProfiles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile)
+        RETURNVAR: twilio_trusthub_customerprofile_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.create.1
+  twilio_trusthub.customerprofile.delete:
+    SUMMARY: Delete a specific Customer-Profile.
+    DESC: Delete a specific Customer-Profile.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/CustomerProfiles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.customerprofile.delete
+  twilio_trusthub.customerprofile.channelEndpointAssignments.create:
+    SUMMARY: Create a new Assigned Item.
+    DESC: Create a new Assigned Item.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/ChannelEndpointAssignments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelEndpointType:
+          TYPE: STRING
+          LOCATION: body
+      - ChannelEndpointSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_channel_endpoint_assignment)
+        RETURNVAR: twilio_trusthub_customerprofile_channelEndpointAssignments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.customerprofile.channelEndpointAssignments.create
+  twilio_trusthub.customerprofile.channelEndpointAssignments.get:
+    SUMMARY: Retrieve a list of all Assigned Items for an account.
+    DESC: Retrieve a list of all Assigned Items for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/ChannelEndpointAssignments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelEndpointSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ChannelEndpointSids:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.customerprofile.channelEndpointAssignments.getResponse200)
+        RETURNVAR: twilio_trusthub_customerprofile_channelEndpointAssignments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.channelEndpointAssignments.get
+  twilio_trusthub.customerprofile.channelEndpointAssignments.get.1:
+    SUMMARY: Fetch specific Assigned Item Instance.
+    DESC: Fetch specific Assigned Item Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/ChannelEndpointAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_channel_endpoint_assignment)
+        RETURNVAR: twilio_trusthub_customerprofile_channelEndpointAssignments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.channelEndpointAssignments.get.1
+  twilio_trusthub.customerprofile.channelEndpointAssignments.delete:
+    SUMMARY: Remove an Assignment Item Instance.
+    DESC: Remove an Assignment Item Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/ChannelEndpointAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.customerprofile.channelEndpointAssignments.delete
+  twilio_trusthub.customerprofile.entityAssignments.create:
+    SUMMARY: Create a new Assigned Item.
+    DESC: Create a new Assigned Item.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - ObjectSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_entity_assignment)
+        RETURNVAR: twilio_trusthub_customerprofile_entityAssignments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.customerprofile.entityAssignments.create
+  twilio_trusthub.customerprofile.entityAssignments.get:
+    SUMMARY: Retrieve a list of all Assigned Items for an account.
+    DESC: Retrieve a list of all Assigned Items for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - ObjectType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.customerprofile.entityAssignments.getResponse200)
+        RETURNVAR: twilio_trusthub_customerprofile_entityAssignments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.entityAssignments.get
+  twilio_trusthub.customerprofile.entityAssignments.get.1:
+    SUMMARY: Fetch specific Assigned Item Instance.
+    DESC: Fetch specific Assigned Item Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_entity_assignment)
+        RETURNVAR: twilio_trusthub_customerprofile_entityAssignments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.entityAssignments.get.1
+  twilio_trusthub.customerprofile.entityAssignments.delete:
+    SUMMARY: Remove an Assignment Item Instance.
+    DESC: Remove an Assignment Item Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/EntityAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.customerprofile.entityAssignments.delete
+  twilio_trusthub.customerprofile.evaluations.create:
+    SUMMARY: Create a new Evaluation
+    DESC: Create a new Evaluation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - PolicySid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_evaluation)
+        RETURNVAR: twilio_trusthub_customerprofile_evaluations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.customerprofile.evaluations.create
+  twilio_trusthub.customerprofile.evaluations.get:
+    SUMMARY: Retrieve a list of Evaluations associated to the customer_profile resource.
+    DESC: Retrieve a list of Evaluations associated to the customer_profile resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.customerprofile.evaluations.getResponse200)
+        RETURNVAR: twilio_trusthub_customerprofile_evaluations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.evaluations.get
+  twilio_trusthub.customerprofile.evaluations.get.1:
+    SUMMARY: Fetch specific Evaluation Instance.
+    DESC: Fetch specific Evaluation Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CustomerProfiles/{CustomerProfileSid}/Evaluations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - CustomerProfileSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.customer_profile.customer_profile_evaluation)
+        RETURNVAR: twilio_trusthub_customerprofile_evaluations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.customerprofile.evaluations.get.1
+  twilio_trusthub.enduser.create:
+    SUMMARY: Create a new End User.
+    DESC: Create a new End User.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/EndUsers
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.end_user)
+        RETURNVAR: twilio_trusthub_enduser_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.enduser.create
+  twilio_trusthub.enduser.list:
+    SUMMARY: Retrieve a list of all End User for an account.
+    DESC: Retrieve a list of all End User for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/EndUsers
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.enduser.listResponse200)
+        RETURNVAR: twilio_trusthub_enduser_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.enduser.list
+  twilio_trusthub.enduser.get:
+    SUMMARY: Fetch specific End User Instance.
+    DESC: Fetch specific End User Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/EndUsers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.end_user)
+        RETURNVAR: twilio_trusthub_enduser_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.enduser.get
+  twilio_trusthub.enduser.create.1:
+    SUMMARY: Update an existing End User.
+    DESC: Update an existing End User.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/EndUsers/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.end_user)
+        RETURNVAR: twilio_trusthub_enduser_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.enduser.create.1
+  twilio_trusthub.enduser.delete:
+    SUMMARY: Delete a specific End User.
+    DESC: Delete a specific End User.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/EndUsers/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.enduser.delete
+  twilio_trusthub.endusertype.list:
+    SUMMARY: Retrieve a list of all End-User Types.
+    DESC: Retrieve a list of all End-User Types.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/EndUserTypes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.endusertype.listResponse200)
+        RETURNVAR: twilio_trusthub_endusertype_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.endusertype.list
+  twilio_trusthub.endusertype.get:
+    SUMMARY: Fetch a specific End-User Type Instance.
+    DESC: Fetch a specific End-User Type Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/EndUserTypes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.end_user_type)
+        RETURNVAR: twilio_trusthub_endusertype_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.endusertype.get
+  twilio_trusthub.policy.list:
+    SUMMARY: Retrieve a list of all Policys.
+    DESC: Retrieve a list of all Policys.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Policies
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.policy.listResponse200)
+        RETURNVAR: twilio_trusthub_policy_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.policy.list
+  twilio_trusthub.policy.get:
+    SUMMARY: Fetch specific Policy Instance.
+    DESC: Fetch specific Policy Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Policies/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.policies)
+        RETURNVAR: twilio_trusthub_policy_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.policy.get
+  twilio_trusthub.supportingdocument.create:
+    SUMMARY: Create a new Supporting Document.
+    DESC: Create a new Supporting Document.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SupportingDocuments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.supporting_document)
+        RETURNVAR: twilio_trusthub_supportingdocument_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.supportingdocument.create
+  twilio_trusthub.supportingdocument.list:
+    SUMMARY: Retrieve a list of all Supporting Document for an account.
+    DESC: Retrieve a list of all Supporting Document for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SupportingDocuments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.supportingdocument.listResponse200)
+        RETURNVAR: twilio_trusthub_supportingdocument_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.supportingdocument.list
+  twilio_trusthub.supportingdocument.get:
+    SUMMARY: Fetch specific Supporting Document Instance.
+    DESC: Fetch specific Supporting Document Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SupportingDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.supporting_document)
+        RETURNVAR: twilio_trusthub_supportingdocument_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.supportingdocument.get
+  twilio_trusthub.supportingdocument.create.1:
+    SUMMARY: Update an existing Supporting Document.
+    DESC: Update an existing Supporting Document.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/SupportingDocuments/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.supporting_document)
+        RETURNVAR: twilio_trusthub_supportingdocument_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.supportingdocument.create.1
+  twilio_trusthub.supportingdocument.delete:
+    SUMMARY: Delete a specific Supporting Document.
+    DESC: Delete a specific Supporting Document.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/SupportingDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.supportingdocument.delete
+  twilio_trusthub.supportingdocumenttype.list:
+    SUMMARY: Retrieve a list of all Supporting Document Types.
+    DESC: Retrieve a list of all Supporting Document Types.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SupportingDocumentTypes
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.supportingdocumenttype.listResponse200)
+        RETURNVAR: twilio_trusthub_supportingdocumenttype_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.supportingdocumenttype.list
+  twilio_trusthub.supportingdocumenttype.get:
+    SUMMARY: Fetch a specific Supporting Document Type Instance.
+    DESC: Fetch a specific Supporting Document Type Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/SupportingDocumentTypes/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.supporting_document_type)
+        RETURNVAR: twilio_trusthub_supportingdocumenttype_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.supportingdocumenttype.get
+  twilio_trusthub.trustproduct.create:
+    SUMMARY: Create a new Trust Product.
+    DESC: Create a new Trust Product.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/TrustProducts
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - PolicySid:
+          TYPE: STRING
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product)
+        RETURNVAR: twilio_trusthub_trustproduct_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.trustproduct.create
+  twilio_trusthub.trustproduct.list:
+    SUMMARY: Retrieve a list of all Trust Products for an account.
+    DESC: Retrieve a list of all Trust Products for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PolicySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trustproduct.listResponse200)
+        RETURNVAR: twilio_trusthub_trustproduct_list
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.list
+  twilio_trusthub.trustproduct.get:
+    SUMMARY: Fetch a specific Trust Product instance.
+    DESC: Fetch a specific Trust Product instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product)
+        RETURNVAR: twilio_trusthub_trustproduct_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.get
+  twilio_trusthub.trustproduct.create.1:
+    SUMMARY: Updates a Trust Product in an account.
+    DESC: Updates a Trust Product in an account.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/TrustProducts/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product)
+        RETURNVAR: twilio_trusthub_trustproduct_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.create.1
+  twilio_trusthub.trustproduct.delete:
+    SUMMARY: Delete a specific Trust Product.
+    DESC: Delete a specific Trust Product.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/TrustProducts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.trustproduct.delete
+  twilio_trusthub.trustproduct.channelEndpointAssignments.create:
+    SUMMARY: Create a new Assigned Item.
+    DESC: Create a new Assigned Item.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelEndpointType:
+          TYPE: STRING
+          LOCATION: body
+      - ChannelEndpointSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_channel_endpoint_assignment)
+        RETURNVAR: twilio_trusthub_trustproduct_channelEndpointAssignments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.trustproduct.channelEndpointAssignments.create
+  twilio_trusthub.trustproduct.channelEndpointAssignments.get:
+    SUMMARY: Retrieve a list of all Assigned Items for an account.
+    DESC: Retrieve a list of all Assigned Items for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelEndpointSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ChannelEndpointSids:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trustproduct.channelEndpointAssignments.getResponse200)
+        RETURNVAR: twilio_trusthub_trustproduct_channelEndpointAssignments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.channelEndpointAssignments.get
+  twilio_trusthub.trustproduct.channelEndpointAssignments.get.1:
+    SUMMARY: Fetch specific Assigned Item Instance.
+    DESC: Fetch specific Assigned Item Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_channel_endpoint_assignment)
+        RETURNVAR: twilio_trusthub_trustproduct_channelEndpointAssignments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.channelEndpointAssignments.get.1
+  twilio_trusthub.trustproduct.channelEndpointAssignments.delete:
+    SUMMARY: Remove an Assignment Item Instance.
+    DESC: Remove an Assignment Item Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/ChannelEndpointAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.trustproduct.channelEndpointAssignments.delete
+  twilio_trusthub.trustproduct.entityAssignments.create:
+    SUMMARY: Create a new Assigned Item.
+    DESC: Create a new Assigned Item.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/EntityAssignments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - ObjectSid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_entity_assignment)
+        RETURNVAR: twilio_trusthub_trustproduct_entityAssignments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.trustproduct.entityAssignments.create
+  twilio_trusthub.trustproduct.entityAssignments.get:
+    SUMMARY: Retrieve a list of all Assigned Items for an account.
+    DESC: Retrieve a list of all Assigned Items for an account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/EntityAssignments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - ObjectType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trustproduct.entityAssignments.getResponse200)
+        RETURNVAR: twilio_trusthub_trustproduct_entityAssignments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.entityAssignments.get
+  twilio_trusthub.trustproduct.entityAssignments.get.1:
+    SUMMARY: Fetch specific Assigned Item Instance.
+    DESC: Fetch specific Assigned Item Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/EntityAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_entity_assignment)
+        RETURNVAR: twilio_trusthub_trustproduct_entityAssignments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.entityAssignments.get.1
+  twilio_trusthub.trustproduct.entityAssignments.delete:
+    SUMMARY: Remove an Assignment Item Instance.
+    DESC: Remove an Assignment Item Instance.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/EntityAssignments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_trusthub.trustproduct.entityAssignments.delete
+  twilio_trusthub.trustproduct.evaluations.create:
+    SUMMARY: Create a new Evaluation
+    DESC: Create a new Evaluation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/Evaluations
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - PolicySid:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_evaluation)
+        RETURNVAR: twilio_trusthub_trustproduct_evaluations_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_trusthub.trustproduct.evaluations.create
+  twilio_trusthub.trustproduct.evaluations.get:
+    SUMMARY: Retrieve a list of Evaluations associated to the trust_product resource.
+    DESC: Retrieve a list of Evaluations associated to the trust_product resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/Evaluations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.trustproduct.evaluations.getResponse200)
+        RETURNVAR: twilio_trusthub_trustproduct_evaluations_get
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.evaluations.get
+  twilio_trusthub.trustproduct.evaluations.get.1:
+    SUMMARY: Fetch specific Evaluation Instance.
+    DESC: Fetch specific Evaluation Instance.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/TrustProducts/{TrustProductSid}/Evaluations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - TrustProductSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(trusthub.v1.trust_product.trust_product_evaluation)
+        RETURNVAR: twilio_trusthub_trustproduct_evaluations_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_trusthub.trustproduct.evaluations.get.1
+STRUCTS:
+  trusthub.v1.compliance_inquiry:
+    - name: inquiry_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID used to start an embedded compliance registration session.
+    - name: inquiry_session_token
+      type: STRING
+      REQUIRED: false
+      comment: The session token used to start an embedded compliance registration session.
+    - name: customer_id
+      type: STRING
+      REQUIRED: false
+      comment: The CustomerID matching the Customer Profile that should be resumed or resubmitted for editing.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  trusthub.v1.compliance_registration:
+    - name: inquiry_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID used to start an embedded compliance registration session.
+    - name: inquiry_session_token
+      type: STRING
+      REQUIRED: false
+      comment: The session token used to start an embedded compliance registration session.
+    - name: registration_id
+      type: STRING
+      REQUIRED: false
+      comment: The RegistrationId matching the Registration Profile that should be resumed or resubmitted for editing.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  trusthub.v1.compliance_tollfree_inquiry:
+    - name: inquiry_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique ID used to start an embedded compliance registration session.
+    - name: inquiry_session_token
+      type: STRING
+      REQUIRED: false
+      comment: The session token used to start an embedded compliance registration session.
+    - name: registration_id
+      type: STRING
+      REQUIRED: false
+      comment: The TolfreeId matching the Tollfree Profile that should be resumed or resubmitted for editing.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  trusthub.v1.customer_profile:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Customer-Profile resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Customer-Profile resource.
+    - name: policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a policy that is associated to the Customer-Profile resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format when the resource will be valid until.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Customer-Profile resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Customer-Profile resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Assigned Items of the Customer-Profile resource.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The error codes associated with the rejection of the Customer-Profile.
+  trusthub.v1.customer_profile.customer_profile_channel_endpoint_assignment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Item Assignment resource.
+    - name: customer_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the CustomerProfile resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource.
+    - name: channel_endpoint_type
+      type: STRING
+      REQUIRED: false
+      comment: "The type of channel endpoint. eg: phone-number"
+    - name: channel_endpoint_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of an channel endpoint
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Identity resource.
+  trusthub.v1.customer_profile.customer_profile_entity_assignment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Item Assignment resource.
+    - name: customer_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the CustomerProfile resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource.
+    - name: object_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of an object bag that holds information of the different items.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Identity resource.
+  trusthub.v1.customer_profile.customer_profile_evaluation:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Evaluation resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the customer_profile resource.
+    - name: policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a policy that is associated to the customer_profile resource.
+    - name: customer_profile_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the customer_profile resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The results of the Evaluation which includes the valid and invalid attributes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  trusthub.v1.end_user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify the End User resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the End User resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The type of end user of the Bundle resource - can be `individual` or `business`.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: The set of parameters that are the attributes of the End Users resource which are listed in the End User Types.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the End User resource.
+  trusthub.v1.end_user_type:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the End-User Type resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description that is assigned to describe the End-User Type resource. Examples can include first name, last name, email, business name, etc
+    - name: machine_name
+      type: STRING
+      REQUIRED: false
+      comment: A machine-readable description of the End-User Type resource. Examples can include first_name, last_name, email, business_name, etc.
+    - name: fields
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The required information for creating an End-User. The required fields will change as regulatory needs change and will differ for businesses and individuals.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the End-User Type resource.
+  trusthub.v1.policies:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Policy resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description that is assigned to describe the Policy resource. Examples can include Primary Customer profile policy
+    - name: requirements
+      type: ANY
+      REQUIRED: false
+      comment: The SID of an object that holds the policy information
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Policy resource.
+  trusthub.v1.supporting_document:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string created by Twilio to identify the Supporting Document resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Document resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: mime_type
+      type: STRING
+      REQUIRED: false
+      comment: The image type uploaded in the Supporting Document container.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The type of the Supporting Document.
+    - name: attributes
+      type: ANY
+      REQUIRED: false
+      comment: The set of parameters that are the attributes of the Supporting Documents resource which are listed in the Supporting Document Types.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Supporting Document resource.
+  trusthub.v1.supporting_document_type:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Supporting Document Type resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of the Supporting Document Type resource.
+    - name: machine_name
+      type: STRING
+      REQUIRED: false
+      comment: The machine-readable description of the Supporting Document Type resource.
+    - name: fields
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The required information for creating a Supporting Document. The required fields will change as regulatory needs change and will differ for businesses and individuals.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Supporting Document Type resource.
+  trusthub.v1.trust_product:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Trust Product resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Trust Product resource.
+    - name: policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of the policy that is associated with the Trust Product resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: valid_until
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format until which the resource will be valid.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: The email address that will receive updates when the Trust Product resource changes status.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call to inform your application of status changes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Trust Product resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Assigned Items of the Trust Product resource.
+    - name: errors
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The error codes associated with the rejection of the Trust Product.
+  trusthub.v1.trust_product.trust_product_channel_endpoint_assignment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Item Assignment resource.
+    - name: trust_product_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the CustomerProfile resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource.
+    - name: channel_endpoint_type
+      type: STRING
+      REQUIRED: false
+      comment: "The type of channel endpoint. eg: phone-number"
+    - name: channel_endpoint_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of an channel endpoint
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Identity resource.
+  trusthub.v1.trust_product.trust_product_entity_assignment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Item Assignment resource.
+    - name: trust_product_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the TrustProduct resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Item Assignment resource.
+    - name: object_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of an object bag that holds information of the different items.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Identity resource.
+  trusthub.v1.trust_product.trust_product_evaluation:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that identifies the Evaluation resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the trust_product resource.
+    - name: policy_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string of a policy that is associated to the trust_product resource.
+    - name: trust_product_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the trust_product resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: results
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The results of the Evaluation which includes the valid and invalid attributes.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  api.customerprofile.listResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.customer_profile)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.customerprofile.channelEndpointAssignments.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.customer_profile.customer_profile_channel_endpoint_assignment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.customerprofile.entityAssignments.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.customer_profile.customer_profile_entity_assignment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.customerprofile.evaluations.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.customer_profile.customer_profile_evaluation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.enduser.listResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.end_user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.endusertype.listResponse200:
+    - name: end_user_types
+      type: "[]STRUCT(trusthub.v1.end_user_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.policy.listResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.policies)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.supportingdocument.listResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.supporting_document)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.supportingdocumenttype.listResponse200:
+    - name: supporting_document_types
+      type: "[]STRUCT(trusthub.v1.supporting_document_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trustproduct.listResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.trust_product)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trustproduct.channelEndpointAssignments.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.trust_product.trust_product_channel_endpoint_assignment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trustproduct.entityAssignments.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.trust_product.trust_product_entity_assignment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.trustproduct.evaluations.getResponse200:
+    - name: results
+      type: "[]STRUCT(trusthub.v1.trust_product.trust_product_evaluation)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

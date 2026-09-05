@@ -1,0 +1,174 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Cancel a hosted number order",
+      "canonical_id": "twilio_preview.hostednumber.hostedNumberOrders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new wireless rate plan with specified details",
+      "canonical_id": "twilio_preview.wireless.ratePlans.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create an authorization document for hosting phone numbers",
+      "canonical_id": "twilio_preview.hostednumber.authorizationDocuments.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a wireless rate plan by its SID",
+      "canonical_id": "twilio_preview.wireless.ratePlans.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an installed add-on from your account",
+      "canonical_id": "twilio_preview.marketplace.installedAddOns.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific wireless command by its SID",
+      "canonical_id": "twilio_preview.wireless.commands.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a wireless rate plan by its SID",
+      "canonical_id": "twilio_preview.wireless.ratePlans.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of available add-ons to install",
+      "canonical_id": "twilio_preview.marketplace.availableAddOns.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific authorization document by its ID",
+      "canonical_id": "twilio_preview.hostednumber.authorizationDocuments.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific extension for an available add-on",
+      "canonical_id": "twilio_preview.marketplace.extensions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific hosted number order by its SID",
+      "canonical_id": "twilio_preview.hostednumber.hostedNumberOrders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account's authorization documents",
+      "canonical_id": "twilio_preview.hostednumber.authorizationDocuments.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an available add-on by its SID",
+      "canonical_id": "twilio_preview.marketplace.availableAddOns.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an installed add-on extension by its ID",
+      "canonical_id": "twilio_preview.marketplace.extensions.get.2"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get dependent hosted number orders for an authorization document",
+      "canonical_id": "twilio_preview.hostednumber.dependentHostedNumberOrders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for an installed add-on",
+      "canonical_id": "twilio_preview.marketplace.installedAddOns.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get wireless SIM details by SID",
+      "canonical_id": "twilio_preview.wireless.sims.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get wireless usage for a specific SIM",
+      "canonical_id": "twilio_preview.wireless.usage.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Host a phone number's capability on Twilio",
+      "canonical_id": "twilio_preview.hostednumber.hostedNumberOrders.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Install an add-on for the specified account",
+      "canonical_id": "twilio_preview.marketplace.installedAddOns.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available wireless rate plans",
+      "canonical_id": "twilio_preview.wireless.ratePlans.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List extensions for an available add-on",
+      "canonical_id": "twilio_preview.marketplace.extensions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List extensions for an installed add-on",
+      "canonical_id": "twilio_preview.marketplace.extensions.get.3"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List hosted number orders for the account",
+      "canonical_id": "twilio_preview.hostednumber.hostedNumberOrders.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List installed add-ons for your account",
+      "canonical_id": "twilio_preview.marketplace.installedAddOns.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List wireless commands with filtering and pagination options",
+      "canonical_id": "twilio_preview.wireless.commands.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List wireless SIMs with optional filters",
+      "canonical_id": "twilio_preview.wireless.sims.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a command to a wireless device",
+      "canonical_id": "twilio_preview.wireless.commands.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a hosted number order",
+      "canonical_id": "twilio_preview.hostednumber.hostedNumberOrders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a wireless rate plan's details",
+      "canonical_id": "twilio_preview.wireless.ratePlans.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a wireless SIM's configuration and settings",
+      "canonical_id": "twilio_preview.wireless.sims.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an authorization document for a hosted number",
+      "canonical_id": "twilio_preview.hostednumber.authorizationDocuments.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an installed add-on extension's enabled status",
+      "canonical_id": "twilio_preview.marketplace.extensions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an installed add-on for an account",
+      "canonical_id": "twilio_preview.marketplace.installedAddOns.create.1"
+    }
+  ]
+}

@@ -1,41 +1,80 @@
 :root {
-  --bg: #0A0E17;
-  --bg-panel: #10161F;
-  --bg-panel-raised: #151C28;
-  --border: #212B3B;
-  --text-primary: #E8EDF5;
-  --text-secondary: #8B96A8;
-  --text-muted: #5C6779;
+  color-scheme: dark;
 
-  --accent-amber: #F2A93B;
-  --accent-amber-glow: rgba(242, 169, 59, 0.25);
-  --accent-cyan: #3FC1C9;
-  --signal-green: #3DD68C;
-  --signal-red: #E85D5D;
+  --bg: #0d0d0d;
+  --panel: #1a1a19;
+  --panel-raised: #212120;
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
 
-  --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+  --text-primary: #ffffff;
+  --text-secondary: #c3c2b7;
+  --text-muted: #898781;
+  --gridline: #2c2c2a;
+
+  --status-good: #0ca30c;
+  --status-good-glow: rgba(12, 163, 12, 0.28);
+  --status-warning: #fab219;
+  --status-warning-glow: rgba(250, 178, 25, 0.3);
+  --status-critical: #d03b3b;
+  --status-critical-glow: rgba(208, 59, 59, 0.32);
+
+  --cat-blue: #3987e5;
+  --cat-aqua: #199e70;
+  --cat-violet: #9085e9;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 1000px 560px at 80% -12%, rgba(57, 135, 229, 0.05), transparent),
+    radial-gradient(ellipse 800px 460px at 6% 108%, rgba(250, 178, 25, 0.035), transparent),
+    var(--bg);
   color: var(--text-primary);
   font-family: var(--font-mono);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: var(--accent-amber-glow); }
+::selection {
+  background: var(--status-warning-glow);
+}
 
-a:focus-visible, button:focus-visible {
-  outline: 2px solid var(--accent-cyan);
-  outline-offset: 2px;
+:focus-visible {
+  outline: 2px solid var(--cat-blue);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@keyframes panel-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

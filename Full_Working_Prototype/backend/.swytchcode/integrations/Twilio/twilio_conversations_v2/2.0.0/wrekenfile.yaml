@@ -1,0 +1,1751 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://conversations.twilio.com
+METHODS:
+  conversation_orchestrator.controlplane.configurations.list:
+    SUMMARY: List Configurations
+    DESC: Retrieve a list of Configurations.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ControlPlane/Configurations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - memoryStoreId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.listResponse200)
+        RETURNVAR: conversation_orchestrator_controlplane_configurations_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.configurations.list
+  conversation_orchestrator.controlplane.configurations.create:
+    SUMMARY: Create a Configuration
+    DESC: Create a new Configuration
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/ControlPlane/Configurations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.configurations.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Idempotency-Key:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(api.controlplane.configurations.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: conversation_orchestrator_controlplane_configurations_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.configurations.create
+  conversation_orchestrator.controlplane.configurations.get:
+    SUMMARY: Fetch Configuration
+    DESC: Retrieve a Configuration.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ControlPlane/Configurations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.getResponse200)
+        RETURNVAR: conversation_orchestrator_controlplane_configurations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.configurations.get
+  conversation_orchestrator.controlplane.configurations.update:
+    SUMMARY: Update Configuration
+    DESC: Update an existing Configuration
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/ControlPlane/Configurations/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.configurations.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Idempotency-Key:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(api.controlplane.configurations.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: conversation_orchestrator_controlplane_configurations_update_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.configurations.update
+  conversation_orchestrator.controlplane.configurations.delete:
+    SUMMARY: Delete Configuration
+    DESC: Delete a Configuration
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/ControlPlane/Configurations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Idempotency-Key:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: conversation_orchestrator_controlplane_configurations_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.configurations.delete
+  conversation_orchestrator.conversation.list:
+    SUMMARY: List Conversations
+    DESC: Retrieve a list of Conversations.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - status:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - channelId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.listResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.list
+  conversation_orchestrator.conversation.create:
+    SUMMARY: Create a new Conversation
+    DESC: Create a new conversation
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Conversations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.conversation.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.createResponse201)
+        RETURNVAR: conversation_orchestrator_conversation_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.create
+  conversation_orchestrator.conversation.get:
+    SUMMARY: Fetch Conversation
+    DESC: Retrieve a Conversation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.get
+  conversation_orchestrator.conversation.update:
+    SUMMARY: Update a Conversation
+    DESC: Update an existing conversation
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/Conversations/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.updateResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.update
+  conversation_orchestrator.conversation.delete:
+    SUMMARY: Delete a Conversation (async)
+    DESC: |
+      Asynchronously delete a conversation and all associated data.
+      Returns 202 Accepted with an Operation-Id for status tracking via GET /v2/ControlPlane/Operations/{operationId}.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Conversations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Idempotency-Key:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+    RETURNS:
+      - RETURNTYPE: map[STRING]ANY
+        RETURNVAR: conversation_orchestrator_conversation_delete_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.delete
+  conversation_orchestrator.conversation.update.1:
+    SUMMARY: Partially Update a Conversation
+    DESC: Partially update the details of an existing Conversation.
+    HTTP:
+      METHOD: PATCH
+      ENDPOINT: /v2/Conversations/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.updateResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_update_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.update.1
+  conversation_orchestrator.conversation.actions.create:
+    SUMMARY: Create an Action
+    DESC: |
+      Creates an Action within a Conversation. Currently supports SEND_MESSAGE,
+      which sends a message to recipients via the configured channel.
+
+      Returns 202 Accepted with the Action in PENDING status. Poll
+      `GET /v2/Conversations/{ConversationId}/Actions/{ActionId}` to check completion.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Conversations/{ConversationId}/Actions
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.actions.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationId:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.actions.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.actions.createResponse202)
+        RETURNVAR: conversation_orchestrator_conversation_actions_create_202
+        STATUS: 202
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.actions.create
+  conversation_orchestrator.conversation.actions.get:
+    SUMMARY: Get Action Status
+    DESC: Retrieve the current status of an Action.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{ConversationId}/Actions/{ActionId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationId:
+          TYPE: STRING
+          LOCATION: path
+      - ActionId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.actions.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_actions_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.actions.get
+  conversation_orchestrator.conversation.participants.get:
+    SUMMARY: List Participants
+    DESC: Retrieve a list of Participants in a Conversation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.participants.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_participants_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.participants.get
+  conversation_orchestrator.conversation.participants.create:
+    SUMMARY: Create Participant
+    DESC: Create a Participant.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Participants
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.participants.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.participants.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.participants.createResponse201)
+        RETURNVAR: conversation_orchestrator_conversation_participants_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_Conflict)
+        STATUS: 409
+        WHEN: Conflict (HTTP 409)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.participants.create
+  conversation_orchestrator.conversation.participants.get.1:
+    SUMMARY: Fetch Participant
+    DESC: Retrieve a Participant.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.participants.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_participants_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.participants.get.1
+  conversation_orchestrator.conversation.participants.update:
+    SUMMARY: Update a Participant
+    DESC: Update an existing Participant
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Participants/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.participants.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.participants.updateRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.participants.updateResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_participants_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.participants.update
+  conversation_orchestrator.conversation.communications.get:
+    SUMMARY: List Communications
+    DESC: Retrieve a list of Communications in a Conversation.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Communications
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - channelId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.communications.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_communications_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.communications.get
+  conversation_orchestrator.conversation.communications.create:
+    SUMMARY: Create Communication
+    DESC: Create a Communication.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Communications
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.conversation.communications.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.conversation.communications.createRequest)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.communications.createResponse201)
+        RETURNVAR: conversation_orchestrator_conversation_communications_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.communications.create
+  conversation_orchestrator.conversation.communications.get.1:
+    SUMMARY: Fetch Communication
+    DESC: Retrieve a Communication.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Conversations/{ConversationSid}/Communications/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ConversationSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.communications.getResponse200)
+        RETURNVAR: conversation_orchestrator_conversation_communications_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.conversation.communications.get.1
+  conversation_orchestrator.controlplane.operations.get:
+    SUMMARY: Get Operation Status
+    DESC: |
+      Retrieve the current status of a long-running operation.
+      Operations progress through: PENDING -> RUNNING -> COMPLETED or FAILED.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/ControlPlane/Operations/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.operations.getResponse200)
+        RETURNVAR: conversation_orchestrator_controlplane_operations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(Response_BadRequest)
+        STATUS: 400
+        WHEN: Bad Request (HTTP 400)
+      - TYPE: STRUCT(Response_NotFound)
+        STATUS: 404
+        WHEN: Not Found (HTTP 404)
+      - TYPE: STRUCT(Response_TooManyRequests)
+        STATUS: 429
+        WHEN: Too Many Requests (HTTP 429)
+      - TYPE: STRUCT(Response_InternalServerError)
+        STATUS: 500
+        WHEN: Internal Server Error (HTTP 500)
+      - TYPE: STRUCT(Response_ServiceUnavailable)
+        STATUS: 503
+        WHEN: Service Unavailable (HTTP 503)
+    CANONICAL_ID: conversation_orchestrator.controlplane.operations.get
+STRUCTS:
+  conversations.v2.status_callback_config:
+    - name: url
+      type: STRING
+      REQUIRED: true
+      comment: Destination URL for webhooks.
+    - name: method
+      type: STRING
+      REQUIRED: false
+      comment: HTTP method used to invoke the webhook URL.
+  conversations.v2.conversations_v1_bridge:
+    - name: serviceId
+      type: STRING
+      REQUIRED: true
+      comment: The Conversations V1 Service SID (IS prefix). One configuration per V1 Service SID.
+  conversations.v2.participant:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Participant ID.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Participant display name.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of Participant in the Conversation.
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+      comment: "Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants."
+    - name: addresses
+      type: "[]STRUCT(conversations.v2.address)"
+      REQUIRED: false
+      comment: |
+        Communication addresses for this Participant. Address format varies by channel:
+        - SMS/VOICE: E.164 phone number (such as "+18005550100")
+        - EMAIL: Email address (such as "user@example.com")
+        - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+        - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or "rcs:+18005550100")
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was last updated.
+  conversations.v2.address:
+    - name: channel
+      type: STRING
+      REQUIRED: true
+      comment: The channel for Communication.
+    - name: address
+      type: STRING
+      REQUIRED: true
+      comment: |
+        The address value formatted according to channel type:
+        - SMS/VOICE: E.164 phone number (such as "+18005550100")
+        - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+        - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or "rcs:+18005550100")
+        - CHAT: Customer-defined string identifier
+    - name: channelId
+      type: STRING
+      REQUIRED: false
+      comment: Channel-specific ID for correlating Communications.
+  conversations.v2.participant_address:
+    - name: address
+      type: STRING
+      REQUIRED: true
+      comment: |
+        The address value formatted according to channel type:
+        - SMS/VOICE: E.164 phone number (such as "+18005550100")
+        - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+        - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or "rcs:+18005550100")
+        - CHAT: Customer-defined string identifier
+    - name: channel
+      type: STRING
+      REQUIRED: true
+      comment: Channel type for the Participant address.
+    - name: participantId
+      type: STRING
+      REQUIRED: false
+      comment: Participant ID associated with this address.
+  conversations.v2.channel_setting:
+    - name: statusTimeouts
+      type: STRUCT(conversations.v2.status_timeouts)
+      REQUIRED: false
+    - name: captureRules
+      type: "[]STRUCT(conversations.v2.capture_rule)"
+      REQUIRED: false
+      comment: Array of capture rules with from/to addresses and optional metadata. Use `*` for wildcard matching in either direction.
+  conversations.v2.status_timeouts:
+    - name: inactive
+      type: INT
+      REQUIRED: false
+      comment: Inactivity timeout in minutes.
+    - name: closed
+      type: INT
+      REQUIRED: false
+      comment: Close timeout in minutes.
+  conversations.v2.capture_rule:
+    - name: from
+      type: STRING
+      REQUIRED: true
+      comment: The from address. Use `*` for wildcard to match any from address.
+    - name: to
+      type: STRING
+      REQUIRED: true
+      comment: The to address. Use `*` for wildcard to match any to address.
+    - name: metadata
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: Additional matching criteria for the capture rule. For voice calls, can include `callType` (`PSTN`, `SIP`, and similar).
+  Response_BadRequest:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  Response_NotFound:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  Response_Conflict:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  Response_TooManyRequests:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  Response_InternalServerError:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  Response_ServiceUnavailable:
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: Link to Error Code References
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP response status code
+  api.controlplane.configurations.listResponse200:
+    - name: configurations
+      type: "[]ANY"
+      REQUIRED: true
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  api.controlplane.configurations.createRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: A human-readable name for the configuration. Limited to 32 characters.
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: Human-readable description for the configuration.
+    - name: conversationGroupingType
+      type: STRING
+      REQUIRED: true
+      comment: The strategy Conversation Orchestrator uses to assign communications to conversations.
+    - name: memoryStoreId
+      type: STRING
+      REQUIRED: true
+      comment: The memory store ID that Conversation Orchestrator uses for profile resolution.
+    - name: channelSettings
+      type: map[STRING]ANY
+      REQUIRED: false
+    - name: statusCallbacks
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of webhook configurations.
+    - name: intelligenceConfigurationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of Conversational Intelligence configuration IDs.
+    - name: memoryExtractionEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+  api.controlplane.configurations.getResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Configuration ID.
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: A human-readable name for the configuration. Limited to 32 characters.
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: Human-readable description for the Configuration. Allows spaces and special characters, typically limited to a paragraph of text. This serves as a descriptive field rather than just a name.
+    - name: conversationGroupingType
+      type: STRING
+      REQUIRED: true
+      comment: |
+        Type of Conversation grouping strategy:
+        - `GROUP_BY_PROFILE`: Groups Communications by resolved Profile from the Memory Store.
+          A Profile is looked up or created for `CUSTOMER` Participant types. All Communications from the same Profile are in the same Conversation, regardless of address or channel.
+        - `GROUP_BY_PARTICIPANT_ADDRESSES`: Groups Communications by Participant addresses across all channels.
+          A customer using +18005550100 will be in the same Conversation whether they contact by SMS, WhatsApp, or RCS.
+        - `GROUP_BY_PARTICIPANT_ADDRESSES_AND_CHANNEL_TYPE`: Groups Communications by both Participant addresses AND channel.
+          A customer using +18005550100 by SMS will be in a different Conversation than the same customer by Voice.
+    - name: memoryStoreId
+      type: STRING
+      REQUIRED: true
+      comment: Memory Store ID for Profile resolution.
+    - name: channelSettings
+      type: map[STRING]STRUCT(conversations.v2.channel_setting)
+      REQUIRED: false
+      comment: Channel-specific configuration settings including timeout settings and capture rules.
+    - name: statusCallbacks
+      type: "[]STRUCT(conversations.v2.status_callback_config)"
+      REQUIRED: false
+      comment: List of default webhook configurations applied to Conversations under this Configuration.
+    - name: intelligenceConfigurationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of Conversational Intelligence configuration IDs.
+    - name: memoryExtractionEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+    - name: conversationsV1Bridge
+      type: STRUCT(conversations.v2.conversations_v1_bridge)
+      REQUIRED: false
+      comment: Configuration for Conversations V1 bridge. When set, messaging channels route through Conversations V1. Use this to integrate with existing Conversations V1 applications.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Configuration was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Configuration was last updated.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Version number used for optimistic locking.
+  api.controlplane.configurations.updateRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable name for the configuration. Limited to 32 characters.
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: Human-readable description for the configuration.
+    - name: conversationGroupingType
+      type: STRING
+      REQUIRED: true
+      comment: The strategy Conversation Orchestrator uses to assign communications to conversations.
+    - name: memoryStoreId
+      type: STRING
+      REQUIRED: true
+      comment: The Memory Store ID for profile resolution.
+    - name: channelSettings
+      type: map[STRING]ANY
+      REQUIRED: true
+    - name: statusCallbacks
+      type: "[]ANY"
+      REQUIRED: false
+    - name: intelligenceConfigurationIds
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of Conversational Intelligence configuration IDs.
+    - name: memoryExtractionEnabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether memory extraction is enabled for conversations under this configuration. Defaults to false.
+  api.conversation.listResponse200:
+    - name: conversations
+      type: "[]ANY"
+      REQUIRED: true
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  api.conversation.createRequest:
+    - name: configurationId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of an existing configuration.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the conversation.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: Conversation configuration settings.
+    - name: participants
+      type: "[]ANY"
+      REQUIRED: false
+      comment: Optional list of Participants to create with the Conversation.
+  api.conversation.createResponse201:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: configurationId
+      type: STRING
+      REQUIRED: true
+      comment: Configuration ID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: Conversation status.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: Conversation name.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was last updated.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: Full configuration settings for this Conversation.
+    - name: participants
+      type: "[]STRUCT(conversations.v2.participant)"
+      REQUIRED: false
+      comment: Participants in this Conversation.
+  api.conversation.getResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: configurationId
+      type: STRING
+      REQUIRED: true
+      comment: Configuration ID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: Conversation status.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: Conversation name.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was last updated.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: Full configuration settings for this Conversation.
+    - name: participants
+      type: "[]STRUCT(conversations.v2.participant)"
+      REQUIRED: false
+      comment: Participants in this Conversation.
+  api.conversation.updateRequest:
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Conversation.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: The state of the Conversation.
+  api.conversation.updateResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: configurationId
+      type: STRING
+      REQUIRED: true
+      comment: Configuration ID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: Conversation status.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: Conversation name.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Conversation was last updated.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: Full configuration settings for this Conversation.
+    - name: participants
+      type: "[]STRUCT(conversations.v2.participant)"
+      REQUIRED: false
+      comment: Participants in this Conversation.
+  api.conversation.actions.createRequest:
+    - name: type
+      type: STRING
+      REQUIRED: true
+    - name: variant_0
+      type: ANY
+      REQUIRED: false
+  api.conversation.actions.createResponse202:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Unique identifier for this Action.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: "The type of action. Accepted values: SEND_MESSAGE."
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: |
+        Current status of the Action.
+        - PENDING: Action accepted, awaiting downstream confirmation
+        - COMPLETED: Downstream backend confirmed the action
+        - FAILED: Downstream backend reported a failure
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The conversation this action belongs to.
+    - name: related
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: |
+        Named identifiers from downstream. For SEND_MESSAGE:
+        - messageSid: The downstream message SID (present when PENDING or COMPLETED)
+        - communicationId: The Communication ID (present when COMPLETED)
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp when the action was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when the action was last updated.
+    - name: completedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when the action reached a terminal status.
+  api.conversation.actions.getResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Unique identifier for this Action.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: "The type of action. Accepted values: SEND_MESSAGE."
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: |
+        Current status of the Action.
+        - PENDING: Action accepted, awaiting downstream confirmation
+        - COMPLETED: Downstream backend confirmed the action
+        - FAILED: Downstream backend reported a failure
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The conversation this action belongs to.
+    - name: related
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: |
+        Named identifiers from downstream. For SEND_MESSAGE:
+        - messageSid: The downstream message SID (present when PENDING or COMPLETED)
+        - communicationId: The Communication ID (present when COMPLETED)
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp when the action was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when the action was last updated.
+    - name: completedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when the action reached a terminal status.
+  api.conversation.participants.getResponse200:
+    - name: participants
+      type: "[]ANY"
+      REQUIRED: true
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  api.conversation.participants.createRequest:
+    - name: name
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+    - name: addresses
+      type: "[]ANY"
+      REQUIRED: true
+  api.conversation.participants.createResponse201:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Participant ID.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Participant display name.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of Participant in the Conversation.
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+      comment: "Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants."
+    - name: addresses
+      type: "[]STRUCT(conversations.v2.address)"
+      REQUIRED: false
+      comment: |
+        Communication addresses for this Participant. Address format varies by channel:
+        - SMS/VOICE: E.164 phone number (such as "+18005550100")
+        - EMAIL: Email address (such as "user@example.com")
+        - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+        - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or "rcs:+18005550100")
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was last updated.
+  api.conversation.participants.updateRequest:
+    - name: name
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+    - name: addresses
+      type: "[]ANY"
+      REQUIRED: false
+  api.conversation.participants.updateResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Participant ID.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Participant display name.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of Participant in the Conversation.
+    - name: profileId
+      type: STRING
+      REQUIRED: false
+      comment: "Profile ID. Note: This field is only resolved for `CUSTOMER` participant types, not for `HUMAN_AGENT` or `AI_AGENT` participants."
+    - name: addresses
+      type: "[]STRUCT(conversations.v2.address)"
+      REQUIRED: false
+      comment: |
+        Communication addresses for this Participant. Address format varies by channel:
+        - SMS/VOICE: E.164 phone number (such as "+18005550100")
+        - EMAIL: Email address (such as "user@example.com")
+        - WHATSAPP: Phone number with whatsapp prefix (such as "whatsapp:+18005550100")
+        - RCS: Sender ID or phone number with rcs prefix (such as "rcs:brand_acme_agent" or "rcs:+18005550100")
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Participant was last updated.
+  api.conversation.communications.getResponse200:
+    - name: communications
+      type: "[]ANY"
+      REQUIRED: true
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  api.conversation.communications.createRequest:
+    - name: author
+      type: OBJECT
+      REQUIRED: true
+    - name: content
+      type: ANY
+      REQUIRED: true
+      comment: The content of the Communication.
+    - name: channelId
+      type: STRING
+      REQUIRED: false
+    - name: recipients
+      type: "[]ANY"
+      REQUIRED: true
+  api.conversation.communications.createResponse201:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Communication ID.
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: Conversation ID.
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: Account ID.
+    - name: author
+      type: STRUCT(conversations.v2.participant_address)
+      REQUIRED: true
+    - name: content
+      type: ANY
+      REQUIRED: true
+      comment: The content of the Communication using type field for discrimination.
+    - name: channelId
+      type: STRING
+      REQUIRED: false
+      comment: Channel-specific reference ID.
+    - name: resourceId
+      type: STRING
+      REQUIRED: false
+      comment: External resource identifier for this Communication (e.g. MessageSid for SMS/RCS/WhatsApp, TranscriptionSid + MessageIndex for Voice). When set, used for Communication deduplication/uniqueness within a Conversation.
+    - name: recipients
+      type: "[]ANY"
+      REQUIRED: true
+      comment: Communication recipients.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Communication was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when this Communication was last updated.
+    - name: occurredAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: ISO 8601 timestamp when the communication occurred.
+  api.controlplane.operations.getResponse200:
+    - name: operationId
+      type: STRING
+      REQUIRED: true
+      comment: Unique identifier for the long-running operation.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: Current status of the operation.
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp when the operation was created.
+    - name: completedAt
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: Timestamp when the operation completed. Only present for completed or failed operations.
+    - name: statusUrl
+      type: STRING
+      REQUIRED: true
+      comment: URL to poll for operation status.
+    - name: error
+      type: OBJECT
+      REQUIRED: false
+      comment: Error details if the operation failed. Follows RFC 9457 Problem Details.
+    - name: related
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: |
+        Named resource identifiers associated with this operation. Keys depend on the operation type:
+        - config-create, config-update, config-delete: configurationId
+        - conversation-delete: conversationId

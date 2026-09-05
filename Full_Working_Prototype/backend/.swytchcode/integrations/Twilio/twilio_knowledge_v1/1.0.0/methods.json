@@ -1,0 +1,39 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Create new knowledge",
+      "canonical_id": "twilio_knowledge.knowledge.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete knowledge by ID",
+      "canonical_id": "twilio_knowledge.knowledge.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of knowledge articles with optional filtering and pagination",
+      "canonical_id": "twilio_knowledge.knowledge.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get knowledge chunks for a specific knowledge base",
+      "canonical_id": "twilio_knowledge.knowledge.chunks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a specific knowledge item",
+      "canonical_id": "twilio_knowledge.knowledge.status.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve specific knowledge item by its ID",
+      "canonical_id": "twilio_knowledge.knowledge.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update knowledge with the provided details",
+      "canonical_id": "twilio_knowledge.knowledge.update"
+    }
+  ]
+}

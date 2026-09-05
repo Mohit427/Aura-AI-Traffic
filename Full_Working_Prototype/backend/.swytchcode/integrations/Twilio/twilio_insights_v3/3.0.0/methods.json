@@ -1,0 +1,19 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Fetch metadata for the conversations domain",
+      "canonical_id": "twilio_insights.insightsdomain.metadata.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch semantic query results",
+      "canonical_id": "twilio_insights.insightsdomain.query.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Query conversations with a semantic search",
+      "canonical_id": "twilio_insights.insightsdomain.query.create"
+    }
+  ]
+}

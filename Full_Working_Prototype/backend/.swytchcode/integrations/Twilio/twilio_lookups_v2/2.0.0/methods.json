@@ -1,0 +1,59 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get detailed information about a phone number",
+      "canonical_id": "twilio_lookups.phonenumber.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Batch query for multiple requests with correlation ID",
+      "canonical_id": "twilio_lookups.batch.query.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific phone number override for a field",
+      "canonical_id": "twilio_lookups.phonenumber.overrides.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get account and Twilio rate limits",
+      "canonical_id": "twilio_lookups.ratelimit.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get information about a phone number",
+      "canonical_id": "twilio_lookups.phonenumber.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get rate limit details for a specific field and bucket",
+      "canonical_id": "twilio_lookups.ratelimit.bucket.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number override for a specific field",
+      "canonical_id": "twilio_lookups.phonenumber.overrides.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific rate limit field and bucket",
+      "canonical_id": "twilio_lookups.ratelimit.bucket.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Set a specific field override for a phone number",
+      "canonical_id": "twilio_lookups.phonenumber.overrides.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a phone number's override for a specific field",
+      "canonical_id": "twilio_lookups.phonenumber.overrides.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update or create a rate limit for a specific field and bucket",
+      "canonical_id": "twilio_lookups.ratelimit.bucket.update"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of content approvals for your account",
+      "canonical_id": "twilio_content.contentandapproval.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of contents for your account",
+      "canonical_id": "twilio_content.content.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get content and approval statuses for your account",
+      "canonical_id": "twilio_content.contentandapproval.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get contents for the account",
+      "canonical_id": "twilio_content.content.list"
+    }
+  ]
+}

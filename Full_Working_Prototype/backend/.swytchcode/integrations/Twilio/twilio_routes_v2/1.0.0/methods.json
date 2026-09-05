@@ -1,0 +1,34 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Assign an inbound processing region to a phone number",
+      "canonical_id": "twilio_routes.phonenumber.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Assign an inbound processing region to a SIP trunk",
+      "canonical_id": "twilio_routes.trunk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get details for a specific SIP domain",
+      "canonical_id": "twilio_routes.sipdomain.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get inbound processing region for a SIP trunk",
+      "canonical_id": "twilio_routes.trunk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the inbound processing region for a phone number",
+      "canonical_id": "twilio_routes.phonenumber.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a SIP domain's configuration",
+      "canonical_id": "twilio_routes.sipdomain.create"
+    }
+  ]
+}

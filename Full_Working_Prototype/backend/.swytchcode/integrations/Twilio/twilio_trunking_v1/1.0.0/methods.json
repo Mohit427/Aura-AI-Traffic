@@ -1,0 +1,124 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a credential list to a trunk",
+      "canonical_id": "twilio_trunking.trunk.credentialLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a phone number to a trunk",
+      "canonical_id": "twilio_trunking.trunk.phoneNumbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Associate an IP Access Control List with a Trunk",
+      "canonical_id": "twilio_trunking.trunk.ipAccessControlLists.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new origination URL for a trunk",
+      "canonical_id": "twilio_trunking.trunk.originationUrls.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new trunk with specified details",
+      "canonical_id": "twilio_trunking.trunk.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a credential list from a trunk",
+      "canonical_id": "twilio_trunking.trunk.credentialLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a trunk by its unique identifier",
+      "canonical_id": "twilio_trunking.trunk.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an origination URL for a trunk",
+      "canonical_id": "twilio_trunking.trunk.originationUrls.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a trunk's recording",
+      "canonical_id": "twilio_trunking.trunk.recording.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific credential list for a trunk",
+      "canonical_id": "twilio_trunking.trunk.credentialLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific origination URL for a trunk",
+      "canonical_id": "twilio_trunking.trunk.originationUrls.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific phone number associated with a trunk",
+      "canonical_id": "twilio_trunking.trunk.phoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get an IP Access Control List for a trunk",
+      "canonical_id": "twilio_trunking.trunk.ipAccessControlLists.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get IP Access Control Lists for a Trunk",
+      "canonical_id": "twilio_trunking.trunk.ipAccessControlLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get trunk details by its ID",
+      "canonical_id": "twilio_trunking.trunk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available trunks",
+      "canonical_id": "twilio_trunking.trunk.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List credential lists for a trunk",
+      "canonical_id": "twilio_trunking.trunk.credentialLists.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List origination URLs for a trunk",
+      "canonical_id": "twilio_trunking.trunk.originationUrls.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List phone numbers associated with a trunk",
+      "canonical_id": "twilio_trunking.trunk.phoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from a trunk",
+      "canonical_id": "twilio_trunking.trunk.phoneNumbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove an IP Access Control List from a Trunk",
+      "canonical_id": "twilio_trunking.trunk.ipAccessControlLists.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a trunk with new configuration details",
+      "canonical_id": "twilio_trunking.trunk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an origination URL for a trunk",
+      "canonical_id": "twilio_trunking.trunk.originationUrls.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update trunk recording settings",
+      "canonical_id": "twilio_trunking.trunk.recording.create"
+    }
+  ]
+}

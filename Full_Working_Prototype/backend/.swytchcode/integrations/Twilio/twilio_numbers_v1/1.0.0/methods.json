@@ -1,0 +1,99 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Cancel a port in request by its SID",
+      "canonical_id": "twilio_numbers.porting.portIn.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Cancel a port in request phone number by SID",
+      "canonical_id": "twilio_numbers.porting.phoneNumber.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Check eligibility for multiple numbers to host",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Check if a number is eligible to be hosted",
+      "canonical_id": "twilio_numbers.hostednumber.eligibility.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Check if a phone number is portable to Twilio",
+      "canonical_id": "twilio_numbers.porting.phoneNumber.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Configure a webhook to receive porting notifications",
+      "canonical_id": "twilio_numbers.porting.webhook.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new embedded session for a sender ID registration",
+      "canonical_id": "twilio_numbers.senderidregistration.embeddedSessions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new port in request",
+      "canonical_id": "twilio_numbers.porting.portIn.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create or update customer signing request configuration",
+      "canonical_id": "twilio_numbers.signingrequest.configuration.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a webhook configuration by type",
+      "canonical_id": "twilio_numbers.porting.webhook.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a phone number by port in request and phone number SIDs",
+      "canonical_id": "twilio_numbers.porting.phoneNumber.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a port in request by its unique identifier",
+      "canonical_id": "twilio_numbers.porting.portIn.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get customer configurations by country and product",
+      "canonical_id": "twilio_numbers.signingrequest.configuration.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a bulk hosted number eligibility check",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get webhook configuration details",
+      "canonical_id": "twilio_numbers.porting.webhook.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a new sender ID and start an embedded compliance inquiry",
+      "canonical_id": "twilio_numbers.senderidregistration.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of port-in requests",
+      "canonical_id": "twilio_numbers.porting.portInRequests.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific bulk hosted number order",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Host multiple phone numbers on Twilio's platform",
+      "canonical_id": "twilio_numbers.hostednumber.bulk.create"
+    }
+  ]
+}

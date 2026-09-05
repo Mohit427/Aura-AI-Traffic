@@ -1,0 +1,1668 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://serverless.twilio.com
+METHODS:
+  twilio_serverless.service.assets.get:
+    SUMMARY: Retrieve a list of all Assets.
+    DESC: Retrieve a list of all Assets.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.assets.getResponse200)
+        RETURNVAR: twilio_serverless_service_assets_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.assets.get
+  twilio_serverless.service.assets.create:
+    SUMMARY: Create a new Asset resource.
+    DESC: Create a new Asset resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.asset)
+        RETURNVAR: twilio_serverless_service_assets_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.assets.create
+  twilio_serverless.service.assets.get.1:
+    SUMMARY: Retrieve a specific Asset resource.
+    DESC: Retrieve a specific Asset resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.asset)
+        RETURNVAR: twilio_serverless_service_assets_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.assets.get.1
+  twilio_serverless.service.assets.delete:
+    SUMMARY: Delete an Asset resource.
+    DESC: Delete an Asset resource.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.assets.delete
+  twilio_serverless.service.assets.create.1:
+    SUMMARY: Update a specific Asset resource.
+    DESC: Update a specific Asset resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.asset)
+        RETURNVAR: twilio_serverless_service_assets_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.assets.create.1
+  twilio_serverless.service.versions.get:
+    SUMMARY: Retrieve a list of all Asset Versions.
+    DESC: Retrieve a list of all Asset Versions.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - AssetSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.versions.getResponse200)
+        RETURNVAR: twilio_serverless_service_versions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.versions.get
+  twilio_serverless.service.versions.get.1:
+    SUMMARY: Retrieve a specific Asset Version.
+    DESC: Retrieve a specific Asset Version.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Assets/{AssetSid}/Versions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - AssetSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.asset.asset_version)
+        RETURNVAR: twilio_serverless_service_versions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.versions.get.1
+  twilio_serverless.service.builds.get:
+    SUMMARY: Retrieve a list of all Builds.
+    DESC: Retrieve a list of all Builds.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Builds
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.builds.getResponse200)
+        RETURNVAR: twilio_serverless_service_builds_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.builds.get
+  twilio_serverless.service.builds.create:
+    SUMMARY: Create a new Build resource. At least one function version or asset version is required.
+    DESC: Create a new Build resource. At least one function version or asset version is required.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Builds
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - AssetVersions:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - FunctionVersions:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Dependencies:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Runtime:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.build)
+        RETURNVAR: twilio_serverless_service_builds_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.builds.create
+  twilio_serverless.service.builds.get.1:
+    SUMMARY: Retrieve a specific Build resource.
+    DESC: Retrieve a specific Build resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Builds/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.build)
+        RETURNVAR: twilio_serverless_service_builds_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.builds.get.1
+  twilio_serverless.service.builds.delete:
+    SUMMARY: Delete a Build resource.
+    DESC: Delete a Build resource.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Builds/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.builds.delete
+  twilio_serverless.service.status.get:
+    SUMMARY: Retrieve a specific Build resource.
+    DESC: Retrieve a specific Build resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Builds/{Sid}/Status
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.build.build_status)
+        RETURNVAR: twilio_serverless_service_status_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.status.get
+  twilio_serverless.service.deployments.get:
+    SUMMARY: Retrieve a list of all Deployments.
+    DESC: Retrieve a list of all Deployments.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.deployments.getResponse200)
+        RETURNVAR: twilio_serverless_service_deployments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.deployments.get
+  twilio_serverless.service.deployments.create:
+    SUMMARY: Create a new Deployment.
+    DESC: Create a new Deployment.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - BuildSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IsPlugin:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.deployment)
+        RETURNVAR: twilio_serverless_service_deployments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.deployments.create
+  twilio_serverless.service.deployments.get.1:
+    SUMMARY: Retrieve a specific Deployment.
+    DESC: Retrieve a specific Deployment.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Deployments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.deployment)
+        RETURNVAR: twilio_serverless_service_deployments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.deployments.get.1
+  twilio_serverless.service.environments.get:
+    SUMMARY: Retrieve a list of all environments.
+    DESC: Retrieve a list of all environments.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.environments.getResponse200)
+        RETURNVAR: twilio_serverless_service_environments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.environments.get
+  twilio_serverless.service.environments.create:
+    SUMMARY: Create a new environment.
+    DESC: Create a new environment.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - DomainSuffix:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment)
+        RETURNVAR: twilio_serverless_service_environments_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.environments.create
+  twilio_serverless.service.environments.get.1:
+    SUMMARY: Retrieve a specific environment.
+    DESC: Retrieve a specific environment.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment)
+        RETURNVAR: twilio_serverless_service_environments_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.environments.get.1
+  twilio_serverless.service.environments.delete:
+    SUMMARY: Delete a specific environment.
+    DESC: Delete a specific environment.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.environments.delete
+  twilio_serverless.service.functions.get:
+    SUMMARY: Retrieve a list of all Functions.
+    DESC: Retrieve a list of all Functions.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.functions.getResponse200)
+        RETURNVAR: twilio_serverless_service_functions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.functions.get
+  twilio_serverless.service.functions.create:
+    SUMMARY: Create a new Function resource.
+    DESC: Create a new Function resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.function)
+        RETURNVAR: twilio_serverless_service_functions_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.functions.create
+  twilio_serverless.service.functions.get.1:
+    SUMMARY: Retrieve a specific Function resource.
+    DESC: Retrieve a specific Function resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.function)
+        RETURNVAR: twilio_serverless_service_functions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.functions.get.1
+  twilio_serverless.service.functions.delete:
+    SUMMARY: Delete a Function resource.
+    DESC: Delete a Function resource.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.functions.delete
+  twilio_serverless.service.functions.create.1:
+    SUMMARY: Update a specific Function resource.
+    DESC: Update a specific Function resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.function)
+        RETURNVAR: twilio_serverless_service_functions_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.functions.create.1
+  twilio_serverless.service.versions.get.2:
+    SUMMARY: Retrieve a list of all Function Version resources.
+    DESC: Retrieve a list of all Function Version resources.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FunctionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.versions.getResponse200)
+        RETURNVAR: twilio_serverless_service_versions_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.versions.get.2
+  twilio_serverless.service.versions.get.3:
+    SUMMARY: Retrieve a specific Function Version resource.
+    DESC: Retrieve a specific Function Version resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FunctionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.function.function_version)
+        RETURNVAR: twilio_serverless_service_versions_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.versions.get.3
+  twilio_serverless.service.content.get:
+    SUMMARY: Retrieve a the content of a specific Function Version resource.
+    DESC: Retrieve a the content of a specific Function Version resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Functions/{FunctionSid}/Versions/{Sid}/Content
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FunctionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.function.function_version.function_version_content)
+        RETURNVAR: twilio_serverless_service_content_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.content.get
+  twilio_serverless.service.logs.get:
+    SUMMARY: Retrieve a list of all logs.
+    DESC: Retrieve a list of all logs.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Logs
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - FunctionSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.logs.getResponse200)
+        RETURNVAR: twilio_serverless_service_logs_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.logs.get
+  twilio_serverless.service.logs.get.1:
+    SUMMARY: Retrieve a specific log.
+    DESC: Retrieve a specific log.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Logs/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.log)
+        RETURNVAR: twilio_serverless_service_logs_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.logs.get.1
+  twilio_serverless.service.list:
+    SUMMARY: Retrieve a list of all Services.
+    DESC: Retrieve a list of all Services.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_serverless_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.list
+  twilio_serverless.service.create:
+    SUMMARY: Create a new Service resource.
+    DESC: Create a new Service resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - IncludeCredentials:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - UiEditable:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service)
+        RETURNVAR: twilio_serverless_service_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.create
+  twilio_serverless.service.get:
+    SUMMARY: Retrieve a specific Service resource.
+    DESC: Retrieve a specific Service resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service)
+        RETURNVAR: twilio_serverless_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.get
+  twilio_serverless.service.delete:
+    SUMMARY: Delete a Service resource.
+    DESC: Delete a Service resource.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.delete
+  twilio_serverless.service.create.1:
+    SUMMARY: Update a specific Service resource.
+    DESC: Update a specific Service resource.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - IncludeCredentials:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UiEditable:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service)
+        RETURNVAR: twilio_serverless_service_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.create.1
+  twilio_serverless.service.variables.get:
+    SUMMARY: Retrieve a list of all Variables.
+    DESC: Retrieve a list of all Variables.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.variables.getResponse200)
+        RETURNVAR: twilio_serverless_service_variables_get
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.variables.get
+  twilio_serverless.service.variables.create:
+    SUMMARY: Create a new Variable.
+    DESC: Create a new Variable.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          LOCATION: body
+      - Value:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.variable)
+        RETURNVAR: twilio_serverless_service_variables_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_serverless.service.variables.create
+  twilio_serverless.service.variables.get.1:
+    SUMMARY: Retrieve a specific Variable.
+    DESC: Retrieve a specific Variable.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.variable)
+        RETURNVAR: twilio_serverless_service_variables_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.variables.get.1
+  twilio_serverless.service.variables.create.1:
+    SUMMARY: Update a specific Variable.
+    DESC: Update a specific Variable.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Key:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Value:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(serverless.v1.service.environment.variable)
+        RETURNVAR: twilio_serverless_service_variables_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_serverless.service.variables.create.1
+  twilio_serverless.service.variables.delete:
+    SUMMARY: Delete a specific Variable.
+    DESC: Delete a specific Variable.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Environments/{EnvironmentSid}/Variables/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - EnvironmentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_serverless.service.variables.delete
+STRUCTS:
+  serverless.v1.service.asset:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Asset resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Asset resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Asset resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Asset resource. It can be a maximum of 255 characters.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Asset resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Asset resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Asset resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Asset resource's nested resources.
+  serverless.v1.service.asset.asset_version:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Asset Version resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Asset Version resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Asset Version resource is associated with.
+    - name: asset_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Asset resource that is the parent of the Asset Version.
+    - name: path
+      type: STRING
+      REQUIRED: false
+      comment: The URL-friendly string by which the Asset Version can be referenced. It can be a maximum of 255 characters. All paths begin with a forward slash ('/'). If an Asset Version creation request is submitted with a path not containing a leading slash, the path will automatically be prepended with one.
+    - name: visibility
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Asset Version resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Asset Version resource.
+  serverless.v1.service.build:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Build resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Build resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Build resource is associated with.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: asset_versions
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of Asset Version resource SIDs that are included in the Build.
+    - name: function_versions
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of Function Version resource SIDs that are included in the Build.
+    - name: dependencies
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A list of objects that describe the Dependencies included in the Build. Each object contains the `name` and `version` of the dependency.
+    - name: runtime
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Build resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Build resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Build resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  serverless.v1.service.build.build_status:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Build resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Build resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Build resource is associated with.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Build Status resource.
+  serverless.v1.service.environment.deployment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Deployment resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Deployment resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Deployment resource is associated with.
+    - name: environment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Environment for the Deployment.
+    - name: build_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Build for the deployment.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Deployment resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Deployment resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Deployment resource.
+  serverless.v1.service.environment:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Environment resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Environment resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Environment resource is associated with.
+    - name: build_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the build deployed in the environment.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: A user-defined string that uniquely identifies the Environment resource.
+    - name: domain_suffix
+      type: STRING
+      REQUIRED: false
+      comment: A URL-friendly name that represents the environment and forms part of the domain name.
+    - name: domain_name
+      type: STRING
+      REQUIRED: false
+      comment: The domain name for all Functions and Assets deployed in the Environment, using the Service unique name, a randomly-generated Service suffix, and an optional Environment domain suffix.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Environment resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Environment resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Environment resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Environment resource's nested resources.
+  serverless.v1.service.function:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Function resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Function resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Function resource is associated with.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Function resource. It can be a maximum of 255 characters.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Function resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Function resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Function resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of nested resources of the Function resource.
+  serverless.v1.service.function.function_version:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Function Version resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Function Version resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Function Version resource is associated with.
+    - name: function_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Function resource that is the parent of the Function Version resource.
+    - name: path
+      type: STRING
+      REQUIRED: false
+      comment: The URL-friendly string by which the Function Version resource can be referenced. It can be a maximum of 255 characters. All paths begin with a forward slash ('/'). If a Function Version creation request is submitted with a path not containing a leading slash, the path will automatically be prepended with one.
+    - name: visibility
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Function Version resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Function Version resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  serverless.v1.service.function.function_version.function_version_content:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Function Version resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Function Version resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Function Version resource is associated with.
+    - name: function_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Function that is the parent of the Function Version.
+    - name: content
+      type: STRING
+      REQUIRED: false
+      comment: The content of the Function Version resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+  serverless.v1.service.environment.log:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Log resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Log resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Log resource is associated with.
+    - name: environment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the environment in which the log occurred.
+    - name: build_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the build that corresponds to the log.
+    - name: deployment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the deployment that corresponds to the log.
+    - name: function_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the function whose invocation produced the log.
+    - name: request_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the request associated with the log.
+    - name: level
+      type: STRING
+      REQUIRED: false
+      comment: The log level.
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: The log message.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Log resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Log resource.
+  serverless.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Service resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Service resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the Service resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: A user-defined string that uniquely identifies the Service resource. It can be used in place of the Service resource's `sid` in the URL to address the Service resource.
+    - name: include_credentials
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to inject Account credentials into a function invocation context.
+    - name: ui_editable
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Service resource's properties and subresources can be edited via the UI.
+    - name: domain_base
+      type: STRING
+      REQUIRED: false
+      comment: The base domain name for this Service, which is a combination of the unique name and a randomly generated string.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Service resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Service resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Service resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of the Service's nested resources.
+  serverless.v1.service.environment.variable:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Variable resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Variable resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Service that the Variable resource is associated with.
+    - name: environment_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Environment in which the Variable exists.
+    - name: key
+      type: STRING
+      REQUIRED: false
+      comment: A string by which the Variable resource can be referenced.
+    - name: value
+      type: STRING
+      REQUIRED: false
+      comment: A string that contains the actual value of the Variable.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Variable resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Variable resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Variable resource.
+  api.service.assets.getResponse200:
+    - name: assets
+      type: "[]STRUCT(serverless.v1.service.asset)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.versions.getResponse200:
+    - name: asset_versions
+      type: "[]STRUCT(serverless.v1.service.asset.asset_version)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.builds.getResponse200:
+    - name: builds
+      type: "[]STRUCT(serverless.v1.service.build)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.deployments.getResponse200:
+    - name: deployments
+      type: "[]STRUCT(serverless.v1.service.environment.deployment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.environments.getResponse200:
+    - name: environments
+      type: "[]STRUCT(serverless.v1.service.environment)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.functions.getResponse200:
+    - name: functions
+      type: "[]STRUCT(serverless.v1.service.function)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.logs.getResponse200:
+    - name: logs
+      type: "[]STRUCT(serverless.v1.service.environment.log)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(serverless.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.variables.getResponse200:
+    - name: variables
+      type: "[]STRUCT(serverless.v1.service.environment.variable)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

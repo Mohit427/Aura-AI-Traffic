@@ -1,0 +1,376 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://monitor.twilio.com
+METHODS:
+  twilio_alarms.alarm.list:
+    SUMMARY: Fetch list of Alarms
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Alarms
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SortOrder:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.alarm.listResponse200)
+        RETURNVAR: twilio_alarms_alarm_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.list
+  twilio_alarms.alarm.create:
+    SUMMARY: Create an alarm
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v2/Alarms
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(monitor.v2.alarm_create_object)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(monitor.v2.alarm_create_object)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(monitor.v2.alarm.sid_repsonse)
+        RETURNVAR: twilio_alarms_alarm_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 409
+        WHEN: CONFLICT (HTTP 409)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 429
+        WHEN: TOO MANY REQUEST (HTTP 429)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.create
+  twilio_alarms.alarm.get:
+    SUMMARY: Get alarm
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v2/Alarms/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(monitor.v2.alarm_body)
+        RETURNVAR: twilio_alarms_alarm_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 404
+        WHEN: NOT FOUND (HTTP 404)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 429
+        WHEN: TOO MANY REQUEST (HTTP 429)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.get
+  twilio_alarms.alarm.update:
+    SUMMARY: Update alarm
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/Alarms/{Sid}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(monitor.v2.alarm_create_object)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(monitor.v2.alarm_create_object)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(monitor.v2.alarm.sid_repsonse)
+        RETURNVAR: twilio_alarms_alarm_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 404
+        WHEN: NOT FOUND (HTTP 404)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 429
+        WHEN: TOO MANY REQUEST (HTTP 429)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.update
+  twilio_alarms.alarm.delete:
+    SUMMARY: Delete alarm
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v2/Alarms/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 404
+        WHEN: NOT FOUND (HTTP 404)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 429
+        WHEN: TOO MANY REQUEST (HTTP 429)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.delete
+  twilio_alarms.alarm.status.update:
+    SUMMARY: Update status of alarm between enabled and disabled
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v2/Alarms/{Sid}/status
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(monitor.v2.alarm_status)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(monitor.v2.alarm_status)
+          LOCATION: body
+    ERRORS:
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 400
+        WHEN: BAD REQUEST (HTTP 400)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 401
+        WHEN: UNAUTHORIZED (HTTP 401)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 404
+        WHEN: NOT FOUND (HTTP 404)
+      - TYPE: STRUCT(TwilioServiceErrorResponse)
+        STATUS: 500
+        WHEN: INTERNAL SERVER ERROR (HTTP 500)
+    CANONICAL_ID: twilio_alarms.alarm.status.update
+STRUCTS:
+  TwilioServiceErrorResponse:
+    - name: message
+      type: STRING
+      REQUIRED: false
+      comment: Error message
+    - name: code
+      type: INT
+      REQUIRED: false
+      comment: Twilio error code
+    - name: user_error
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if it was a user error
+    - name: http_status_code
+      type: INT
+      REQUIRED: false
+      comment: Http error code returned
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: More information link
+    - name: status
+      type: INT
+      REQUIRED: false
+      comment: HTTP status code
+  monitor.v2.alarm_body:
+    - name: friendlyName
+      type: STRING
+      REQUIRED: true
+    - name: queryType
+      type: STRING
+      REQUIRED: true
+    - name: query
+      type: STRING
+      REQUIRED: false
+      comment: Value to query for
+    - name: triggerValue
+      type: INT
+      REQUIRED: true
+      comment: Threshold to send customer alarm notification
+    - name: timeWindow
+      type: STRING
+      REQUIRED: true
+    - name: email
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email notifications to send
+    - name: webhook
+      type: STRING
+      REQUIRED: false
+      comment: Webhook notification to send
+    - name: consoleIndicator
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to send console notifications
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: Description for the alarm.
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: Is alarm enbled? Default is true.
+    - name: product
+      type: STRING
+      REQUIRED: true
+      comment: Product the alarm is related to.
+    - name: alertConfigSid
+      type: STRING
+      REQUIRED: true
+      comment: Sid for the alarm
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in UTC when the alarm was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in UTC when the alarm was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  monitor.v2.alarm_create_object:
+    - name: friendlyName
+      type: STRING
+      REQUIRED: true
+    - name: queryType
+      type: STRING
+      REQUIRED: true
+    - name: query
+      type: STRING
+      REQUIRED: false
+      comment: Value to query for
+    - name: triggerValue
+      type: INT
+      REQUIRED: true
+      comment: Threshold to send customer alarm notification
+    - name: timeWindow
+      type: STRING
+      REQUIRED: true
+    - name: email
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email notifications to send
+    - name: webhook
+      type: STRING
+      REQUIRED: false
+      comment: Webhook notification to send
+    - name: consoleIndicator
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to send console notifications
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: Description for the alarm.
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: Is alarm enbled? Default is true.
+  monitor.v2.alarm_status:
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: status of alarm
+  monitor.v2.alarm.sid_repsonse:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+  api.alarm.listResponse200:
+    - name: alarms
+      type: "[]STRUCT(monitor.v2.alarm_body)"
+      REQUIRED: false
+      comment: List of basic parameters defined for alarms for an account.
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

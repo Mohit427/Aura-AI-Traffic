@@ -1,0 +1,1794 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://ip-messaging.twilio.com
+METHODS:
+  twilio_ip_messaging.service.channels.get:
+    SUMMARY: Perform operation FetchChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel)
+        RETURNVAR: twilio_ip_messaging_service_channels_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.channels.get
+  twilio_ip_messaging.service.channels.delete:
+    SUMMARY: Perform operation DeleteChannel
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.channels.delete
+  twilio_ip_messaging.service.channels.create:
+    SUMMARY: Perform operation UpdateChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel)
+        RETURNVAR: twilio_ip_messaging_service_channels_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.channels.create
+  twilio_ip_messaging.service.channels.create.1:
+    SUMMARY: Perform operation CreateChannel
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel)
+        RETURNVAR: twilio_ip_messaging_service_channels_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.channels.create.1
+  twilio_ip_messaging.service.channels.get.1:
+    SUMMARY: Perform operation ListChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.channels.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_channels_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.channels.get.1
+  twilio_ip_messaging.credential.list:
+    SUMMARY: Perform operation ListCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.credential.listResponse200)
+        RETURNVAR: twilio_ip_messaging_credential_list
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.credential.list
+  twilio_ip_messaging.credential.create:
+    SUMMARY: Perform operation CreateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.credential)
+        RETURNVAR: twilio_ip_messaging_credential_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.credential.create
+  twilio_ip_messaging.credential.get:
+    SUMMARY: Perform operation FetchCredential
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.credential)
+        RETURNVAR: twilio_ip_messaging_credential_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.credential.get
+  twilio_ip_messaging.credential.create.1:
+    SUMMARY: Perform operation UpdateCredential
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Certificate:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PrivateKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sandbox:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ApiKey:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Secret:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.credential)
+        RETURNVAR: twilio_ip_messaging_credential_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.credential.create.1
+  twilio_ip_messaging.credential.delete:
+    SUMMARY: Perform operation DeleteCredential
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Credentials/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.credential.delete
+  twilio_ip_messaging.service.invites.get:
+    SUMMARY: Perform operation FetchInvite
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.invite)
+        RETURNVAR: twilio_ip_messaging_service_invites_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.invites.get
+  twilio_ip_messaging.service.invites.delete:
+    SUMMARY: Perform operation DeleteInvite
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.invites.delete
+  twilio_ip_messaging.service.invites.create:
+    SUMMARY: Perform operation CreateInvite
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.invite)
+        RETURNVAR: twilio_ip_messaging_service_invites_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.invites.create
+  twilio_ip_messaging.service.invites.get.1:
+    SUMMARY: Perform operation ListInvite
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Invites
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.invites.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_invites_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.invites.get.1
+  twilio_ip_messaging.service.members.get:
+    SUMMARY: Perform operation FetchMember
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.member)
+        RETURNVAR: twilio_ip_messaging_service_members_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.members.get
+  twilio_ip_messaging.service.members.delete:
+    SUMMARY: Perform operation DeleteMember
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.members.delete
+  twilio_ip_messaging.service.members.create:
+    SUMMARY: Perform operation UpdateMember
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - LastConsumedMessageIndex:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.member)
+        RETURNVAR: twilio_ip_messaging_service_members_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.members.create
+  twilio_ip_messaging.service.members.create.1:
+    SUMMARY: Perform operation CreateMember
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.member)
+        RETURNVAR: twilio_ip_messaging_service_members_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.members.create.1
+  twilio_ip_messaging.service.members.get.1:
+    SUMMARY: Perform operation ListMember
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Members
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.members.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_members_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.members.get.1
+  twilio_ip_messaging.service.messages.get:
+    SUMMARY: Perform operation FetchMessage
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.message)
+        RETURNVAR: twilio_ip_messaging_service_messages_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.messages.get
+  twilio_ip_messaging.service.messages.delete:
+    SUMMARY: Perform operation DeleteMessage
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.messages.delete
+  twilio_ip_messaging.service.messages.create:
+    SUMMARY: Perform operation UpdateMessage
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Body:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.message)
+        RETURNVAR: twilio_ip_messaging_service_messages_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.messages.create
+  twilio_ip_messaging.service.messages.create.1:
+    SUMMARY: Perform operation CreateMessage
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Body:
+          TYPE: STRING
+          LOCATION: body
+      - From:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.channel.message)
+        RETURNVAR: twilio_ip_messaging_service_messages_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.messages.create.1
+  twilio_ip_messaging.service.messages.get.1:
+    SUMMARY: Perform operation ListMessage
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Channels/{ChannelSid}/Messages
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - ChannelSid:
+          TYPE: STRING
+          LOCATION: path
+      - Order:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.messages.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_messages_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.messages.get.1
+  twilio_ip_messaging.service.roles.get:
+    SUMMARY: Perform operation FetchRole
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.role)
+        RETURNVAR: twilio_ip_messaging_service_roles_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.roles.get
+  twilio_ip_messaging.service.roles.delete:
+    SUMMARY: Perform operation DeleteRole
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.roles.delete
+  twilio_ip_messaging.service.roles.create:
+    SUMMARY: Perform operation UpdateRole
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Roles/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.role)
+        RETURNVAR: twilio_ip_messaging_service_roles_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.roles.create
+  twilio_ip_messaging.service.roles.create.1:
+    SUMMARY: Perform operation CreateRole
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Roles
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - Permission:
+          TYPE: "[]STRING"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.role)
+        RETURNVAR: twilio_ip_messaging_service_roles_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.roles.create.1
+  twilio_ip_messaging.service.roles.get.1:
+    SUMMARY: Perform operation ListRole
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Roles
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.roles.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_roles_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.roles.get.1
+  twilio_ip_messaging.service.get:
+    SUMMARY: Perform operation FetchService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service)
+        RETURNVAR: twilio_ip_messaging_service_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.get
+  twilio_ip_messaging.service.delete:
+    SUMMARY: Perform operation DeleteService
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.delete
+  twilio_ip_messaging.service.create:
+    SUMMARY: Perform operation UpdateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultServiceRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultChannelRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DefaultChannelCreatorRoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ReadStatusEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - ReachabilityEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TypingIndicatorTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - ConsumptionReportInterval:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.NewMessage.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.AddedToChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.AddedToChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.RemovedFromChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.RemovedFromChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.InvitedToChannel.Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Notifications.InvitedToChannel.Template:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PreWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - PostWebhookUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - WebhookFilters:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageSend.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageSend.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageUpdate.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageUpdate.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageRemove.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageRemove.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelAdd.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelAdd.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelDestroy.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelDestroy.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelUpdate.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelUpdate.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberAdd.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberAdd.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberRemove.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberRemove.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageSent.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageSent.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageUpdated.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageUpdated.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageRemoved.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMessageRemoved.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelAdded.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelAdded.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelDestroyed.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelDestroyed.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelUpdated.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnChannelUpdated.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberAdded.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberAdded.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberRemoved.Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Webhooks.OnMemberRemoved.Method:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Limits.ChannelMembers:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - Limits.UserChannels:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service)
+        RETURNVAR: twilio_ip_messaging_service_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.create
+  twilio_ip_messaging.service.create.1:
+    SUMMARY: Perform operation CreateService
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service)
+        RETURNVAR: twilio_ip_messaging_service_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.create.1
+  twilio_ip_messaging.service.list:
+    SUMMARY: Perform operation ListService
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.listResponse200)
+        RETURNVAR: twilio_ip_messaging_service_list
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.list
+  twilio_ip_messaging.service.users.get:
+    SUMMARY: Perform operation FetchUser
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.user)
+        RETURNVAR: twilio_ip_messaging_service_users_get
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.users.get
+  twilio_ip_messaging.service.users.delete:
+    SUMMARY: Perform operation DeleteUser
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_ip_messaging.service.users.delete
+  twilio_ip_messaging.service.users.create:
+    SUMMARY: Perform operation UpdateUser
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Users/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.user)
+        RETURNVAR: twilio_ip_messaging_service_users_create
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.users.create
+  twilio_ip_messaging.service.users.create.1:
+    SUMMARY: Perform operation CreateUser
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Services/{ServiceSid}/Users
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - Identity:
+          TYPE: STRING
+          LOCATION: body
+      - RoleSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Attributes:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(ip_messaging.v1.service.user)
+        RETURNVAR: twilio_ip_messaging_service_users_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_ip_messaging.service.users.create.1
+  twilio_ip_messaging.service.users.get.1:
+    SUMMARY: Perform operation ListUser
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Users
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.users.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_users_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.users.get.1
+  twilio_ip_messaging.service.channels.get.2:
+    SUMMARY: Perform operation ListUserChannel
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Services/{ServiceSid}/Users/{UserSid}/Channels
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ServiceSid:
+          TYPE: STRING
+          LOCATION: path
+      - UserSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.service.channels.getResponse200)
+        RETURNVAR: twilio_ip_messaging_service_channels_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_ip_messaging.service.channels.get.2
+STRUCTS:
+  ip_messaging.v1.service.channel:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+    - name: members_count
+      type: INT
+      REQUIRED: false
+    - name: messages_count
+      type: INT
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  ip_messaging.v1.credential:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: sandbox
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  ip_messaging.v1.service.channel.invite:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: identity
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+    - name: created_by
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  ip_messaging.v1.service.channel.member:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: identity
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+    - name: last_consumed_message_index
+      type: INT
+      REQUIRED: false
+    - name: last_consumption_timestamp
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  ip_messaging.v1.service.channel.message:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: to
+      type: STRING
+      REQUIRED: false
+    - name: channel_sid
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: was_edited
+      type: BOOL
+      REQUIRED: false
+    - name: from
+      type: STRING
+      REQUIRED: false
+    - name: body
+      type: STRING
+      REQUIRED: false
+    - name: index
+      type: INT
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  ip_messaging.v1.service.role:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: permissions
+      type: "[]STRING"
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  ip_messaging.v1.service:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: default_service_role_sid
+      type: STRING
+      REQUIRED: false
+    - name: default_channel_role_sid
+      type: STRING
+      REQUIRED: false
+    - name: default_channel_creator_role_sid
+      type: STRING
+      REQUIRED: false
+    - name: read_status_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: reachability_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: typing_indicator_timeout
+      type: INT
+      REQUIRED: false
+    - name: consumption_report_interval
+      type: INT
+      REQUIRED: false
+    - name: limits
+      type: ANY
+      REQUIRED: false
+    - name: webhooks
+      type: ANY
+      REQUIRED: false
+    - name: pre_webhook_url
+      type: STRING
+      REQUIRED: false
+    - name: post_webhook_url
+      type: STRING
+      REQUIRED: false
+    - name: webhook_method
+      type: STRING
+      REQUIRED: false
+    - name: webhook_filters
+      type: "[]STRING"
+      REQUIRED: false
+    - name: notifications
+      type: ANY
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  ip_messaging.v1.service.user:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+    - name: attributes
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: role_sid
+      type: STRING
+      REQUIRED: false
+    - name: identity
+      type: STRING
+      REQUIRED: false
+    - name: is_online
+      type: BOOL
+      REQUIRED: false
+    - name: is_notifiable
+      type: BOOL
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: joined_channels_count
+      type: INT
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  api.service.channels.getResponse200:
+    - name: channels
+      type: "[]STRUCT(ip_messaging.v1.service.channel)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.credential.listResponse200:
+    - name: credentials
+      type: "[]STRUCT(ip_messaging.v1.credential)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.invites.getResponse200:
+    - name: invites
+      type: "[]STRUCT(ip_messaging.v1.service.channel.invite)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.members.getResponse200:
+    - name: members
+      type: "[]STRUCT(ip_messaging.v1.service.channel.member)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.messages.getResponse200:
+    - name: messages
+      type: "[]STRUCT(ip_messaging.v1.service.channel.message)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.roles.getResponse200:
+    - name: roles
+      type: "[]STRUCT(ip_messaging.v1.service.role)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.listResponse200:
+    - name: services
+      type: "[]STRUCT(ip_messaging.v1.service)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.service.users.getResponse200:
+    - name: users
+      type: "[]STRUCT(ip_messaging.v1.service.user)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

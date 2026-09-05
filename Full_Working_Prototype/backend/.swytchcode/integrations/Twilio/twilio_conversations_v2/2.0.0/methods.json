@@ -1,0 +1,109 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a participant to a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a communication within a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.communications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new control plane configuration",
+      "canonical_id": "conversation_orchestrator.controlplane.configurations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new conversation",
+      "canonical_id": "conversation_orchestrator.conversation.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a configuration by its SID",
+      "canonical_id": "conversation_orchestrator.controlplane.configurations.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a conversation and all its data",
+      "canonical_id": "conversation_orchestrator.conversation.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a conversation by its unique identifier",
+      "canonical_id": "conversation_orchestrator.conversation.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of configurations",
+      "canonical_id": "conversation_orchestrator.controlplane.configurations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of conversations",
+      "canonical_id": "conversation_orchestrator.conversation.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific communication within a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.communications.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant in a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all communications for a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.communications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants in a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific configuration by its SID",
+      "canonical_id": "conversation_orchestrator.controlplane.configurations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the current status of an action within a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.actions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the status of a long-running operation",
+      "canonical_id": "conversation_orchestrator.controlplane.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message within a conversation",
+      "canonical_id": "conversation_orchestrator.conversation.actions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a conversation participant's details",
+      "canonical_id": "conversation_orchestrator.conversation.participants.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing configuration by its SID",
+      "canonical_id": "conversation_orchestrator.controlplane.configurations.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an existing conversation",
+      "canonical_id": "conversation_orchestrator.conversation.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update conversation details",
+      "canonical_id": "conversation_orchestrator.conversation.update.1"
+    }
+  ]
+}

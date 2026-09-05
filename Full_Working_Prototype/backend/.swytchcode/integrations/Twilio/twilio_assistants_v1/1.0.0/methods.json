@@ -1,0 +1,154 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Attach a tool to an assistant",
+      "canonical_id": "twilio_assistants.assistant.tools.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Attach knowledge to an assistant",
+      "canonical_id": "twilio_assistants.assistant.knowledge.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new assistant",
+      "canonical_id": "twilio_assistants.assistant.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new tool",
+      "canonical_id": "twilio_assistants.tool.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create new knowledge entry",
+      "canonical_id": "twilio_assistants.knowledge.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific tool by its ID",
+      "canonical_id": "twilio_assistants.tool.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an assistant by its ID",
+      "canonical_id": "twilio_assistants.assistant.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a session by its unique identifier",
+      "canonical_id": "twilio_assistants.session.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all knowledge",
+      "canonical_id": "twilio_assistants.knowledge.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of assistant feedbacks",
+      "canonical_id": "twilio_assistants.assistant.feedbacks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of sessions with pagination",
+      "canonical_id": "twilio_assistants.session.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of tools for a specific assistant",
+      "canonical_id": "twilio_assistants.assistant.tools.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get all knowledge for a specific assistant",
+      "canonical_id": "twilio_assistants.assistant.knowledge.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get knowledge chunks for a specific knowledge item",
+      "canonical_id": "twilio_assistants.knowledge.chunks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the status of a specific knowledge item",
+      "canonical_id": "twilio_assistants.knowledge.status.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available tools with optional pagination and assistant filtering",
+      "canonical_id": "twilio_assistants.tool.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List policies with optional filtering and pagination",
+      "canonical_id": "twilio_assistants.policy.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a tool from an assistant",
+      "canonical_id": "twilio_assistants.assistant.tools.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove knowledge by its unique identifier",
+      "canonical_id": "twilio_assistants.knowledge.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove knowledge from an assistant",
+      "canonical_id": "twilio_assistants.assistant.knowledge.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a list of all assistants",
+      "canonical_id": "twilio_assistants.assistant.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific tool by its ID",
+      "canonical_id": "twilio_assistants.tool.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve an assistant by its unique identifier",
+      "canonical_id": "twilio_assistants.assistant.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve knowledge by its identifier",
+      "canonical_id": "twilio_assistants.knowledge.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve messages for a specific session",
+      "canonical_id": "twilio_assistants.session.messages.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Send a message to an assistant",
+      "canonical_id": "twilio_assistants.assistant.messages.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Submit feedback for an assistant",
+      "canonical_id": "twilio_assistants.assistant.feedbacks.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific tool by its ID",
+      "canonical_id": "twilio_assistants.tool.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an assistant by ID",
+      "canonical_id": "twilio_assistants.assistant.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update knowledge by ID",
+      "canonical_id": "twilio_assistants.knowledge.update"
+    }
+  ]
+}

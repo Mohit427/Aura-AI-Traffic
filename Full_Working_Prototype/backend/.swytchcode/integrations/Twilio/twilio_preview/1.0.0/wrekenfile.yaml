@@ -1,0 +1,1825 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://preview.twilio.com
+METHODS:
+  twilio_preview.hostednumber.authorizationDocuments.get:
+    SUMMARY: Fetch a specific AuthorizationDocument.
+    DESC: Fetch a specific AuthorizationDocument.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /HostedNumbers/AuthorizationDocuments/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.authorization_document)
+        RETURNVAR: twilio_preview_hostednumber_authorizationDocuments_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.authorizationDocuments.get
+  twilio_preview.hostednumber.authorizationDocuments.create:
+    SUMMARY: Updates a specific AuthorizationDocument.
+    DESC: Updates a specific AuthorizationDocument.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /HostedNumbers/AuthorizationDocuments/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - HostedNumberOrderSids:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AddressSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContactTitle:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - ContactPhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.authorization_document)
+        RETURNVAR: twilio_preview_hostednumber_authorizationDocuments_create
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.authorizationDocuments.create
+  twilio_preview.hostednumber.authorizationDocuments.list:
+    SUMMARY: Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+    DESC: Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /HostedNumbers/AuthorizationDocuments
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.authorizationDocuments.listResponse200)
+        RETURNVAR: twilio_preview_hostednumber_authorizationDocuments_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.authorizationDocuments.list
+  twilio_preview.hostednumber.authorizationDocuments.create.1:
+    SUMMARY: Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+    DESC: Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /HostedNumbers/AuthorizationDocuments
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - HostedNumberOrderSids:
+          TYPE: "[]STRING"
+          LOCATION: body
+      - AddressSid:
+          TYPE: STRING
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          LOCATION: body
+      - ContactTitle:
+          TYPE: STRING
+          LOCATION: body
+      - ContactPhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.authorization_document)
+        RETURNVAR: twilio_preview_hostednumber_authorizationDocuments_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_preview.hostednumber.authorizationDocuments.create.1
+  twilio_preview.hostednumber.dependentHostedNumberOrders.get:
+    SUMMARY: Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+    DESC: Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /HostedNumbers/AuthorizationDocuments/{SigningDocumentSid}/DependentHostedNumberOrders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SigningDocumentSid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncomingPhoneNumberSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.dependentHostedNumberOrders.getResponse200)
+        RETURNVAR: twilio_preview_hostednumber_dependentHostedNumberOrders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.dependentHostedNumberOrders.get
+  twilio_preview.hostednumber.hostedNumberOrders.get:
+    SUMMARY: Fetch a specific HostedNumberOrder.
+    DESC: Fetch a specific HostedNumberOrder.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /HostedNumbers/HostedNumberOrders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.hosted_number_order)
+        RETURNVAR: twilio_preview_hostednumber_hostedNumberOrders_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.hostedNumberOrders.get
+  twilio_preview.hostednumber.hostedNumberOrders.delete:
+    SUMMARY: Cancel the HostedNumberOrder (only available when the status is in `received`).
+    DESC: Cancel the HostedNumberOrder (only available when the status is in `received`).
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /HostedNumbers/HostedNumberOrders/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_preview.hostednumber.hostedNumberOrders.delete
+  twilio_preview.hostednumber.hostedNumberOrders.create:
+    SUMMARY: Updates a specific HostedNumberOrder.
+    DESC: Updates a specific HostedNumberOrder.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /HostedNumbers/HostedNumberOrders/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationDocumentSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Extension:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallDelay:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.hosted_number_order)
+        RETURNVAR: twilio_preview_hostednumber_hostedNumberOrders_create
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.hostedNumberOrders.create
+  twilio_preview.hostednumber.hostedNumberOrders.list:
+    SUMMARY: Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    DESC: Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /HostedNumbers/HostedNumberOrders
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PhoneNumber:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - IncomingPhoneNumberSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.hostednumber.hostedNumberOrders.listResponse200)
+        RETURNVAR: twilio_preview_hostednumber_hostedNumberOrders_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.hostednumber.hostedNumberOrders.list
+  twilio_preview.hostednumber.hostedNumberOrders.create.1:
+    SUMMARY: Host a phone number's capability on Twilio's platform.
+    DESC: Host a phone number's capability on Twilio's platform.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /HostedNumbers/HostedNumberOrders
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PhoneNumber:
+          TYPE: STRING
+          LOCATION: body
+      - SmsCapability:
+          TYPE: BOOL
+          LOCATION: body
+      - AccountSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CcEmails:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - SmsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsApplicationSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AddressSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Email:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VerificationDocumentSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.hosted_numbers.hosted_number_order)
+        RETURNVAR: twilio_preview_hostednumber_hostedNumberOrders_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_preview.hostednumber.hostedNumberOrders.create.1
+  twilio_preview.marketplace.availableAddOns.get:
+    SUMMARY: Fetch an instance of an Add-on currently available to be installed.
+    DESC: Fetch an instance of an Add-on currently available to be installed.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/AvailableAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.available_add_on)
+        RETURNVAR: twilio_preview_marketplace_availableAddOns_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.availableAddOns.get
+  twilio_preview.marketplace.availableAddOns.list:
+    SUMMARY: Retrieve a list of Add-ons currently available to be installed.
+    DESC: Retrieve a list of Add-ons currently available to be installed.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/AvailableAddOns
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.marketplace.availableAddOns.listResponse200)
+        RETURNVAR: twilio_preview_marketplace_availableAddOns_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.availableAddOns.list
+  twilio_preview.marketplace.extensions.get:
+    SUMMARY: Fetch an instance of an Extension for the Available Add-on.
+    DESC: Fetch an instance of an Extension for the Available Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/AvailableAddOns/{AvailableAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.available_add_on.available_add_on_extension)
+        RETURNVAR: twilio_preview_marketplace_extensions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.extensions.get
+  twilio_preview.marketplace.extensions.get.1:
+    SUMMARY: Retrieve a list of Extensions for the Available Add-on.
+    DESC: Retrieve a list of Extensions for the Available Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/AvailableAddOns/{AvailableAddOnSid}/Extensions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.marketplace.extensions.getResponse200)
+        RETURNVAR: twilio_preview_marketplace_extensions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.extensions.get.1
+  twilio_preview.marketplace.installedAddOns.create:
+    SUMMARY: Install an Add-on for the Account specified.
+    DESC: Install an Add-on for the Account specified.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /marketplace/InstalledAddOns
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AvailableAddOnSid:
+          TYPE: STRING
+          LOCATION: body
+      - AcceptTermsOfService:
+          TYPE: BOOL
+          LOCATION: body
+      - Configuration:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.installed_add_on)
+        RETURNVAR: twilio_preview_marketplace_installedAddOns_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_preview.marketplace.installedAddOns.create
+  twilio_preview.marketplace.installedAddOns.list:
+    SUMMARY: Retrieve a list of Add-ons currently installed on this Account.
+    DESC: Retrieve a list of Add-ons currently installed on this Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/InstalledAddOns
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.marketplace.installedAddOns.listResponse200)
+        RETURNVAR: twilio_preview_marketplace_installedAddOns_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.installedAddOns.list
+  twilio_preview.marketplace.installedAddOns.delete:
+    SUMMARY: Remove an Add-on installation from your account
+    DESC: Remove an Add-on installation from your account
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /marketplace/InstalledAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_preview.marketplace.installedAddOns.delete
+  twilio_preview.marketplace.installedAddOns.get:
+    SUMMARY: Fetch an instance of an Add-on currently installed on this Account.
+    DESC: Fetch an instance of an Add-on currently installed on this Account.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/InstalledAddOns/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.installed_add_on)
+        RETURNVAR: twilio_preview_marketplace_installedAddOns_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.installedAddOns.get
+  twilio_preview.marketplace.installedAddOns.create.1:
+    SUMMARY: Update an Add-on installation for the Account specified.
+    DESC: Update an Add-on installation for the Account specified.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /marketplace/InstalledAddOns/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.installed_add_on)
+        RETURNVAR: twilio_preview_marketplace_installedAddOns_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.installedAddOns.create.1
+  twilio_preview.marketplace.extensions.get.2:
+    SUMMARY: Fetch an instance of an Extension for the Installed Add-on.
+    DESC: Fetch an instance of an Extension for the Installed Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/InstalledAddOns/{InstalledAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.installed_add_on.installed_add_on_extension)
+        RETURNVAR: twilio_preview_marketplace_extensions_get_2
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.extensions.get.2
+  twilio_preview.marketplace.extensions.create:
+    SUMMARY: Update an Extension for an Add-on installation.
+    DESC: Update an Extension for an Add-on installation.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /marketplace/InstalledAddOns/{InstalledAddOnSid}/Extensions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Enabled:
+          TYPE: BOOL
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.marketplace.installed_add_on.installed_add_on_extension)
+        RETURNVAR: twilio_preview_marketplace_extensions_create
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.extensions.create
+  twilio_preview.marketplace.extensions.get.3:
+    SUMMARY: Retrieve a list of Extensions for the Installed Add-on.
+    DESC: Retrieve a list of Extensions for the Installed Add-on.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /marketplace/InstalledAddOns/{InstalledAddOnSid}/Extensions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InstalledAddOnSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.marketplace.extensions.getResponse200)
+        RETURNVAR: twilio_preview_marketplace_extensions_get_3
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.marketplace.extensions.get.3
+  twilio_preview.wireless.commands.get:
+    SUMMARY: Perform operation FetchWirelessCommand
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/Commands/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.command)
+        RETURNVAR: twilio_preview_wireless_commands_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.commands.get
+  twilio_preview.wireless.commands.list:
+    SUMMARY: Perform operation ListWirelessCommand
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/Commands
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Device:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Direction:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.wireless.commands.listResponse200)
+        RETURNVAR: twilio_preview_wireless_commands_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.commands.list
+  twilio_preview.wireless.commands.create:
+    SUMMARY: Perform operation CreateWirelessCommand
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /wireless/Commands
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Command:
+          TYPE: STRING
+          LOCATION: body
+      - Device:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Sim:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandMode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - IncludeSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.command)
+        RETURNVAR: twilio_preview_wireless_commands_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_preview.wireless.commands.create
+  twilio_preview.wireless.ratePlans.list:
+    SUMMARY: Perform operation ListWirelessRatePlan
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/RatePlans
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.wireless.ratePlans.listResponse200)
+        RETURNVAR: twilio_preview_wireless_ratePlans_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.ratePlans.list
+  twilio_preview.wireless.ratePlans.create:
+    SUMMARY: Perform operation CreateWirelessRatePlan
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /wireless/RatePlans
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - DataEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - DataLimit:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - DataMetering:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MessagingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VoiceEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - CommandsEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - NationalRoamingEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - InternationalRoaming:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.rate_plan)
+        RETURNVAR: twilio_preview_wireless_ratePlans_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_preview.wireless.ratePlans.create
+  twilio_preview.wireless.ratePlans.get:
+    SUMMARY: Perform operation FetchWirelessRatePlan
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/RatePlans/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.rate_plan)
+        RETURNVAR: twilio_preview_wireless_ratePlans_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.ratePlans.get
+  twilio_preview.wireless.ratePlans.create.1:
+    SUMMARY: Perform operation UpdateWirelessRatePlan
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /wireless/RatePlans/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.rate_plan)
+        RETURNVAR: twilio_preview_wireless_ratePlans_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.ratePlans.create.1
+  twilio_preview.wireless.ratePlans.delete:
+    SUMMARY: Perform operation DeleteWirelessRatePlan
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /wireless/RatePlans/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_preview.wireless.ratePlans.delete
+  twilio_preview.wireless.sims.get:
+    SUMMARY: Perform operation FetchWirelessSim
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/Sims/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.sim)
+        RETURNVAR: twilio_preview_wireless_sims_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.sims.get
+  twilio_preview.wireless.sims.create:
+    SUMMARY: Perform operation UpdateWirelessSim
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /wireless/Sims/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RatePlan:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandsCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - CommandsCallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - SmsUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceFallbackUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - VoiceUrl:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.sim)
+        RETURNVAR: twilio_preview_wireless_sims_create
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.sims.create
+  twilio_preview.wireless.sims.list:
+    SUMMARY: Perform operation ListWirelessSim
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/Sims
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Iccid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - RatePlan:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SimRegistrationCode:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.wireless.sims.listResponse200)
+        RETURNVAR: twilio_preview_wireless_sims_list
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.sims.list
+  twilio_preview.wireless.usage.get:
+    SUMMARY: Perform operation FetchWirelessUsage
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /wireless/Sims/{SimSid}/Usage
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SimSid:
+          TYPE: STRING
+          LOCATION: path
+      - End:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Start:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(preview.wireless.sim.usage)
+        RETURNVAR: twilio_preview_wireless_usage_get
+        STATUS: 200
+    CANONICAL_ID: twilio_preview.wireless.usage.get
+STRUCTS:
+  preview.hosted_numbers.authorization_document:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this AuthorizationDocument.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that is associated with this AuthorizationDocument.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email that this AuthorizationDocument will be sent to for signing.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email recipients who will be informed when an Authorization Document has been sent and signed.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  preview.hosted_numbers.authorization_document.dependent_hosted_number_order:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Authorization Document
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: incoming_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the IncomingPhoneNumber resource created by this HostedNumberOrder.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+    - name: signing_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the LOA document associated with this HostedNumberOrder.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: An E164 formatted phone number hosted by this HostedNumberOrder.
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: A mapping of capabilities this hosted phone number will have enabled on Twilio's platform.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description of this resource, up to 64 characters.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: A message that explains why a hosted_number_order went to status "action-required"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: verification_attempts
+      type: INT
+      REQUIRED: false
+      comment: The number of attempts made to verify ownership of the phone number that is being hosted.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the owner of this phone number that is being hosted.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: Email recipients who will be informed when an Authorization Document has been sent and signed
+    - name: verification_type
+      type: STRING
+      REQUIRED: false
+    - name: verification_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Identity Document resource that represents the document for verifying ownership of the number to be hosted.
+    - name: extension
+      type: STRING
+      REQUIRED: false
+      comment: A numerical extension to be used when making the ownership verification call.
+    - name: call_delay
+      type: INT
+      REQUIRED: false
+      comment: A value between 0-30 specifying the number of seconds to delay initiating the ownership verification call.
+    - name: verification_code
+      type: STRING
+      REQUIRED: false
+      comment: The digits passed during the ownership verification call.
+    - name: verification_call_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of 34 character strings that are unique identifiers for the calls placed as part of ownership verification.
+  preview.hosted_numbers.hosted_number_order:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this HostedNumberOrder.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the account.
+    - name: incoming_phone_number_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [IncomingPhoneNumber](https://www.twilio.com/docs/phone-numbers/api/incomingphonenumber-resource) resource that represents the phone number being hosted.
+    - name: address_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Address resource that represents the address of the owner of this phone number.
+    - name: signing_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the [Authorization Document](https://www.twilio.com/docs/phone-numbers/hosted-numbers/hosted-numbers-api/authorization-document-resource) the user needs to sign.
+    - name: phone_number
+      type: STRING
+      REQUIRED: false
+      comment: Phone number to be hosted. This must be in [E.164](https://en.wikipedia.org/wiki/E.164) format, e.g., +16175551212
+    - name: capabilities
+      type: OBJECT
+      REQUIRED: false
+      comment: Set of booleans describing the capabilities hosted on Twilio's platform. SMS is currently only supported.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: A 64 character string that is a human-readable text that describes this resource.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: Provides a unique and addressable name to be assigned to this HostedNumberOrder, assigned by the developer, to be optionally used in addition to SID.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: failure_reason
+      type: STRING
+      REQUIRED: false
+      comment: A message that explains why a hosted_number_order went to status "action-required"
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date this resource was created, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this resource was updated, given as [GMT RFC 2822](http://www.ietf.org/rfc/rfc2822.txt) format.
+    - name: verification_attempts
+      type: INT
+      REQUIRED: false
+      comment: The number of attempts made to verify ownership of the phone number that is being hosted.
+    - name: email
+      type: STRING
+      REQUIRED: false
+      comment: Email of the owner of this phone number that is being hosted.
+    - name: cc_emails
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of emails that LOA document for this HostedNumberOrder will be carbon copied to.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this HostedNumberOrder.
+    - name: verification_type
+      type: STRING
+      REQUIRED: false
+    - name: verification_document_sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies the Identity Document resource that represents the document for verifying ownership of the number to be hosted.
+    - name: extension
+      type: STRING
+      REQUIRED: false
+      comment: A numerical extension to be used when making the ownership verification call.
+    - name: call_delay
+      type: INT
+      REQUIRED: false
+      comment: A value between 0-30 specifying the number of seconds to delay initiating the ownership verification call.
+    - name: verification_code
+      type: STRING
+      REQUIRED: false
+      comment: A verification code provided in the response for a user to enter when they pick up the phone call.
+    - name: verification_call_sids
+      type: "[]STRING"
+      REQUIRED: false
+      comment: A list of 34 character strings that are unique identifiers for the calls placed as part of ownership verification.
+  preview.marketplace.available_add_on:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AvailableAddOn resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A short description of the Add-on's functionality.
+    - name: pricing_type
+      type: STRING
+      REQUIRED: false
+      comment: How customers are charged for using this Add-on.
+    - name: configuration_schema
+      type: ANY
+      REQUIRED: false
+      comment: The JSON object with the configuration that must be provided when installing a given Add-on.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  preview.marketplace.available_add_on.available_add_on_extension:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the AvailableAddOnExtension resource.
+    - name: available_add_on_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the AvailableAddOn resource to which this extension applies.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: product_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Product this Extension is used within.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  preview.marketplace.installed_add_on:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the InstalledAddOn resource. This Sid can also be found in the Console on that specific Add-ons page as the 'Available Add-on Sid'.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the InstalledAddOn resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A short description of the Add-on's functionality.
+    - name: configuration
+      type: ANY
+      REQUIRED: false
+      comment: The JSON object that represents the current configuration of installed Add-on.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  preview.marketplace.installed_add_on.installed_add_on_extension:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the InstalledAddOn Extension resource.
+    - name: installed_add_on_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the InstalledAddOn resource to which this extension applies.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource.
+    - name: product_name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the Product this Extension is used within.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the Extension will be invoked.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  preview.wireless.command:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: device_sid
+      type: STRING
+      REQUIRED: false
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+    - name: command
+      type: STRING
+      REQUIRED: false
+    - name: command_mode
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: direction
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  preview.wireless.rate_plan:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: data_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: data_metering
+      type: STRING
+      REQUIRED: false
+    - name: data_limit
+      type: INT
+      REQUIRED: false
+    - name: messaging_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: voice_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: national_roaming_enabled
+      type: BOOL
+      REQUIRED: false
+    - name: international_roaming
+      type: "[]STRING"
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  preview.wireless.sim:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: rate_plan_sid
+      type: STRING
+      REQUIRED: false
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+    - name: iccid
+      type: STRING
+      REQUIRED: false
+    - name: e_id
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: commands_callback_url
+      type: STRING
+      REQUIRED: false
+    - name: commands_callback_method
+      type: STRING
+      REQUIRED: false
+    - name: sms_fallback_method
+      type: STRING
+      REQUIRED: false
+    - name: sms_fallback_url
+      type: STRING
+      REQUIRED: false
+    - name: sms_method
+      type: STRING
+      REQUIRED: false
+    - name: sms_url
+      type: STRING
+      REQUIRED: false
+    - name: voice_fallback_method
+      type: STRING
+      REQUIRED: false
+    - name: voice_fallback_url
+      type: STRING
+      REQUIRED: false
+    - name: voice_method
+      type: STRING
+      REQUIRED: false
+    - name: voice_url
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  preview.wireless.sim.usage:
+    - name: sim_sid
+      type: STRING
+      REQUIRED: false
+    - name: sim_unique_name
+      type: STRING
+      REQUIRED: false
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+    - name: period
+      type: ANY
+      REQUIRED: false
+    - name: commands_usage
+      type: ANY
+      REQUIRED: false
+    - name: commands_costs
+      type: ANY
+      REQUIRED: false
+    - name: data_usage
+      type: ANY
+      REQUIRED: false
+    - name: data_costs
+      type: ANY
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+  api.hostednumber.authorizationDocuments.listResponse200:
+    - name: items
+      type: "[]STRUCT(preview.hosted_numbers.authorization_document)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.hostednumber.dependentHostedNumberOrders.getResponse200:
+    - name: items
+      type: "[]STRUCT(preview.hosted_numbers.authorization_document.dependent_hosted_number_order)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.hostednumber.hostedNumberOrders.listResponse200:
+    - name: items
+      type: "[]STRUCT(preview.hosted_numbers.hosted_number_order)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.marketplace.availableAddOns.listResponse200:
+    - name: available_add_ons
+      type: "[]STRUCT(preview.marketplace.available_add_on)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.marketplace.extensions.getResponse200:
+    - name: extensions
+      type: "[]STRUCT(preview.marketplace.available_add_on.available_add_on_extension)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.marketplace.installedAddOns.listResponse200:
+    - name: installed_add_ons
+      type: "[]STRUCT(preview.marketplace.installed_add_on)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.wireless.commands.listResponse200:
+    - name: commands
+      type: "[]STRUCT(preview.wireless.command)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.wireless.ratePlans.listResponse200:
+    - name: rate_plans
+      type: "[]STRUCT(preview.wireless.rate_plan)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.wireless.sims.listResponse200:
+    - name: sims
+      type: "[]STRUCT(preview.wireless.sim)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

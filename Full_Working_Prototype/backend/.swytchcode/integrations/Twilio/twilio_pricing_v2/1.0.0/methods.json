@@ -1,0 +1,49 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Get voice country information by ISO code",
+      "canonical_id": "twilio_pricing.voice.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice number details by number",
+      "canonical_id": "twilio_pricing.voice.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available voice countries",
+      "canonical_id": "twilio_pricing.voice.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get country details by ISO code",
+      "canonical_id": "twilio_pricing.voice.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get trunking country details by ISO code",
+      "canonical_id": "twilio_pricing.trunking.countries.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get trunking pricing for a destination and optional origination number",
+      "canonical_id": "twilio_pricing.trunking.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get voice call pricing for a destination number",
+      "canonical_id": "twilio_pricing.voice.numbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available countries for voice services",
+      "canonical_id": "twilio_pricing.voice.countries.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available trunking countries",
+      "canonical_id": "twilio_pricing.trunking.countries.list"
+    }
+  ]
+}

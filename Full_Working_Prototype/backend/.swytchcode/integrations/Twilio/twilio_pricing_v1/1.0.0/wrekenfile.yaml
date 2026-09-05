@@ -1,0 +1,340 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://pricing.twilio.com
+METHODS:
+  twilio_pricing.messaging.countries.list:
+    SUMMARY: Perform operation ListMessagingCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Messaging/Countries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.messaging.countries.listResponse200)
+        RETURNVAR: twilio_pricing_messaging_countries_list
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.messaging.countries.list
+  twilio_pricing.messaging.countries.get:
+    SUMMARY: Perform operation FetchMessagingCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Messaging/Countries/{IsoCountry}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCountry:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(pricing.v1.messaging.messaging_country-instance)
+        RETURNVAR: twilio_pricing_messaging_countries_get
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.messaging.countries.get
+  twilio_pricing.phonenumber.countries.list:
+    SUMMARY: Perform operation ListPhoneNumberCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PhoneNumbers/Countries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.phonenumber.countries.listResponse200)
+        RETURNVAR: twilio_pricing_phonenumber_countries_list
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.phonenumber.countries.list
+  twilio_pricing.phonenumber.countries.get:
+    SUMMARY: Perform operation FetchPhoneNumberCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/PhoneNumbers/Countries/{IsoCountry}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCountry:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(pricing.v1.phone_number.phone_number_country-instance)
+        RETURNVAR: twilio_pricing_phonenumber_countries_get
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.phonenumber.countries.get
+  twilio_pricing.voice.countries.list:
+    SUMMARY: Perform operation ListVoiceCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/Countries
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.voice.countries.listResponse200)
+        RETURNVAR: twilio_pricing_voice_countries_list
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.voice.countries.list
+  twilio_pricing.voice.countries.get:
+    SUMMARY: Perform operation FetchVoiceCountry
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/Countries/{IsoCountry}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - IsoCountry:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(pricing.v1.voice.voice_country-instance)
+        RETURNVAR: twilio_pricing_voice_countries_get
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.voice.countries.get
+  twilio_pricing.voice.numbers.get:
+    SUMMARY: Perform operation FetchVoiceNumber
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Voice/Numbers/{Number}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Number:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(pricing.v1.voice.voice_number)
+        RETURNVAR: twilio_pricing_voice_numbers_get
+        STATUS: 200
+    CANONICAL_ID: twilio_pricing.voice.numbers.get
+STRUCTS:
+  pricing.v1.messaging.messaging_country:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.messaging.messaging_country-instance:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: outbound_sms_prices
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of [OutboundSMSPrice](https://www.twilio.com/docs/sms/api/pricing#outbound-sms-price) records that represent the price to send a message for each MCC/MNC applicable in this country.
+    - name: inbound_sms_prices
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of [InboundPrice](https://www.twilio.com/docs/sms/api/pricing#inbound-price) records that describe the price to receive an inbound SMS to the different Twilio phone number types supported in this country
+    - name: price_unit
+      type: STRING
+      REQUIRED: false
+      comment: The currency in which prices are measured, specified in [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.phone_number.phone_number_country:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.phone_number.phone_number_country-instance:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: phone_number_prices
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of [PhoneNumberPrice](https://www.twilio.com/docs/phone-numbers/pricing#phone-number-price) records.
+    - name: price_unit
+      type: STRING
+      REQUIRED: false
+      comment: The currency in which prices are measured, specified in [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.voice.voice_country:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.voice.voice_country-instance:
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: outbound_prefix_prices
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of OutboundPrefixPrice records, which include a list of the `prefixes`, the `friendly_name`, `base_price`, and the   `current_price` for those prefixes.
+    - name: inbound_call_prices
+      type: "[]ANY"
+      REQUIRED: false
+      comment: The list of [InboundCallPrice](https://www.twilio.com/docs/voice/pricing#inbound-call-price) records.
+    - name: price_unit
+      type: STRING
+      REQUIRED: false
+      comment: The currency in which prices are measured, specified in [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  pricing.v1.voice.voice_number:
+    - name: number
+      type: STRING
+      REQUIRED: false
+      comment: The phone number.
+    - name: country
+      type: STRING
+      REQUIRED: false
+      comment: The name of the country.
+    - name: iso_country
+      type: STRING
+      REQUIRED: false
+      comment: The [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+    - name: outbound_call_price
+      type: OBJECT
+      REQUIRED: false
+      comment: The OutboundCallPrice record, which includes a list of `origination_prefixes` and the `base_price` and `current_price` for those prefixes.
+    - name: inbound_call_price
+      type: OBJECT
+      REQUIRED: false
+      comment: The [InboundCallPrice](https://www.twilio.com/docs/voice/pricing#inbound-call-price) record. If `null`, the Phone Number is not a Twilio number owned by this account.
+    - name: price_unit
+      type: STRING
+      REQUIRED: false
+      comment: The currency in which prices are measured, specified in [ISO 4127](http://www.iso.org/iso/home/standards/currency_codes.htm) format (e.g. `usd`, `eur`, `jpy`).
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  api.messaging.countries.listResponse200:
+    - name: countries
+      type: "[]STRUCT(pricing.v1.messaging.messaging_country)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.phonenumber.countries.listResponse200:
+    - name: countries
+      type: "[]STRUCT(pricing.v1.phone_number.phone_number_country)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.voice.countries.listResponse200:
+    - name: countries
+      type: "[]STRUCT(pricing.v1.voice.voice_country)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

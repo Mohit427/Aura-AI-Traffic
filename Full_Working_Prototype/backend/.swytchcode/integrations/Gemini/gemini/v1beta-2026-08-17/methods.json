@@ -1,0 +1,349 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Asynchronously embed content in batches",
+      "canonical_id": "gemini.model.modelasyncBatchEmbedContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Cancel a batch operation",
+      "canonical_id": "gemini.batche.namecancel.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Count tokens for a given model",
+      "canonical_id": "gemini.model.modelcountTokens.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Count tokens using a tuned model",
+      "canonical_id": "gemini.tunedmodel.namecountTokens.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a dynamic resource with the provided data",
+      "canonical_id": "gemini.dynamic.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new corpus with the provided details",
+      "canonical_id": "gemini.corpora.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new file search store",
+      "canonical_id": "gemini.filesearchstore.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new tuned model",
+      "canonical_id": "gemini.tunedmodel.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create cached content",
+      "canonical_id": "gemini.cachedcontent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a batch operation by name",
+      "canonical_id": "gemini.batche.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a corpus by its name",
+      "canonical_id": "gemini.corpora.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a FileSearchStore by its name",
+      "canonical_id": "gemini.filesearchstore.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific file by its name",
+      "canonical_id": "gemini.file.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific generated file by its name",
+      "canonical_id": "gemini.generatedfile.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a tuned model permission by name",
+      "canonical_id": "gemini.tunedmodel.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Embed multiple content pieces at once",
+      "canonical_id": "gemini.model.modelbatchEmbedContents.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Generate an authentication token",
+      "canonical_id": "gemini.auth_token.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Generate content for multiple prompts at once",
+      "canonical_id": "gemini.model.modelbatchGenerateContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Generate content using a specified model",
+      "canonical_id": "gemini.model.modelgenerateContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Generate content using a tuned model",
+      "canonical_id": "gemini.tunedmodel.namegenerateContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Generate embeddings for text content",
+      "canonical_id": "gemini.model.modelembedContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific corpus permission by its ID",
+      "canonical_id": "gemini.corpora.permissions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get file metadata by name",
+      "canonical_id": "gemini.file.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get predictions from a specified model",
+      "canonical_id": "gemini.model.modelpredict.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Grant access to a corpus",
+      "canonical_id": "gemini.corpora.permissions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Grant access to a tuned model",
+      "canonical_id": "gemini.tunedmodel.permissions.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Import a file into a FileSearchStore",
+      "canonical_id": "gemini.filesearchstore.fileSearchStoreNameimportFile.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Initiate a long-running prediction for a specified model",
+      "canonical_id": "gemini.model.modelpredictLongRunning.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all available files",
+      "canonical_id": "gemini.file.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all generated files",
+      "canonical_id": "gemini.generatedfile.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available AI models",
+      "canonical_id": "gemini.model.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available corpora",
+      "canonical_id": "gemini.corpora.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available environments",
+      "canonical_id": "gemini.environment.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available file search stores",
+      "canonical_id": "gemini.filesearchstore.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available tuned models",
+      "canonical_id": "gemini.tunedmodel.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List batch operations",
+      "canonical_id": "gemini.batche.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List cached contents",
+      "canonical_id": "gemini.cachedcontent.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List documents in a FileSearchStore",
+      "canonical_id": "gemini.filesearchstore.documents.get1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List permissions for a corpus",
+      "canonical_id": "gemini.corpora.permissions.get1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List permissions for a tuned model",
+      "canonical_id": "gemini.tunedmodel.permissions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register Google Cloud Storage files",
+      "canonical_id": "gemini.filesregister.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a document from a FileSearchStore",
+      "canonical_id": "gemini.filesearchstore.documents.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a specific corpus permission",
+      "canonical_id": "gemini.corpora.permissions.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove cached content by name",
+      "canonical_id": "gemini.cachedcontent.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a FileSearchStore upload operation",
+      "canonical_id": "gemini.filesearchstore.upload"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a generated file by its name",
+      "canonical_id": "gemini.generatedfile.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific corpus by its name",
+      "canonical_id": "gemini.corpora.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific document from a FileSearchStore",
+      "canonical_id": "gemini.filesearchstore.documents.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific file search store by its name",
+      "canonical_id": "gemini.filesearchstore.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific model by its name",
+      "canonical_id": "gemini.model.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve cached content by its name",
+      "canonical_id": "gemini.cachedcontent.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details about a specific corpus operation",
+      "canonical_id": "gemini.corpora.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details for a specific batch operation",
+      "canonical_id": "gemini.batche.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details for a specific file search operation",
+      "canonical_id": "gemini.filesearchstore.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve details of a specific tuned model operation",
+      "canonical_id": "gemini.tunedmodel.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the status of a generated file operation",
+      "canonical_id": "gemini.generatedfile.operations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve tuned model permissions by name",
+      "canonical_id": "gemini.tunedmodel.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Stream content generation from a model",
+      "canonical_id": "gemini.model.modelstreamGenerateContent.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a corpus's permission settings",
+      "canonical_id": "gemini.corpora.permissions.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a GenerateContent batch",
+      "canonical_id": "gemini.batche.generateContentBatchNameupdateGenerateContentBatch.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a specific corpus with provided details",
+      "canonical_id": "gemini.corpora.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a tuned model's configuration",
+      "canonical_id": "gemini.tunedmodel.update1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a tuned model's permissions",
+      "canonical_id": "gemini.tunedmodel.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update an embed content batch",
+      "canonical_id": "gemini.batche.embedContentBatchNameupdateEmbedContentBatch.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update cached content by name",
+      "canonical_id": "gemini.cachedcontent.update"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a file",
+      "canonical_id": "gemini.file.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a file to a FileSearchStore",
+      "canonical_id": "gemini.filesearchstore.fileSearchStoreNameuploadToFileSearchStore.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a file to a FileSearchStore",
+      "canonical_id": "gemini.v1beta.fileSearchStoreNameuploadToFileSearchStore.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Upload a file to the system",
+      "canonical_id": "gemini.v1beta.files.create"
+    }
+  ]
+}

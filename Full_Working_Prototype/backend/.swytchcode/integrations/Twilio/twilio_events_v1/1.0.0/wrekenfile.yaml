@@ -1,0 +1,822 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://events.twilio.com
+METHODS:
+  twilio_events.type.list:
+    SUMMARY: Retrieve a paginated list of all the available Event Types.
+    DESC: Retrieve a paginated list of all the available Event Types.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Types
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SchemaId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.type.listResponse200)
+        RETURNVAR: twilio_events_type_list
+        STATUS: 200
+    CANONICAL_ID: twilio_events.type.list
+  twilio_events.type.get:
+    SUMMARY: Fetch a specific Event Type.
+    DESC: Fetch a specific Event Type.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Types/{Type}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Type:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.event_type)
+        RETURNVAR: twilio_events_type_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.type.get
+  twilio_events.schema.get:
+    SUMMARY: Fetch a specific schema with its nested versions.
+    DESC: Fetch a specific schema with its nested versions.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Schemas/{Id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.schema)
+        RETURNVAR: twilio_events_schema_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.schema.get
+  twilio_events.schema.versions.get:
+    SUMMARY: Retrieve a paginated list of versions of the schema.
+    DESC: Retrieve a paginated list of versions of the schema.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Schemas/{Id}/Versions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Id:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.schema.versions.getResponse200)
+        RETURNVAR: twilio_events_schema_versions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.schema.versions.get
+  twilio_events.schema.versions.get.1:
+    SUMMARY: Fetch a specific schema and version.
+    DESC: Fetch a specific schema and version.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Schemas/{Id}/Versions/{SchemaVersion}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Id:
+          TYPE: STRING
+          LOCATION: path
+      - SchemaVersion:
+          TYPE: INT
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.schema.schema_version)
+        RETURNVAR: twilio_events_schema_versions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_events.schema.versions.get.1
+  twilio_events.sink.get:
+    SUMMARY: Fetch a specific Sink.
+    DESC: Fetch a specific Sink.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sinks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.sink)
+        RETURNVAR: twilio_events_sink_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.sink.get
+  twilio_events.sink.delete:
+    SUMMARY: Delete a specific Sink.
+    DESC: Delete a specific Sink.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Sinks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_events.sink.delete
+  twilio_events.sink.create:
+    SUMMARY: Update a specific Sink
+    DESC: Update a specific Sink
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sinks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Description:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.sink)
+        RETURNVAR: twilio_events_sink_create
+        STATUS: 200
+    CANONICAL_ID: twilio_events.sink.create
+  twilio_events.sink.create.1:
+    SUMMARY: Create a new Sink
+    DESC: Create a new Sink
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sinks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Description:
+          TYPE: STRING
+          LOCATION: body
+      - SinkConfiguration:
+          TYPE: ANY
+          LOCATION: body
+      - SinkType:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.sink)
+        RETURNVAR: twilio_events_sink_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_events.sink.create.1
+  twilio_events.sink.list:
+    SUMMARY: Retrieve a paginated list of Sinks belonging to the account used to make the request.
+    DESC: Retrieve a paginated list of Sinks belonging to the account used to make the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sinks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - InUse:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.sink.listResponse200)
+        RETURNVAR: twilio_events_sink_list
+        STATUS: 200
+    CANONICAL_ID: twilio_events.sink.list
+  twilio_events.sink.test.create:
+    SUMMARY: Create a new Sink Test Event for the given Sink.
+    DESC: Create a new Sink Test Event for the given Sink.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sinks/{Sid}/Test
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.sink.sink_test)
+        RETURNVAR: twilio_events_sink_test_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(events.v1.sink.sink_test)
+        RETURNVAR: twilio_events_sink_test_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_events.sink.test.create
+  twilio_events.sink.validate:
+    SUMMARY: Validate that a test event for a Sink was received.
+    DESC: Validate that a test event for a Sink was received.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Sinks/{Sid}/Validate
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - TestId:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.sink.sink_validate)
+        RETURNVAR: twilio_events_sink_validate_201
+        STATUS: 201
+    CANONICAL_ID: twilio_events.sink.validate
+  twilio_events.subscription.subscribedEvents.get:
+    SUMMARY: Retrieve a list of all Subscribed Event types for a Subscription.
+    DESC: Retrieve a list of all Subscribed Event types for a Subscription.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Subscriptions/{SubscriptionSid}/SubscribedEvents
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubscriptionSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.subscription.subscribedEvents.getResponse200)
+        RETURNVAR: twilio_events_subscription_subscribedEvents_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.subscribedEvents.get
+  twilio_events.subscription.subscribedEvents.create:
+    SUMMARY: Add an event type to a Subscription.
+    DESC: Add an event type to a Subscription.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Subscriptions/{SubscriptionSid}/SubscribedEvents
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubscriptionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: body
+      - SchemaVersion:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription.subscribed_event)
+        RETURNVAR: twilio_events_subscription_subscribedEvents_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(events.v1.subscription.subscribed_event)
+        RETURNVAR: twilio_events_subscription_subscribedEvents_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_events.subscription.subscribedEvents.create
+  twilio_events.subscription.subscribedEvents.get.1:
+    SUMMARY: Read an Event for a Subscription.
+    DESC: Read an Event for a Subscription.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Subscriptions/{SubscriptionSid}/SubscribedEvents/{Type}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubscriptionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription.subscribed_event)
+        RETURNVAR: twilio_events_subscription_subscribedEvents_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.subscribedEvents.get.1
+  twilio_events.subscription.subscribedEvents.create.1:
+    SUMMARY: Update an Event for a Subscription.
+    DESC: Update an Event for a Subscription.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Subscriptions/{SubscriptionSid}/SubscribedEvents/{Type}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubscriptionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: path
+      - SchemaVersion:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription.subscribed_event)
+        RETURNVAR: twilio_events_subscription_subscribedEvents_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.subscribedEvents.create.1
+  twilio_events.subscription.subscribedEvents.delete:
+    SUMMARY: Remove an event type from a Subscription.
+    DESC: Remove an event type from a Subscription.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Subscriptions/{SubscriptionSid}/SubscribedEvents/{Type}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SubscriptionSid:
+          TYPE: STRING
+          LOCATION: path
+      - Type:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_events.subscription.subscribedEvents.delete
+  twilio_events.subscription.list:
+    SUMMARY: Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
+    DESC: Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Subscriptions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - SinkSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.subscription.listResponse200)
+        RETURNVAR: twilio_events_subscription_list
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.list
+  twilio_events.subscription.create:
+    SUMMARY: Create a new Subscription.
+    DESC: Create a new Subscription.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Subscriptions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Description:
+          TYPE: STRING
+          LOCATION: body
+      - SinkSid:
+          TYPE: STRING
+          LOCATION: body
+      - Types:
+          TYPE: "[]ANY"
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription)
+        RETURNVAR: twilio_events_subscription_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_events.subscription.create
+  twilio_events.subscription.get:
+    SUMMARY: Fetch a specific Subscription.
+    DESC: Fetch a specific Subscription.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Subscriptions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription)
+        RETURNVAR: twilio_events_subscription_get
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.get
+  twilio_events.subscription.create.1:
+    SUMMARY: Update a Subscription.
+    DESC: Update a Subscription.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Subscriptions/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Description:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(events.v1.subscription)
+        RETURNVAR: twilio_events_subscription_create_1
+        STATUS: 200
+    CANONICAL_ID: twilio_events.subscription.create.1
+  twilio_events.subscription.delete:
+    SUMMARY: Delete a specific Subscription.
+    DESC: Delete a specific Subscription.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Subscriptions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_events.subscription.delete
+STRUCTS:
+  events.v1.event_type:
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: A string that uniquely identifies this Event Type.
+    - name: schema_id
+      type: STRING
+      REQUIRED: false
+      comment: A string that uniquely identifies the Schema this Event Type adheres to.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Event Type was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Event Type was updated, given in ISO 8601 format.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description for this Event Type.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: "A string that describes how this Event Type can be used. For example: `available`, `deprecated`, `restricted`, `discontinued`. When the status is `available`, the Event Type can be used normally."
+    - name: documentation_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL to the documentation or to the most relevant Twilio Changelog entry of this Event Type.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+  events.v1.schema:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this schema.
+    - name: latest_version_date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that the latest schema version was created, given in ISO 8601 format.
+    - name: latest_version
+      type: INT
+      REQUIRED: false
+      comment: The latest version published of this schema.
+  events.v1.schema.schema_version:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The unique identifier of the schema. Each schema can have multiple versions, that share the same id.
+    - name: schema_version
+      type: INT
+      REQUIRED: false
+      comment: The version of this schema.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date the schema version was created, given in ISO 8601 format.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: raw
+      type: STRING
+      REQUIRED: false
+  events.v1.sink:
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Sink was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Sink was updated, given in ISO 8601 format.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description for the Sink
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Sink.
+    - name: sink_configuration
+      type: ANY
+      REQUIRED: false
+      comment: The information required for Twilio to connect to the provided Sink encoded as JSON.
+    - name: sink_type
+      type: STRING
+      REQUIRED: false
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Sink.
+  events.v1.sink.sink_test:
+    - name: result
+      type: STRING
+      REQUIRED: false
+      comment: Feedback indicating whether the test event was generated.
+  events.v1.sink.sink_validate:
+    - name: result
+      type: STRING
+      REQUIRED: false
+      comment: Feedback indicating whether the given Sink was validated.
+  events.v1.subscription.subscribed_event:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: Type of event being subscribed to.
+    - name: schema_version
+      type: INT
+      REQUIRED: false
+      comment: The schema version that the Subscription should use.
+    - name: subscription_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Subscription.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+  events.v1.subscription:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique SID identifier of the Account.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: A 34 character string that uniquely identifies this Subscription.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Subscription was created, given in ISO 8601 format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date that this Subscription was updated, given in ISO 8601 format.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human readable description for the Subscription
+    - name: sink_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the sink that events selected by this subscription should be sent to. Sink must be active for the subscription to be created.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of this resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: Contains a dictionary of URL links to nested resources of this Subscription.
+  api.type.listResponse200:
+    - name: types
+      type: "[]STRUCT(events.v1.event_type)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.schema.versions.getResponse200:
+    - name: schema_versions
+      type: "[]STRUCT(events.v1.schema.schema_version)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.sink.listResponse200:
+    - name: sinks
+      type: "[]STRUCT(events.v1.sink)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.subscription.subscribedEvents.getResponse200:
+    - name: types
+      type: "[]STRUCT(events.v1.subscription.subscribed_event)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.subscription.listResponse200:
+    - name: subscriptions
+      type: "[]STRUCT(events.v1.subscription)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

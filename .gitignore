@@ -1,3 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# YOLO / Ultralytics outputs
+runs/
+*.pt
+*.onnx
+
+# Demo footage / media
+*.mp4
+*.avi
+*.webm
+*.mov
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
 # CMake and Visual Studio build artifacts
 build/
 Debug/
@@ -11,6 +46,7 @@ cmake_install.cmake
 *.sln*
 *.vcxproj
 *.vcxproj.*
+*.vcxproj.*
 
 # Editor settings
 .vscode/
@@ -18,3 +54,6 @@ cmake_install.cmake
 # Python cache
 __pycache__/
 *.pyc
+
+.cora/
+.env

@@ -1,0 +1,35 @@
+{
+  "timestamp": 1788023795.04746,
+  "intersection_id": "trafficvision_511ga_11899",
+  "zone": "priority_zone",
+  "counts": {
+    "car": 437,
+    "bus": 45,
+    "truck": 67,
+    "motorcycle": 0,
+    "bicycle": 0,
+    "person": 0
+  },
+  "platoon_detected": false,
+  "tracked_objects": {
+    "total_detections": 1288,
+    "zone_detections": 549
+  },
+  "ev_detected": false,
+  "priority_mode": "normal",
+  "analysis": {
+    "frames_processed": 100,
+    "confidence_threshold": 0.25,
+    "platoon_threshold": 10,
+    "cluster_radius_px": 80,
+    "largest_platoon": 0,
+    "total_counts": {
+      "car": 998,
+      "bus": 118,
+      "truck": 172,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    }
+  }
+}

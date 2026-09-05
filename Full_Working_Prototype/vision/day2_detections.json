@@ -1,0 +1,8002 @@
+[
+  {
+    "timestamp": 1787981248.581,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981248.77412,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981248.865783,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981248.9513297,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.0395648,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.1275284,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.2124138,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.301535,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.3865204,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.4747295,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.5638804,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.653145,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.7421901,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.8305693,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981249.9144843,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.0083559,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.0927117,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.2036388,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.2893476,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.376844,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.4545481,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.5533943,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.6427274,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.7284513,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.8096888,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.899637,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981250.985477,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.0709095,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.1592379,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.2462802,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.3316038,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 6,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.4212215,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.5002594,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.6236079,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.711155,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.8073077,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.8996327,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981251.989418,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.0805817,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.170655,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.2527442,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.3431826,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.4316635,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.5174773,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.6051145,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.6915295,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.7782094,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.8672726,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981252.9474719,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.0662487,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.1516047,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.236205,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.3260365,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.4156106,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.5007393,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.583467,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.6660125,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.7513797,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.8373988,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981253.9159985,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.0102627,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.100845,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.1853688,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.2585177,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.3563092,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.4763043,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.5713298,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.659136,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.7505438,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.8392138,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981254.9281666,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.0155356,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.0933268,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.1835976,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.2702305,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.3553107,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.4444087,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.5292735,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.6163108,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.7021523,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.785184,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.9014728,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981255.9881954,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.0742724,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.1602566,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.2470913,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.333558,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.4203382,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.4942825,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.586123,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.6736472,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.7547185,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.8420017,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981256.9281003,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.0150003,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.0992215,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.1846228,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.3025448,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.3873217,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.4735308,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.5606394,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.645656,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.7209983,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.818286,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.8921752,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981257.984587,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.0675678,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.1544197,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.240667,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.3232496,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.4121296,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.5095747,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.5921798,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.7057345,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.792265,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.8709526,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981258.9696214,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.0541382,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.1331933,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.2271607,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.31195,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.3956933,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.4802227,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.5655718,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.6521168,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.7430494,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.8234577,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981259.9175193,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.0014317,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.0993822,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.1886137,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.2760975,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.3729932,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.4526563,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.5430946,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.6424375,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.7599552,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.8484552,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981260.935174,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.0206528,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.1043162,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.1893215,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.2766366,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.3607113,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.4425411,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.527537,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.6136026,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.692095,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.7800374,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.8673115,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981261.951163,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.0348551,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.1392782,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.2234352,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.3108249,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.398985,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.4815898,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.5636375,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.6476274,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.7273076,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.8111167,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.8973143,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981262.982239,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.0670311,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.1489472,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.235304,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.3226764,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 6,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.4061325,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 6,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.513744,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.5984254,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.6856802,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.771852,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.8554816,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981263.9393282,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.0220628,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.102591,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.1854708,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.2717218,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.3574939,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.4338398,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.5256562,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.6097794,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.694415,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.7762256,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.887383,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981264.972968,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.0562382,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 6,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.143919,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 6,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.2260537,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.3722913,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.4811032,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.585658,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.6924248,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.7890544,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.8771794,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981265.9768653,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.0809505,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.1736178,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.2808297,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.4074628,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.542141,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.662936,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.7725394,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981266.8885877,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.0113826,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.127086,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.2454767,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.3550093,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.468228,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.582586,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.6995146,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.820199,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981267.9410775,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.0532975,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.1674285,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.27118,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.3875823,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.4895635,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.5959082,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.6903768,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.7803166,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.8709748,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981268.9632254,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.0492225,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.156476,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.2468503,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.33319,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.4252002,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.517138,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.602942,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.6952057,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.7885127,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981269.920313,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.0102768,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.1068513,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.2112062,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.313234,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.4063988,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.4972594,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.5876653,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.6927419,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.7985334,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.890034,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981270.981233,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.0723479,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.1888258,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.2968676,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.3890996,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.511568,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.6073658,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.6996388,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.819991,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981271.9373322,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.050733,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.165198,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.2712798,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.3833601,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.480792,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.5734923,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.6649337,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.763504,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.8739352,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981272.978494,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.056695,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.1636822,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.2505424,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.32676,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.4130135,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.503983,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.5850804,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.6837475,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.8125286,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.8996534,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981273.9834785,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.073023,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.1634135,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.247922,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.3356085,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.4177108,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 3,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.4968245,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.5833642,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.6696393,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.7543511,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.8405762,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981274.9285479,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.0124516,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.0969722,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.2063322,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.2962093,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.3705707,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.4652603,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.5539858,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.6435397,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.7274148,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.8120992,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.89003,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981275.9832475,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.068379,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.160949,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.2515974,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.3333883,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.4224908,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.5059721,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.6138184,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.6969244,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.7846966,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.8694217,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981276.9558098,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.04062,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 3,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.1289215,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 3,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.2123187,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 3,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.2977655,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.3920374,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.4916618,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.5830839,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.6809392,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.7714813,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.864142,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981277.9520915,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.0791306,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.1706655,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.2626762,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.359091,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.4477293,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.5397198,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.6382926,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.837323,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981278.9282696,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.0204241,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.1180747,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.2084517,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.301453,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.3990715,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.5169113,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.6308558,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.785546,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981279.914093,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.044723,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.1789954,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 2,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.304742,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.4311442,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.5378318,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.6407478,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 4,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.7529156,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.869208,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981280.9888477,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 3,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.082299,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.180936,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.2760162,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.3630996,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.4498024,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.56778,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.6521459,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.739559,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.8312502,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981281.9183605,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.0064383,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.0834339,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.1712823,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.260941,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.3331375,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.4392867,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.5301468,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.6210816,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.7106128,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.8024929,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981282.885512,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.0032523,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.094026,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.1813183,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.2699926,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.359861,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.4441326,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.5315638,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.60525,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.6978793,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.7890222,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.8815732,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981283.967793,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.0593338,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.1515179,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.2498999,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.3363974,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.4540634,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.5337505,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.6255307,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.7078824,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.8003356,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.9009693,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981284.9895346,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.076861,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.1636608,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.2496448,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.3374624,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.422948,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.5083816,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.5956388,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.6803305,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.760451,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.866598,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981285.9551127,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.033265,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.1164012,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.199521,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.2855058,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.3807597,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.4944332,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.574172,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.665647,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.7432323,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.8332822,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981286.9202604,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.0072992,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.0871499,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.170651,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.257403,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.342704,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.4281874,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.5116825,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.5959895,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.6763296,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.758077,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.8693311,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981287.9504256,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.0385911,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.1215754,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.2063777,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.2927864,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 7,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.3802102,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.46368,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.5619802,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 8,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.6470742,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.7261498,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.8195846,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981288.9232578,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.0124683,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.1018615,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.1864498,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.2992568,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.3833878,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.4697263,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.5562792,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.6436827,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.7290204,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.8205752,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.8957894,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981289.986488,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.0755816,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 0,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.159582,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.245046,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.3332887,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.4163396,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.5060608,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.5890932,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 16,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.7055144,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.792167,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.878303,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 0,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981290.9656844,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.0519843,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.141832,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.224752,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.3104777,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.3988533,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.484698,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.567798,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 16,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.6547265,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.7412684,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.8260195,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 16,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981291.9171896,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.0019772,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.1142745,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.2037497,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.294621,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 14,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.387109,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 15,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.4755764,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.5630364,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 13,
+      "bus": 2,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.6476347,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.728222,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.8113418,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 2,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.896209,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 3,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981292.9825652,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.0686004,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.1528184,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.2398279,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.3270767,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.4095154,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.5218165,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.6069221,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.693236,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.777944,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.8673797,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981293.9534967,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.0354626,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.1179793,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 9,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.1999133,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 10,
+      "bus": 0,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.29572,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 11,
+      "bus": 1,
+      "truck": 0,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.381131,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 2,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.464106,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.548605,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  },
+  {
+    "timestamp": 1787981294.6348636,
+    "intersection_id": "vadapalani_junction",
+    "zone": "north_approach",
+    "counts": {
+      "car": 12,
+      "bus": 1,
+      "truck": 1,
+      "motorcycle": 0,
+      "bicycle": 0,
+      "person": 0
+    },
+    "platoon_detected": false,
+    "tracked_objects": [],
+    "ev_detected": []
+  }
+]

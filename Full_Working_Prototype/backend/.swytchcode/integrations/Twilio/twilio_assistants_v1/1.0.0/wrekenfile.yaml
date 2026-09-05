@@ -1,0 +1,1562 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://assistants.twilio.com
+METHODS:
+  twilio_assistants.assistant.messages.create:
+    SUMMARY: Send a message to the assistant
+    DESC: send a message
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Assistants/{id}/Messages
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.assistant_send_message_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(assistants.v1.service.assistant_send_message_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.assistant_send_message_response)
+        RETURNVAR: twilio_assistants_assistant_messages_create
+        STATUS: 200
+      - RETURNTYPE: STRUCT(assistants.v1.service.assistant_send_message_response)
+        RETURNVAR: twilio_assistants_assistant_messages_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_assistants.assistant.messages.create
+  twilio_assistants.assistant.list:
+    SUMMARY: List all assistants
+    DESC: list assistants
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Assistants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.assistant.listResponse200)
+        RETURNVAR: twilio_assistants_assistant_list
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.list
+  twilio_assistants.assistant.create:
+    SUMMARY: Create a new assistant
+    DESC: create an assistant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Assistants
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.create_assistant_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(assistants.v1.service.create_assistant_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.assistant)
+        RETURNVAR: twilio_assistants_assistant_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_assistants.assistant.create
+  twilio_assistants.assistant.get:
+    SUMMARY: Get an assistant by ID
+    DESC: get an assistant
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Assistants/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.assistant_with_tools_and_knowledge)
+        RETURNVAR: twilio_assistants_assistant_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.get
+  twilio_assistants.assistant.delete:
+    SUMMARY: Delete an assistant by ID
+    DESC: delete an assistant
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Assistants/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.assistant.delete
+  twilio_assistants.assistant.update:
+    SUMMARY: Update an assistant by ID
+    DESC: update an assistant
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Assistants/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.update_assistant_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(assistants.v1.service.update_assistant_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.assistant)
+        RETURNVAR: twilio_assistants_assistant_update
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.update
+  twilio_assistants.knowledge.list:
+    SUMMARY: List all knowledge
+    DESC: List all knowledge
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AssistantId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.knowledge.listResponse200)
+        RETURNVAR: twilio_assistants_knowledge_list
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.knowledge.list
+  twilio_assistants.knowledge.create:
+    SUMMARY: Create knowledge
+    DESC: Create knowledge
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Knowledge
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.create_knowledge_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(assistants.v1.service.create_knowledge_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.knowledge)
+        RETURNVAR: twilio_assistants_knowledge_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_assistants.knowledge.create
+  twilio_assistants.knowledge.delete:
+    SUMMARY: Delete knowledge
+    DESC: Delete knowledge
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.knowledge.delete
+  twilio_assistants.knowledge.get:
+    SUMMARY: Get knowledge
+    DESC: Get knowledge
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.knowledge)
+        RETURNVAR: twilio_assistants_knowledge_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.knowledge.get
+  twilio_assistants.knowledge.update:
+    SUMMARY: Update knowledge
+    DESC: Update knowledge
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Knowledge/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.update_knowledge_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(assistants.v1.service.update_knowledge_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.knowledge)
+        RETURNVAR: twilio_assistants_knowledge_update
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.knowledge.update
+  twilio_assistants.knowledge.status.get:
+    SUMMARY: Get knowledge status
+    DESC: Get knowledge status
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}/Status
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.knowledge_status)
+        RETURNVAR: twilio_assistants_knowledge_status_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.knowledge.status.get
+  twilio_assistants.knowledge.chunks.get:
+    SUMMARY: List knowledge chunks
+    DESC: List knowledge chunks
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Knowledge/{id}/Chunks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.knowledge.chunks.getResponse200)
+        RETURNVAR: twilio_assistants_knowledge_chunks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.knowledge.chunks.get
+  twilio_assistants.assistant.feedbacks.get:
+    SUMMARY: List feedbacks
+    DESC: List feedbacks
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Assistants/{id}/Feedbacks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.assistant.feedbacks.getResponse200)
+        RETURNVAR: twilio_assistants_assistant_feedbacks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.feedbacks.get
+  twilio_assistants.assistant.feedbacks.create:
+    SUMMARY: Create feedback
+    DESC: Create feedback
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Assistants/{id}/Feedbacks
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.create_feedback_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(assistants.v1.service.create_feedback_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.feedback)
+        RETURNVAR: twilio_assistants_assistant_feedbacks_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_assistants.assistant.feedbacks.create
+  twilio_assistants.assistant.knowledge.get:
+    SUMMARY: List all knowledge for an Assistant
+    DESC: List all knowledge for an Assistant
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Assistants/{assistantId}/Knowledge
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.assistant.knowledge.getResponse200)
+        RETURNVAR: twilio_assistants_assistant_knowledge_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.knowledge.get
+  twilio_assistants.assistant.knowledge.create:
+    SUMMARY: Attach Knowledge to Assistant
+    DESC: Attach Knowledge to Assistant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Assistants/{assistantId}/Knowledge/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.assistant.knowledge.create
+  twilio_assistants.assistant.knowledge.delete:
+    SUMMARY: Detach Knowledge to Assistant
+    DESC: Detach Knowledge to Assistant
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Assistants/{assistantId}/Knowledge/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.assistant.knowledge.delete
+  twilio_assistants.assistant.tools.get:
+    SUMMARY: List tools for an Assistant
+    DESC: List tools for an Assistant
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Assistants/{assistantId}/Tools
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.assistant.tools.getResponse200)
+        RETURNVAR: twilio_assistants_assistant_tools_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.assistant.tools.get
+  twilio_assistants.assistant.tools.create:
+    SUMMARY: Attach Tool to Assistant
+    DESC: Attach Tool to Assistant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Assistants/{assistantId}/Tools/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.assistant.tools.create
+  twilio_assistants.assistant.tools.delete:
+    SUMMARY: Detach Tool to Assistant
+    DESC: Detach Tool to Assistant
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Assistants/{assistantId}/Tools/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - assistantId:
+          TYPE: STRING
+          LOCATION: path
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.assistant.tools.delete
+  twilio_assistants.tool.list:
+    SUMMARY: List tools
+    DESC: List tools
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Tools
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - AssistantId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.tool.listResponse200)
+        RETURNVAR: twilio_assistants_tool_list
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.tool.list
+  twilio_assistants.tool.create:
+    SUMMARY: Create tool
+    DESC: Create tool
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Tools
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.create_tool_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(assistants.v1.service.create_tool_request)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.tool)
+        RETURNVAR: twilio_assistants_tool_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_assistants.tool.create
+  twilio_assistants.tool.delete:
+    SUMMARY: Delete tool
+    DESC: delete a tool
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Tools/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_assistants.tool.delete
+  twilio_assistants.tool.get:
+    SUMMARY: Get tool
+    DESC: Get tool
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Tools/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.tool_with_policies)
+        RETURNVAR: twilio_assistants_tool_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.tool.get
+  twilio_assistants.tool.update:
+    SUMMARY: Update tool
+    DESC: Update tool
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v1/Tools/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(assistants.v1.service.update_tool_request)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(assistants.v1.service.update_tool_request)
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.tool)
+        RETURNVAR: twilio_assistants_tool_update
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.tool.update
+  twilio_assistants.policy.list:
+    SUMMARY: List policies
+    DESC: List policies
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Policies
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ToolId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - KnowledgeId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.policy.listResponse200)
+        RETURNVAR: twilio_assistants_policy_list
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.policy.list
+  twilio_assistants.session.list:
+    SUMMARY: List sessions
+    DESC: List sessions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sessions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.session.listResponse200)
+        RETURNVAR: twilio_assistants_session_list
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.session.list
+  twilio_assistants.session.get:
+    SUMMARY: Get a session by ID
+    DESC: get a session
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sessions/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(assistants.v1.service.session)
+        RETURNVAR: twilio_assistants_session_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.session.get
+  twilio_assistants.session.messages.get:
+    SUMMARY: List messages
+    DESC: List messages
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Sessions/{sessionId}/Messages
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - sessionId:
+          TYPE: STRING
+          LOCATION: path
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.session.messages.getResponse200)
+        RETURNVAR: twilio_assistants_session_messages_get
+        STATUS: 200
+    CANONICAL_ID: twilio_assistants.session.messages.get
+STRUCTS:
+  assistants.v1.service.assistant_send_message_request:
+    - name: identity
+      type: STRING
+      REQUIRED: true
+      comment: The unique identity of user for the session.
+    - name: session_id
+      type: STRING
+      REQUIRED: false
+      comment: The unique name for the session.
+    - name: body
+      type: STRING
+      REQUIRED: true
+      comment: The query to ask the assistant.
+    - name: webhook
+      type: STRING
+      REQUIRED: false
+      comment: The webhook url to call after the assistant has generated a response or report an error.
+    - name: mode
+      type: STRING
+      REQUIRED: false
+      comment: one of the modes 'chat', 'email' or 'voice'
+  assistants.v1.service.assistant_send_message_response:
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: success or failure based on whether the request successfully generated a response.
+    - name: flagged
+      type: BOOL
+      REQUIRED: false
+      comment: If successful, this property will denote whether the response was flagged or not.
+    - name: aborted
+      type: BOOL
+      REQUIRED: false
+      comment: This property will denote whether the request was aborted or not.
+    - name: session_id
+      type: STRING
+      REQUIRED: true
+      comment: The unique name for the session.
+    - name: account_sid
+      type: STRING
+      REQUIRED: true
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that sent the Message.
+    - name: body
+      type: STRING
+      REQUIRED: false
+      comment: If successful, the body of the generated response
+    - name: error
+      type: STRING
+      REQUIRED: false
+      comment: The error message if generation was not successful
+  assistants.v1.service.assistant:
+    - name: account_sid
+      type: STRING
+      REQUIRED: true
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Assistant resource.
+    - name: customer_ai
+      type: OBJECT
+      REQUIRED: true
+      comment: The Personalization and Perception Engine settings.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The Assistant ID.
+    - name: model
+      type: STRING
+      REQUIRED: true
+      comment: The default model used by the assistant.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the assistant.
+    - name: owner
+      type: STRING
+      REQUIRED: true
+      comment: The owner/company of the assistant.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the assistant resource.
+    - name: personality_prompt
+      type: STRING
+      REQUIRED: true
+      comment: The personality prompt to be used for assistant.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Assistant was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Assistant was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.knowledge:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The type of knowledge source.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The description of knowledge.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the knowledge source.
+    - name: status
+      type: STRING
+      REQUIRED: false
+      comment: The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of knowledge source ('Web', 'Database', 'Text', 'File')
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the knowledge resource.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Knowledge was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.tool:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource.
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: The description of the tool.
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: True if the tool is enabled.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The tool ID.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+      comment: The metadata related to method, url, input_schema to used with the Tool.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the tool.
+    - name: requires_auth
+      type: BOOL
+      REQUIRED: true
+      comment: The authentication requirement for the tool.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of the tool. ('WEBHOOK')
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the tool resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Tool was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Tool was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.assistant_with_tools_and_knowledge:
+    - name: account_sid
+      type: STRING
+      REQUIRED: true
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Assistant resource.
+    - name: customer_ai
+      type: OBJECT
+      REQUIRED: true
+      comment: The Personalization and Perception Engine settings.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The Assistant ID.
+    - name: model
+      type: STRING
+      REQUIRED: true
+      comment: The default model used by the assistant.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the assistant.
+    - name: owner
+      type: STRING
+      REQUIRED: true
+      comment: The owner/company of the assistant.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the assistant resource.
+    - name: personality_prompt
+      type: STRING
+      REQUIRED: true
+      comment: The personality prompt to be used for assistant.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Assistant was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Assistant was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: knowledge
+      type: "[]STRUCT(assistants.v1.service.knowledge)"
+      REQUIRED: true
+      comment: The list of knowledge sources associated with the assistant.
+    - name: tools
+      type: "[]STRUCT(assistants.v1.service.tool)"
+      REQUIRED: true
+      comment: The list of tools associated with the assistant.
+  assistants.v1.service.knowledge_status:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: status
+      type: STRING
+      REQUIRED: true
+      comment: The status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: last_status
+      type: STRING
+      REQUIRED: false
+      comment: The last status of processing the knowledge source ('QUEUED', 'PROCESSING', 'COMPLETED', 'FAILED')
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Knowledge was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.tool_with_policies:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Tool resource.
+    - name: description
+      type: STRING
+      REQUIRED: true
+      comment: The description of the tool.
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: True if the tool is enabled.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The tool ID.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+      comment: The metadata related to method, url, input_schema to used with the Tool.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the tool.
+    - name: requires_auth
+      type: BOOL
+      REQUIRED: true
+      comment: The authentication requirement for the tool.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of the tool. ('WEBHOOK')
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The url of the tool resource.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Tool was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Tool was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: policies
+      type: "[]STRUCT(assistants.v1.service.policy)"
+      REQUIRED: false
+      comment: The Policies associated with the tool.
+  assistants.v1.service.policy:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The Policy ID.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the policy.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the policy.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Policy resource.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the User that created the Policy resource.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of the policy.
+    - name: policy_details
+      type: OBJECT
+      REQUIRED: true
+      comment: The details of the policy based on the type.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Policy was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Policy was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.create_assistant_request:
+    - name: customer_ai
+      type: STRUCT(assistants.v1.service.customer_ai)
+      REQUIRED: false
+      comment: The Personalization and Perception Engine settings.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the assistant.
+    - name: owner
+      type: STRING
+      REQUIRED: false
+      comment: The owner/company of the assistant.
+    - name: personality_prompt
+      type: STRING
+      REQUIRED: false
+      comment: The personality prompt to be used for assistant.
+    - name: segment_credential
+      type: STRUCT(assistants.v1.service.segment_credential)
+      REQUIRED: false
+      comment: The Segment Credentials to be used for the assistant.
+  assistants.v1.service.customer_ai:
+    - name: perception_engine_enabled
+      type: BOOL
+      REQUIRED: true
+      comment: True if the perception engine is enabled.
+    - name: personalization_engine_enabled
+      type: BOOL
+      REQUIRED: true
+      comment: True if the personalization engine is enabled.
+  assistants.v1.service.segment_credential:
+    - name: profile_api_key
+      type: STRING
+      REQUIRED: false
+      comment: The profile API key.
+    - name: space_id
+      type: STRING
+      REQUIRED: false
+      comment: The space ID.
+    - name: write_key
+      type: STRING
+      REQUIRED: false
+      comment: The write key.
+  assistants.v1.service.update_assistant_request:
+    - name: customer_ai
+      type: STRUCT(assistants.v1.service.customer_ai)
+      REQUIRED: false
+      comment: The Personalization and Perception Engine settings.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the assistant.
+    - name: owner
+      type: STRING
+      REQUIRED: false
+      comment: The owner/company of the assistant.
+    - name: personality_prompt
+      type: STRING
+      REQUIRED: false
+      comment: The personality prompt to be used for assistant.
+    - name: segment_credential
+      type: STRUCT(assistants.v1.service.segment_credential)
+      REQUIRED: false
+      comment: The Segment Credentials to be used for the assistant.
+  assistants.v1.service.feedback:
+    - name: assistant_id
+      type: STRING
+      REQUIRED: true
+      comment: The Assistant ID.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The Feedback ID.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Feedback.
+    - name: user_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the User created the Feedback.
+    - name: message_id
+      type: STRING
+      REQUIRED: true
+      comment: The Message ID.
+    - name: score
+      type: FLOAT
+      REQUIRED: true
+      comment: The Score to provide as Feedback (0-1)
+    - name: session_id
+      type: STRING
+      REQUIRED: true
+      comment: The Session ID.
+    - name: text
+      type: STRING
+      REQUIRED: true
+      comment: The text to be given as feedback.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Feedback was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The date and time in GMT when the Feedback was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.create_feedback_request:
+    - name: message_id
+      type: STRING
+      REQUIRED: false
+      comment: The message ID.
+    - name: score
+      type: FLOAT
+      REQUIRED: false
+      comment: The score to be given(0-1).
+    - name: session_id
+      type: STRING
+      REQUIRED: true
+      comment: The Session ID.
+    - name: text
+      type: STRING
+      REQUIRED: false
+      comment: The text to be given as feedback.
+  assistants.v1.service.create_tool_request:
+    - name: assistant_id
+      type: STRING
+      REQUIRED: false
+      comment: The Assistant ID.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the tool.
+    - name: enabled
+      type: BOOL
+      REQUIRED: true
+      comment: True if the tool is enabled.
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+      comment: The metadata related to method, url, input_schema to used with the Tool.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the tool.
+    - name: policy
+      type: STRUCT(assistants.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the tool.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The description of the tool.
+  assistants.v1.service.create_policy_request:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the policy.
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The Policy ID.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the policy.
+    - name: policy_details
+      type: ANY
+      REQUIRED: true
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The description of the policy.
+  assistants.v1.service.update_tool_request:
+    - name: assistant_id
+      type: STRING
+      REQUIRED: false
+      comment: The Assistant ID.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the tool.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: True if the tool is enabled.
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+      comment: The metadata related to method, url, input_schema to used with the Tool.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the tool.
+    - name: policy
+      type: STRUCT(assistants.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the tool.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The type of the tool.
+  assistants.v1.service.create_knowledge_request:
+    - name: assistant_id
+      type: STRING
+      REQUIRED: false
+      comment: The Assistant ID.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: The name of the tool.
+    - name: policy
+      type: STRUCT(assistants.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the knowledge source.
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: The type of the knowledge source.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source. It's required for 'Database' type but disallowed for other types.
+  assistants.v1.service.update_knowledge_request:
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: knowledge_source_details
+      type: OBJECT
+      REQUIRED: false
+      comment: The details of the knowledge source based on the type.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The name of the knowledge source.
+    - name: policy
+      type: STRUCT(assistants.v1.service.create_policy_request)
+      REQUIRED: false
+      comment: The policy associated with the knowledge source.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: The description of the knowledge source.
+    - name: embedding_model
+      type: STRING
+      REQUIRED: false
+      comment: The embedding model to be used for the knowledge source. It's only applicable to 'Database' type.
+  assistants.v1.service.knowledge_chunk:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Knowledge resource.
+    - name: content
+      type: STRING
+      REQUIRED: false
+      comment: The chunk content.
+    - name: metadata
+      type: OBJECT
+      REQUIRED: false
+      comment: The metadata of the chunk.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Chunk was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Chunk was updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.session:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The Session ID.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Session resource.
+    - name: assistant_id
+      type: STRING
+      REQUIRED: false
+      comment: The Assistant ID.
+    - name: verified
+      type: BOOL
+      REQUIRED: false
+      comment: True if the session is verified.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The unique identity of user for the session.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Session was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Session was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  assistants.v1.service.message:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: The message ID.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Message resource.
+    - name: assistant_id
+      type: STRING
+      REQUIRED: false
+      comment: The Assistant ID.
+    - name: session_id
+      type: STRING
+      REQUIRED: false
+      comment: The Session ID.
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The identity of the user.
+    - name: role
+      type: STRING
+      REQUIRED: false
+      comment: The role of the user associated with the message.
+    - name: content
+      type: OBJECT
+      REQUIRED: false
+      comment: The content of the message.
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+      comment: The metadata of the message.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Message was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the Message was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  api.assistant.listResponse200:
+    - name: assistants
+      type: "[]STRUCT(assistants.v1.service.assistant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.knowledge.listResponse200:
+    - name: knowledge
+      type: "[]STRUCT(assistants.v1.service.knowledge)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.knowledge.chunks.getResponse200:
+    - name: chunks
+      type: "[]STRUCT(assistants.v1.service.knowledge_chunk)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.assistant.feedbacks.getResponse200:
+    - name: feedbacks
+      type: "[]STRUCT(assistants.v1.service.feedback)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.assistant.knowledge.getResponse200:
+    - name: knowledge
+      type: "[]STRUCT(assistants.v1.service.knowledge)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.assistant.tools.getResponse200:
+    - name: tools
+      type: "[]STRUCT(assistants.v1.service.tool)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.tool.listResponse200:
+    - name: tools
+      type: "[]STRUCT(assistants.v1.service.tool)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.policy.listResponse200:
+    - name: policies
+      type: "[]STRUCT(assistants.v1.service.policy)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.session.listResponse200:
+    - name: sessions
+      type: "[]STRUCT(assistants.v1.service.session)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.session.messages.getResponse200:
+    - name: messages
+      type: "[]STRUCT(assistants.v1.service.message)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

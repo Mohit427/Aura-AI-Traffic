@@ -1,0 +1,299 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Add a new alpha sender to a service",
+      "canonical_id": "twilio_messaging.service.destinationAlphaSenders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Add a phone number to a service",
+      "canonical_id": "twilio_messaging.service.phoneNumbers.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a channel sender for a messaging service",
+      "canonical_id": "twilio_messaging.service.channelSenders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new alpha sender for a service",
+      "canonical_id": "twilio_messaging.service.alphaSenders.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new external campaign with campaign details",
+      "canonical_id": "twilio_messaging.service.preregisteredUsa2p.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new service with specified details",
+      "canonical_id": "twilio_messaging.service.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a short code for a service",
+      "canonical_id": "twilio_messaging.service.shortCodes.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a tollfree number verification request",
+      "canonical_id": "twilio_messaging.tollfree.verifications.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create an SMS OTP for a brand registration",
+      "canonical_id": "twilio_messaging.a2p.smsOtp.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a domain's certificate",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a short code from a service",
+      "canonical_id": "twilio_messaging.service.shortCodes.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific service by its ID",
+      "canonical_id": "twilio_messaging.service.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a tollfree verification by its SID",
+      "canonical_id": "twilio_messaging.tollfree.verifications.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a USA A2P compliance record",
+      "canonical_id": "twilio_messaging.service.usa2p.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete an alpha sender from a service",
+      "canonical_id": "twilio_messaging.service.alphaSenders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch a specific destination alpha sender for a service",
+      "canonical_id": "twilio_messaging.service.destinationAlphaSenders.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Fetch service details by service ID",
+      "canonical_id": "twilio_messaging.service.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific brand registration by its SID",
+      "canonical_id": "twilio_messaging.a2p.brandRegistrations.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific brand vetting",
+      "canonical_id": "twilio_messaging.a2p.vettings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific phone number for a service",
+      "canonical_id": "twilio_messaging.service.phoneNumbers.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific short code for a service",
+      "canonical_id": "twilio_messaging.service.shortCodes.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a tollfree verification by its SID",
+      "canonical_id": "twilio_messaging.tollfree.verifications.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get deactivated US numbers for a given date",
+      "canonical_id": "twilio_messaging.deactivation.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the configuration for a specific link shortening domain",
+      "canonical_id": "twilio_messaging.linkshortening.config.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get the domain associated with a link shortening messaging service",
+      "canonical_id": "twilio_messaging.linkshortening.domain.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get USA A2P compliance details for a messaging service",
+      "canonical_id": "twilio_messaging.service.usa2p.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Link a messaging service to a domain for link shortening",
+      "canonical_id": "twilio_messaging.linkshortening.messagingServices.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List all channel senders for a messaging service",
+      "canonical_id": "twilio_messaging.service.channelSenders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List alpha senders for a specific service",
+      "canonical_id": "twilio_messaging.service.alphaSenders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List available services with pagination",
+      "canonical_id": "twilio_messaging.service.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List brand registrations with pagination",
+      "canonical_id": "twilio_messaging.a2p.brandRegistrations.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List brand vetting information for a specific brand",
+      "canonical_id": "twilio_messaging.a2p.vettings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List destination alpha senders for a service",
+      "canonical_id": "twilio_messaging.service.destinationAlphaSenders.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List phone numbers associated with a specific service",
+      "canonical_id": "twilio_messaging.service.phoneNumbers.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List short codes for a given service",
+      "canonical_id": "twilio_messaging.service.shortCodes.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List tollfree verifications with optional filters",
+      "canonical_id": "twilio_messaging.tollfree.verifications.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List USA 2-way SMS compliance for a messaging service",
+      "canonical_id": "twilio_messaging.service.usa2p.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List USA 2P use cases for a messaging service",
+      "canonical_id": "twilio_messaging.service.usecases.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a new brand for A2P messaging",
+      "canonical_id": "twilio_messaging.a2p.brandRegistrations.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Register a US App-to-Person compliance profile",
+      "canonical_id": "twilio_messaging.service.usa2p.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a channel sender from a messaging service",
+      "canonical_id": "twilio_messaging.service.channelSenders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a destination alpha sender from a service",
+      "canonical_id": "twilio_messaging.service.destinationAlphaSenders.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a messaging service from a link shortening domain",
+      "canonical_id": "twilio_messaging.linkshortening.messagingServices.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Remove a phone number from a service",
+      "canonical_id": "twilio_messaging.service.phoneNumbers.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Request a managed certificate for a domain",
+      "canonical_id": "twilio_messaging.linkshortening.requestManagedCert.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific alpha sender for a service",
+      "canonical_id": "twilio_messaging.service.alphaSenders.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve a specific channel sender for a messaging service",
+      "canonical_id": "twilio_messaging.service.channelSenders.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve available use cases",
+      "canonical_id": "twilio_messaging.service.usecases.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve domain configuration for a messaging service",
+      "canonical_id": "twilio_messaging.linkshortening.domainConfig.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the certificate for a specific domain",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Submit a brand vetting request to a provider",
+      "canonical_id": "twilio_messaging.a2p.vettings.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a service's configuration and settings",
+      "canonical_id": "twilio_messaging.service.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update brand registration details by SID",
+      "canonical_id": "twilio_messaging.a2p.brandRegistrations.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update domain configuration for link shortening",
+      "canonical_id": "twilio_messaging.linkshortening.config.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update the TLS certificate for a specified domain",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update tollfree verification details by ID",
+      "canonical_id": "twilio_messaging.tollfree.verifications.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update USA 2P compliance settings for a messaging service",
+      "canonical_id": "twilio_messaging.service.usa2p.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Validate DNS for a link shortening domain",
+      "canonical_id": "twilio_messaging.linkshortening.validateDns.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve the certificate for a specific domain",
+      "canonical_id": "twilio_messaging.linkshortening.certificate.get"
+    }
+  ]
+}

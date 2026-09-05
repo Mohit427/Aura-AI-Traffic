@@ -1,0 +1,2090 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://video.twilio.com
+METHODS:
+  twilio_video.composition.get:
+    SUMMARY: Returns a single Composition resource identified by a Composition SID.
+    DESC: Returns a single Composition resource identified by a Composition SID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Compositions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition)
+        RETURNVAR: twilio_video_composition_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.composition.get
+  twilio_video.composition.delete:
+    SUMMARY: Delete a Recording Composition resource identified by a Composition SID.
+    DESC: Delete a Recording Composition resource identified by a Composition SID.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Compositions/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_video.composition.delete
+  twilio_video.composition.list:
+    SUMMARY: List of all Recording compositions.
+    DESC: List of all Recording compositions.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Compositions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - RoomSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.composition.listResponse200)
+        RETURNVAR: twilio_video_composition_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.composition.list
+  twilio_video.composition.create:
+    SUMMARY: Perform operation CreateComposition
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Compositions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: body
+      - VideoLayout:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - AudioSources:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AudioSourcesExcluded:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Resolution:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Format:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Trim:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition)
+        RETURNVAR: twilio_video_composition_create_201
+        STATUS: 201
+    CANONICAL_ID: twilio_video.composition.create
+  twilio_video.compositionhook.get:
+    SUMMARY: Returns a single CompositionHook resource identified by a CompositionHook SID.
+    DESC: Returns a single CompositionHook resource identified by a CompositionHook SID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CompositionHooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition_hook)
+        RETURNVAR: twilio_video_compositionhook_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.compositionhook.get
+  twilio_video.compositionhook.delete:
+    SUMMARY: Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
+    DESC: Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/CompositionHooks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_video.compositionhook.delete
+  twilio_video.compositionhook.create:
+    SUMMARY: Perform operation UpdateCompositionHook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CompositionHooks/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VideoLayout:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - AudioSources:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AudioSourcesExcluded:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Trim:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Format:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Resolution:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition_hook)
+        RETURNVAR: twilio_video_compositionhook_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.compositionhook.create
+  twilio_video.compositionhook.list:
+    SUMMARY: List of all Recording CompositionHook resources.
+    DESC: List of all Recording CompositionHook resources.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CompositionHooks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - FriendlyName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.compositionhook.listResponse200)
+        RETURNVAR: twilio_video_compositionhook_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.compositionhook.list
+  twilio_video.compositionhook.create.1:
+    SUMMARY: Perform operation CreateCompositionHook
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CompositionHooks
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - Enabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VideoLayout:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - AudioSources:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - AudioSourcesExcluded:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - Resolution:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Format:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Trim:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition_hook)
+        RETURNVAR: twilio_video_compositionhook_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_video.compositionhook.create.1
+  twilio_video.compositionsetting.default.list:
+    SUMMARY: Perform operation FetchCompositionSettings
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/CompositionSettings/Default
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition_settings)
+        RETURNVAR: twilio_video_compositionsetting_default_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.compositionsetting.default.list
+  twilio_video.compositionsetting.default.create:
+    SUMMARY: Perform operation CreateCompositionSettings
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/CompositionSettings/Default
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - AwsCredentialsSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionKeySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AwsS3Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AwsStorageEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.composition_settings)
+        RETURNVAR: twilio_video_compositionsetting_default_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.compositionsetting.default.create
+  twilio_video.recording.get:
+    SUMMARY: Returns a single Recording resource identified by a Recording SID.
+    DESC: Returns a single Recording resource identified by a Recording SID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Recordings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.recording)
+        RETURNVAR: twilio_video_recording_get
+        STATUS: 200
+        PAGINATION:
+          TYPE: offset
+          OFFSET_FIELD: offset
+    CANONICAL_ID: twilio_video.recording.get
+  twilio_video.recording.delete:
+    SUMMARY: Delete a Recording resource identified by a Recording SID.
+    DESC: Delete a Recording resource identified by a Recording SID.
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Recordings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_video.recording.delete
+  twilio_video.recording.list:
+    SUMMARY: List of all Track recordings.
+    DESC: List of all Track recordings.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Recordings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SourceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - GroupingSid:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - MediaType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.recording.listResponse200)
+        RETURNVAR: twilio_video_recording_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.recording.list
+  twilio_video.recordingsetting.default.list:
+    SUMMARY: Perform operation FetchRecordingSettings
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/RecordingSettings/Default
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.recording_settings)
+        RETURNVAR: twilio_video_recordingsetting_default_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.recordingsetting.default.list
+  twilio_video.recordingsetting.default.create:
+    SUMMARY: Perform operation CreateRecordingSettings
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/RecordingSettings/Default
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - FriendlyName:
+          TYPE: STRING
+          LOCATION: body
+      - AwsCredentialsSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionKeySid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AwsS3Url:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - AwsStorageEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - EncryptionEnabled:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.recording_settings)
+        RETURNVAR: twilio_video_recordingsetting_default_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.recordingsetting.default.create
+  twilio_video.room.get:
+    SUMMARY: Perform operation FetchRoom
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room)
+        RETURNVAR: twilio_video_room_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.get
+  twilio_video.room.create:
+    SUMMARY: Perform operation UpdateRoom
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room)
+        RETURNVAR: twilio_video_room_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_video.room.create
+  twilio_video.room.create.1:
+    SUMMARY: Perform operation CreateRoom
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - EnableTurn:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - Type:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallback:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - StatusCallbackMethod:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - MaxParticipants:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - RecordParticipantsOnConnect:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - TranscribeParticipantsOnConnect:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - VideoCodecs:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: body
+      - MediaRegion:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - RecordingRules:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+      - TranscriptionsConfiguration:
+          TYPE: OBJECT
+          REQUIRED: false
+          LOCATION: body
+      - AudioOnly:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+      - MaxParticipantDuration:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - EmptyRoomTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - UnusedRoomTimeout:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: body
+      - LargeRoom:
+          TYPE: BOOL
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room)
+        RETURNVAR: twilio_video_room_create_1_201
+        STATUS: 201
+    CANONICAL_ID: twilio_video.room.create.1
+  twilio_video.room.list:
+    SUMMARY: Perform operation ListRoom
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - UniqueName:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.listResponse200)
+        RETURNVAR: twilio_video_room_list
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.list
+  twilio_video.room.participants.get:
+    SUMMARY: Perform operation FetchRoomParticipant
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant)
+        RETURNVAR: twilio_video_room_participants_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.participants.get
+  twilio_video.room.participants.create:
+    SUMMARY: Perform operation UpdateRoomParticipant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{Sid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant)
+        RETURNVAR: twilio_video_room_participants_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_video.room.participants.create
+  twilio_video.room.participants.get.1:
+    SUMMARY: Perform operation ListRoomParticipant
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - Identity:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.participants.getResponse200)
+        RETURNVAR: twilio_video_room_participants_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.participants.get.1
+  twilio_video.room.anonymize.create:
+    SUMMARY: Perform operation UpdateRoomParticipantAnonymize
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{Sid}/Anonymize
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant.room_participant_anonymize)
+        RETURNVAR: twilio_video_room_anonymize_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.anonymize.create
+  twilio_video.room.publishedTracks.get:
+    SUMMARY: Returns a single Track resource represented by TrackName or SID.
+    DESC: Returns a single Track resource represented by TrackName or SID.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant.room_participant_published_track)
+        RETURNVAR: twilio_video_room_publishedTracks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.publishedTracks.get
+  twilio_video.room.publishedTracks.get.1:
+    SUMMARY: Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource.
+    DESC: Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list resource.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/PublishedTracks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.publishedTracks.getResponse200)
+        RETURNVAR: twilio_video_room_publishedTracks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.publishedTracks.get.1
+  twilio_video.room.subscribeRules.get:
+    SUMMARY: Returns a list of Subscribe Rules for the Participant.
+    DESC: Returns a list of Subscribe Rules for the Participant.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribeRules
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant.room_participant_subscribe_rule)
+        RETURNVAR: twilio_video_room_subscribeRules_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.subscribeRules.get
+  twilio_video.room.subscribeRules.create:
+    SUMMARY: Update the Subscribe Rules for the Participant
+    DESC: Update the Subscribe Rules for the Participant
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribeRules
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Rules:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant.room_participant_subscribe_rule)
+        RETURNVAR: twilio_video_room_subscribeRules_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.subscribeRules.create
+  twilio_video.room.subscribedTracks.get:
+    SUMMARY: "Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique."
+    DESC: "Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that requires a SID, be Track Name on the subscriber side is not guaranteed to be unique."
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribedTracks/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_participant.room_participant_subscribed_track)
+        RETURNVAR: twilio_video_room_subscribedTracks_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.subscribedTracks.get
+  twilio_video.room.subscribedTracks.get.1:
+    SUMMARY: Returns a list of tracks that are subscribed for the participant.
+    DESC: Returns a list of tracks that are subscribed for the participant.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Participants/{ParticipantSid}/SubscribedTracks
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - ParticipantSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.subscribedTracks.getResponse200)
+        RETURNVAR: twilio_video_room_subscribedTracks_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.subscribedTracks.get.1
+  twilio_video.room.recordings.get:
+    SUMMARY: Perform operation FetchRoomRecording
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Recordings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_recording)
+        RETURNVAR: twilio_video_room_recordings_get
+        STATUS: 200
+        PAGINATION:
+          TYPE: offset
+          OFFSET_FIELD: offset
+    CANONICAL_ID: twilio_video.room.recordings.get
+  twilio_video.room.recordings.delete:
+    SUMMARY: Perform operation DeleteRoomRecording
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v1/Rooms/{RoomSid}/Recordings/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    CANONICAL_ID: twilio_video.room.recordings.delete
+  twilio_video.room.recordings.get.1:
+    SUMMARY: Perform operation ListRoomRecording
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Recordings
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SourceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - DateCreatedBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.recordings.getResponse200)
+        RETURNVAR: twilio_video_room_recordings_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.recordings.get.1
+  twilio_video.room.recordingRules.get:
+    SUMMARY: Returns a list of Recording Rules for the Room.
+    DESC: Returns a list of Recording Rules for the Room.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/RecordingRules
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_recording_rule)
+        RETURNVAR: twilio_video_room_recordingRules_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.recordingRules.get
+  twilio_video.room.recordingRules.create:
+    SUMMARY: Update the Recording Rules for the Room
+    DESC: Update the Recording Rules for the Room
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/RecordingRules
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Rules:
+          TYPE: ANY
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_recording_rule)
+        RETURNVAR: twilio_video_room_recordingRules_create
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.recordingRules.create
+  twilio_video.room.transcriptions.get:
+    SUMMARY: Perform operation FetchRoomTranscriptions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Transcriptions/{Ttid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_transcriptions)
+        RETURNVAR: twilio_video_room_transcriptions_get
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.transcriptions.get
+  twilio_video.room.transcriptions.create:
+    SUMMARY: Perform operation UpdateRoomTranscriptions
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/Transcriptions/{Ttid}
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Ttid:
+          TYPE: STRING
+          LOCATION: path
+      - Status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: body
+      - Configuration:
+          TYPE: OBJECT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_transcriptions)
+        RETURNVAR: twilio_video_room_transcriptions_create_202
+        STATUS: 202
+    CANONICAL_ID: twilio_video.room.transcriptions.create
+  twilio_video.room.transcriptions.get.1:
+    SUMMARY: Perform operation ListRoomTranscriptions
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Rooms/{RoomSid}/Transcriptions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.room.transcriptions.getResponse200)
+        RETURNVAR: twilio_video_room_transcriptions_get_1
+        STATUS: 200
+    CANONICAL_ID: twilio_video.room.transcriptions.get.1
+  twilio_video.room.transcriptions.create.1:
+    SUMMARY: Perform operation CreateRoomTranscriptions
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v1/Rooms/{RoomSid}/Transcriptions
+      HEADERS:
+        Content-Type: application/x-www-form-urlencoded
+        Authorization: basic_auth
+      CONTENT_TYPE: application/x-www-form-urlencoded
+      ACCEPT: application/json
+      BODYTYPE: x-www-form-urlencoded
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - RoomSid:
+          TYPE: STRING
+          LOCATION: path
+      - Configuration:
+          TYPE: OBJECT
+          REQUIRED: false
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(video.v1.room.room_transcriptions)
+        RETURNVAR: twilio_video_room_transcriptions_create_1_202
+        STATUS: 202
+    CANONICAL_ID: twilio_video.room.transcriptions.create.1
+STRUCTS:
+  video.v1.composition:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Composition resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_completed
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the composition's media processing task finished, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_deleted
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the composition generated media was deleted, specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Composition resource.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Group Room that generated the audio and video tracks used in the composition. All media sources included in a composition must belong to the same Group Room.
+    - name: audio_sources
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The array of track names to include in the composition. The composition includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`.
+    - name: audio_sources_excluded
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The array of track names to exclude from the composition. The composition includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
+    - name: video_layout
+      type: ANY
+      REQUIRED: false
+      comment: An object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.
+    - name: resolution
+      type: STRING
+      REQUIRED: false
+      comment: The dimensions of the video image in pixels expressed as columns (width) and rows (height). The string's format is `{width}x{height}`, such as `640x480`.
+    - name: trim
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to remove intervals with no media, as specified in the POST request that created the composition. Compositions with `trim` enabled are shorter when the Room is created and no Participant joins for a while as well as if all the Participants leave the room and join later, because those gaps will be removed. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.
+    - name: format
+      type: STRING
+      REQUIRED: false
+    - name: bitrate
+      type: INT
+      REQUIRED: false
+      comment: The average bit rate of the composition's media.
+    - name: size
+      type: INT
+      REQUIRED: false
+      comment: The size of the composed media file in bytes.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration of the composition's media file in seconds.
+    - name: media_external_location
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the media file associated with the composition when stored externally. See [External S3 Compositions](/docs/video/api/external-s3-compositions) for more details.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL called using the `status_callback_method` to send status information on every composition event.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method used to call `status_callback`. Can be: `POST` or `GET`, defaults to `POST`."
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URL of the media file associated with the composition.
+  video.v1.composition_hook:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CompositionHook resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource. Can be up to 100 characters long and must be unique within the account.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the CompositionHook is active. When `true`, the CompositionHook is triggered for every completed Group Room on the account. When `false`, the CompositionHook is never triggered.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the CompositionHook resource.
+    - name: audio_sources
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The array of track names to include in the compositions created by the composition hook. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` includes tracks named `student` as well as `studentTeam`. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request
+    - name: audio_sources_excluded
+      type: "[]STRING"
+      REQUIRED: false
+      comment: The array of track names to exclude from the compositions created by the composition hook. A composition triggered by the composition hook includes all audio sources specified in `audio_sources` except for those specified in `audio_sources_excluded`. The track names in this property can include an asterisk as a wild card character, which matches zero or more characters in a track name. For example, `student*` excludes `student` as well as `studentTeam`. This parameter can also be empty.
+    - name: video_layout
+      type: ANY
+      REQUIRED: false
+      comment: A JSON object that describes the video layout of the composition in terms of regions as specified in the HTTP POST request that created the CompositionHook resource. See [POST Parameters](https://www.twilio.com/docs/video/api/compositions-resource#http-post-parameters) for more information. Please, be aware that either video_layout or audio_sources have to be provided to get a valid creation request
+    - name: resolution
+      type: STRING
+      REQUIRED: false
+      comment: The dimensions of the video image in pixels expressed as columns (width) and rows (height). The string's format is `{width}x{height}`, such as `640x480`.
+    - name: trim
+      type: BOOL
+      REQUIRED: false
+      comment: Whether intervals with no media are clipped, as specified in the POST request that created the CompositionHook resource. Compositions with `trim` enabled are shorter when the Room is created and no Participant joins for a while as well as if all the Participants leave the room and join later, because those gaps will be removed. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.
+    - name: format
+      type: STRING
+      REQUIRED: false
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL we call using the `status_callback_method` to send status information to your application.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: The HTTP method we should use to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.composition_settings:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the CompositionSettings resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource and that will be shown in the console
+    - name: aws_credentials_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the stored Credential resource.
+    - name: aws_s3_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the AWS S3 bucket where the compositions are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/compositions`, where `compositions` is the path in which you want the compositions to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2).
+    - name: aws_storage_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether all compositions are written to the `aws_s3_url`. When `false`, all compositions are stored in our cloud.
+    - name: encryption_key_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Public Key resource used for encryption.
+    - name: encryption_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether all compositions are stored in an encrypted form. The default is `false`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.recording:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Recording resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Recording resource.
+    - name: source_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the recording source. For a Room Recording, this value is a `track_sid`.
+    - name: size
+      type: INT
+      REQUIRED: false
+      comment: The size of the recorded track, in bytes.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration of the recording in seconds rounded to the nearest second. Sub-second tracks have a `Duration` property of 1 second
+    - name: container_format
+      type: STRING
+      REQUIRED: false
+    - name: codec
+      type: STRING
+      REQUIRED: false
+    - name: grouping_sids
+      type: ANY
+      REQUIRED: false
+      comment: A list of SIDs related to the recording. Includes the `room_sid` and `participant_sid`.
+    - name: track_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that was given to the source track of the recording. If no name is given, the `source_sid` is used.
+    - name: offset
+      type: INT
+      REQUIRED: false
+      comment: The time in milliseconds elapsed between an arbitrary point in time, common to all group rooms, and the moment when the source room of this track started. This information provides a synchronization mechanism for recordings belonging to the same room.
+    - name: media_external_location
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the media file associated with the recording when stored externally. See [External S3 Recordings](/docs/video/api/external-s3-recordings) for more details.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL called using the `status_callback_method` to send status information on every recording event.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: "The HTTP method used to call `status_callback`. Can be: `POST` or `GET`, defaults to `POST`."
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  video.v1.recording_settings:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RecordingSettings resource.
+    - name: friendly_name
+      type: STRING
+      REQUIRED: false
+      comment: The string that you assigned to describe the resource and show the user in the console
+    - name: aws_credentials_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the stored Credential resource.
+    - name: aws_s3_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the AWS S3 bucket where the recordings are stored. We only support DNS-compliant URLs like `https://documentation-example-twilio-bucket/recordings`, where `recordings` is the path in which you want the recordings to be stored. This URL accepts only URI-valid characters, as described in the [RFC 3986](https://tools.ietf.org/html/rfc3986#section-2).
+    - name: aws_storage_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether all recordings are written to the `aws_s3_url`. When `false`, all recordings are stored in our cloud.
+    - name: encryption_key_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Public Key resource used for encryption.
+    - name: encryption_enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether all recordings are stored in an encrypted form. The default is `false`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.room:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that Twilio created to identify the Room resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Room resource.
+    - name: enable_turn
+      type: BOOL
+      REQUIRED: false
+      comment: Deprecated, now always considered to be true.
+    - name: unique_name
+      type: STRING
+      REQUIRED: false
+      comment: An application-defined string that uniquely identifies the resource. It can be used as a `room_sid` in place of the resource's `sid` in the URL to address the resource, assuming it does not contain any [reserved characters](https://tools.ietf.org/html/rfc3986#section-2.2) that would need to be URL encoded. This value is unique for `in-progress` rooms. SDK clients can use this name to connect to the room. REST API clients can use this name in place of the Room SID to interact with the room as long as the room is `in-progress`.
+    - name: status_callback
+      type: STRING
+      REQUIRED: false
+      comment: The URL Twilio calls using the `status_callback_method` to send status information to your application on every room event. See [Status Callbacks](https://www.twilio.com/docs/video/api/status-callbacks) for more info.
+    - name: status_callback_method
+      type: STRING
+      REQUIRED: false
+      comment: The HTTP method Twilio uses to call `status_callback`. Can be `POST` or `GET` and defaults to `POST`.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The UTC end time of the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration of the room in seconds.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: max_participants
+      type: INT
+      REQUIRED: false
+      comment: "The maximum number of concurrent Participants allowed in the room. "
+    - name: max_participant_duration
+      type: INT
+      REQUIRED: false
+      comment: The maximum number of seconds a Participant can be connected to the room. The maximum possible value is 86400 seconds (24 hours). The default is 14400 seconds (4 hours).
+    - name: max_concurrent_published_tracks
+      type: INT
+      REQUIRED: false
+      comment: The maximum number of published audio, video, and data tracks all participants combined are allowed to publish in the room at the same time. Check [Programmable Video Limits](https://www.twilio.com/docs/video/programmable-video-limits) for more details. If it is set to 0 it means unconstrained.
+    - name: record_participants_on_connect
+      type: BOOL
+      REQUIRED: false
+      comment: Whether to start recording when Participants connect.
+    - name: video_codecs
+      type: "[]STRING"
+      REQUIRED: false
+      comment: "An array of the video codecs that are supported when publishing a track in the room.  Can be: `VP8` and `H264`."
+    - name: media_region
+      type: STRING
+      REQUIRED: false
+      comment: The region for the Room's media server.  Can be one of the [available Media Regions](https://www.twilio.com/docs/video/ip-addresses#media-servers).
+    - name: audio_only
+      type: BOOL
+      REQUIRED: false
+      comment: When set to true, indicates that the participants in the room will only publish audio. No video tracks will be allowed.
+    - name: empty_room_timeout
+      type: INT
+      REQUIRED: false
+      comment: Specifies how long (in minutes) a room will remain active after last participant leaves. Can be configured when creating a room via REST API. For Ad-Hoc rooms this value cannot be changed.
+    - name: unused_room_timeout
+      type: INT
+      REQUIRED: false
+      comment: Specifies how long (in minutes) a room will remain active if no one joins. Can be configured when creating a room via REST API. For Ad-Hoc rooms this value cannot be changed.
+    - name: large_room
+      type: BOOL
+      REQUIRED: false
+      comment: Indicates if this is a large room.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  video.v1.room.room_participant:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RoomParticipant resource.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the participant's room.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RoomParticipant resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: "The application-defined string that uniquely identifies the resource's User within a Room. If a client joins with an existing Identity, the existing client is disconnected. See [access tokens](https://www.twilio.com/docs/video/tutorials/user-identity-access-tokens) and [limits](https://www.twilio.com/docs/video/programmable-video-limits) for more info. "
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time of participant connected to the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time when the participant disconnected from the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration in seconds that the participant was `connected`. Populated only after the participant is `disconnected`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  video.v1.room.room_participant.room_participant_anonymize:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RoomParticipant resource.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the participant's room.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RoomParticipant resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: identity
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the participant.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time of participant connected to the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time when the participant disconnected from the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration in seconds that the participant was `connected`. Populated only after the participant is `disconnected`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.room.room_participant.room_participant_published_track:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RoomParticipantPublishedTrack resource.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Participant resource with the published track.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Room resource where the track is published.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The track name. Must be no more than 128 characters, and be unique among the participant's published tracks.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the track is enabled.
+    - name: kind
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.room.room_participant.room_participant_subscribe_rule:
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Participant resource for the Subscribe Rules.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Room resource for the Subscribe Rules
+    - name: rules
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A collection of Subscribe Rules that describe how to include or exclude matching tracks. See the [Specifying Subscribe Rules](https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr) section for further information.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  video.v1.room.room_participant.room_participant_subscribed_track:
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RoomParticipantSubscribedTrack resource.
+    - name: participant_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the participant that subscribes to the track.
+    - name: publisher_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the participant that publishes the track.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the room where the track is published.
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: The track name. Must have no more than 128 characters and be unique among the participant's published tracks.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: enabled
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the track is enabled.
+    - name: kind
+      type: STRING
+      REQUIRED: false
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+  video.v1.room.room_recording:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the RoomRecording resource.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the RoomRecording resource.
+    - name: source_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the recording source. For a Room Recording, this value is a `track_sid`.
+    - name: size
+      type: INT
+      REQUIRED: false
+      comment: The size of the recorded track in bytes.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: type
+      type: STRING
+      REQUIRED: false
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration of the recording rounded to the nearest second. Sub-second duration tracks have a `duration` of 1 second
+    - name: container_format
+      type: STRING
+      REQUIRED: false
+    - name: codec
+      type: STRING
+      REQUIRED: false
+    - name: grouping_sids
+      type: ANY
+      REQUIRED: false
+      comment: A list of SIDs related to the Recording. Includes the `room_sid` and `participant_sid`.
+    - name: track_name
+      type: STRING
+      REQUIRED: false
+      comment: The name that was given to the source track of the recording. If no name is given, the `source_sid` is used.
+    - name: offset
+      type: INT
+      REQUIRED: false
+      comment: The time in milliseconds elapsed between an arbitrary point in time, common to all group rooms, and the moment when the source room of this track started. This information provides a synchronization mechanism for recordings belonging to the same room.
+    - name: media_external_location
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the media file associated with the recording when stored externally. See [External S3 Recordings](/docs/video/api/external-s3-recordings) for more details.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Room resource the recording is associated with.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The URLs of related resources.
+  video.v1.room.room_recording_rule:
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the Room resource for the Recording Rules
+    - name: rules
+      type: "[]ANY"
+      REQUIRED: false
+      comment: A collection of Recording Rules that describe how to include or exclude matching tracks for recording
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+  video.v1.room.room_transcriptions:
+    - name: ttid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the transcriptions resource.
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Room resource.
+    - name: room_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the transcriptions's room.
+    - name: source_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the transcriptions's associated call.
+    - name: status
+      type: STRING
+      REQUIRED: false
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: start_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time of transcriptions connected to the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: end_time
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The time when the transcriptions disconnected from the room in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.
+    - name: duration
+      type: INT
+      REQUIRED: false
+      comment: The duration in seconds that the transcriptions were `connected`. Populated only after the transcriptions is `stopped`.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource.
+    - name: configuration
+      type: OBJECT
+      REQUIRED: false
+      comment: An JSON object that describes the video layout of the composition in terms of regions. See [Specifying Video Layouts](https://www.twilio.com/docs/video/api/compositions-resource#specifying-video-layouts) for more info.
+  api.composition.listResponse200:
+    - name: compositions
+      type: "[]STRUCT(video.v1.composition)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.compositionhook.listResponse200:
+    - name: composition_hooks
+      type: "[]STRUCT(video.v1.composition_hook)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.recording.listResponse200:
+    - name: recordings
+      type: "[]STRUCT(video.v1.recording)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.listResponse200:
+    - name: rooms
+      type: "[]STRUCT(video.v1.room)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.participants.getResponse200:
+    - name: participants
+      type: "[]STRUCT(video.v1.room.room_participant)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.publishedTracks.getResponse200:
+    - name: published_tracks
+      type: "[]STRUCT(video.v1.room.room_participant.room_participant_published_track)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.subscribedTracks.getResponse200:
+    - name: subscribed_tracks
+      type: "[]STRUCT(video.v1.room.room_participant.room_participant_subscribed_track)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.recordings.getResponse200:
+    - name: recordings
+      type: "[]STRUCT(video.v1.room.room_recording)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.room.transcriptions.getResponse200:
+    - name: transcriptions
+      type: "[]STRUCT(video.v1.room.room_transcriptions)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

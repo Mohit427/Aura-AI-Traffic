@@ -1,0 +1,354 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://monitor.twilio.com
+METHODS:
+  twilio_monitor.alert.get:
+    SUMMARY: Perform operation FetchAlert
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Alerts/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(monitor.v1.alert-instance)
+        RETURNVAR: twilio_monitor_alert_get
+        STATUS: 200
+    CANONICAL_ID: twilio_monitor.alert.get
+  twilio_monitor.alert.list:
+    SUMMARY: Perform operation ListAlert
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Alerts
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - LogLevel:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.alert.listResponse200)
+        RETURNVAR: twilio_monitor_alert_list
+        STATUS: 200
+    CANONICAL_ID: twilio_monitor.alert.list
+  twilio_monitor.event.get:
+    SUMMARY: Perform operation FetchEvent
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Events/{Sid}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - Sid:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(monitor.v1.event)
+        RETURNVAR: twilio_monitor_event_get
+        STATUS: 200
+    CANONICAL_ID: twilio_monitor.event.get
+  twilio_monitor.event.list:
+    SUMMARY: Returns a list of events in the account, sorted by event-date.
+    DESC: Returns a list of events in the account, sorted by event-date.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v1/Events
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - ActorSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - EventType:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - ResourceSid:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - SourceIpAddress:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - StartDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - EndDate:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - PageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - Page:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+      - PageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.event.listResponse200)
+        RETURNVAR: twilio_monitor_event_list
+        STATUS: 200
+    CANONICAL_ID: twilio_monitor.event.list
+STRUCTS:
+  monitor.v1.alert:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Alert resource.
+    - name: alert_text
+      type: STRING
+      REQUIRED: false
+      comment: The text of the alert.
+    - name: api_version
+      type: STRING
+      REQUIRED: false
+      comment: The API version used when the alert was generated.  Can be empty for events that don't have a specific API version.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_generated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the alert was generated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.  Due to buffering, this can be different than `date_created`.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: error_code
+      type: STRING
+      REQUIRED: false
+      comment: The error code for the condition that generated the alert. See the [Error Dictionary](https://www.twilio.com/docs/api/errors) for possible causes and solutions to the error.
+    - name: log_level
+      type: STRING
+      REQUIRED: false
+      comment: "The log level.  Can be: `error`, `warning`, `notice`, or `debug`."
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the page in our [Error Dictionary](https://www.twilio.com/docs/api/errors) with more information about the error condition.
+    - name: request_method
+      type: STRING
+      REQUIRED: false
+      comment: The method used by the request that generated the alert. If the alert was generated by a request we made to your server, this is the method we used. If the alert was generated by a request from your application to our API, this is the method your application used.
+    - name: request_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the request that generated the alert. If the alert was generated by a request we made to your server, this is the URL on your server that generated the alert. If the alert was generated by a request from your application to our API, this is the URL of the resource requested.
+    - name: resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the resource for which the alert was generated.  For instance, if your server failed to respond to an HTTP request during the flow of a particular call, this value would be the SID of the server.  This value is empty if the alert was not generated for a particular resource.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Alert resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Alert resource.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the service or resource that generated the alert. Can be `null`.
+  monitor.v1.alert-instance:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Alert resource.
+    - name: alert_text
+      type: STRING
+      REQUIRED: false
+      comment: The text of the alert.
+    - name: api_version
+      type: STRING
+      REQUIRED: false
+      comment: The API version used when the alert was generated.  Can be empty for events that don't have a specific API version.
+    - name: date_created
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was created specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: date_generated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the alert was generated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#UTC) format.  Due to buffering, this can be different than `date_created`.
+    - name: date_updated
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the resource was last updated specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: error_code
+      type: STRING
+      REQUIRED: false
+      comment: The error code for the condition that generated the alert. See the [Error Dictionary](https://www.twilio.com/docs/api/errors) for possible causes and solutions to the error.
+    - name: log_level
+      type: STRING
+      REQUIRED: false
+      comment: "The log level.  Can be: `error`, `warning`, `notice`, or `debug`."
+    - name: more_info
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the page in our [Error Dictionary](https://www.twilio.com/docs/api/errors) with more information about the error condition.
+    - name: request_method
+      type: STRING
+      REQUIRED: false
+      comment: The method used by the request that generated the alert. If the alert was generated by a request we made to your server, this is the method we used. If the alert was generated by a request from your application to our API, this is the method your application used.
+    - name: request_url
+      type: STRING
+      REQUIRED: false
+      comment: The URL of the request that generated the alert. If the alert was generated by a request we made to your server, this is the URL on your server that generated the alert. If the alert was generated by a request from your application to our API, this is the URL of the resource requested.
+    - name: request_variables
+      type: STRING
+      REQUIRED: false
+      comment: The variables passed in the request that generated the alert. This value is only returned when a single Alert resource is fetched.
+    - name: resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the resource for which the alert was generated.  For instance, if your server failed to respond to an HTTP request during the flow of a particular call, this value would be the SID of the server.  This value is empty if the alert was not generated for a particular resource.
+    - name: response_body
+      type: STRING
+      REQUIRED: false
+      comment: The response body of the request that generated the alert. This value is only returned when a single Alert resource is fetched.
+    - name: response_headers
+      type: STRING
+      REQUIRED: false
+      comment: The response headers of the request that generated the alert. This value is only returned when a single Alert resource is fetched.
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Alert resource.
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the Alert resource.
+    - name: request_headers
+      type: STRING
+      REQUIRED: false
+      comment: The request headers of the request that generated the alert. This value is only returned when a single Alert resource is fetched.
+    - name: service_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the service or resource that generated the alert. Can be `null`.
+  monitor.v1.event:
+    - name: account_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the [Account](https://www.twilio.com/docs/iam/api/account) that created the Event resource.
+    - name: actor_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the actor that caused the event, if available. This can be either a User ID (matching the pattern `^US[0-9a-fA-F]{32}$`) or an Account SID (matching the pattern `^AC[0-9a-fA-F]{32}$`). If the actor's SID isn't available, this field will be `null`.
+    - name: actor_type
+      type: STRING
+      REQUIRED: false
+      comment: "The type of actor that caused the event. Can be: `user` for a change made by a logged-in user in the Twilio Console, `account` for an event caused by an API request by an authenticating Account, `twilio-admin` for an event caused by a Twilio employee, and so on."
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A description of the event. Can be `null`.
+    - name: event_data
+      type: ANY
+      REQUIRED: false
+      comment: An object with additional data about the event. The  contents depend on `event_type`. For example, event-types of the form `RESOURCE.updated`, this value contains a `resource_properties` dictionary that describes the previous and updated properties of the resource.
+    - name: event_date
+      type: TIMESTAMP
+      REQUIRED: false
+      comment: The date and time in GMT when the event was recorded specified in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format.
+    - name: event_type
+      type: STRING
+      REQUIRED: false
+      comment: "The event's type. Event-types are typically in the form: `RESOURCE_TYPE.ACTION`, where `RESOURCE_TYPE` is the type of resource that was affected and `ACTION` is what happened to it. For example, `phone-number.created`. For a full list of all event-types, see the [Monitor Event Types](https://www.twilio.com/docs/usage/monitor-events#event-types)."
+    - name: resource_sid
+      type: STRING
+      REQUIRED: false
+      comment: The SID of the resource that was affected.
+    - name: resource_type
+      type: STRING
+      REQUIRED: false
+      comment: The type of resource that was affected. For a full list of all resource-types, see the [Monitor Event Types](https://www.twilio.com/docs/usage/monitor-events#event-types).
+    - name: sid
+      type: STRING
+      REQUIRED: false
+      comment: The unique string that we created to identify the Event resource.
+    - name: source
+      type: STRING
+      REQUIRED: false
+      comment: "The originating system or interface that caused the event.  Can be: `web` for events caused by user action in the Twilio Console, `api` for events caused by a request to our API, or   `twilio` for events caused by an automated or internal Twilio system."
+    - name: source_ip_address
+      type: STRING
+      REQUIRED: false
+      comment: The IP address of the source, if the source is outside the Twilio cloud. This value is `null` for events with `source` of `twilio`
+    - name: url
+      type: STRING
+      REQUIRED: false
+      comment: The absolute URL of the resource that was affected. Can be `null`.
+    - name: links
+      type: OBJECT
+      REQUIRED: false
+      comment: The absolute URLs of related resources.
+  api.alert.listResponse200:
+    - name: alerts
+      type: "[]STRUCT(monitor.v1.alert)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false
+  api.event.listResponse200:
+    - name: events
+      type: "[]STRUCT(monitor.v1.event)"
+      REQUIRED: false
+    - name: meta
+      type: OBJECT
+      REQUIRED: false

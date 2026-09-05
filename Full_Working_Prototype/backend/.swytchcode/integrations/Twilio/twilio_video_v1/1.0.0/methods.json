@@ -1,0 +1,199 @@
+{
+  "methods": [
+    {
+      "method_uuid": "",
+      "method_name": "Anonymize a participant in a room",
+      "canonical_id": "twilio_video.room.anonymize.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new composition hook with specified settings",
+      "canonical_id": "twilio_video.compositionhook.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new room with specified configurations",
+      "canonical_id": "twilio_video.room.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create a new video composition with specified settings",
+      "canonical_id": "twilio_video.composition.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create default composition settings",
+      "canonical_id": "twilio_video.compositionsetting.default.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create default recording settings",
+      "canonical_id": "twilio_video.recordingsetting.default.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Create transcriptions for a specific room",
+      "canonical_id": "twilio_video.room.transcriptions.create.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a recording composition by its SID",
+      "canonical_id": "twilio_video.composition.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a recording composition hook by its SID",
+      "canonical_id": "twilio_video.compositionhook.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific recording by its SID",
+      "canonical_id": "twilio_video.recording.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Delete a specific recording from a room",
+      "canonical_id": "twilio_video.room.recordings.delete"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of all track recordings",
+      "canonical_id": "twilio_video.recording.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of recording composition hooks",
+      "canonical_id": "twilio_video.compositionhook.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a list of recording compositions",
+      "canonical_id": "twilio_video.composition.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific composition by its SID",
+      "canonical_id": "twilio_video.composition.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific CompositionHook by its SID",
+      "canonical_id": "twilio_video.compositionhook.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant from a room",
+      "canonical_id": "twilio_video.room.participants.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific participant's subscribed track in a room",
+      "canonical_id": "twilio_video.room.subscribedTracks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific published track for a participant in a room",
+      "canonical_id": "twilio_video.room.publishedTracks.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific recording for a given room",
+      "canonical_id": "twilio_video.room.recordings.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific recording using its SID",
+      "canonical_id": "twilio_video.recording.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get a specific transcription for a room",
+      "canonical_id": "twilio_video.room.transcriptions.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get default composition settings",
+      "canonical_id": "twilio_video.compositionsetting.default.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get published tracks for a participant in a room",
+      "canonical_id": "twilio_video.room.publishedTracks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get recording rules for a specific room",
+      "canonical_id": "twilio_video.room.recordingRules.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get room details by room ID",
+      "canonical_id": "twilio_video.room.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get subscribe rules for a participant in a room",
+      "canonical_id": "twilio_video.room.subscribeRules.get"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Get subscribed tracks for a participant in a room",
+      "canonical_id": "twilio_video.room.subscribedTracks.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List participants in a specific room",
+      "canonical_id": "twilio_video.room.participants.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List recordings for a specific room",
+      "canonical_id": "twilio_video.room.recordings.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List rooms with filtering and pagination options",
+      "canonical_id": "twilio_video.room.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "List transcriptions for a given room",
+      "canonical_id": "twilio_video.room.transcriptions.get.1"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Retrieve default recording settings",
+      "canonical_id": "twilio_video.recordingsetting.default.list"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a composition hook by its SID",
+      "canonical_id": "twilio_video.compositionhook.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a participant's status in a room",
+      "canonical_id": "twilio_video.room.participants.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update a room's status by its ID",
+      "canonical_id": "twilio_video.room.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update participant subscribe rules for a room",
+      "canonical_id": "twilio_video.room.subscribeRules.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update recording rules for a specific room",
+      "canonical_id": "twilio_video.room.recordingRules.create"
+    },
+    {
+      "method_uuid": "",
+      "method_name": "Update room transcriptions with status and configuration",
+      "canonical_id": "twilio_video.room.transcriptions.create"
+    }
+  ]
+}

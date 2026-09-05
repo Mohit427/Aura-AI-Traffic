@@ -1,0 +1,2843 @@
+VERSION: 2.0.2
+DEFAULTS:
+  basic_auth: Basic <BASE64>
+  w_base_url: https://intelligence.twilio.com
+METHODS:
+  twilio_conversational_intelligence.controlplane.configurations.create:
+    SUMMARY: Create an Intelligence Configuration
+    DESC: |
+      Create an Intelligence Configuration to control how and when language operators analyze conversations.
+
+      You must include the `rules` field in the request. You can pass an empty array (`"rules": []`), but an Intelligence Configuration with an empty `rules` array doesn't execute any language operators. To add rules later, make a `PUT /v3/ControlPlane/Configurations/{id}` request.
+
+      After creating an Intelligence Configuration, you must attach it to a Conversations Configuration by using the Conversations API.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v3/ControlPlane/Configurations
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.configurations.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.controlplane.configurations.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.createResponse201)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_configurations_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateConfiguration_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(CreateConfiguration_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(CreateConfiguration_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.configurations.create
+  twilio_conversational_intelligence.controlplane.configurations.list:
+    SUMMARY: Retrieve a list of Intelligence Configurations
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Configurations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.listResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_configurations_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(ListConfigurations_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(ListConfigurations_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.configurations.list
+  twilio_conversational_intelligence.controlplane.configurations.get:
+    SUMMARY: Retrieve an Intelligence Configuration
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Configurations/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.getResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_configurations_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchConfiguration_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(FetchConfiguration_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.configurations.get
+  twilio_conversational_intelligence.controlplane.configurations.update:
+    SUMMARY: Update an Intelligence Configuration
+    DESC: Update an Intelligence Configuration, including its metadata and rules. The request must include all required fields.
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v3/ControlPlane/Configurations/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.configurations.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - body:
+          TYPE: STRUCT(api.controlplane.configurations.updateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.configurations.updateResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_configurations_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(UpdateConfiguration_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(UpdateConfiguration_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(UpdateConfiguration_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.configurations.update
+  twilio_conversational_intelligence.controlplane.configurations.delete:
+    SUMMARY: Delete an Intelligence Configuration
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v3/ControlPlane/Configurations/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteConfiguration_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(DeleteConfiguration_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.configurations.delete
+  twilio_conversational_intelligence.controlplane.operators.list:
+    SUMMARY: Retrieve a list of Operators
+    DESC: Retrieve a list of Operators for the account, including those not attached to an Intelligence Configuration. This request returns both Twilio-authored and custom language operators.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Operators
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.operators.listResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_operators_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(ListOperators_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(ListOperators_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.operators.list
+  twilio_conversational_intelligence.controlplane.operators.create:
+    SUMMARY: Create an Operator
+    DESC: Create a custom language operator. You can define a reusable, programmable conversational analysis task tailored to your business needs.
+    HTTP:
+      METHOD: POST
+      ENDPOINT: /v3/ControlPlane/Operators
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.operators.createRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - body:
+          TYPE: STRUCT(api.controlplane.operators.createRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.operators.createResponse201)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_operators_create_201
+        STATUS: 201
+    ERRORS:
+      - TYPE: STRUCT(CreateOperator_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(CreateOperator_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(CreateOperator_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.operators.create
+  twilio_conversational_intelligence.controlplane.operators.get:
+    SUMMARY: Retrieve an Operator
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Operators/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.operators.getResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_operators_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchOperator_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(FetchOperator_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchOperator_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.operators.get
+  twilio_conversational_intelligence.controlplane.operators.update:
+    SUMMARY: Update an Operator
+    HTTP:
+      METHOD: PUT
+      ENDPOINT: /v3/ControlPlane/Operators/{id}
+      HEADERS:
+        Content-Type: application/json
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+      BODY:
+        TYPE: STRUCT(api.controlplane.operators.updateRequest)
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - If-Match:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: header
+      - body:
+          TYPE: STRUCT(api.controlplane.operators.updateRequest)
+          LOCATION: body
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.operators.updateResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_operators_update
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(UpdateOperator_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(UpdateOperator_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(UpdateOperator_Error412)
+        STATUS: 412
+        WHEN: Precondition failed (e.g., ETag mismatch) (HTTP 412)
+      - TYPE: STRUCT(UpdateOperator_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(UpdateOperator_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.operators.update
+  twilio_conversational_intelligence.controlplane.operators.delete:
+    SUMMARY: Delete an Operator
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v3/ControlPlane/Operators/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteOperator_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(DeleteOperator_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(DeleteOperator_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.operators.delete
+  twilio_conversational_intelligence.controlplane.versions.get:
+    SUMMARY: Retrieve a list of Operator Versions
+    DESC: Retrieve a paginated list of all versions for a given Language Operator.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Operators/{id}/Versions
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.versions.getResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_versions_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(ListOperatorVersions_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(ListOperatorVersions_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(ListOperatorVersions_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.versions.get
+  twilio_conversational_intelligence.controlplane.versions.get.1:
+    SUMMARY: Retrieve a specific Operator Version
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/ControlPlane/Operators/{id}/Versions/{version}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+      - version:
+          TYPE: INT
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.controlplane.versions.getResponse200)
+        RETURNVAR: twilio_conversational_intelligence_controlplane_versions_get_1
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchOperatorVersion_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(FetchOperatorVersion_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchOperatorVersion_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.controlplane.versions.get.1
+  twilio_conversational_intelligence.operatorresult.list:
+    SUMMARY: Retrieve a list of OperatorResults
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/OperatorResults
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - conversationId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - intelligenceConfigurationId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - operatorId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.operatorresult.listResponse200)
+        RETURNVAR: twilio_conversational_intelligence_operatorresult_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(ListOperatorResults_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(ListOperatorResults_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(ListOperatorResults_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.operatorresult.list
+  twilio_conversational_intelligence.operatorresult.get:
+    SUMMARY: Retrieve an OperatorResult
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/OperatorResults/{operatorResultId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - operatorResultId:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(OperatorResultsResponseV1)
+        RETURNVAR: twilio_conversational_intelligence_operatorresult_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchOperatorResult_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(FetchOperatorResult_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchOperatorResult_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.operatorresult.get
+  twilio_conversational_intelligence.operatorresult.delete:
+    SUMMARY: Delete an OperatorResult
+    HTTP:
+      METHOD: DELETE
+      ENDPOINT: /v3/OperatorResults/{operatorResultId}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - operatorResultId:
+          TYPE: STRING
+          LOCATION: path
+    ERRORS:
+      - TYPE: STRUCT(DeleteOperatorResult_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(DeleteOperatorResult_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(DeleteOperatorResult_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.operatorresult.delete
+  twilio_conversational_intelligence.conversation.list:
+    SUMMARY: Retrieve a list of Conversations
+    DESC: Retrieve a list of Conversations processed by an Intelligence Configuration.
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/Conversations
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - pageSize:
+          TYPE: INT
+          REQUIRED: false
+          LOCATION: query
+          DEFAULT: 50
+      - pageToken:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - createdAtBefore:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - createdAtAfter:
+          TYPE: TIMESTAMP
+          REQUIRED: false
+          LOCATION: query
+      - status:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - channelId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - channels:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - conversationConfigurationId:
+          TYPE: STRING
+          REQUIRED: false
+          LOCATION: query
+      - intelligenceConfigurationIds:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+      - operatorIds:
+          TYPE: "[]STRING"
+          REQUIRED: false
+          LOCATION: query
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.listResponse200)
+        RETURNVAR: twilio_conversational_intelligence_conversation_list
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(ListConversations_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(ListConversations_Error401)
+        STATUS: 401
+        WHEN: Unauthorized request (HTTP 401)
+      - TYPE: STRUCT(ListConversations_Error403)
+        STATUS: 403
+        WHEN: Forbidden request (HTTP 403)
+      - TYPE: STRUCT(ListConversations_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(ListConversations_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(ListConversations_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.conversation.list
+  twilio_conversational_intelligence.conversation.get:
+    SUMMARY: Retrieve a Conversation
+    HTTP:
+      METHOD: GET
+      ENDPOINT: /v3/Conversations/{id}
+      HEADERS:
+        Authorization: basic_auth
+      CONTENT_TYPE: application/json
+      ACCEPT: application/json
+    EXECUTION:
+      KIND: http
+      MODE: sync
+    INPUTS:
+      - id:
+          TYPE: STRING
+          LOCATION: path
+    RETURNS:
+      - RETURNTYPE: STRUCT(api.conversation.getResponse200)
+        RETURNVAR: twilio_conversational_intelligence_conversation_get
+        STATUS: 200
+    ERRORS:
+      - TYPE: STRUCT(FetchConversation_Error400)
+        STATUS: 400
+        WHEN: Bad request (HTTP 400)
+      - TYPE: STRUCT(FetchConversation_Error401)
+        STATUS: 401
+        WHEN: Unauthorized request (HTTP 401)
+      - TYPE: STRUCT(FetchConversation_Error403)
+        STATUS: 403
+        WHEN: Forbidden request (HTTP 403)
+      - TYPE: STRUCT(FetchConversation_Error404)
+        STATUS: 404
+        WHEN: Resource not found (HTTP 404)
+      - TYPE: STRUCT(FetchConversation_Error429)
+        STATUS: 429
+        WHEN: Too Many requests (rate limit exceeded for request originating from public API) (HTTP 429)
+      - TYPE: STRUCT(FetchConversation_Error500)
+        STATUS: 500
+        WHEN: Internal server error (HTTP 500)
+    CANONICAL_ID: twilio_conversational_intelligence.conversation.get
+STRUCTS:
+  OperatorResultsResponseV1:
+    - name: outputFormat
+      type: STRING
+      REQUIRED: true
+    - name: variant_TextResult
+      type: STRUCT(TextResult)
+      REQUIRED: false
+    - name: variant_JSONResult
+      type: STRUCT(JSONResult)
+      REQUIRED: false
+    - name: variant_ClassificationResult
+      type: STRUCT(ClassificationResult)
+      REQUIRED: false
+    - name: variant_ExtractionResult
+      type: STRUCT(ExtractionResult)
+      REQUIRED: false
+  TextResult:
+    - name: outputFormat
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: A unique identifier for the Operator Result. Assigned by Twilio (TTID).
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Language Operator.
+    - name: intelligenceConfiguration
+      type: STRUCT(IntelligenceConfigurationReference)
+      REQUIRED: true
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The `id` of the Conversation attached to the Operator Result.
+    - name: operator
+      type: STRUCT(OperatorReference)
+      REQUIRED: true
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Operator Result was created.
+    - name: referenceIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The `id`s of objects related to this Operator Result.
+    - name: executionDetails
+      type: STRUCT(ExecutionDetails)
+      REQUIRED: true
+    - name: metadata
+      type: OBJECT
+      REQUIRED: true
+    - name: result
+      type: OBJECT
+      REQUIRED: true
+      comment: The actual result from executing the Language Operator with `TEXT` output format.
+  IntelligenceConfigurationReference:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: Unique identifier for a Intelligence Configuration that generated the Operator Result. Assigned by Twilio (TTID).
+    - name: ruleId
+      type: STRING
+      REQUIRED: true
+      comment: Unique identifier of the rule of the Intelligence Configuration that triggered the result. Assigned by Twilio (TTID).
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: Version of the Intelligence Configuration used to generate the Operator Result.
+  OperatorReference:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The `id` of the Language Operator.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: Version of the Language Operator used to generate the Operator Result.
+    - name: parameters
+      type: map[STRING]ANY
+      REQUIRED: true
+      comment: Parameter values used for Operator execution, provided by the Rule at runtime. This object contains a dictionary of parameter keys and their corresponding values.
+  ExecutionDetails:
+    - name: trigger
+      type: OBJECT
+      REQUIRED: true
+      comment: Metadata for the trigger that generated this Operator Result.
+    - name: communications
+      type: OBJECT
+      REQUIRED: true
+      comment: Range of first and last communications in the Conversation that were processed during this Operator execution.
+    - name: channels
+      type: "[]STRING"
+      REQUIRED: true
+      comment: Communication channels included in the Conversation when this Operator was executed.
+    - name: participants
+      type: "[]ANY"
+      REQUIRED: true
+      comment: Metadata for the participants included in the Conversation when this Operator executed.
+    - name: resolvedContext
+      type: STRUCT(ResolvedContext)
+      REQUIRED: false
+  ResolvedContext:
+    - name: memory
+      type: OBJECT
+      REQUIRED: false
+      comment: |
+        The customer profile that was accessed. null if no memory was accessed.
+
+        Either observations and/or traits from the profile were used by the LLM to generate the result.
+    - name: knowledge
+      type: OBJECT
+      REQUIRED: false
+      comment: |
+        Knowledge source IDs with their respective knowledge base ID that was accessed and used by the LLM to generate the result.
+
+        null if no knowledge was accessed.
+  JSONResult:
+    - name: outputFormat
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: A unique identifier for the Operator Result. Assigned by Twilio (TTID).
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Language Operator.
+    - name: intelligenceConfiguration
+      type: STRUCT(IntelligenceConfigurationReference)
+      REQUIRED: true
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The `id` of the Conversation attached to the Operator Result.
+    - name: operator
+      type: STRUCT(OperatorReference)
+      REQUIRED: true
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Operator Result was created.
+    - name: referenceIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The `id`s of objects related to this Operator Result.
+    - name: executionDetails
+      type: STRUCT(ExecutionDetails)
+      REQUIRED: true
+    - name: metadata
+      type: OBJECT
+      REQUIRED: true
+    - name: result
+      type: map[STRING]ANY
+      REQUIRED: true
+      comment: The actual result from executing the Language Operator with `JSON` output format. Its structure depends on the `outputSchema` defined on the Operator.
+  ClassificationResult:
+    - name: outputFormat
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: A unique identifier for the Operator Result. Assigned by Twilio (TTID).
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Language Operator.
+    - name: intelligenceConfiguration
+      type: STRUCT(IntelligenceConfigurationReference)
+      REQUIRED: true
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The `id` of the Conversation attached to the Operator Result.
+    - name: operator
+      type: STRUCT(OperatorReference)
+      REQUIRED: true
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Operator Result was created.
+    - name: referenceIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The `id`s of objects related to this Operator Result.
+    - name: executionDetails
+      type: STRUCT(ExecutionDetails)
+      REQUIRED: true
+    - name: metadata
+      type: OBJECT
+      REQUIRED: true
+    - name: result
+      type: OBJECT
+      REQUIRED: true
+      comment: The actual result from executing the Language Operator with `CLASSIFICATION` output format.
+  ExtractionResult:
+    - name: outputFormat
+      type: STRING
+      REQUIRED: true
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: A unique identifier for the Operator Result. Assigned by Twilio (TTID).
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Language Operator.
+    - name: intelligenceConfiguration
+      type: STRUCT(IntelligenceConfigurationReference)
+      REQUIRED: true
+    - name: conversationId
+      type: STRING
+      REQUIRED: true
+      comment: The `id` of the Conversation attached to the Operator Result.
+    - name: operator
+      type: STRUCT(OperatorReference)
+      REQUIRED: true
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Operator Result was created.
+    - name: referenceIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The `id`s of objects related to this Operator Result.
+    - name: executionDetails
+      type: STRUCT(ExecutionDetails)
+      REQUIRED: true
+    - name: metadata
+      type: OBJECT
+      REQUIRED: true
+    - name: result
+      type: OBJECT
+      REQUIRED: true
+      comment: The actual result from executing the Language Operator with `EXTRACTION` output format.
+  IntelligenceConfiguration:
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Intelligence Configuration.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Intelligence Configuration. Assigned by Twilio (TTID).
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The numeric version of the Intelligence Configuration. Automatically incremented with each update on the resource, used to ensure integrity when updating the Configuration.
+    - name: rules
+      type: "[]STRUCT(Rule)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was created.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was last updated.
+  Rule:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Rule. Assigned by Twilio (TTID).
+    - name: operators
+      type: "[]STRUCT(Operator)"
+      REQUIRED: true
+      comment: List of Operators to be executed by the Rule. Maximum of five (5) Operators allowed per Rule.
+    - name: triggers
+      type: "[]STRUCT(Trigger)"
+      REQUIRED: true
+      comment: List of Triggers that determine when to activate the Rule. Maximum of one (1) Trigger allowed per Rule.
+    - name: actions
+      type: "[]STRUCT(Action)"
+      REQUIRED: true
+      comment: List of Actions to be performed after the Rule is triggered. Maximum of two (2) Actions allowed per Rule.
+    - name: context
+      type: STRUCT(Context)
+      REQUIRED: false
+  Operator:
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Language Operator to be executed by the Rule. Assigned by Twilio (TTID).
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: |
+        The specific version of the Language Operator to execute. When provided, the Rule will use this exact version of the Operator.
+        When omitted, the latest active version of the Operator is used at execution time.
+    - name: parameters
+      type: OBJECT
+      REQUIRED: false
+      comment: |
+        Key-value mapping for parameters defined as part of the Operator schema. The key and value passed by the Rule must match the name and data type of the parameter defined in the Operator, respectively.
+        These parameters will customize the behavior of the Operator when executed by the Rule via runtime substitution into the prompt.
+        Note: For parameters of type `knowledge_base_and_source_ids`, the value must be passed in the following format: `knowledge_base_id:knowledge_source_id`.
+  Trigger:
+    - name: "on"
+      type: STRING
+      REQUIRED: true
+      comment: |
+        The conversational lifecycle event that will activate execution of the Rule.
+        Available values are:
+        - `COMMUNICATION`: Trigger the Rule on each communication within the Conversation.
+        - `CONVERSATION_END`: Trigger the Rule when the Conversation moves to the `closed` state
+        - `CONVERSATION_INACTIVE`: Trigger the Rule when the Conversation moves to `inactive` state
+    - name: parameters
+      type: OBJECT
+      REQUIRED: false
+      comment: Additional configuration to modify Trigger behavior. Only applies to certain Trigger types.
+  Action:
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: |
+        The type of Action to be performed after the Rule is triggered. Supported Actions are:
+        - `WEBHOOK`: A webhook Action sends an HTTP request to a specified URL with Rule execution results.
+    - name: method
+      type: STRING
+      REQUIRED: true
+      comment: The HTTP method to be used when performing the Action. Must be set to `POST`.
+    - name: url
+      type: STRING
+      REQUIRED: true
+      comment: The URL endpoint where the Action will send the HTTP request containing the Rule execution results.
+  Context:
+    - name: memory
+      type: OBJECT
+      REQUIRED: false
+      comment: Configuration for passing Memory as context to Operators in this Rule (available only for Memory–enabled accounts).
+    - name: knowledge
+      type: OBJECT
+      REQUIRED: false
+      comment: Configuration for passing Enterprise Knowledge as context to Operators in this Rule (available only for Enterprise Knowledge–enabled accounts).
+  RuleCreationRequestPayload:
+    - name: operators
+      type: "[]STRUCT(Operator)"
+      REQUIRED: true
+      comment: List of Operators to be executed by the Rule. Minimum of one (1) and maximum of five (5) Operators allowed per Rule.
+    - name: triggers
+      type: "[]STRUCT(Trigger)"
+      REQUIRED: false
+      comment: List of Triggers that determine when to activate the Rule. Maximum of one (1) Trigger allowed per Rule.
+    - name: actions
+      type: "[]STRUCT(Action)"
+      REQUIRED: true
+      comment: List of Actions to be performed after the Rule is triggered. Maximum of two (2) Actions allowed per Rule.
+    - name: context
+      type: STRUCT(Context)
+      REQUIRED: false
+  RuleUpdateRequestPayload:
+    - name: id
+      type: STRING
+      REQUIRED: false
+      comment: |
+        Optional field used when updating an existing Rule within an Intelligence Configuration.
+        When provided, the Rule with this `id` is updated; when omitted, a new Rule is created.
+    - name: operators
+      type: "[]STRUCT(Operator)"
+      REQUIRED: true
+      comment: List of Operators to be executed by the Rule. Minimum of one (1) and maximum of five (5) Operators allowed per Rule.
+    - name: triggers
+      type: "[]STRUCT(Trigger)"
+      REQUIRED: false
+      comment: List of Triggers that determine when to activate the Rule. Maximum of one (1) Trigger allowed per Rule.
+    - name: actions
+      type: "[]STRUCT(Action)"
+      REQUIRED: true
+      comment: List of Actions to be performed after the Rule is triggered. Maximum of two (2) Actions allowed per Rule.
+    - name: context
+      type: STRUCT(Context)
+      REQUIRED: false
+  LanguageOperator:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  OperatorTrainingExample:
+    - name: input
+      type: STRING
+      REQUIRED: true
+      comment: A sample input text that demonstrates the type of content the Operator processes.
+    - name: output
+      type: STRING
+      REQUIRED: true
+      comment: |-
+        The expected output corresponding to the provided input example.
+        This value must be consistent with the defined `output_format` and `output_schema` of the Operator.
+  OperatorContext:
+    - name: memory
+      type: OBJECT
+      REQUIRED: false
+      comment: Defines whether the Operator has access to Memory (past conversational memories and profile traits).
+    - name: knowledge
+      type: OBJECT
+      REQUIRED: false
+      comment: Defines whether the Operator has access to organizational Knowledge Sources (e.g., policies, FAQs, scripts) at runtime.
+  OperatorParameter:
+    - name: type
+      type: STRING
+      REQUIRED: true
+      comment: |-
+        The data type of the parameter (e.g., STRING, INTEGER).
+        Available values: STRING, INTEGER, NUMBER, BOOLEAN, KNOWLEDGE_BASE_AND_SOURCE_IDS
+
+        KNOWLEDGE_BASE_AND_SOURCE_IDS is a special type of parameter that refers to a Memora Knowledge Source, prefixed with its Knowledge Base container. Support for KB type = plaintext only.
+        During Intelligence Configuration creation, this parameter is linked to a specific Knowledge Source. The operator receives the resolved plaintext at runtime and injects it into the prompt.
+        The value of this parameter is expected to be passed in the following format: knowledge_base_id:knowledge_source_id.
+    - name: default
+      type: ANY
+      REQUIRED: false
+      comment: |-
+        Default value to use in the prompt if no value is provided by the Intelligence Configuration.
+        Note: knowledge_base_and_source_ids does not support the default attribute, but all other param types do allow for a default value.
+    - name: required
+      type: BOOL
+      REQUIRED: false
+      comment: Whether this parameter must be set at Operator execution time. Defaults to false if not provided.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: A human-readable description of the parameter.
+  Content:
+    - name: text
+      type: STRING
+      REQUIRED: false
+      comment: The transcript of the communication.
+  Communication:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: participantId
+      type: STRING
+      REQUIRED: true
+    - name: content
+      type: STRUCT(Content)
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: The timestamp for when the Communication was created.
+  Participant:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: name
+      type: STRING
+      REQUIRED: false
+      comment: Participant display name.
+    - name: type
+      type: STRING
+      REQUIRED: false
+      comment: |
+        Type of participant in the conversation. Available types:
+        - `CUSTOMER`
+        - `HUMAN_AGENT`
+        - `AI_AGENT`
+        - `AGENT`
+        - `UNKNOWN`
+    - name: addressValues
+      type: "[]STRING"
+      REQUIRED: true
+      comment: Participant address values (for example, a phone number or sender identifier).
+  ConversationListItem:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the account that owns the Conversation.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Display name of the Conversation.
+    - name: status
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Conversation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Conversation was last updated.
+    - name: intelligenceConfigurationIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The Intelligence Configuration(s) associated with the Conversation.
+    - name: conversationConfigurationId
+      type: STRING
+      REQUIRED: true
+    - name: channels
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The communication channel(s) included in the Conversation.
+    - name: channelIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The underlying channel resource `id`s associated with this Conversation, such as a Call ID or Message ID.
+    - name: participants
+      type: "[]STRUCT(Participant)"
+      REQUIRED: true
+      comment: Metadata for Participants of the Conversation.
+    - name: operatorResultIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: List of Operator Result IDs generated from this Conversation.
+  api.controlplane.configurations.createRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: rules
+      type: "[]STRUCT(RuleCreationRequestPayload)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+
+        To create an Intelligence Configuration without any Rules configured yet, pass an empty array
+        (`"rules": []`). The Configuration will not execute any Language Operators until at least one Rule
+        has been added.
+  api.controlplane.configurations.createResponse201:
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Intelligence Configuration.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Intelligence Configuration. Assigned by Twilio (TTID).
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The numeric version of the Intelligence Configuration. Automatically incremented with each update on the resource, used to ensure integrity when updating the Configuration.
+    - name: rules
+      type: "[]STRUCT(Rule)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was created.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was last updated.
+  CreateConfiguration_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateConfiguration_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateConfiguration_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.configurations.listResponse200:
+    - name: items
+      type: "[]STRUCT(IntelligenceConfiguration)"
+      REQUIRED: true
+      comment: The list of Intelligence Configurations owned by this account.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+      comment: The metadata for Pagination
+  ListConfigurations_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConfigurations_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.configurations.getResponse200:
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Intelligence Configuration.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Intelligence Configuration. Assigned by Twilio (TTID).
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The numeric version of the Intelligence Configuration. Automatically incremented with each update on the resource, used to ensure integrity when updating the Configuration.
+    - name: rules
+      type: "[]STRUCT(Rule)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was created.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was last updated.
+  FetchConfiguration_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConfiguration_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.configurations.updateRequest:
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: rules
+      type: "[]STRUCT(RuleUpdateRequestPayload)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+  api.controlplane.configurations.updateResponse200:
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the Account that created the Intelligence Configuration.
+    - name: id
+      type: STRING
+      REQUIRED: true
+      comment: The unique identifier for the Intelligence Configuration. Assigned by Twilio (TTID).
+    - name: displayName
+      type: STRING
+      REQUIRED: true
+      comment: The display name of the Intelligence Configuration describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: The description of the Intelligence Configuration further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: true
+      comment: The numeric version of the Intelligence Configuration. Automatically incremented with each update on the resource, used to ensure integrity when updating the Configuration.
+    - name: rules
+      type: "[]STRUCT(Rule)"
+      REQUIRED: true
+      comment: |
+        List of Intelligence Configuration Rules that govern when and how Language Operators run.
+        Each Rule represents a bundle of Operators, Triggers, Context, and Actions to be executed by
+        the Intelligence Configuration on a Conversation. A maximum of five (5) Rules are allowed per
+        Intelligence Configuration.
+    - name: dateCreated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was created.
+    - name: dateUpdated
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp of when the Intelligence Configuration was last updated.
+  UpdateConfiguration_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateConfiguration_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateConfiguration_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteConfiguration_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteConfiguration_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.operators.listResponse200:
+    - name: items
+      type: "[]STRUCT(LanguageOperator)"
+      REQUIRED: true
+      comment: List of available Language Operators
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  ListOperators_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListOperators_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.operators.createRequest:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  api.controlplane.operators.createResponse201:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  CreateOperator_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateOperator_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  CreateOperator_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.operators.getResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  FetchOperator_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperator_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperator_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.operators.updateRequest:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  api.controlplane.operators.updateResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: false
+    - name: displayName
+      type: STRING
+      REQUIRED: false
+      comment: Display name of the Language Operator describing its purpose.
+    - name: description
+      type: STRING
+      REQUIRED: false
+      comment: Description of the Language Operator further explaining its purpose.
+    - name: version
+      type: INT
+      REQUIRED: false
+      comment: Numeric Operator version. Automatically incremented with each update on the resource, used to ensure integrity when updating the Operator.
+    - name: author
+      type: STRING
+      REQUIRED: false
+    - name: prompt
+      type: STRING
+      REQUIRED: false
+      comment: |-
+        The natural language instructions used by the operator to analyze the conversation.
+
+        Within the prompt, users can reference parameters using the `{{parameters.[param_name]}}` syntax. Parameter values are provided to the Operator by the Intelligence Configuration Rule at runtime.
+
+        **Note**: Prompts will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their prompts omitted from the API.
+    - name: outputFormat
+      type: STRING
+      REQUIRED: false
+    - name: outputSchema
+      type: OBJECT
+      REQUIRED: false
+    - name: trainingExamples
+      type: "[]STRUCT(OperatorTrainingExample)"
+      REQUIRED: false
+      comment: |-
+        An array of example input/output pairs used to illustrate the intended behavior of the Language Operator. These examples help guide the model's understanding of expected input–output relationships and improve consistency during evaluation and testing.
+
+        **Note**: Training examples will only be exposed for Custom Operators (`author` = `SELF`). Twilio-authored Operators (`author` = `TWILIO`) will have their training examples omitted from the API.
+    - name: context
+      type: STRUCT(OperatorContext)
+      REQUIRED: false
+    - name: parameters
+      type: map[STRING]STRUCT(OperatorParameter)
+      REQUIRED: false
+  UpdateOperator_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateOperator_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateOperator_Error412:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateOperator_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  UpdateOperator_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperator_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperator_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperator_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.controlplane.versions.getResponse200:
+    - name: items
+      type: "[]ANY"
+      REQUIRED: true
+      comment: List of Operator versions.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  ListOperatorVersions_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListOperatorVersions_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListOperatorVersions_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorVersion_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorVersion_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorVersion_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.operatorresult.listResponse200:
+    - name: items
+      type: "[]STRUCT(OperatorResultsResponseV1)"
+      REQUIRED: true
+      comment: List of Operator Results matching the query.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  ListOperatorResults_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListOperatorResults_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListOperatorResults_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorResult_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorResult_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchOperatorResult_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperatorResult_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperatorResult_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  DeleteOperatorResult_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.conversation.listResponse200:
+    - name: items
+      type: "[]STRUCT(ConversationListItem)"
+      REQUIRED: true
+      comment: List of conversations.
+    - name: meta
+      type: OBJECT
+      REQUIRED: true
+  ListConversations_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConversations_Error401:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConversations_Error403:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConversations_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConversations_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  ListConversations_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  api.conversation.getResponse200:
+    - name: id
+      type: STRING
+      REQUIRED: true
+    - name: accountId
+      type: STRING
+      REQUIRED: true
+      comment: The ID of the account that owns the Conversation.
+    - name: name
+      type: STRING
+      REQUIRED: true
+      comment: Display name of the Conversation.
+    - name: status
+      type: STRING
+      REQUIRED: true
+    - name: createdAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Conversation was created.
+    - name: updatedAt
+      type: TIMESTAMP
+      REQUIRED: true
+      comment: Timestamp for when the Conversation was last updated.
+    - name: intelligenceConfigurationIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The Intelligence Configuration(s) associated with the Conversation.
+    - name: conversationConfigurationId
+      type: STRING
+      REQUIRED: true
+    - name: channels
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The communication channel(s) included in the Conversation.
+    - name: channelIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: The underlying channel resource `id`s associated with this Conversation, such as a Call ID or Message ID.
+    - name: participants
+      type: "[]STRUCT(Participant)"
+      REQUIRED: true
+      comment: Metadata for Participants of the Conversation.
+    - name: communications
+      type: "[]STRUCT(Communication)"
+      REQUIRED: true
+      comment: Metadata for the Communications that make up the Conversation.
+    - name: operatorResultIds
+      type: "[]STRING"
+      REQUIRED: true
+      comment: List of Operator Result IDs generated from this Conversation.
+  FetchConversation_Error400:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConversation_Error401:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConversation_Error403:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConversation_Error404:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConversation_Error429:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
+  FetchConversation_Error500:
+    - name: code
+      type: INT
+      REQUIRED: true
+      comment: Twilio-specific error code
+    - name: message
+      type: STRING
+      REQUIRED: true
+      comment: A human readable error message
+    - name: httpStatusCode
+      type: INT
+      REQUIRED: true
+      comment: HTTP response status code
+    - name: userError
+      type: BOOL
+      REQUIRED: false
+      comment: Whether the error is a user error (true) or a system error (false)
+    - name: params
+      type: map[STRING]STRING
+      REQUIRED: false
+      comment: A map of parameters related to the error, for example, a `params.twilioErrorCodeUrl` might hold a URL or link to additional information
