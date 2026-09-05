@@ -12,8 +12,8 @@ import asyncio
 from dotenv import load_dotenv
 from database import engine, Base, get_db
 from models import VisionLog, TomTomLog, SumoStateLog, EngineDecision, EvEvent
-from tavily import TavilyClient
 import google.generativeai as genai
+from tavily import TavilyClient
 
 
 load_dotenv()
@@ -146,7 +146,6 @@ Context: {json.dumps(context)}"""
             explanation = f"Prioritizing pedestrian/cyclist crossing — VUI score is {engine_output.get('vui_score', 'N/A')}."
         elif priority_mode == "emergency_vehicle":
             explanation = "Emergency vehicle detected — signal sequence overridden for safe passage."
-
         elif priority_mode == "transit_priority":
             explanation = "Public bus detected on approach — extending green to reduce transit delay and encourage mode shift away from private vehicles."
         else:
@@ -200,12 +199,6 @@ async def orchestrate(payload: dict, db: AsyncSession = Depends(get_db)):
         return {"error": "engine failed", "stderr": result.stderr}
 
     engine_output = json.loads(result.stdout)
-    
-        # ── Transit Signal Priority override ──────
-    if engine_output.get("priority_mode") == "normal":
-        bus_count = max((v.counts.get("bus", 0) for v in recent_vision), default=0)
-        if bus_count >= 1:
-            engine_output["priority_mode"] = "transit_priority"
 
     log = EngineDecision(
         timestamp=datetime.now(timezone.utc),
@@ -275,6 +268,12 @@ async def decision_cycle(db: AsyncSession = Depends(get_db)):
         return {"error": "engine failed", "stderr": result.stderr}
 
     engine_output = json.loads(result.stdout)
+
+    # ── Transit Signal Priority override ──────
+    if engine_output.get("priority_mode") == "normal":
+        bus_count = max((v.counts.get("bus", 0) for v in recent_vision), default=0)
+        if bus_count >= 1:
+            engine_output["priority_mode"] = "transit_priority"
 
     log = EngineDecision(
         timestamp=datetime.now(timezone.utc),
